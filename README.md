@@ -1,10 +1,9 @@
 # LambdaSchool
-projects for Lambda School full-stack web development track
+projects for Lambda School full-stack web development track:
 
 /m#/##_#/ corresponds to the following: 
 
 - m1 = Module 1 Web Fundamentals
-
   * Unit 1(1) User Interface and Git 
       - Chapter A User Interface I
       - Chapter B Git for Web Development
