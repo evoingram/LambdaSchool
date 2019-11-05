@@ -5,7 +5,7 @@ projects for Lambda School full-stack web development track
 
 - m1 = Module 1 Web Fundamentals
 
-  * Unit 1(1) User Interface and Git <br>
+  * Unit 1(1) User Interface and Git 
       - Chapter A User Interface I
       - Chapter B Git for Web Development
       - Chapter C User Interface II
