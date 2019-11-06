@@ -238,7 +238,7 @@ Follow this guide at your own risk.  Make sure you understand what's going on be
 18. The previous steps we just did put all those project files into their own branch, which will be our base for comparison later.  The m can now designate that it is the project's 'master' branch.<br>
 <br>
 
-**After Changes:**<br>
+**Immediately Prior to Making Changes:**<br>
 19. Now we need to make a new branch and add our project changes to it.<br>
 20. __git checkout -b *branchname* (branch name without the m)__<br>
 21. Make changes, do your project.<br>
