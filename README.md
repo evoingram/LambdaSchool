@@ -225,7 +225,7 @@ Follow this guide at your own risk.  Make sure you understand what's going on be
 ### Do This With Each Project:
 **Before You Start:**<br>
 9.  __cd__ to your mapped local umbrella directory<br>
-10. __mkdir *foldername*__ (one project, one folder; example: */x/m1/11a1*)<br>
+10. __mkdir *foldername*__ (remember you are making a subfolder of a module folder; one project, one folder; example: */x/m1/11a1*)<br>
 11. __git checkout -b *branchnamem*__<br>
 	- Do not use master, but make a new branch with "m" at the end which will signify the project's master branch.<br>
 	- Do not put all the projects in their own folders all at once.  Do them one by one so you can track each one by branch.<br>
