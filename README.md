@@ -1,6 +1,6 @@
 # LambdaSchool
 projects for Lambda School full-stack web development track:
-(see below the list for how to set a repository up like this)
+(see below the list for how to set a repository up like this, read them in full before following them)
 /m#/##_#/ corresponds to the following: 
 
 ## Directory:
