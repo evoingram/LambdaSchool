@@ -217,7 +217,7 @@ Follow this guide at your own risk.  Make sure you understand what's going on be
 		*suggest naming projects by *m#/Module#Sprint#DayLetterProject#*.  (Example: *X:/m1/11a1/*)<br>
 	- You can make as many folders as you want ahead of time, but they won't show up on Github until they aren't empty.<br>
 	- If you put spaces in folder names, surround them w/ quotes when you need to use them.<br>
-7. Regarding *.gitignore* -- add inside it any dir/file you want git to ignore; i have a single line in mine, *"/Administration/*"*, without the quotes.<br>
+7. Regarding *.gitignore* -- add inside it any dir/file you want git to ignore; i have a single line in mine, *"/Administration/"*, the directory name to ignore followed by **two stars**, but **without the quotes**.<br>
 	- Save this *.gitignore* in your local directory you just made where you will be stashing your Lambda projects.<br>
 8. __cd__ in git bash to your mapped local umbrella directory (Example: *X:/*)<br>
 
