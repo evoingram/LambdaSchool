@@ -247,5 +247,5 @@ Follow this guide at your own risk.  Make sure you understand what's going on be
 24. __git push --set-upstream origin *branchname*__<br>
 25. Now, when you go to do a pull request in this directory, the TL will always be on the project as a reviewer possibility.  After the first time, you will never have to wait for the TL to approve the collab request.  You can do the pull request one of two ways:<br>
 	* You can compare *branchnamem* to *branchname*.  If you do it this way, you will have to merge *branchnamem* to master after TL merge.  When your TL merges, TL will be merging into *branchnamem* and you will have to merge *branchnamem* into *master*.<br>
-	* If you merged to master already at step 17, your project's pull request will have the *master* as base and *branchname* as compare.  When TL merges, TL will be merging your finished project into master.<br>
+	* If you merged to master already at step 17, you will compare *master* as base and *branchname* as compare.  When TL merges, TL will be merging your finished project into master.<br>
 26. After either you or TL merges into master, do **git pull master**.<br>
