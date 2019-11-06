@@ -210,7 +210,7 @@ Follow this guide at your own risk.  Make sure you understand what's going on be
 1. Create github repository, note/copy git link (*https://www.github.com/yourusername/yourLambdaProjectRepository.git*).<br>
 2. Add TL as collaborator.<br>
 3. Create your local directory where you want to stash all your lambda projects (i suggest mapping it).<br>
-4. __cd__ to this local directory (Example: cd  *X:/m1/11a1/* or cd */x/m1/11a1*).<br>
+4. __cd__ to this local directory (Example: cd  *X:/m1/11a1/* or cd */x/m1/11a1m*).<br>
 5. __git clone *https://www.github.com/yourusername/yourLambdaProjectRepository.git__<br>
 6. Start with creating an empty folder of where you want your first project to go.<br>
 	- Use naming scheme to name module folders (0 or 1 through 9 or 10) and project folders, which will be subfolders of their respective modules.<br>
