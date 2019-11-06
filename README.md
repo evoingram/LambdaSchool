@@ -245,6 +245,7 @@ Follow this guide at your own risk.  Make sure you understand what's going on be
 22. __git add .__<br>
 23. __git commit -m "*branchname* final project upload"__<br>
 24. __git push --set-upstream origin *branchname*__<br>
-25. Now, when you go to do a pull request in this directory, you can compare *branchnamem* to *branchname* and the TL will always be on the project as a reviewer possibility.  After the first time, you will never have to wait for the TL to approve the collab request.  If you do it this way, your project's pull request will be master as base and *branchname* as compare.  When TL merges, TL will be merging your finished project into master.<br>
-26. Alternatively, you can pull request *branchnamem* as base and *branchname* as compare, but then you will have to merge *branchnamem* to master after TL merge.<br>
-27. After either you or TL merges into master, do "git pull master" without the quotes.
+25. Now, when you go to do a pull request in this directory, the TL will always be on the project as a reviewer possibility.  After the first time, you will never have to wait for the TL to approve the collab request.  You can do the pull request one of two ways:
+	1. You can compare *branchnamem* to *branchname*.  If you do it this way, you will have to merge *branchnamem* to master after TL merge.  When your TL merges, TL will be merging into *branchnamem* and you will have to merge *branchnamem* into *master*.
+	2. If you merged to master already at step 17, your project's pull request will have the *master* as base and *branchname* as compare.  When TL merges, TL will be merging your finished project into master.<br>
+26. After either you or TL merges into master, do **git pull master**.
