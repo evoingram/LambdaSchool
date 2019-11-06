@@ -204,7 +204,7 @@ Follow this guide at your own risk.  Make sure you understand what's going on be
 		- 11b1 (1-1B. Project 1)
 		- 11c1 (1-1C. Project 1)
 		- 11d1 (1-1D. Project 1)
-		- Module#-Sprint#-DayLetter-Project# (without the hashes; 11a1 which will stand for module 1, sprint 1, day 1/monday, project 1)
+		- Module#-Sprint#-DayLetter-Project# (without the hashes; 11a1 which will stand for module 1, sprint 1, day 1/monday, project 1, whose branchname would be 11a1, and 11a1m would be its master branchname)
 
 ### One-Time Set-Up:<br>
 1. Create github repository, note/copy git link (*https://www.github.com/yourusername/yourLambdaProjectRepository.git*).<br>
