@@ -98,7 +98,55 @@ console.log(ticketPriceTotal);
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
 // Problem 1
+// You want to send a special thank you card to those
+// who donated over $100 and those who did not.
+
+let aRunnersDonation100 = [];
+function checkDonation(runners) {
+  return runners.donation >= 100;
+}
+aRunnersDonation100.push(runners.filter(checkDonation));
+console.log(aRunnersDonation100);
+
 
 // Problem 2
+// You want to offer current participant student runners, ones with ".edu" in their email, a discount.
+// var n = str.search("W3Schools");
+let studentNames = [];
+runners.forEach(
+  function(runners) {
+    sEmail = runners.email;
+    if ((sEmail.search(".edu")) == -1) {
+      studentNames.push(runners.first_name + " " + runners.last_name);
+    }
+  }
+);
+console.log(studentNames); 
 
 // Problem 3
+//Sort everyone into four categories:
+// donations 0-99
+// donations 100-199
+// donations 200-299
+// donations 300-399
+let donationsSorted = [[],[],[],[]];
+runners.forEach(
+  function(runners) {
+    if (runners.donation<100) {
+      donationsSorted[0].push(runners.first_name + " " + runners.last_name);
+    }
+    else if(runners.donation<200 && runners.donation>99) {
+      donationsSorted[1].push(runners.first_name + " " + runners.last_name);
+
+    }
+    else if (runners.donation<300 && runners.donation>199) {
+      donationsSorted[2].push(runners.first_name + " " + runners.last_name);
+
+    }
+    else{
+      donationsSorted[3].push(runners.first_name + " " + runners.last_name);
+
+    }
+  }
+);
+console.log(donationsSorted); 
