@@ -130,6 +130,44 @@ Humanoid.prototype = Object.create(CharacterStats.prototype);
 */
 
   // Stretch task: 
-  // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
-  // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
-  // * Create two new objects, one a villain and one a hero and fight it out with methods!
+// * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.
+
+// * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
+// * Create two new objects, one a villain and one a hero and fight it out with methods!
+
+function Hero(gChildAttributes) {
+  Humanoid.call(this, gChildAttributes);
+  Humanoid.Hero.prototype.alfred = function() {
+    this.healthPoints += 5 // heal 
+    return this.healthPoints;
+  };
+  Humanoid.Hero.prototype.batSwarm = function() {
+    this.healthPoints -= 2 // attack
+    return this.healthPoints;
+  };
+}
+
+function Villain(gChildAttributes) {
+  Humanoid.call(this, gChildAttributes);
+  Humanoid.Villain.prototype.laughter = function() {
+    this.healthPoints += 5 // heal 
+    return this.healthPoints;
+  };
+  Humanoid.Villain.prototype.flowerSquirt = function() {
+    this.healthPoints -= 2 // attack
+    return this.healthPoints;
+  };
+}
+
+
+
+
+const hBatman = new Humanoid(){
+  this.prototype.Hero.alfred;
+  console.log(this.healthPoints);
+};
+
+const vJoker = new Humanoid(){
+  this.prototype.Villain.laughter;
+  console.log(this.healthPoints);
+};
