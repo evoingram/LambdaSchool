@@ -11,6 +11,7 @@ console.log(myFunction());
 //   return param;
 // };
 // anotherFunction("Example");
+
 let anotherFunction = (param) => param;
 console.log(anotherFunction("Example"));
 

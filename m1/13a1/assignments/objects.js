@@ -3,7 +3,6 @@
 // ==== Challenge 1: Writing Objects ==== 
 // HR needs some information on the new interns put into a database.  Given an id, email, first name, and gender. Create an object for each person in the company list:
 
-=======
 // 1, mmelloy0@psu.edu, Mitzi, F
 // 2, kdiben1@tinypic.com, Kennan, M
 // 3, kmummery2@wikimedia.org, Keven, M
@@ -88,6 +87,7 @@ console.log(internKennan.speak);
 internAntonietta.multiplyNums = function (x, y) { return x * y;};
 console.log(internAntonietta.multiplyNums(3, 4));
 
+
 // === Great work! === Head over to the the arrays.js. You may come back and attempt the Stretch Challenge once you have completed the challenges in arrays.js and function-conversion.js.
 
 // ==== Stretch Challenge: Nested Objects and the this keyword ==== 
@@ -96,6 +96,7 @@ console.log(internAntonietta.multiplyNums(3, 4));
 // 2. Nest a child object in the parent object with name and age as well.  The name will be George and the age will be 50.
 // 3. Nest a grandchild object in the child object with properties for name and age.  The name will be Sam and the age will be 30
 // 4. Give each of the objects the ability to speak their names using the this keyword.
+
 const parent = {
   id: 1,
   name: "Susan",
