@@ -18,7 +18,6 @@ const example = {
 }
 
 // Write your intern objects here:
-
 const internMitzi = {
   id: 1,
   name: "Mitzi",
@@ -53,10 +52,12 @@ const internAntonietta = {
   email: "adaine5@samsung.com",
   gender: "F",
 }
+
 // ==== Challenge 2: Reading Object Data ==== 
 // Once your objects are created, log out the following requests from HR into the console:
 
 // Mitzi's name
+
 // 1, mmelloy0@psu.edu, Mitzi, F
 console.log(internMitzi.name);
 

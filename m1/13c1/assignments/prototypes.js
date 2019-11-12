@@ -15,6 +15,7 @@
   * dimensions (These represent the character's size in the video game)
   * destroy() // prototype method that returns: `${this.name} was removed from the game.`
 */
+
 function GameObject(attributes) {
   this.createdAt = attributes.createdAt;
   this.name = attributes.name;
@@ -65,7 +66,6 @@ Humanoid.prototype = Object.create(CharacterStats.prototype);
 */
 
 // Test you work by un-commenting these 3 objects and the list of console logs below:
-
 
 /*
   const mage = new Humanoid({
@@ -125,6 +125,7 @@ Humanoid.prototype = Object.create(CharacterStats.prototype);
   console.log(swordsman.team); // The Round Table
   console.log(mage.weapons); // Staff of Shamalama
   console.log(archer.language); // Elvish
+
 
   console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.  
   console.log(mage.takeDamage()); // Bruce took damage.
