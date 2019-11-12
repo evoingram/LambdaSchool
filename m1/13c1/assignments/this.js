@@ -5,6 +5,7 @@
 * 2. implicit binding:  when a function is called by a dot right before it.
 * 3. new binding:  when you make a new object from an already constructed function.
 * 4. explicit binding:  when either call or apply method is used.
+
 *
 * write out a code example of each explanation above
 */
@@ -45,5 +46,5 @@ adam.introduceBiz();
 erica.introduceBiz();
 
 // Principle 4:  code example for Explicit Binding
-jerry.introduceBiz.call(erica);
+adam.introduceBiz.call(erica);
 erica.introduceBiz.apply(adam);
