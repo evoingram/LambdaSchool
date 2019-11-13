@@ -3,10 +3,15 @@
 // Keep it simple! Remember a closure is just a function
 // that manipulates variables defined in the outer scope.
 // The outer scope can be a parent function, or the top level of the script.
-let x = 19;
-function iAge(x) {
-  return "What's my age again?  " + (x * 2);
+
+function whatsAge() {
+  let x = 19;
+  return function iAge(x) {
+    return "What's my age again?  " + (x * 2);
+  };
 }
+var myAge = whatsAge();
+console.log(myAge);
 
 /* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */
 
