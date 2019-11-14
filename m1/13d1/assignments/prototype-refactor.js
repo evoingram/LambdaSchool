@@ -22,10 +22,11 @@ class GameObject {
   }
 
   destroy() {
-    return `${this.name} was removed from the game.`;
+    return `${this.name}  was removed from the game.`;
     // this.name + "was removed from the game.";
   }
 }
+
 /* CharacterStats
 
 class Model extends Car {
@@ -53,16 +54,12 @@ class CharacterStats extends GameObject {
   }
 
   destroy() {
-    super.destroy();
-    console.log(this.name + ' was removed from the console.');
+    return `${super.destroy()}`;
   }
-  
   takeDamage() {
-    return '<object name> took damage.';
+    return `${this.name} took damage.`;
     //this.name + " took damage.";
   }
-
-
 }
 
 /* HUMANOID
@@ -76,79 +73,69 @@ class CharacterStats extends GameObject {
 */
 
 class Humanoid extends CharacterStats {
-  constructor(createdAt, name, dimensions, healthPoints, team, weapons, language) {
+  constructor(
+    createdAt,
+    name,
+    dimensions,
+    healthPoints,
+    team,
+    weapons,
+    language
+  ) {
     super(createdAt, name, dimensions, healthPoints);
     this.team = team;
     this.weapons = weapons;
     this.language = language;
   }
   destroy() {
-    super.destroy();
-    console.log(this.name + ' was removed from the console.');
+    return `${super.destroy()}`;
   }
   takeDamage() {
-    super.takeDamage();
-    console.log(this.name + " took damage from the console.");
+    return `${super.takeDamage()}`;
   }
   greet() {
-    return this.name + " offers a greeting in " + this.language + ".";
+    return `${this.name} offers a greeting in ${this.language}.`;
     // '<object name> offers a greeting in <object language>.';
-    // 
+    //
   }
 }
+const mage = new Humanoid(
+  new Date(),
+  { length: 2, width: 1, height: 1 },
+  5,
+  "Bruce",
+  "Mage Guild",
+  ["Staff of Shamalama"],
+  "Common Tongue"
+);
 
-
-const mage = new Humanoid({
-  createdAt: new Date(),
-  dimensions: {
-    length: 2,
-    width: 1,
-    height: 1,
-  },
-  healthPoints: 5,
-  name: 'Bruce',
-  team: 'Mage Guild',
-  weapons: [
-    'Staff of Shamalama',
-  ],
-  language: 'Common Tongue',
-});
-
-const swordsman = new Humanoid({
-  createdAt: new Date(),
-  dimensions: {
+const swordsman = new Humanoid(
+  new Date(),
+  {
     length: 2,
     width: 2,
-    height: 2,
+    height: 2
   },
-  healthPoints: 15,
-  name: 'Sir Mustachio',
-  team: 'The Round Table',
-  weapons: [
-    'Giant Sword',
-    'Shield',
-  ],
-  language: 'Common Tongue',
-});
+  15,
+  "Sir Mustachio",
+  "The Round Table",
+  ["Giant Sword", "Shield"],
+  "Common Tongue"
+);
 
-const archer = new Humanoid({
-  createdAt: new Date(),
-  dimensions: {
+const archer = new Humanoid(
+  new Date(),
+  {
     length: 1,
     width: 2,
-    height: 4,
+    height: 4
   },
-  healthPoints: 10,
-  name: 'Lilith',
-  team: 'Forest Kingdom',
-  weapons: [
-    'Bow',
-    'Dagger',
-  ],
-  language: 'Elvish',
-});
-
-
+  10,
+  "Lilith",
+  "Forest Kingdom",
+  ["Bow", "Dagger"],
+  "Elvish"
+);
 
 console.log(mage.createdAt); // Today's Date
 console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
@@ -157,7 +144,6 @@ console.log(mage.name); // Bruce
 console.log(swordsman.team); // The Round Table
 console.log(mage.weapons); // Staff of Shamalama
 console.log(archer.language); // Elvish
-console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.  
+console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
 console.log(mage.takeDamage()); // Bruce took damage.
 console.log(archer.greet()); // Lilith offers a greeting in Elvish.
-
