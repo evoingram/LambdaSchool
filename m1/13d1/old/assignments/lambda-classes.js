@@ -21,12 +21,12 @@ class Instructor extends Person {
   }
 
   speak() {
-    return `${super.speak()}`;
+    return `Hello my name is ${this.name}, I am from ${this.location}`;
   }
   demo(subject) {
     return `Today we are learning about ${subject}`;
   }
-  grade() {
+  grade(student, sSubject) {
     return `${this.name} took damage.`;
     //receives a student object and a subject string as arguments and logs out '{student.name} receives a perfect score on {subject}'
   }
@@ -44,15 +44,17 @@ class Student extends Person {
     return `${super.speak()}`;
   }
   listsSubjects() {
-    return `${this.name} took damage.`;
+    return favSubjects.forEach(function(item) {
+      console.log(item);
+    });
     // a method that logs out all of the student's favoriteSubjects one by one.
   }
-  PRAssignment() {
-    return `${this.name} took damage.`;
+  PRAssignment(subject) {
+    return `${this.name} has submitted a PR for ${subject}`;
     //a method that receives a subject as an argument and logs out that the student.name has submitted a PR for {subject}
   }
-  sprintChallenge() {
-    return `${this.name} took damage.`;
+  sprintChallenge(subject) {
+    return `${this.name} has submitted sprint challenge on ${subject}`;
     //similar to PRAssignment but logs out student.name has begun sprint challenge on {subject}
   }
   /* stretch:
@@ -63,7 +65,7 @@ class Student extends Person {
 
     Add a graduate method to a student.
         This method, when called, will check the grade of the student and see if they're ready to graduate from Lambda School
-        
+
         If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
 
 

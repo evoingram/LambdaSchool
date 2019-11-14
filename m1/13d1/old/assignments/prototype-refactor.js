@@ -20,7 +20,6 @@ class GameObject {
     this.name = name;
     this.dimensions = dimensions;
   }
-
   destroy() {
     return `${this.name}  was removed from the game.`;
     // this.name + "was removed from the game.";
