@@ -29,6 +29,7 @@ Demonstrate your understanding of this week's concepts by answering the followin
 Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your team lead
 
 1. Describe the biggest difference between `.forEach` & `.map`.
+
     forEach iterates over an array item by item, and map calls a function on each array item, but returns another/additional array, unlike forEach.
 
 2. What is the difference between a function and a method?
@@ -45,7 +46,6 @@ Edit this document to include your answers after each question. Make sure to lea
 
 5. Why do we need super() in an extended class?
     Super ties the parent to the child.
-    
 ## Project Set up
 
 Follow these steps to set up and work on your project:
