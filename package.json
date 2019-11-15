@@ -1,0 +1,22 @@
+{
+  "name": "",
+  "version": "1.0.0",
+  "description": "projects for Lambda School full-stack web development track:\r (see below the list for how to set a repository up like this, read them in full before following them)\r /m#/##_#/ corresponds to the following:",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evoingram/LambdaSchool.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/evoingram/LambdaSchool/issues"
+  },
+  "homepage": "https://github.com/evoingram/LambdaSchool#readme"
+}
