@@ -60,6 +60,7 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
   <script>
+<<<<<<< HEAD:JavaScript30/01/index-FINISHED.html
     function removeTransition(e) {
       if (e.propertyName !== 'transform') return;
       e.target.classList.remove('playing');
@@ -78,6 +79,46 @@
     const keys = Array.from(document.querySelectorAll('.key'));
     keys.forEach(key => key.addEventListener('transitionend', removeTransition));
     window.addEventListener('keydown', playSound);
+=======
+    //Exercise Day 1
+    // play sound
+    // data-key="65" 
+
+    function playSound(e) {
+      // select corresponding audio
+      const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+
+      // select corresponding physical key element on screen
+      const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+
+      // if no audio do nothing
+      if (!audio) return;
+
+      // rewind clip to start of element so you can mash it quickly
+      audio.currentTime = 0;
+
+      // play audio
+      audio.play();
+
+      // adds yellow border and makes box larger to pressed key
+      key.classList.add('playing');
+    }
+
+    function removeTransition(e) {
+      //skip if not a transform
+      if (e.propertyName !== 'transform') return;
+    }
+
+    // selects key class
+    const keys = document.querySelectorAll('.key');
+
+    // listen for transition end event
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+    // on key down play a sound
+    window.addEventListener('keydown', playSound);
+
+>>>>>>> master:JavaScript30-master/01 - JavaScript Drum Kit/index-START.html
   </script>
 
 
