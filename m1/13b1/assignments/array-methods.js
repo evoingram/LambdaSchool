@@ -58,21 +58,40 @@ const runners = [
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs. Combine both the first and last names and populate a new array called `fullNames`. This array will contain just strings.
 let fullNames = [];
+runners.forEach ( 
+  function (runners) {
+    fullNames.push(runners.first_name + " " + runners.last_name);
+  }
+);
 console.log(fullNames);
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runners' first names in uppercase because the director BECAME DRUNK WITH POWER. Populate an array called `firstNamesAllCaps`. This array will contain just strings.
 let firstNamesAllCaps = [];
+
+runners.map(
+  function(runners) {
+    firstNamesAllCaps.push(runners.first_name.toUpperCase());
+  }
+);
 console.log(firstNamesAllCaps);
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue. We need a filtered version of the runners array, containing only those runners with large sized shirts so they can choose a different size. This will be an array of objects.
 let runnersLargeSizeShirt = [];
+
+function checkShirtSize(runners) {
+  return runners.shirt_size == "L";
+}
+runnersLargeSizeShirt.push(runners.filter(checkShirtSize));
 console.log(runnersLargeSizeShirt);
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations and save the total into a ticketPriceTotal variable.
 let ticketPriceTotal = 0;
+ticketPriceTotal = runners.reduce(function (ticketPriceTotal, runners) {
+  return ticketPriceTotal + runners.donation;
+}, ticketPriceTotal); 
 console.log(ticketPriceTotal);
 
 // ==== Challenge 5: Be Creative ====
@@ -80,6 +99,55 @@ console.log(ticketPriceTotal);
 
 // Problem 1
 
+// You want to send a special thank you card to those
+// who donated over $100 and those who did not.
+
+let aRunnersDonation100 = [];
+function checkDonation(runners) {
+  return runners.donation >= 100;
+}
+aRunnersDonation100.push(runners.filter(checkDonation));
+console.log(aRunnersDonation100);
+
+
 // Problem 2
+// You want to offer current participant student runners, ones with ".edu" in their email, a discount.
+// var n = str.search("W3Schools");
+let studentNames = [];
+runners.forEach(
+  function(runners) {
+    sEmail = runners.email;
+    if ((sEmail.search(".edu")) == -1) {
+      studentNames.push(runners.first_name + " " + runners.last_name);
+    }
+  }
+);
+console.log(studentNames); 
 
 // Problem 3
+//Sort everyone into four categories:
+// donations 0-99
+// donations 100-199
+// donations 200-299
+// donations 300-399
+let donationsSorted = [[],[],[],[]];
+runners.forEach(
+  function(runners) {
+    if (runners.donation<100) {
+      donationsSorted[0].push(runners.first_name + " " + runners.last_name);
+    }
+    else if(runners.donation<200 && runners.donation>99) {
+      donationsSorted[1].push(runners.first_name + " " + runners.last_name);
+
+    }
+    else if (runners.donation<300 && runners.donation>199) {
+      donationsSorted[2].push(runners.first_name + " " + runners.last_name);
+
+    }
+    else{
+      donationsSorted[3].push(runners.first_name + " " + runners.last_name);
+
+    }
+  }
+);
+console.log(donationsSorted); 
