@@ -124,17 +124,9 @@
     document.querySelectorAll('.contact > p')[1].textContent = "1 (888) 888-8888";
     document.querySelectorAll('.contact > p')[2].textContent = "sales@greatidea.io";
 
-
-    document.createElement("a").appendChild(document.createTextNode("Dommy"));
-
-
-
-    document.createElement("a");
-    document.createTextNode("Dommy");
-
-
-    var n = document.createElement("A");
-    var textN = document.createTextNode("Dommy");
+    document.querySelector('footer > p').textContent = "Copyright Great Idea! 2018";
+    var n = document.createElement("a");
+    var textN = document.createTextNode(" Dommy ");
     n.appendChild(textN);
     document.querySelectorAll("nav > a")[5].appendChild(n);
     document.querySelectorAll("nav > a")[0].prepend(n);
@@ -142,7 +134,12 @@
 
     // integrate a button that can update content on the site with a click of a button. You could build a similar data object with new values to help you test the click event.
 
-    document.querySelector('footer > p').textContent = "Copyright Great Idea! 2018";
+    var x = document.createElement("button");
+    x.setAttribute("id", "domButton");
+    x.style.width = "250px";
+    x.style.height = "250px";
+    document.querySelector('footer').prepend(x);
+    document.getElementById("domButton").addEventListener('click', (event) => { event.target.style.backgroundColor = 'blue'; });
 </script>
 
 </html>
