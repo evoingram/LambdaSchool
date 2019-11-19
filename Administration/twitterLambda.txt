@@ -18,8 +18,13 @@ Week 2 covered 'advanced CSS'.  Here, I learned, over and above the curriculum, 
 
 Week 3 was 'JS fundamentals'.  During this week, I finished Wes Bos's command line power user course because I used to know absolutely ZIP about bash, and started learning Bootstrap also.  This weekend, i plan to learn how to use XD.  
 
+11/14/2019
 Week 4, this coming week, is build week, and that project encompasses everything I learned in the rest of the unit.  Very excited to put together everything I've learned to produce a real, working product.  All four tracks of the school come together into groups to make an app, each with their own things to do corresponding with their track.  Then we present on Friday.  The piece of the app you do has to meet certain requirements corresponding with what you've learned in the unit.  
 
 In anticipation of build week, I've been learning Bootstrap because that is one of the extra credit items for build week, to use a framework.  I have a tentative design laid out and plan to learn how to use XD this weekend.  Soon, I might be able to afford a fine-tipped stylus and a glove for my touch screen so I can properly write and draw on it.  
 
+11/16/2019
 This weekend, productive was my middle name; I learned XD and used it to create a mock-up, which i uploaded to the BW repo, crafted an HTML skeleton for BW project, finished up taking notes for Unit 2, week one, caught up on JavaScript 30 projects; just finished day 5; and gave VB.NET a go.  I would like to port my database to an online app, so now I'm finally sticking my toe in the water with that.  But i also learned you can make sprites for css with Adobe Animate, which I have access to >:D.  So Animate is definitely going on my to-learn list.
+
+11/17/2019
+Got into VB on Visual Studio and just learned about ASP.net; whew that is exciting!  i can pretty much create all of my database's forms and user interface with what i just learned from Lambda in Unit 1 and with Bootstrap.  I also got LESS hooked up to it, watch compiler and all.
