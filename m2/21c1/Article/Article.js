@@ -88,6 +88,16 @@ const data = [
   }
 ];
 
+// const data = [{
+//     title: 'Lambda School Students: "We\'re the best!"',
+//     date: 'Nov 5th, 2018',
+//     firstParagraph: `Lucas ipsum dolor sit amet ben twi'lek padmé darth darth darth moff hutt organa twi'lek.`,
+
+//     secondParagraph: `Grievous fett calamari anakin skywalker hutt.`,
+
+//     thirdParagraph: `Dagobah hutt jawa leia calamari ventress skywalker yoda.`},
+
+
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
   <div class="article">
@@ -101,14 +111,73 @@ const data = [
 
   Hint: You will need to use createElement more than once here!
 
-  Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
+  Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.*/
 
+// component function
+// take data object in its format 
+function compArticle(objArticle) {
+
+// create element div class article
+  let div = document.createElement('article');
+  div.classList.add('article');
+
+//inside div article class: 
+  // create element h1 textContent title
+  let h1Element = document.querySelectorAll('article')[0].appendChild(createElement('h1'));
+  h1Element.textContent = `${this.title}`;
+  // create element p class date textContent date of article
+  let datePara = document.querySelectorAll('article')[0].appendChild(createElement('p'));
+  datePara.classList.add('date');
+  datePara.textContent = `${this.date}`;
+
+  // create 3 empty p elements 
+  let emptyPara1 = document.querySelectorAll('article')[0].appendChild(createElement('p'));
+  let emptyPara2 = document.querySelectorAll('article')[0].appendChild(createElement('p'));
+  let emptyPara3 = document.querySelectorAll('article')[0].appendChild(createElement('p'));
+
+
+  // create element span class expandButton
+  let spanElement = document.querySelectorAll('article')[0].appendChild(createElement('span'));
+  spanElement.classList.add('expandButton');
+  
+
+
+/*
   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+*/
+  document.querySelectorAll('article')[0].addEventListener("click", () => document.querySelectorAll('.article').classList.toggle('article-open'));
 
+}
+
+
+
+/*
   Step 3: return the entire component.
+*/
+return compArticle();
 
+/*
   Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+*/
 
+data.forEach(
+  (dataItem) => { 
+    let newArticle = compArticle(dataItem);
+    document.querySelectorAll('articles')[0].appendChild(newArticle);
+  }
+);
+
+/*
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+data.push(
+  {
+    title: "Components",
+    date: "November 20, 2019",
+    firstParagraph: "Skate ipsum dolor sit amet, egg plant pressure flip lipslide ollie Lance Mountain fast plant slide. Smith grind flypaper bigspin fakie out hang ten shoveit Dudesblood. Powerslide noseblunt slide boned out flail frontside indy grab Jordan Richter. Heel flip bank nosegrind blunt opposite footed disaster. Risers slappy kidney yeah gnar bucket hang up. ",
+    secondParagraph: "Speed wobbles 900 launch ramp Steve Robert disaster switch fakie out. Hard flip wall ride pool hang ten spine Dylan Rieder 1080. Smith grind powerslide cab flip helipop hang-up slap maxwell. 720 half-cab griptape shinner Claus Grabke indy grab tail. Slappy Operation Ivy crail grab trucks rails nose death box. 180 crooked grind bigspin judo air baseplate speed wobbles. Finger flip hand rail Tracker Jeff Phillips griptape ho-ho ollie north. ",
+    thirdParagraph: "Nose birdie 270 betty poseur kick-nose 180 Transworld. Hang up tail hurricane steps slappy flail Girl rad. Rip grip 180 risers boneless slide air durometer. Backside coffin 540 transition ollie hole helipop lip. Backside 900 blunt nose grab casper tuna-flip air. Aerial egg plant wheels fakie sponsored ledge ollie north John Cardiel."
+  }
+);
