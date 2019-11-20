@@ -151,7 +151,7 @@ function startButton() {
 
 // reset button
 function resetTimer() {
-    console.log("running resetTimer function now...");
+    consolt.log("running resetTimer function now...");
     // resets timer to 0
     console.log("timer stopping from reset button.");
     resetValue = "timerStopped";
