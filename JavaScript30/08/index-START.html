@@ -18,7 +18,9 @@
     ctx.strokeStyle = '#BADA55';
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
-    ctx.lineWidth = hue;
+    ctx.lineWidth = 100;
+    ctx.globalCompositeOperation = 'multiply';
+
     let isDrawing = false;
     let lastX = 0;
     let lastY = 0;
@@ -46,13 +48,17 @@
       if (hue >= 360) {
         hue = 0;
       }
+
+
       if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
         direction = !direction;
       }
       if (direction) {
         ctx.lineWidth++;
+      } else {
+        ctx.lineWidth--;
       }
-      ctx.lineWidth++;
+
     }
     canvas.addEventListener('mousedown', (e) => {
       isDrawing = true;
