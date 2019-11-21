@@ -44,12 +44,13 @@ function compArticle(array) {
   /* 
     Step 4: add a click event listener to the menu button. When clicked it should toggle the class 'menu--open' on the menu (your div with a 'menu' class).
   */
-  document.querySelectorAll('.menu-button')[0].addEventListener("click", () => document.querySelectorAll('.menu').classList.toggle('menu--open'));
+  document.querySelectorAll('.menu-button')[0].addEventListener("click", () => {
+    document.querySelectorAll('.menu').classList.toggle('menu--open')
+  });
 
   /*
   STRETCH ITEM: 
   Close Button
-
   Add a close(or 'read') button to each Article component.When clicked the article will disappear.
   */
   let closeButton = document.querySelectorAll('.header')[0].createElement('div');
@@ -62,7 +63,54 @@ function compArticle(array) {
   }
   });
   
+  /*   
+STRETCH ITEM
+Animation Goal #1. Animate the menu opening: You will need to change the CSS for the menu in order to achieve this. Get the menu to slide in from the left side of the screen. And slide out when the button is clicked. Bonus: Get the menu to slide back out when the user clicks anywhere on the screen other than the menu.
+  */  
+  function menuAnimation() {
+  document.querySelectorAll('.menu-button')[0].addEventListener("click", () => {
+    if (querySelectorAll('.menu--open')[0]) { 
+      gsap.to("#menu", { duration: 1, x: -50 });
+      document.querySelectorAll('.menu').classList.toggle('menu--close');
+    }
+    else if(querySelectorAll('.menu--close')[0]) {
+      gsap.to("#menu", {duration: 1, x: 50});
+      document.querySelectorAll('.menu').classList.toggle('menu--open');
+    }
+  });
 
+  document.querySelectorAll('.articles')[0].addEventListener("click",
+    () => {
+      gsap.to("#menu", { duration: 1, x: -50 });
+      document.querySelectorAll('.menu').classList.toggle('menu--close');
+    }
+  );
+    }
+
+
+  
+  /*   
+STRETCH ITEM
+Animation Goal #2 Animate the article opening. This one is a bit trickier. You will need to change the CSS for this component as well. Animate the component so that it slides open and slides closed on each click. Update the text in the expand button to read 'Click to Expand' or 'Click to Close' depending on the state of the article.
+  */
+  function animateArticleOpen() {
+
+  let closeButton = document.querySelectorAll('.header')[0].createElement('div');
+  closeButton.classList.add('article-toggle');
+  closeButton.addEventListener("click", () =>{
+    if (document.querySelectorAll('.articles')[0].style.visibility = "hidden") {
+      gsap.to("#menu", { duration: 1, x: 200 });
+      // <span class='expandButton'>Click to Close</span>
+      document.querySelectorAll('.expandButton')[0].textContent = "Click to Close";
+      document.querySelectorAll('.articles')[0].style.visibility = "visible"
+  } else if (document.querySelectorAll('.articles')[0].style.visibility = "visible") {
+      gsap.to("#menu", { duration: 1, x: -200 });
+      // <span class='expandButton'>Click to Expand</span>
+      document.querySelectorAll('.expandButton')[0].textContent = "Click to Expand";
+      document.querySelectorAll('.articles')[0].style.visibility = "hidden"
+  }
+  });
+  }
   
   /* 
     Step 5: return the menu component.
@@ -84,3 +132,14 @@ menuItems.forEach(
 
 
 }
+
+
+/*
+Component Constructor
+Create a function that builds Article components. You are not expected to finish this. This goal is simply an exercise in thinking about how you would implement a function that took some data, created a new Article from it, and appended it to the HTML (without actually writing anything in the HTML file). This is a difficult concept to undertake, but even thinking about how you would implement it will give you a better understanding of how we use frameworks in upcoming sprints.
+*/
+
+/*
+Implement a way to write your own articles using the Component Constructor and some input fields.
+*/
+
