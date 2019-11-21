@@ -45,6 +45,24 @@ function compArticle(array) {
     Step 4: add a click event listener to the menu button. When clicked it should toggle the class 'menu--open' on the menu (your div with a 'menu' class).
   */
   document.querySelectorAll('.menu-button')[0].addEventListener("click", () => document.querySelectorAll('.menu').classList.toggle('menu--open'));
+
+  /*
+  STRETCH ITEM: 
+  Close Button
+
+  Add a close(or 'read') button to each Article component.When clicked the article will disappear.
+  */
+  let closeButton = document.querySelectorAll('.header')[0].createElement('div');
+  closeButton.classList.add('article-toggle');
+  closeButton.addEventListener("click", () =>{
+    if (document.querySelectorAll('.articles')[0].style.visibility = "hidden") {
+    document.querySelectorAll('.articles')[0].style.visibility = "visible"
+  } else {
+    document.querySelectorAll('.articles')[0].style.visibility = "hidden"
+  }
+  });
+  
+
   
   /* 
     Step 5: return the menu component.
