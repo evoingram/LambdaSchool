@@ -7,20 +7,34 @@
            create a new component and add it to the DOM as a child of .cards
 */
 let desiredUN;
-function passData(desiredUN) {
-  
-  axios.get(`https://api.github.com/users/${desiredUN}`)
-  .then(response => {
-    // proper response
-    meMyselfI = response.data;
-    console.log(meMyselfI);
-    gitHubinfo(meMyselfI);
+let meMyselfI;
+function passData(desiredUN) {  
+  axios.get("https://api.github.com/users/" + desiredUN)
+    .then(response => {
+      // proper response
+      meMyselfI = response.data;
+      console.log(meMyselfI);
+      gitHubinfo(meMyselfI);
+      // GitHubCalendar(".calendar", `${meMyselfI.login}`);
       // response.data.avatar_url, bio, blog, company, created_at, email, events_url, followers, followers_url, following, following_url, gists_url, gravatar_id, hireable, html_url, id, location, login, name, node_id, organizations_url, public_gists, public_repos, received_events_url, repos_url, site_admin, starred_url, subscriptions_url, type, updated_at, url
-  })  
+    })
+    .catch(err => {
+      // error
+      console.log(err);
+    });  
+ }
+
+function addContributions(desiredUN) {
+  axios.get(`https://api.github.com/users/${desiredUN}`)
+      .then(response => {
+        GitHubCalendar(".calendar", `${response.data.login}`);
+          // response.data.avatar_url, bio, blog, company, created_at, email, events_url, followers, followers_url, following, following_url, gists_url, gravatar_id, hireable, html_url, id, location, login, name, node_id, organizations_url, public_gists, public_repos, received_events_url, repos_url, site_admin, starred_url, subscriptions_url, type, updated_at, url
+    })  
   .catch(err => {
     // error
     console.log(err);
-  });
+  })
+
  }
 
 
@@ -34,20 +48,23 @@ function passData(desiredUN) {
           user, and adding that card to the DOM.
 */
 
-function arrayIterate(){
-/* List of LS Instructors Github username's: 
-  tetondan
-  dustinmyers
-  justsml
-  luishrd
-  bigknell
-*/
 
-const friendsArray = ['evoingram', 'dustinmyers', 'justsml', 'luishrd', 'bigknell', 'dmattox10', 'PHONGdotTech', 'jagins', 'Henry2212', 'naomi121'];
+function arrayIterate() {
+  /* List of LS Instructors Github username's: 
+    tetondan
+    dustinmyers
+    justsml
+    luishrd
+    bigknell
+  */
 
-friendsArray.forEach(passData);}
+  const friendsArray = ['evoingram', 'Katrina-Dierking', 'dustinmyers', 'justsml', 'luishrd', 'bigknell', 'dmattox10', 'PHONGdotTech', 'jagins', 'Henry2212', 'naomi121'];
 
-arrayIterate();
+  friendsArray.forEach(passData);
+  friendsArray.forEach(addContributions);
+}
+
+
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -102,6 +119,14 @@ function gitHubinfo(meMyselfI) {
   // <p>Bio: {users bio}</p>
   let pBio = divInfo.appendChild(document.createElement('p'));
   pBio.textContent = `Bio:  ${meMyselfI.bio}`;
+  
+  // STRETCH GOAL:  add contribution graph 
+  let pContributions = divInfo.appendChild(document.createElement('div'));
+  pContributions.classList.add('calendar');
+  pContributions.style.width = "830px";
+  pContributions.style.height = "100%";
+  // console.log({ pContributions });
+
+
 
 }
-
