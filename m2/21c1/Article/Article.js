@@ -118,26 +118,26 @@ const data = [
 function compArticle(objArticle) {
 
 // create element div class article
-  let div = document.createElement('article');
+  let div = document.createElement('div');
   div.classList.add('article');
 
 //inside div article class: 
   // create element h1 textContent title
-  let h1Element = document.querySelectorAll('article')[0].appendChild(createElement('h1'));
+  let h1Element = document.querySelectorAll('.article')[0].appendChild(createElement('h1'));
   h1Element.textContent = `${this.title}`;
   // create element p class date textContent date of article
-  let datePara = document.querySelectorAll('article')[0].appendChild(createElement('p'));
+  let datePara = document.querySelectorAll('.article')[0].appendChild(createElement('p'));
   datePara.classList.add('date');
   datePara.textContent = `${this.date}`;
 
   // create 3 empty p elements 
-  let emptyPara1 = document.querySelectorAll('article')[0].appendChild(createElement('p'));
-  let emptyPara2 = document.querySelectorAll('article')[0].appendChild(createElement('p'));
-  let emptyPara3 = document.querySelectorAll('article')[0].appendChild(createElement('p'));
+  let emptyPara1 = document.querySelectorAll('.article')[0].appendChild(createElement('p'));
+  let emptyPara2 = document.querySelectorAll('.article')[0].appendChild(createElement('p'));
+  let emptyPara3 = document.querySelectorAll('.article')[0].appendChild(createElement('p'));
 
 
   // create element span class expandButton
-  let spanElement = document.querySelectorAll('article')[0].appendChild(createElement('span'));
+  let spanElement = document.querySelectorAll('.article')[0].appendChild(createElement('span'));
   spanElement.classList.add('expandButton');
   
 
@@ -145,7 +145,7 @@ function compArticle(objArticle) {
 /*
   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 */
-  document.querySelectorAll('article')[0].addEventListener("click", () => document.querySelectorAll('.article').classList.toggle('article-open'));
+  document.querySelectorAll('.article')[0].addEventListener("click", () => document.querySelectorAll('.article').classList.toggle('article-open'));
 
 }
 
@@ -153,6 +153,7 @@ function compArticle(objArticle) {
 
 /*
   Step 3: return the entire component.
+  come back
 */
 return compArticle();
 
@@ -163,7 +164,7 @@ return compArticle();
 data.forEach(
   (dataItem) => { 
     let newArticle = compArticle(dataItem);
-    document.querySelectorAll('articles')[0].appendChild(newArticle);
+    document.querySelectorAll('.articles')[0].appendChild(newArticle);
   }
 );
 
