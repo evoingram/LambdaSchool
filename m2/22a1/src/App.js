@@ -132,9 +132,10 @@ export default App;
 
 /* TODO STEP 6 - Write a "handler" function in the component that takes in a team name and an amount. This function will then be passed to each button's click handler. It will increment the correct team's score by the passed in amount */
 
-// could not get this to work, for some reason asking for semicolon though that's not the problem.
+// could not get this to work; wrote a function, put it in a few different places, and then couldn't get it called.
 
 /* TODO STEP 7 - Play around with the styling and make this project your own! Maybe make it a soccer (non-american football) scoreboard, or a rugby or baseball scoreboard */
+
 
 /* TODO STEP 8 - Add a button that changes which quarter the game is in, and then render the state quarter value on the scoreboard */
 
