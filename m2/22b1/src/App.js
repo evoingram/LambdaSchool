@@ -36,24 +36,22 @@ function App() {
   const specials = ["C", "+/-", "%"];
   // STEP 5 - After you get the components displaying using the provided data file, write your state hooks here.
 
-  const [numberState, setNumberState] = useState(numbers);
-  const [operatorState, setOperatorState] = useState(operators);
+  const [numbersState, setNumbersState] = useState(numbers);
+  const [operatorsState, setOperatorsState] = useState(operators);
   const [specialState, setSpecialState] = useState(specials);
-  const arrNewSpecials = specials.map((item, index) => {
-    return `<div className="buttonSp">${item[index]}</div>`;
-  });
+  let displayAmount = 0;
 
   const DisplayWindow = () => {
     return (
       <div id="display" className="display">
-        0
+        {displayAmount}
       </div>
     );
   };
 
   const ButtonsSpecials = () => {
     return (
-      <div id="specialsRow" className="buttonRow">
+      <div id="specialsRow" className="buttonRow1">
         {specials.map((item, index) => {
           return (
             <div className="buttonSp" key="{index}">
@@ -65,6 +63,42 @@ function App() {
     );
   };
 
+  const NumbersSpecials = () => {
+    return (
+      <div id="numbersRow" className="buttonRow2">
+        {numbers.map((item, index) => {
+          return (
+            <div className="buttonNu" key="{index}">
+              {item}
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
+
+  const OperatorsSpecials = () => {
+    return (
+      <div id="operatorsRow" className="buttonColumn2">
+        {operators.map((item, index) => {
+          return (
+            <div className="buttonOp" key="{index}">
+              {item.char}
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
+  
+  // onClick={() => incrementA(scoreA + fieldGoal)}
+  // if button.textcontent = C Then do this
+  // if button.textcontent = +/- Then do this
+  // if button.textcontent = % Then do this
+  // if button.textcontent = 0-9 Then do this
+  // if button.textcontent = +-/x= Then do this
+
+
   // Once the state hooks are in place write some functions to hold data in state and update that data depending on what it needs to be doing
   // Your functions should accept a parameter of the the item data being displayed to the DOM (ie - should recieve 5 if the user clicks on
   // the "5" button, or the operator if they click one of those buttons) and then call your setter function to update state.
@@ -75,15 +109,14 @@ function App() {
       <Logo />
       <div className="App">
         <DisplayWindow />
-        <div className="buttonColumn1">
-          <ButtonsSpecials />
-          <ButtonsSpecials />
-          <ButtonsSpecials />
-          <ButtonsSpecials />
-          <ButtonsSpecials />
+        <div className="buttonDisplay">
+          <div className="buttonColumn1">
+            <ButtonsSpecials />
+            <NumbersSpecials />
+          </div>
+          <OperatorsSpecials />
+          {/* STEP 4 - Render your components here and be sure to properly import/export all files */}
         </div>
-        <div className="buttonColumn2" />
-        {/* STEP 4 - Render your components here and be sure to properly import/export all files */}
       </div>
     </div>
   );
