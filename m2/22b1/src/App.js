@@ -53,7 +53,7 @@ function App() {
 
   const ButtonsSpecials = () => {
     return (
-      <div id="specialsRow">
+      <div id="specialsRow" className="buttonRow">
         {specials.map((item, index) => {
           return (
             <div className="buttonSp" key="{index}">
@@ -64,6 +64,7 @@ function App() {
       </div>
     );
   };
+
   // Once the state hooks are in place write some functions to hold data in state and update that data depending on what it needs to be doing
   // Your functions should accept a parameter of the the item data being displayed to the DOM (ie - should recieve 5 if the user clicks on
   // the "5" button, or the operator if they click one of those buttons) and then call your setter function to update state.
@@ -74,7 +75,14 @@ function App() {
       <Logo />
       <div className="App">
         <DisplayWindow />
-        <ButtonsSpecials />
+        <div className="buttonColumn1">
+          <ButtonsSpecials />
+          <ButtonsSpecials />
+          <ButtonsSpecials />
+          <ButtonsSpecials />
+          <ButtonsSpecials />
+        </div>
+        <div className="buttonColumn2" />
         {/* STEP 4 - Render your components here and be sure to properly import/export all files */}
       </div>
     </div>
