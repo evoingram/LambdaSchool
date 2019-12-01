@@ -7,8 +7,6 @@ import styled from 'styled-components';
 import axios from 'axios';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
 
 /*// div
 const StyledDiv = styled.div``;
@@ -21,12 +19,45 @@ const StyledHeading = styled.h1``;
 // a
 const StyledA = styled.a``;
 // etc.....*/
+
 // date picker at https://github.com/Hacker0x01/react-datepicker
 
-const nasaImg = styled.img`
+const NasaImage = styled.img`
     width: 50%;
-    height: 100%;
 `;
+
+const NasaH1 = styled.h1`
+    color: #002244;
+    font-size: 3.5rem;
+    border-top: 1px solid #002244;
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 3%;
+`;
+
+const NasaH2 = styled.h2`
+    color: #A5ACAF;
+    font-size: 2.5rem;
+`;
+
+const NasaH3 = styled.h3`
+    color: #69BE28;
+    font-size: 1.5rem;
+`;
+const Nasa = styled.div`
+  width: 50%;
+  justify-content: center;
+  text-align: center;
+  align-self: center;
+  margin-left: 25%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+`
+
+const NasaA = styled.a`
+  color: #A5ACAF;
+  font-weight: bold;
+`
 const Button = styled.button`
     padding: 6px 10px;
     margin: 5px;
@@ -39,17 +70,6 @@ ${props => (props.type === 'primary' ? `background: #2196f3;` : null)}
     ${props => (props.type === 'danger' ? `background: #f44336;` : null)}
     ${props => (props.type === 'warning' ? `background: #fdd835;` : null)}
 `;
-let photoDay;
-let copyright;
-let date;
-let explanation;
-let imgURL;
-export class Example extends React.Component {
-
-}
-    
-    
-  
 
 function App() {
   /* couldn't get it to work below
@@ -96,19 +116,54 @@ function App() {
 
   useEffect(
     () => {
+      var minYear = 2000;
+      var maxYear = 2019;
+      var randomYear =  minYear + Math.round(Math.random() * (maxYear-minYear));
+      var minMonth = 1;
+      var maxMonth = 12;
+      var randomMonth =  minMonth + Math.round(Math.random() * (maxMonth-minMonth));
+      var minDay = 1;
+      var maxDay = 28;
+      var randomDay = minDay + Math.round(Math.random() * (maxDay - minDay));
+      var randomDate = randomYear + '-' + randomMonth + '-' + randomDay;
+      console.log(randomDate);
+      console.log('https://api.nasa.gov/planetary/apod?date=' + randomDate + '&api_key=' + process.env.REACT_APP_API_KEY);
+
       axios
-        .get('https://api.nasa.gov/planetary/apod?api_key=' + process.env.REACT_APP_API_KEY)
+        .get('https://api.nasa.gov/planetary/apod?date=' + randomDate + '&api_key=' + process.env.REACT_APP_API_KEY)
         .then(
             response =>{setImgURL(response.data.hdurl);
                         setCopyright(response.data.copyright);
                         setDate(response.data.date);
-            setExplanation(response.data.explanation);
+                        setExplanation(response.data.explanation);
             
     }    
         )
         .catch(error => {console.log(error);});
+      function refresh() {
           
         var min = 700;
+        var max = 1000;
+        var rand =  min + Math.round(Math.random() * (max-min));
+            axios
+              .get('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol='+ rand + '&api_key=' + process.env.REACT_APP_API_KEY)
+              .then(
+                response => {
+                  if (response === []) {
+                    refresh();
+                        }
+                  console.log(response.data);
+                  setImgURL1(response.data.photos[0].img_src);
+                  setCopyright1(response.data.photos[0].id);
+                  setDate1(response.data.photos[0].earth_date);
+                  setExplanation1(`${response.data.photos[0].rover.name}, ${response.data.photos[0].rover.status}`);
+                }
+          
+              )
+              .catch(error => {console.log(error);})      
+        }    
+      
+        var min = 1;
         var max = 1000;
         var rand =  min + Math.round(Math.random() * (max-min));
                   console.log(rand);
@@ -160,19 +215,24 @@ function App() {
       <Button type="danger">Danger</Button>
       <Button type="warning">Warning</Button>
     </div>
+    <div className="wrapper">
+      <NasaH1>NASA Astronomy Photo of the Day:</NasaH1>
+    </div>   
     <div id="nasa1" className="nasa">Copyright:  {copyright}</div>
     <div id="nasa2" className="nasa">Date:  {date}</div>
-      <div id="nasa2" className="nasa">Explanation:  {explanation}</div>
-    <div id="nasa3" className="nasaImg"><img src={imgURL} alt="NASA Astronomy Photo of the Day"/></div>
+      <Nasa><div id="nasa2" className="nasa">Explanation:  {explanation}</div></Nasa>
+      <div id="nasa3" className="nasaImg">
+        <NasaImage src={imgURL} alt="NASA Astronomy Photo of the Day" />
+        </div>
     <div className="wrapper">
-      <h1>NASA Mars Rover Mission Photos:</h1>
+      <NasaH1>NASA Mars Rover Mission Photos:</NasaH1>
     </div>   
-    <div id="nasa1" className="nasa">Random Images from sols 700 to 1000:</div>
-      <div id="nasa2" className="nasa">IMG URL:  {imgURL1}</div>
-      <div id="nasa4" className="nasa">ID Number:  {copyright1}</div>
-      <div id="nasa5" className="nasa">Status:  {explanation1}</div>
+    <div id="nasa1" className="nasa"><NasaH2>Random Images from sols 700 to 1000:</NasaH2></div>
+      <div id="nasa2" className="nasa"><NasaH3><NasaA href={imgURL1} target="_blank">IMG URL</NasaA></NasaH3></div>
+      <div id="nasa4" className="nasa"><NasaH3>ID Number:  </NasaH3>{copyright1}</div>
+      <div id="nasa5" className="nasa"><NasaH3>Status:  </NasaH3>{explanation1}</div>
       
-    <div id="nasa3" className="nasaImg"><img src={imgURL1} alt="NASA Mars Rover Photo"/></div>
+        <NasaImage src={imgURL1} alt="NASA Mars Rover Photo" />
     </div>
   );
 }
