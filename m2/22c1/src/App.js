@@ -122,7 +122,7 @@ function App() {
                   setImgURL1(response.data.photos[0].img_src);
                   setCopyright1(response.data.photos[0].id);
                   setDate1(response.data.photos[0].earth_date);
-                  setExplanation1(response.data.photos[0].status);
+                  setExplanation1(`${response.data.photos[0].rover.name}, ${response.data.photos[0].rover.status}`);
                 }
           
               )
