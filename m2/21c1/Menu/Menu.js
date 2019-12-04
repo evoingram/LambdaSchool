@@ -32,6 +32,8 @@ function compArticle(array) {
   */
   for (x = 0; x<array.length;x++){
     let liItem = ulItem.appendChild(createElement('li'));
+    liItem.textContent = array[x];
+  console.info(`added ${array[x]} as list item`);
   }
 
   
@@ -94,8 +96,8 @@ STRETCH ITEM
 Animation Goal #2 Animate the article opening. This one is a bit trickier. You will need to change the CSS for this component as well. Animate the component so that it slides open and slides closed on each click. Update the text in the expand button to read 'Click to Expand' or 'Click to Close' depending on the state of the article.
   */
   function animateArticleOpen() {
-
-  let closeButton = document.querySelectorAll('.header')[0].createElement('div');
+    let header = document.querySelectorAll('.header')[0];
+  let closeButton = header.createElement('div');
   closeButton.classList.add('article-toggle');
   closeButton.addEventListener("click", () =>{
     if (document.querySelectorAll('.articles')[0].style.visibility = "hidden") {
@@ -116,7 +118,7 @@ Animation Goal #2 Animate the article opening. This one is a bit trickier. You w
     Step 5: return the menu component.
     come back
   */
-  return compArticle();
+  return;
   
   /* 
     Step 6: add the menu component to the DOM.  

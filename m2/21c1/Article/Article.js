@@ -116,46 +116,70 @@ const data = [
 // component function
 // take data object in its format 
 function compArticle(objArticle) {
+  let articleTitle = objArticle.title;
+  let articleDate = objArticle.date;
+  let article1Para = objArticle.firstParagraph;
+  let article2Para = objArticle.secondParagraph;
+  let article3Para = objArticle.thirdParagraph;
+  console.info(`${articleTitle}, ${articleDate}`);
+  /*console.info(`${article1Para}`);
+  console.info(`--------`);
+  console.info(`${article2Para}`);
+  console.info(`--------`);
+  console.info(`${article3Para}`);
+  console.info(`--------`);
+  console.info(`========`);*/
 
-// create element div class article
-  let div = document.createElement('div');
-  div.classList.add('article');
+  // create element div class article
+    let articlesDiv = document.querySelector('.articles');
+    let div = document.createElement('div');
+    div.classList.add('article');
+    articlesDiv.appendChild(div);
+    let articleComponent = document.querySelectorAll('.article')[0];
 
-//inside div article class: 
-  // create element h1 textContent title
-  let h1Element = document.querySelectorAll('.article')[0].appendChild(createElement('h1'));
-  h1Element.textContent = `${this.title}`;
-  // create element p class date textContent date of article
-  let datePara = document.querySelectorAll('.article')[0].appendChild(createElement('p'));
-  datePara.classList.add('date');
-  datePara.textContent = `${this.date}`;
+  //inside div article class: 
+    // create element h1 textContent title
+    let h1Element = articleComponent.appendChild(document.createElement('h1'));
+    h1Element.textContent = articleTitle;
+    // create element p class date textContent date of article
+    let datePara = articleComponent.appendChild(document.createElement('p'));
+    datePara.classList.add('date');
+    datePara.textContent = articleDate;
+    console.log('added article class to div');
 
-  // create 3 empty p elements 
-  let emptyPara1 = document.querySelectorAll('.article')[0].appendChild(createElement('p'));
-  let emptyPara2 = document.querySelectorAll('.article')[0].appendChild(createElement('p'));
-  let emptyPara3 = document.querySelectorAll('.article')[0].appendChild(createElement('p'));
+    // create 3 empty p elements 
+    let emptyPara1 = articleComponent.appendChild(document.createElement('p'));
+    let emptyPara2 = articleComponent.appendChild(document.createElement('p'));
+    let emptyPara3 = articleComponent.appendChild(document.createElement('p'));
+
+  emptyPara1.textContent = article1Para;
+  emptyPara2.textContent = article2Para;
+  emptyPara3.textContent = article3Para;
+
+    // create element span class expandButton
+    let spanElement = articleComponent.appendChild(document.createElement('span'));
+    spanElement.classList.add('expandButton');
+    
 
 
-  // create element span class expandButton
-  let spanElement = document.querySelectorAll('.article')[0].appendChild(createElement('span'));
-  spanElement.classList.add('expandButton');
+  /*
+    Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+  */
+    articleComponent.addEventListener(
+      "click", () => document.querySelectorAll('.article').classList.toggle('article-open')
+    );
+
   
 
+  /*
+    Step 3: return the entire component.
+    come back
+  */
 
-/*
-  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
-*/
-  document.querySelectorAll('.article')[0].addEventListener("click", () => document.querySelectorAll('.article').classList.toggle('article-open'));
+    return articleComponent;
 
-}
+  }
 
-
-
-/*
-  Step 3: return the entire component.
-  come back
-*/
-return compArticle();
 
 /*
   Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
@@ -164,7 +188,7 @@ return compArticle();
 data.forEach(
   (dataItem) => { 
     let newArticle = compArticle(dataItem);
-    document.querySelectorAll('.articles')[0].appendChild(newArticle);
+    document.querySelector('.articles').appendChild(newArticle);
   }
 );
 
