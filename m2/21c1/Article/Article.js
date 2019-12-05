@@ -131,44 +131,98 @@ function compArticle(objArticle) {
   console.info(`========`);*/
 
   // create element div class article
-    let articlesDiv = document.querySelector('.articles');
-    let div = document.createElement('div');
-    div.classList.add('article');
-    articlesDiv.appendChild(div);
-    let articleComponent = document.querySelectorAll('.article')[0];
+  let articlesDiv = document.querySelector('.articles');
+  let div = document.createElement('div');
+  div.classList.add('article');
+  
+  let articleComponent = articlesDiv.appendChild(div);
 
   //inside div article class: 
-    // create element h1 textContent title
-    let h1Element = articleComponent.appendChild(document.createElement('h1'));
-    h1Element.textContent = articleTitle;
-    // create element p class date textContent date of article
-    let datePara = articleComponent.appendChild(document.createElement('p'));
-    datePara.classList.add('date');
-    datePara.textContent = articleDate;
-    console.log('added article class to div');
+  // create element h1 textContent title
+  let h1Element = articleComponent.appendChild(document.createElement('h1'));
+  h1Element.textContent = articleTitle;
+  // create element p class date textContent date of article
+  let datePara = articleComponent.appendChild(document.createElement('p'));
+  datePara.classList.add('date');
+  datePara.textContent = articleDate;
+  console.log('added article class to div');
 
-    // create 3 empty p elements 
-    let emptyPara1 = articleComponent.appendChild(document.createElement('p'));
-    let emptyPara2 = articleComponent.appendChild(document.createElement('p'));
-    let emptyPara3 = articleComponent.appendChild(document.createElement('p'));
+  // create 3 empty p elements 
+  let emptyPara1 = articleComponent.appendChild(document.createElement('p'));
+  let emptyPara2 = articleComponent.appendChild(document.createElement('p'));
+  let emptyPara3 = articleComponent.appendChild(document.createElement('p'));
 
   emptyPara1.textContent = article1Para;
   emptyPara2.textContent = article2Para;
   emptyPara3.textContent = article3Para;
 
-    // create element span class expandButton
-    let spanElement = articleComponent.appendChild(document.createElement('span'));
-    spanElement.classList.add('expandButton');
+  // create element span class expandButton
+  let spanElement = articleComponent.appendChild(document.createElement('span'));
+  spanElement.classList.add('expandButton');
+  spanElement.textContent = "Click to Expand";
     
-
 
   /*
     Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
   */
-    articleComponent.addEventListener(
-      "click", () => document.querySelectorAll('.article').classList.toggle('article-open')
+  articleComponent.addEventListener(
+    "click", () => {
+      div.classList.toggle('article-open');
+      animateArticleOpen(articleComponent);
+      console.log("animating article");
+}
     );
 
+
+  /*
+  STRETCH ITEM: 
+  Close Button
+  Add a close(or 'read') button to each Article component.When clicked the article will disappear.
+  let closeButton = articleComponent.appendChild(document.createElement('div'));
+  closeButton.textContent = "close article"
+  closeButton.classList.add('article-toggle');
+  closeButton.addEventListener("click", () =>{
+    if (document.querySelectorAll('.articles')[0].style.visibility = "hidden") {
+    document.querySelectorAll('.articles')[0].style.visibility = "visible"
+  } else {
+    document.querySelectorAll('.articles')[0].style.visibility = "hidden"
+  }
+  });
+  
+  */
+  /*   
+STRETCH ITEM
+Animation Goal #2 Animate the article opening. This one is a bit trickier. You will need to change the CSS for this component as well. Animate the component so that it slides open and slides closed on each click. Update the text in the expand button to read 'Click to Expand' or 'Click to Close' depending on the state of the article.
+  document.querySelectorAll('.article').forEach(      
+    item => {
+      console.log("entering article animation forEach loop");
+      item.addEventListener("click", (item)=> {
+        animateArticleOpen(item);
+      console.log("animating article");}
+      
+      );
+    }
+  );
+  */
+
+  function animateArticleOpen(singleArticle) {
+    // let articlesDiv = document.querySelector('.article');
+    let closeButton = singleArticle.querySelector('.expandButton');
+    let currentArticle = document.querySelector('.article-open');
+    if (currentArticle) {
+      gsap.to("#menu", { duration: 1, yPercent: 100 });
+      console.log('article expanded, change expand button to close');
+      // <span class='expandButton'>Click to Close</span>
+      closeButton.textContent = "Click to Close";
+  } else {
+      console.log('article closed, change expand button to expand');
+      gsap.to("#menu", { duration: 1, y: 50 });
+      // <span class='expandButton'>Click to Expand</span>
+      closeButton.textContent = "Click to Expand";
+      currentArticle.style.height="50px"
+  }
+  }
+  
   
 
   /*
@@ -182,17 +236,6 @@ function compArticle(objArticle) {
 
 
 /*
-  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
-*/
-
-data.forEach(
-  (dataItem) => { 
-    let newArticle = compArticle(dataItem);
-    document.querySelector('.articles').appendChild(newArticle);
-  }
-);
-
-/*
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
@@ -204,5 +247,15 @@ data.push(
     firstParagraph: "Skate ipsum dolor sit amet, egg plant pressure flip lipslide ollie Lance Mountain fast plant slide. Smith grind flypaper bigspin fakie out hang ten shoveit Dudesblood. Powerslide noseblunt slide boned out flail frontside indy grab Jordan Richter. Heel flip bank nosegrind blunt opposite footed disaster. Risers slappy kidney yeah gnar bucket hang up. ",
     secondParagraph: "Speed wobbles 900 launch ramp Steve Robert disaster switch fakie out. Hard flip wall ride pool hang ten spine Dylan Rieder 1080. Smith grind powerslide cab flip helipop hang-up slap maxwell. 720 half-cab griptape shinner Claus Grabke indy grab tail. Slappy Operation Ivy crail grab trucks rails nose death box. 180 crooked grind bigspin judo air baseplate speed wobbles. Finger flip hand rail Tracker Jeff Phillips griptape ho-ho ollie north. ",
     thirdParagraph: "Nose birdie 270 betty poseur kick-nose 180 Transworld. Hang up tail hurricane steps slappy flail Girl rad. Rip grip 180 risers boneless slide air durometer. Backside coffin 540 transition ollie hole helipop lip. Backside 900 blunt nose grab casper tuna-flip air. Aerial egg plant wheels fakie sponsored ledge ollie north John Cardiel."
+  }
+);
+/*
+  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+*/
+
+data.forEach(
+  (dataItem) => { 
+    let newArticle = compArticle(dataItem);
+    document.querySelector('.articles').appendChild(newArticle);
   }
 );
