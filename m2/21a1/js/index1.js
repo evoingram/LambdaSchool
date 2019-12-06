@@ -11,7 +11,6 @@ let timerVar;
 document.querySelector('#start').disabled = false;
 document.querySelector('#reset').addEventListener("click", resetTimer);
 document.querySelector('#start').addEventListener("click", startButton);
-document.querySelector('#test').addEventListener("DOMCharacterDataModified", setTimer);
 // toggleCount = setInterval((setTimer, 10));
 // clearInterval(toggleCount);
 
