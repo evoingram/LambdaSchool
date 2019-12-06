@@ -28,9 +28,11 @@ function cardRequest() {
                     item.forEach(
                         (individualArticle) => {
                             let cardsCtr = document.querySelector('.cards-container');
-                            let headlineDiv = cardsCtr.appendChild(document.createElement('div'));
+                            let cardDiv = cardsCtr.appendChild(document.createElement('div'));
+                            cardDiv.classList.add('card');
+                            let headlineDiv = cardDiv.appendChild(document.createElement('div'));
                             headlineDiv.classList.add('headline');
-                            let authorDiv = cardsCtr.appendChild(document.createElement('div'));
+                            let authorDiv = cardDiv.appendChild(document.createElement('div'));
                             authorDiv.classList.add('author');
                             let imgCtr = authorDiv.appendChild(document.createElement('div'));
                             imgCtr.classList.add('img-container');
