@@ -12,9 +12,9 @@ function tabRequest() {
     let currentTopics;
     axios.get(`https://lambda-times-backend.herokuapp.com/topics`)
         .then(response => {
-            console.log(response); 
+            // console.log(response); 
             currentTopics = response.data.topics;
-            console.log(currentTopics);
+            // console.log(currentTopics);
             for (x = 0; x < currentTopics.length;x++){
                 let topicsDiv = document.querySelector('.topics');
                 let tabDiv = topicsDiv.appendChild(document.createElement('div'));
