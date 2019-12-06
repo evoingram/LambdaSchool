@@ -17,3 +17,77 @@
     <div class="right-button"> > </div>
   </div>
 */
+
+function carouselMaker() {
+  let carouselCTR = document.querySelector('.carousel-container');
+  let divCarousel = carouselCTR.appendChild(document.createElement('div'));
+  divCarousel.classList.add('carousel');
+  let divLeftButton = divCarousel.appendChild(document.createElement('div'));
+  divLeftButton.classList.add('left-button');
+  let imgMountains = divCarousel.appendChild(document.createElement('img'));
+  imgMountains.src = "./assets/carousel/mountains.jpeg";
+  imgMountains.classList.add('imgCarousel');
+  imgMountains.style.display = "block";
+  imgMountains.id = "0";
+  let imgComputer = divCarousel.appendChild(document.createElement('img'));
+  imgComputer.src = "./assets/carousel/computer.jpeg";
+  imgComputer.classList.add('imgCarousel');
+  imgComputer.style.display = "none";
+  imgComputer.id = "1";
+  let imgTrees = divCarousel.appendChild(document.createElement('img'));
+  imgTrees.src = "./assets/carousel/trees.jpeg";
+  imgTrees.classList.add('imgCarousel');
+  imgTrees.style.display = "none";
+  imgTrees.id = "2";
+  let imgTurntable = divCarousel.appendChild(document.createElement('img'));
+  imgTurntable.src = "./assets/carousel/turntable.jpeg";
+  imgTurntable.classList.add('imgCarousel');
+  imgTurntable.style.display = "none";
+  imgTurntable.id = "3";
+  let divRightButton = divCarousel.appendChild(document.createElement('div'));
+  divRightButton.classList.add('right-button');
+
+  // get all images
+  let carouselImages = document.querySelectorAll('.imgCarousel');
+  let currentImage = 0;
+
+
+  function previousImage() {
+    console.log("Before picture change:  " + currentImage);
+    carouselImages[currentImage].style.display = "none";
+    currentImage -= 1;
+    if (currentImage === -1) {currentImage = 3;}
+    carouselImages[currentImage].style.display = "block";
+    console.log("After picture change:  " + currentImage);
+  }
+
+  function nextImage() {
+    console.log("Before picture change:  " + currentImage);
+    carouselImages[currentImage].style.display = "none";
+    currentImage += 1;    
+    if (currentImage === 4) {currentImage = 0;}
+    carouselImages[currentImage].style.display = "block";
+    console.log("After picture change:  " + currentImage);
+  }
+
+  
+  divLeftButton.addEventListener(
+    "click", () => {
+      previousImage();
+    });
+  divRightButton.addEventListener(
+    "click", () => {
+      nextImage();
+    });
+  // loop through all images left-right with buttons
+
+  // display none all but current image
+
+  /*
+
+    );
+
+  */
+
+}
+carouselMaker();

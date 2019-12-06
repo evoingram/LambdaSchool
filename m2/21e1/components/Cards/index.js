@@ -36,10 +36,10 @@ function cardRequest() {
                             imgCtr.classList.add('img-container');
                             let authorImgURL = imgCtr.appendChild(document.createElement('img'));
                             let spanCtr = authorDiv.appendChild(document.createElement('div'));
-                            console.log("headline:  " + individualArticle.headline);
+                            /*console.log("headline:  " + individualArticle.headline);
                             console.log("author URL:  " + individualArticle.authorPhoto);
                             console.log("author name:  " + individualArticle.authorName);
-                            console.log('--------------------------------------');
+                            console.log('--------------------------------------');*/
                             headlineDiv.textContent = individualArticle.headline;
                             authorImgURL.src = individualArticle.authorPhoto;
                             spanCtr.textContent = `By ${individualArticle.authorName}`;
