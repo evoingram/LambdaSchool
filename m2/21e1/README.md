@@ -59,9 +59,9 @@ Reusable pieces of code to display info in a consistent repeatable way
 
 Your finished project must include all of the following requirements:
 
-* [ ] Look through the HTML code and familiarize yourself with the different sections. Some of them already exist, but some need to be filled in. DO NOT add any code to the HTML file itself.
+* [X] Look through the HTML code and familiarize yourself with the different sections. Some of them already exist, but some need to be filled in. DO NOT add any code to the HTML file itself.
 
-* [ ] Following the instructions in the `Header/index.js` file, create the Header component. 
+* [X] Following the instructions in the `Header/index.js` file, create the Header component. 
 
 * [ ] Following the instructions in the `Tabs/index.js` file, create individual Tabs components.
 
