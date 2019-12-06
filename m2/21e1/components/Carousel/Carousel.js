@@ -53,21 +53,17 @@ function carouselMaker() {
 
 
   function previousImage() {
-    console.log("Before picture change:  " + currentImage);
     carouselImages[currentImage].style.display = "none";
     currentImage -= 1;
     if (currentImage === -1) {currentImage = 3;}
     carouselImages[currentImage].style.display = "block";
-    console.log("After picture change:  " + currentImage);
   }
 
   function nextImage() {
-    console.log("Before picture change:  " + currentImage);
     carouselImages[currentImage].style.display = "none";
     currentImage += 1;    
     if (currentImage === 4) {currentImage = 0;}
     carouselImages[currentImage].style.display = "block";
-    console.log("After picture change:  " + currentImage);
   }
 
   
@@ -79,15 +75,6 @@ function carouselMaker() {
     "click", () => {
       nextImage();
     });
-  // loop through all images left-right with buttons
-
-  // display none all but current image
-
-  /*
-
-    );
-
-  */
 
 }
 carouselMaker();
