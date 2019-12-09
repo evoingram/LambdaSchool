@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Videos</title>
 </head>
+
 <body>
   <ul class="videos">
     <li data-time="5:43">
@@ -180,8 +182,58 @@
     <li data-time="4:04">
       Video 58
     </li>
-  </ul>
-<script>
-</script>
+  </ul><button onclick="myFunction()">Try it</button>
+
+  <script>
+
+    let timesArray = [];
+    let calcArray = [];
+    let totalTime = 0;
+    let currentArray = [];
+    let currentMin = 0;
+    let currentSec = 0;
+
+    // for each li 
+
+    var liList = document.getElementsByTagName("li");
+    // console.log("liList:  " + liList);
+    for (x = 0; x < liList.length; x++) {
+      // get data-time
+      timesArray.push(liList[x].getAttribute("data-time"));
+    }
+    // push to new array
+    console.log();
+    console.log("timesArray:  " + timesArray);
+
+    // loop through new array w/ reduce
+    for (x = 0; x < timesArray.length; x++) {
+      calcArray.push(parseInt((timesArray[x].split(":")[0] * 60)) + parseInt((timesArray[x].split(":")[1])));
+      // console.log(calcArray[x]);
+    }
+
+    const reducer = (totalTime, currentValue) => totalTime + currentValue;
+    // console.log(reducer);
+    totalTime = calcArray.reduce(reducer);
+
+
+    console.log("----------------------");
+    // console log final total amount of time
+    console.log("Approx. Total in Seconds:  " + totalTime + " seconds");
+
+    console.log("Approx. Total in Minutes:  " + (totalTime / 60) + " minutes");
+    console.log("Approx. Total in Hours:  " + ((totalTime / 60) / 60) + " hours");
+    console.log("----------------------");
+
+    // 1 + 2 + 3 + 4
+    // console.log(liList.reduce(reducer));
+    // expected output: 10
+
+    // 5 + 1 + 2 + 3 + 4
+    // console.log(liList.reduce(reducer, 5));
+// expected output: 15
+
+
+  </script>
 </body>
+
 </html>
