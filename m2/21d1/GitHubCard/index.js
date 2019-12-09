@@ -5,16 +5,26 @@
 
 /* Step 4: Pass the data received from Github into your function, 
            create a new component and add it to the DOM as a child of .cards
-*/
 let desiredUN;
 let meMyselfI;
-function passData(desiredUN) {  
-  axios.get("https://api.github.com/users/" + desiredUN)
+*/
+async function passData(desiredUN) {  
+  let gitHubToken = "";
+await axios({
+    method: "get",
+    url: `https://api.github.com/users/${desiredUN}`,
+    headers: {
+        Authorization: `Bearer ${gitHubToken}`,
+        "Content-Type": "application/json"
+    }
+    })
+      /* axios.get("https://api.github.com/users/" + desiredUN[, config])*/
     .then(response => {
+
       // proper response
       meMyselfI = response.data;
       console.log(meMyselfI);
-      gitHubinfo(meMyselfI);
+      gitHubInfo(meMyselfI);
       // GitHubCalendar(".calendar", `${meMyselfI.login}`);
       // response.data.avatar_url, bio, blog, company, created_at, email, events_url, followers, followers_url, following, following_url, gists_url, gravatar_id, hireable, html_url, id, location, login, name, node_id, organizations_url, public_gists, public_repos, received_events_url, repos_url, site_admin, starred_url, subscriptions_url, type, updated_at, url
     })
@@ -22,9 +32,63 @@ function passData(desiredUN) {
       // error
       console.log(err);
     });  
+      let responseSummaryText = "Summary of pull requests, issues opened, and commits made by " + `${desiredUN}`;
+      /*let responseProxy = "urlreq";*/
+      let responseGlobalStats="true";
+      let responseResponsive="true";
+      let calendarOptions = new Object();
+      calendarOptions.summary_text = await GitHubCalendar(".calendar", `${desiredUN}`);
+      calendarOptions.global_stats = await GitHubCalendar(".calendar", `${desiredUN}`);
+      calendarOptions.responsive = await GitHubCalendar(".calendar", `${desiredUN}`);
+      console.log("GitHub calendar options:" + `${calendarOptions}`);
+      await GitHubCalendar(".calendar", `${desiredUN}`);
+
+
  }
 
-function addContributions(desiredUN) {
+async function addContributions(desiredUN) {
+/*
+  let gitHubToken = ""; 
+
+await axios({
+    method: "get",
+    url: `https://api.github.com/users/${desiredUN}`,
+    headers: {
+        Authorization: `Bearer ${gitHubToken}`,
+        "Content-Type": "application/json"
+    }
+    })
+   axios.get(`https://api.github.com/users/${desiredUN}`)
+          .then(response => {
+            
+                console.log("GitHub Calendar Response:  " + response.data.login);
+/*
+              let calendarOptions = function(summary_text, global_stats, responsive) {
+                this.summary_text = responseSummaryText,
+                this.global_stats = responseGlobalStats, 
+                this.responsive = responseResponsive
+                };
+            
+              // response.data.avatar_url, bio, blog, company, created_at, email, events_url, followers, followers_url, following, following_url, gists_url, gravatar_id, hireable, html_url, id, location, login, name, node_id, organizations_url, public_gists, public_repos, received_events_url, repos_url, site_admin, starred_url, subscriptions_url, type, updated_at, url
+        })  
+      .catch(err => {
+        // error
+        console.log(err);
+      })
+      ; */
+      let responseSummaryText = "Summary of pull requests, issues opened, and commits made by " + `${desiredUN}`;
+      /*let responseProxy = "urlreq";*/
+      let responseGlobalStats="true";
+      let responseResponsive="true";
+      let calendarOptions = new Object();
+      let response;
+      calendarOptions.summary_text = await GitHubCalendar(".calendar", `${desiredUN}`);
+      calendarOptions.global_stats = await GitHubCalendar(".calendar", `${desiredUN}`);
+      calendarOptions.responsive = responseResponsive;
+      console.log("GitHub calendar options:" + calendarOptions);
+      await GitHubCalendar(".calendar", `${desiredUN}`);
+
+/*
   axios.get(`https://api.github.com/users/${desiredUN}`)
       .then(response => {
         GitHubCalendar(".calendar", `${response.data.login}`);
@@ -33,7 +97,7 @@ function addContributions(desiredUN) {
   .catch(err => {
     // error
     console.log(err);
-  })
+  })*/
 
  }
 
@@ -49,7 +113,7 @@ function addContributions(desiredUN) {
 */
 
 
-function arrayIterate() {
+async function arrayIterate() {
   /* List of LS Instructors Github username's: 
     tetondan
     dustinmyers
@@ -60,8 +124,8 @@ function arrayIterate() {
 
   const friendsArray = ['evoingram', 'Katrina-Dierking', 'dustinmyers', 'justsml', 'luishrd', 'bigknell', 'dmattox10', 'PHONGdotTech', 'jagins', 'Henry2212', 'naomi121'];
 
-  friendsArray.forEach(passData);
-  friendsArray.forEach(addContributions);
+  await friendsArray.forEach((item)=>{passData(item)});
+  await friendsArray.forEach((item)=>{addContributions(item)}); 
 }
 
 
@@ -71,12 +135,13 @@ function arrayIterate() {
 */
 
       // response.data.avatar_url, bio, blog, company, created_at, email, events_url, followers, followers_url, following, following_url, gists_url, gravatar_id, hireable, html_url, id, location, login, name, node_id, organizations_url, public_gists, public_repos, received_events_url, repos_url, site_admin, starred_url, subscriptions_url, type, updated_at, url
-function gitHubinfo(meMyselfI) {
+function gitHubInfo(meMyselfI) {
   // add elements to div class cards
 // <div class="card">
   let divCard = document.querySelectorAll('.cards')[0]
     .appendChild(document.createElement('div'));
   divCard.classList.add('card');
+  divCard.style.width="1235px";
 
   // <img src={image url of user} />
   let imgUser = divCard.appendChild(document.createElement('img'));
@@ -123,10 +188,10 @@ function gitHubinfo(meMyselfI) {
   // STRETCH GOAL:  add contribution graph 
   let pContributions = divInfo.appendChild(document.createElement('div'));
   pContributions.classList.add('calendar');
-  pContributions.style.width = "830px";
+  pContributions.style.width = "100%";
   pContributions.style.height = "100%";
   // console.log({ pContributions });
 
 
-
 }
+arrayIterate();

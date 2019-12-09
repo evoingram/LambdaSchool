@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "projects for Lambda School full-stack web development track:\r (see below the list for how to set a repository up like this, read them in full before following them)\r /m#/##_#/ corresponds to the following:",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "github-calendar": "^1.3.2"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
