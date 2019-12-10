@@ -33,8 +33,8 @@ Topics:
 - [X] Make it so that the card in `MovieList` is a link, this should direct the user to the `/movies/{id of movie here}` URL, where `:id` is the id of the individual movie.
 - [X] When a user clicks on a movie card they should be taken to `/movies/{id of movie here}` to see the details for the selected movie.
 - [X] You will need to modify line 13 of `Movie.js` in order to accept the correct id for the movie selected.
-- [ ] Add functionality so the `Home` button on the `SavedList` component navigates back to home.
-- [ ] You should now be able to navigate back and forth between the individual movies and the home screen.
+- [X] Add functionality so the `Home` button on the `SavedList` component navigates back to home.
+- [X] You should now be able to navigate back and forth between the individual movies and the home screen.
 
 ## Stretch Goals.
 
