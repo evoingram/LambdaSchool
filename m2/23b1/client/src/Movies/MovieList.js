@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import MovieCard from './MovieCard';
+
 
 const MovieList = props => {
   const [movies, setMovies] = useState([])
@@ -17,17 +19,18 @@ const MovieList = props => {
     
     getMovies();
   }, []);
-  
+  console.log(movies);
   return (
     <div className="movie-list">
       {movies.map(movie => (
-        <MovieDetails key={movie.id} movie={movie} />
+        <MovieCard key={movie.id} movie={movie} />
       ))}
     </div>
   );
 }
+  /*
+function MovieDetails(MovieCard) {
 
-function MovieDetails({ movie }) {
   const { title, director, metascore, stars } = movie;
   return (
     <div className="movie-card">
@@ -47,6 +50,8 @@ function MovieDetails({ movie }) {
       ))}
     </div>
   );
+  return MovieCard;
 }
+  */
 
 export default MovieList;

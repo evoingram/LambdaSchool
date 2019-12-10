@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import MovieCard from './MovieCard';
 
 const Movie = (props) => {
-  const [movie, setMovie] = useState();
-    console.log(props);
+  const [MovieCard, setMovie] = useState();
+    console.log("movie.js props " +  props);
  
   useEffect(() => {
     const id = props.match.params.id;
@@ -27,10 +28,12 @@ const Movie = (props) => {
   //   addToSavedList(movie)
   // }
 
-  if (!movie) {
+  if (!MovieCard) {
     return <div>Loading movie information...</div>;
   }
 
+  return MovieCard;
+/*
   const { title, director, metascore, stars } = movie;
   return (
     <div className="save-wrapper">
@@ -53,6 +56,7 @@ const Movie = (props) => {
       <div className="save-button">Save</div>
     </div>
   );
+  */
 }
 
 export default Movie;
