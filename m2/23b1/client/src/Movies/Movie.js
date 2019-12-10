@@ -3,7 +3,7 @@ import axios from 'axios';
 import MovieCard from './MovieCard';
 
 const Movie = (props) => {
-  const [MovieCard, setMovie] = useState();
+  const [movie, setMovie] = useState();
     console.log("movie.js props " +  props);
  
   useEffect(() => {
@@ -23,19 +23,21 @@ const Movie = (props) => {
   }, [props.match.params.id]);
   
   // Uncomment this only when you have moved on to the stretch goals
-  // const saveMovie = () => {
-  //   const addToSavedList = props.addToSavedList;
-  //   addToSavedList(movie)
-  // }
+  const saveMovie = () => {
+    const addToSavedList = props.addToSavedList;
+    addToSavedList(movie)
+  }
 
   if (!MovieCard) {
     return <div>Loading movie information...</div>;
   }
 
-  return MovieCard;
+  {
+    movie = MovieCard;
+    return movie;
+  }
 /*
   const { title, director, metascore, stars } = movie;
-  return (
     <div className="save-wrapper">
       <div className="movie-card">
         <h2>{title}</h2>
@@ -55,7 +57,6 @@ const Movie = (props) => {
       </div>
       <div className="save-button">Save</div>
     </div>
-  );
   */
 }
 
