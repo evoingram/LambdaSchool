@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
 
-const SavedList = props => (
+const Form = props => (
+
+    
     <div className="App">
-        {console.log(user)}
-        <form onSubmit={event => handleSubmit(event)}>
+        {console.log(props)}
+        <form onSubmit={event => {setUser(event.target.value);}}>
             <label>
             Name:
             <input
                 type="text"
                 name="name"
-                value={user.name}
-                onChange={event => handleChange(event)}
+                value={props.name}
+                onChange={event => {setUser(event.target.value);}}
             />
             </label>
             <label>
@@ -20,8 +20,8 @@ const SavedList = props => (
             <input
                 type="text"
                 name="email"
-                value={user.email}
-                onChange={event => handleChange(event)}
+                value={props.email}
+                onChange={event => {setUser(event.target.value);}}
             />
             </label>
             <label>
@@ -29,13 +29,14 @@ const SavedList = props => (
             <input
                 type="text"
                 name="role"
-                value={user.role}
-                onChange={event => handleChange(event)}
+                value={props.role}
+                onChange={event => {setUser(event.target.value);}}
             />
             </label>
             <button>Submit!</button>
         </form>
-        </div>
+    </div>
+    
 );
 
 export default Form;
