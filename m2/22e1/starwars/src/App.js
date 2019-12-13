@@ -8,11 +8,20 @@ const SWLinks = styled.a`
   color: white;
   font-weight: bold;
 `
-const bioData = styled.div`
-
-
+const BioData = styled.div`
+  display: flex;
+  color: #69e4ea;
+  font-weight: bold;
+  -webkit-font-stroke: 2px black;
+  background-color: black;
 `
 
+const CustomData = styled.span`
+  display: flex;
+  color: #eaea69;
+  font-weight: bold;
+  background-color: black;
+`
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
@@ -29,18 +38,11 @@ const App = () => {
     // name height mass hair color skin color eye color birth year gender homeworld url
     // films species vehicles starships
     const [charName, setName] = useState("");
-    const [height, setHeight] = useState("");
-    const [mass, setMass] = useState("");
-    const [hairColor, setHairColor] = useState("");
-    const [skinColor, setSkinColor] = useState("");
-    const [eyeColor, setEyeColor] = useState("");
     const [birthYear, setBirthYear] = useState("");
     const [gender, setGender] = useState("");
     const [homeworld, setHomeworld] = useState("");
   
     const [films, setFilms] = useState("");
-    const [species, setSpecies] = useState("");
-    const [vehicles, setVehicles] = useState("");
     const [starships, setStarships] = useState("");
 
     useEffect(
@@ -56,17 +58,10 @@ const App = () => {
             people.map((item, index) => {
               console.log(index);
               setName(item.name);
-              setHeight(item.height);
-              setMass(item.mass);
-              setHairColor(item.hair_color);
-              setSkinColor(item.skin_color);
-              setEyeColor(item.eye_color);
               setBirthYear(item.birth_year);
               setGender(item.gender);
               setHomeworld(item.homeworld);
               setFilms(item.films);
-              setSpecies(item.species);
-              setVehicles(item.vehicles);
               setStarships(item.starships);
 
               });
@@ -76,30 +71,30 @@ const App = () => {
 
     }, []);
         
+  const PreviousButton = () => {
+    return ( 
+
+    )
+
+  }
   
+  const NextButton = () => {
+    return ( 
+
+    )
+
+  }
   const Person = () => { 
     return (
       <div>
-        <p>Name: {charName}</p>
-        <p>Height:  {height}</p>
-        <p>Mass:  {mass}</p>
-        <p>Hair Color:  {hairColor}</p>
-        <p>Skin Color:  {skinColor}</p>
-        <p>Eye Color:  {eyeColor}</p>
-        <p>Birth Year:  {birthYear}</p>
-        <p>Gender:  {gender}</p>
+        <p><BioData>Name:  </BioData><CustomData>{charName}</CustomData></p>
+        <p><BioData>Birth Year:  </BioData><CustomData>{birthYear}</CustomData></p>
+        <p><BioData>Gender:  </BioData><CustomData>{gender}</CustomData></p>
         <p>
           <SWLinks href={homeworld} target="_blank">Homeworld URL</SWLinks>
         </p>
         <p>
           <SWLinks href={films} target="_blank">Films URL</SWLinks>
-        </p>
-        <p>
-        
-          <SWLinks href={species} target="_blank">Species URL</SWLinks>
-        </p>
-        <p>
-          <SWLinks href={vehicles} target="_blank">Vehicles URL</SWLinks>
         </p>
         <p>
           <SWLinks href={starships} target="_blank">Starships URL</SWLinks>
@@ -111,6 +106,8 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">React Wars</h1>
+      <PreviousButton />
+      <NextButton />
       <Person />  
     </div>
   );
