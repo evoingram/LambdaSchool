@@ -4,6 +4,15 @@ import "./App.css";
 import styled from 'styled-components';
 import axios from 'axios';
 
+const SWLinks = styled.a`
+  color: white;
+  font-weight: bold;
+`
+const bioData = styled.div`
+
+
+`
+
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
@@ -79,11 +88,22 @@ const App = () => {
         <p>Eye Color:  {eyeColor}</p>
         <p>Birth Year:  {birthYear}</p>
         <p>Gender:  {gender}</p>
-        <p>Homeworld:  {homeworld}</p>
-        <p>Films:  {films}</p>
-        <p>Species:  {species}</p>
-        <p>Vehicles:  {vehicles}</p>
-        <p>Starships:  {starships}</p>
+        <p>
+          <SWLinks href={homeworld} target="_blank">Homeworld URL</SWLinks>
+        </p>
+        <p>
+          <SWLinks href={films} target="_blank">Films URL</SWLinks>
+        </p>
+        <p>
+        
+          <SWLinks href={species} target="_blank">Species URL</SWLinks>
+        </p>
+        <p>
+          <SWLinks href={vehicles} target="_blank">Vehicles URL</SWLinks>
+        </p>
+        <p>
+          <SWLinks href={starships} target="_blank">Starships URL</SWLinks>
+        </p>
       </div>
     );
   }
