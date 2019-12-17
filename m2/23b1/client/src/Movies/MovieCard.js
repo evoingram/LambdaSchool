@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const MovieCard = (props) => {
-  console.log(props);
   return (
       <div className="movie-card">
             <h2>{props.movie.title}</h2>
@@ -16,7 +15,6 @@ const MovieCard = (props) => {
             ))
             }
         </ul>
-            <div className="save-button">Save</div>
           </div>
   )
 };

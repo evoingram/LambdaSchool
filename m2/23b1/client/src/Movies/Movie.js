@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import MovieCard from './MovieCard';
 import { useParams } from 'react-router-dom';
+import { addToSavedList } from '../App';
 
 const Movie = (props) => {
   const { id } = useParams();
   const [movie, setMovie] = useState({});
- 
+
   useEffect(() => {
     // const id = props.match.params.id;
     // change ^^^ that line and grab the id from the URL
@@ -15,7 +16,6 @@ const Movie = (props) => {
         .get(`http://localhost:5000/api/movies/${id}`)
         .then(response => {
           setMovie(response.data);
-          console.log(response.data);
         })
         .catch(error => {
           console.error(error);
@@ -23,12 +23,11 @@ const Movie = (props) => {
   }, []);
   
   // Uncomment this only when you have moved on to the stretch goals
-  /*
-  const saveMovie = (props) => {
+  const saveMovie = () => {
     const addToSavedList = props.addToSavedList;
     addToSavedList(movie)
   }
-*/
+
   if (!movie) {
     return <div>Loading movie information...</div>;
   }
@@ -36,7 +35,7 @@ const Movie = (props) => {
     return (      
       <div className="save-wrapper">
         <MovieCard movie={movie} />
-        <div className="save-button">Save</div>
+        <div className="save-button" onClick={saveMovie}>Save</div>
       </div>
     );
     }
