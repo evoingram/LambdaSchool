@@ -178,6 +178,7 @@ function App() {
                   setCopyright1(response.data.photos[0].id);
                   setDate1(response.data.photos[0].earth_date);
                   setExplanation1(`${response.data.photos[0].rover.name}, ${response.data.photos[0].rover.status}`);
+                  
                 }
           
               )
@@ -190,6 +191,24 @@ function App() {
     }, []);
 
     
+  const person = () => {
+    return (
+      <div id="operatorsRow" className="buttonColumn2">
+        {operators.map((item, index) => {
+          return (
+            <div
+              id={item}
+              className="buttonOp"
+              key={index}
+              onClickCapture={buttonClick({ item })}
+            >
+              {item}
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
   
       /* couldn't get it to work below
       <DatePicker
