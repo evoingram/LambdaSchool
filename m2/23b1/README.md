@@ -11,30 +11,30 @@ Topics:
 
 **NOTE ⚠️ - You will NOT need to finish this project after React Router I. Start working on it now, then you can finish it up after the next module - React Router II.**
 
-- [ ] **Fork** this repository, then clone your fork.
-- [ ] **NOTE** You have 2 servers that you will be running here so read these instructions carefully.
-- [ ] **In the root of this directory**: Run `yarn install` to download dependencies.
-- [ ] Run the server using `yarn start` or `node server.js`. (Don't worry too much about this process, you'll get used to doing this and it will be explained more in the future).
-- [ ] In a separate terminal cd into the `client` folder and run `yarn install` to download dependencies.
-- [ ] Still inside the `client` folder run `yarn start` to run the client application.
+- [X] **Fork** this repository, then clone your fork.
+- [X] **NOTE** You have 2 servers that you will be running here so read these instructions carefully.
+- [X] **In the root of this directory**: Run `yarn install` to download dependencies.
+- [X] Run the server using `yarn start` or `node server.js`. (Don't worry too much about this process, you'll get used to doing this and it will be explained more in the future).
+- [X] In a separate terminal cd into the `client` folder and run `yarn install` to download dependencies.
+- [X] Still inside the `client` folder run `yarn start` to run the client application.
 
-- [ ] Once your application is up and running on the client, you should see a browser window that looks like this at `localhost:3000`
+- [X] Once your application is up and running on the client, you should see a browser window that looks like this at `localhost:3000`
   ![Movies Home](https://ibin.co/3xhmmHVl9BKF.png)
 
 ### Part 1:
 
-- [ ] Wrap your app with the router.
-- [ ] Inside your App file add two routes.
-  - [ ] one route for `/` that loads the `MovieList` component.
-  - [ ] one route that will take an `id` parameter after`/movies/` (ex: `/movies/2`, `/movies/3` where the id is dynamic). This route should load the `Movie` component.
+- [X] Wrap your app with the router.
+- [X] Inside your App file add two routes.
+- [X] one route for `/` that loads the `MovieList` component.
+- [X] one route that will take an `id` parameter after`/movies/` (ex: `/movies/2`, `/movies/3` where the id is dynamic). This route should load the `Movie` component.
 
 ### Part 2:
 
-- [ ] Make it so that the card in `MovieList` is a link, this should direct the user to the `/movies/{id of movie here}` URL, where `:id` is the id of the individual movie.
-- [ ] When a user clicks on a movie card they should be taken to `/movies/{id of movie here}` to see the details for the selected movie.
-- [ ] You will need to modify line 13 of `Movie.js` in order to accept the correct id for the movie selected.
-- [ ] Add functionality so the `Home` button on the `SavedList` component navigates back to home.
-- [ ] You should now be able to navigate back and forth between the individual movies and the home screen.
+- [X] Make it so that the card in `MovieList` is a link, this should direct the user to the `/movies/{id of movie here}` URL, where `:id` is the id of the individual movie.
+- [X] When a user clicks on a movie card they should be taken to `/movies/{id of movie here}` to see the details for the selected movie.
+- [X] You will need to modify line 13 of `Movie.js` in order to accept the correct id for the movie selected.
+- [X] Add functionality so the `Home` button on the `SavedList` component navigates back to home.
+- [X] You should now be able to navigate back and forth between the individual movies and the home screen.
 
 ## Stretch Goals.
 
@@ -42,7 +42,7 @@ If you have completed Parts 1 & 2 feel free to move on to these stretch goals.
 
 ### Refactor so that our code is DRY.
 
-- [ ] You may notice that we are using essentially the same exact JSX code in the `Movie` component and the `MovieDetails` component in `MovieList.js` create a new component in `MovieCard.js` that returns this JSX code. Then remove the old code from `Movie` and `MovieDetails` and instead return the new `MovieCard` component.
+- [X] You may notice that we are using essentially the same exact JSX code in the `Movie` component and the `MovieDetails` component in `MovieList.js` create a new component in `MovieCard.js` that returns this JSX code. Then remove the old code from `Movie` and `MovieDetails` and instead return the new `MovieCard` component.
 
 ### Add `Save Movie` functionality.
 
