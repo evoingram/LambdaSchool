@@ -4,37 +4,23 @@ import SavedTMList from './SavedTMList'
 import Form from './form'
 import logo from './logo.svg';
 import './App.css';
+import TeamMembersData from './teamMembersData'
 
 function App() {
-  const [savedTMList, setSavedTMList] = useState( [] );
 
-  const addToSavedList = user => {
-    setSavedTMList( [...savedTMList, user] );
-  };
 
-  const [user, setUser] = useState({ name: "", email: "", role: "" });
+  const [users, setUsers] = useState(TeamMembersData);
+
+  console.log(users);
 
   const addUser = user => {
-    setUser( [...Form, user] );
+    setUsers( [...users, user] );
   };
-
-    
-  const handleChange = event => {
-      setUser(event.target.value);
-  };
-
-  const handleSubmit = event => {
-      event.preventDefault();
-      console.log(event.target.name);
-      console.log(event.target.email);
-      console.log(event.target.role);
-  };
-    
     
   return (
     <div>
-      <Form component={Form} />
-      <SavedTMList list={savedTMList} />
+      <Form component={Form} addUser={addUser}/>
+      <SavedTMList list={users} />
     </div>
   );
 }
