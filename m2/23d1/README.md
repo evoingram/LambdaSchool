@@ -32,8 +32,8 @@ Form validation is one of the facets of an application that makes it feel polish
 
 Being able to `POST` data is a key skill of any developer, no matter your skill level.
 
-- [ ] Craft a `POST` request using `axios` that sends your form data to the following endpoint: _https://reqres.in/api/users_
-- [ ] Verify using a `console.log()` that you are receiving a successful response back
+- [X] Craft a `POST` request using `axios` that sends your form data to the following endpoint: _https://reqres.in/api/users_
+- [X] Verify using a `console.log()` that you are receiving a successful response back
 
 (Note: For those that are curious, we're using [reqres.in](https://reqres.in/) for this assignment's API. It's a free API that allows us to simulate a `POST` request for any data that we send it. Pretty awesome!)
 
@@ -52,4 +52,4 @@ The following are stretch goals that you should attempt _after_ you meet MVP for
 - [ ] Add basic styling to your form in your app. Make it look pretty with any styling method you choose.
 - [ ] Implement a dropdown menu in your Formik form. Add a `role` value to your Formik HOC and add a dropdown with different roles for your users.
 - [ ] Create 3 new inputs inside your Formik form of your choice along with corresponding validation and error messaging
-- [ ] Add to your existing handling so that, if a user inputs their email as `waffle@syrup.com`, they receive an error message in their form that says _"That email is already taken."_
+- [X] Add to your existing handling so that, if a user inputs their email as `waffle@syrup.com`, they receive an error message in their form that says _"That email is already taken."_
