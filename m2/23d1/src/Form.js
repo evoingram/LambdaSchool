@@ -13,12 +13,12 @@ function LoginForm({ values, errors, touched, isSubmitting }) {
   return (
       <Form>
           {touched.name && errors.name && <p>{errors.name}</p>}
-        <Field type="text" name="name" placeholder="Name" />
           {touched.email && errors.email && <p>{errors.email}</p>}
-          <Field type="email" name="email" placeholder="Email" />
           {touched.password && errors.password && <p>{errors.password}</p>}
-        <Field type="password" name="password" placeholder="Password" />
           {touched.tos && errors.tos && <p>{errors.tos}</p>}
+        <Field type="text" name="name" placeholder="Name" />
+          <Field type="email" name="email" placeholder="Email" />
+        <Field type="password" name="password" placeholder="Password" />
         <label><Field type="checkbox" name="tos" checked={values.tos} />Accept TOS</label>
         <button>Submit!</button>
     </Form>
