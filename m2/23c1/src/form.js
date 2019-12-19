@@ -1,28 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TeamMembersData from './teamMembersData'
+import { useInput } from './CustomHooks/InputHook'
 
 const Form = props => {
     
-    const [user, setUser] = useState({ name: "", email: "", role: "" });
+    const [user, setUser] = useState({});
 
-    const [users, setUsers] = useState(TeamMembersData);
+    const [users, setUsers] = useState([...TeamMembersData]);
 
     const addUser = user => {
         setUsers( [...users, user] );
     };
 
+    const {value:name, hook:bindName} = useInput('')
+    const {value:email, hook:bindEmail} = useInput('')
+    const {value:role, hook:bindRole} = useInput('')
+
+
     const handleChange = event => { setUser({ ...user, [event.target.name]: event.target.value }); };
 
     const handleSubmit = event => {
         event.preventDefault();
-        setUser({ ...user, [event.target.name]: event.target.value });
-        console.log("user variable on submit:  " + `${user}:  ${user.name} ${user.email} ${user.role}`);
+        console.log("user variable on submit:  " + `${user}:  ${name} ${email} ${role}`);
         console.log("users variable on submit " + `${users}`);
-        addUser(user);
+        props.addUser(user);
     }
 
         // users.setState(users);   
-    
+
+        useEffect(
+            () => {
+                setUser({
+                    name: name,
+                    role: role,
+                    email: email
+                })
+            }, [name, role, email]
+        )
+
 return (
     
     <div className="App">
@@ -33,8 +48,7 @@ return (
                     type="text"
                     name="name"
                     placeholder="Enter name here"
-                    value={user.name}
-                    onChange={handleChange}
+                    {...bindName}
                 />
             </label>
             <label>
@@ -43,8 +57,7 @@ return (
                     type="text"
                     name="email"
                     placeholder="Enter e-mail here"
-                    value={user.email}
-                    onChange={handleChange}
+                    {...bindEmail}
                 />
             </label>
             <label>
@@ -53,8 +66,7 @@ return (
                     type="text"
                     name="role"
                     placeholder="Enter job role here"
-                    value={user.role}
-                    onChange={handleChange}
+                    {...bindRole}
                 />
             </label>
       <button type="submit" onClick={handleSubmit}>Submit!</button>

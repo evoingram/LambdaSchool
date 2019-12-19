@@ -19,7 +19,7 @@ function App() {
     
   return (
     <div>
-      <Form component={Form} addUser={addUser}/>
+      <Form addUser={addUser}/>
       <SavedTMList list={users} />
     </div>
   );
