@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const SavedTMList = props => (
+const DisplayForm = props => (
   <div className="saved-list">
     <h3>Saved User List:</h3>
     <ul>
@@ -13,4 +13,4 @@ const SavedTMList = props => (
 );
 
 
-export default SavedTMList;
+export default DisplayForm;

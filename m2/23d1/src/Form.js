@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import { useInput } from './CustomHooks/InputHook'
+// import { useInput } from './CustomHooks/InputHook'
 import styled from 'styled-components'
 import UsersData from './UsersData'
+import DisplayForm from './DisplayForm'
 
 const Button = styled.button`
   background: #002244;
@@ -15,97 +16,35 @@ const Button = styled.button`
   margin: 0 1em;
   padding: 0.25em 1em;
 `
-/*
-function setDataStates(response) { 
-    const [fullName, setName] = useState("");
-    const [fullEmail, setEmail] = useState("");
-    const [fullPassword, setPW] = useState("");
-    const [yesTOS, setTOS] = useState("");
-    
-    setName(response.name);
-    // setEmail(res.email);
-    // setPW(res.password);
-    // setTOS(res.tos);
+const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
+    const [user, setUser] = useState([...UsersData]);
+    useEffect(() =>{
+        console.log(status);
+        status && setUser(user => [...user, status]);
+    }, [status]);
 
-
-}
-
-    const setDataStates = response => { 
-        const [fullName, setName] = useState("");
-        const [fullEmail, setEmail] = useState("");
-        const [fullPassword, setPW] = useState("");
-        const [yesTOS, setTOS] = useState("");
-        
-        setName(response.name);
-        // setEmail(res.email);
-        // setPW(res.password);
-        // setTOS(res.tos);
-    }
-    */
-function LoginForm({ values, errors, touched, isSubmitting }) {
-
-    const [user, setUser] = useState({});
-    //const [fullName, setName] = useState("");
-    //const [fullEmail, setEmail] = useState("");
-    //const [fullPassword, setPW] = useState("");
-    //const [yesTOS, setTOS] = useState("");
-
-
-    const [users, setUsers] = useState([...UsersData]);
-
-    const addUser = user => {
-        setUsers( [...users, user] );
-    };
-
-    
-    const handleSubmit1 = event => { 
-        setUser({ ...user, [event.target.name]: event.target.value });
-        console.log("most recent added user = " + `${user}`);
-        addUser(user);
-        console.log("users = " + `${users}`);
-    }
-
-
-    useEffect(
-        () => {
-            setUser({
-                name: `${values.name}`,
-                email: `${values.email}`,
-                password: `${values.password}`,
-                tos: `${values.tos}`
-            });
-            addUser(user);
-        }, [`${values.name}`, `${values.email}`, `${values.password}`, `${values.email}`]
-    )
-
-  return (
-      <Form>
-          {touched.name && errors.name && <p>{errors.name}</p>}
-          {touched.email && errors.email && <p>{errors.email}</p>}
-          {touched.password && errors.password && <p>{errors.password}</p>}
-          {touched.tos && errors.tos && <p>{errors.tos}</p>}
-          {
-              /* <Field type="text" name="name" placeholder="Name" >{...bindName}</Field>
-              <Field type="text" name="name" placeholder="Name" >{...bindName}</Field>
-            <Field type="email" name="email" placeholder="Email" >{...bindEmail}</Field>
-            <Field type="password" name="password" placeholder="Password" >{...bindPW}</Field>
+    return (
+        <div className='user-form'>      
+        <Form>
+            {touched.name && errors.name && <p>{errors.name}</p>}
+            {touched.email && errors.email && <p>{errors.email}</p>}
+            {touched.password && errors.password && <p>{errors.password}</p>}
+            {touched.tos && errors.tos && <p>{errors.tos}</p>}
+            <Field type="text" name="name" placeholder="Name" value={values.name} />
+            <Field type="email" name="email" placeholder="Email" value={values.email} />
+            <Field type="password" name="password" placeholder="Password" value={values.password} />
             <label><Field type="checkbox" name="tos" checked={values.tos} />Accept TOS</label>
-          */
-          }
-        <Field type="text" name="name" placeholder="Name" value={values.name} />
-        <Field type="email" name="email" placeholder="Email" value={values.email} />
-        <Field type="password" name="password" placeholder="Password" value={values.password} />
-        <label><Field type="checkbox" name="tos" checked={values.tos} />Accept TOS</label>
-        <Button type="submit" onClick={handleSubmit1}>Submit!</Button>
-    </Form>
+            <Button type="submit">Submit!</Button>
+        </Form>
+        <DisplayForm list={user} />
+        </div>
+      
   );
 }
 
 
 
-const FormikForm = withFormik({
-    
-   
+const FormikForm = withFormik({    
     mapPropsToValues({ name, email, password, tos }) {
         return {
         name: name || "",
@@ -136,8 +75,8 @@ const FormikForm = withFormik({
                 ),
     }),
 
-    handleSubmit(values, { props,  resetForm, setErrors, setSubmitting }) {
-
+    handleSubmit(values, { setStatus, resetForm, setErrors, setSubmitting }) {
+        
         if (values.email === "waffle@syrup.com") {
             setErrors({ email: "That email is already taken" });
         } else {
@@ -145,65 +84,18 @@ const FormikForm = withFormik({
                 .post("https://reqres.in/api/users", values)
                 .then(res => {
                     console.log("response = " + res.data); // Data was created successfully and logs to console
+                    setStatus(res.data);
                     resetForm();
                     setSubmitting(false);
-                    console.log("response name = " + res.data.name);
-                    //const [fullName, setName] = useState();
-                    //const [user, setUser] = useState({});
-                    //const [fullEmail, setEmail] = useState("");
-                    //const [fullPassword, setPW] = useState("");
-                    //const [yesTOS, setTOS] = useState("");
-                    // setDataStates(res.data);
-                    // set state for response to send to other component
-                    //const [name, setName] = useState("");
-                    // const [email, setEmail] = useState("");
-                    // const [password, setPW] = useState("");
-                    // const [tos, setTOS] = useState("");
-                    /*
-                    setUser({
-                        name: res.data.name,
-                        email: res.data.email,
-                        password: res.data.password,
-                        tos: res.data.tos
-                    })
-                    */
-                    // setEmail(res.email);
-                    // setPW(res.password);
-                    // setTOS(res.tos);
-                    
-                    
-                    //const [user, setUser] = useState({});
-
-                    // const [users, setUsers] = useState([...UsersData]);
-
-                    // const addUser = user => {
-                    //    setUsers( [...users, user] );
-                    //};
-
-                    /*
-                    setUser({
-                        name: `${values.name}`,
-                        email: `${values.email}`, 
-                        password: `${values.password}`,
-                        tos: `${values.tos}`
-                    });
-                    */
-                    // console.log("user variable on submit:  " + `${user}:  ${name} ${email} ${tos}`);
-                    //console.log("users variable on submit " + `${users}`);
-                    //addUser(user);
                 })
                 .catch(err => {
                     console.log(err); // logs error creating the data 
                     setSubmitting(false);
-                });
-            
-            //users.setState(users);
-            console.log("individual variables on submit:  " + `${values.name} ${values.email} ${values.tos}`);
-                
+                });                
                     
             }
     }
 
-})(LoginForm);
+})(UserForm);
 
 export default FormikForm;

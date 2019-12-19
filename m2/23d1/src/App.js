@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import SavedTMList from './DisplayForm'
+import DisplayForm from './DisplayForm'
 import FormikForm from './Form'
 import UsersData from './UsersData'
 
 function App() {
-
 
   const [users, setUsers] = useState(UsersData);
 
@@ -19,7 +18,6 @@ function App() {
   return (
     <div>
       <FormikForm component={FormikForm} addUser={addUser}/>
-      <SavedTMList list={users} />
     </div>
   );
 }
