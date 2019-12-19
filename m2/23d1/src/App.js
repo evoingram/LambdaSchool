@@ -3,11 +3,12 @@ import logo from './logo.svg';
 import './App.css';
 import SavedTMList from './DisplayForm'
 import FormikForm from './Form'
+import UsersData from './UsersData'
 
 function App() {
 
 
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState(UsersData);
 
   console.log(users);
 
