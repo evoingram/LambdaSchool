@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import CharacterCard from '../components/CharacterCard.js';
 import axios from 'axios';
 import { Route } from 'react-router-dom';
+import SearchForm from './SearchForm.js';
 
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
@@ -15,7 +16,7 @@ export default function CharacterList() {
       axios
         .get('https://rickandmortyapi.com/api/character/')
         .then(response => {
-          console.log(response.data.results);
+          // console.log(response.data.results);
           // setChar(response.data.results);
           setCharacters(response.data.results);
         })
@@ -30,6 +31,7 @@ export default function CharacterList() {
 
   return (
     <section className="character-list">
+      <SearchForm characters={characters}/>
       {
         characters.map(
           character => (
