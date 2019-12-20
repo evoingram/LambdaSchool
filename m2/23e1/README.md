@@ -77,11 +77,11 @@ _Add 'Search by Name' feature._
 
 ### **Required best practices:**
 
-- [ ]  Consistent naming. Examples: variables, functions, Components, and file/folder organization.
-- [ ]  Consistent spacing. Examples: line breaks, around arguments and before/after functions.
-- [ ]  Consistent quotation usage.
-- [ ]  Spell-check.
-- [ ]  Schedule time to review, refine and reassess your work.
+- [X]  Consistent naming. Examples: variables, functions, Components, and file/folder organization.
+- [X]  Consistent spacing. Examples: line breaks, around arguments and before/after functions.
+- [X]  Consistent quotation usage.
+- [X]  Spell-check.
+- [X]  Schedule time to review, refine and reassess your work.
 
 It is better to submit a challenge that meets [MVP](https://en.wikipedia.org/wiki/Minimum_viable_product) than one that attempts too much and fails.
 
@@ -97,19 +97,19 @@ There's a range of difficulty in the options below. 😈
 
 Start with the most *familiar (or fun) sounding* stretch goal.
 Complete search component to your list views.
-- [ ] Try adding 2 more components and display data from the episodes and locations end point.
+- [X] Try adding 2 more components and display data from the episodes and locations end point.
 - [ ] https://rickandmortyapi.com/api/location/ - docs
 - [ ] https://rickandmortyapi.com/api/episode/ - docs
 
 - [ ]  Wire up the `onSearch(name)` callback prop to support [querying the API](https://rickandmortyapi.com/documentation/#filter-characters). (To search for `rick`, you would request `/api/character/?name=rick`.)
 - [ ]  Animate page transition and/or card loading.
 - [ ]  Persist search form field(s) by using the custom hook `useLocalStorage`.
-- [ ]  Add error handling for all async (axios/AJAX) calls. (Including some styled UI.)
+- [X]  Add error handling for all async (axios/AJAX) calls. (Including some styled UI.)
 - [ ]  Add a "details view" and route to show more details for each type of record. (Hint: Look into route parameters or nested routes.)
-    - [ ]  Similar to the "details view" now with a UI twist: use a [modal](https://react.semantic-ui.com/modules/modal/#variations-size) component to show item view. (If you can, build [modal with routes](https://codesandbox.io/s/react-router-modal-gallery-classes-example-z98l5).)
+- [ ]  Similar to the "details view" now with a UI twist: use a [modal](https://react.semantic-ui.com/modules/modal/#variations-size) component to show item view. (If you can, build [modal with routes](https://codesandbox.io/s/react-router-modal-gallery-classes-example-z98l5).)
 - [ ]  Add [paging support](https://react.semantic-ui.com/addons/pagination/#types-pagination) (next/previous links.)
 - [ ]  Refactor to use as few Components as possible - while still readable to a React Dev. (Hint: research these patterns: HoC, render props, FaaC.)
-- [ ]  Add additional fields to search form. They are unique for each endpoint. See **[Available parameters**.](https://rickandmortyapi.com/documentation/#filter-characters), etc..
+- [X]  Add additional fields to search form. They are unique for each endpoint. See **[Available parameters**.](https://rickandmortyapi.com/documentation/#filter-characters), etc..
 - [ ]  Use the [GraphQL Endpoint](https://rickandmortyapi.com/documentation/#graphql) with multiple search fields.
 
 > 💡Reminder: git commit -am 'Stretch Progress 💪'
