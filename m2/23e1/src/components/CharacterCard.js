@@ -39,20 +39,9 @@ const CharacterCard = character => {
         <img src={character.character.img} width="10%"/>
         <Result className="movie-director">Species: <em>{character.character.species}</em></Result>
         <Result className="movie-metascore">Status: <strong>{character.character.status}</strong></Result>
-              <Result>
-                Current Location:  <em>{character.character.location.name}</em>
-              </Result>
-        {
-        /*
-        character.character.location.map(
-          location => (
-              <Result>
-                Current Location:  <em>{location.name}</em>
-              </Result>
-            )
-          )
-        */
-      }
+        <Result>
+          Current Location:  <em>{character.character.location.name}</em>
+        </Result>
       </Div>
     </Wrapper> 
   );
