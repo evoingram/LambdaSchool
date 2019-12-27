@@ -1,4 +1,4 @@
-const teamMembersData = [
+wconst teamMembersData = [
     {
         name: "Katrina Dierking",
         email: "katrina@notrealemail.com",
