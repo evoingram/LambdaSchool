@@ -18,31 +18,26 @@ const Button = styled.button`
 `
 
 const Profile = ({ values, errors, touched, isSubmitting, status }) => {
-    // fields: name, username, email, change password, usertype display, save button for acct changes
-    // TODO: 2 Some form validation is in place.
-    // TODO: 3 Form validation is in place for all fields, and covers all use cases. 
-    // TODO: 2 Student implemented GET requests using either Axios or Fetch to display 3rd party data on a deployed page. 
+    
     // TODO: 3 Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
-    // TODO: 3 Student incorporated a third party event/animation library like unto Greensock, Anime, React-motion etc.
-    // TODO: 2 Student created functional components and used events in application to add dynamic functionality to app.
-    // TODO: 2 Student's code was organized at the component level
-    // TODO: 2 proper usage of state and props are demonstrated throughout the project
-    // TODO: 2 the UI is composed of small reusable components
-    // TODO: 2 proper usage of useState and useEffect hooks are clearly incorporated and correctly implemented. 
-    // TODO: 2 Student used Array methods to dynamically render HTML elements.
-	// TODO: 2 Student made the decision to use a third-party library, like Formik, or not, and can defend their decision. 
-	// TODO: 2 Student has set up component management for the forms in the app that makes sense for each form. 
+  
 	// TODO: 3 Student showed great insight in setting up the state management for the app's forms. 
+	// TODO: 2 proper usage of state and props are demonstrated throughout the project
+    // TODO: 2 proper usage of useState and useEffect hooks are clearly incorporated and correctly implemented. 
+  
+    // TODO: 3 Student incorporated a third party event/animation library like unto Greensock, Anime, React-motion etc.
+    // TODO: 2 Student used Array methods to dynamically render HTML elements.
 	// TODO: 3 Loading states and success/error notifications are in place and add to the overall UX of the app.
-	// TODO: 3 Student was able to architect components to be easily reused. 
-	// TODO: 3 Student used advanced React techniques like the composition pattern, custom hooks, render props, HOCs, etc.
-	// TODO: 3 Student went above and beyond the project (search function?)
-    // TODO: 
-    // TODO: 
-    // TODO: 
+    // TODO: 3 Student used advanced React techniques like the composition pattern, custom hooks, render props, HOCs, etc.
+    
+    // TODO: 3 Student was able to architect components to be easily reused. 
+	// TODO: 2 Student created functional components and used events in application to add dynamic functionality to app.
+	// TODO: 2 the UI is composed of small reusable components
+	// TODO: 2 Student's code was organized at the component level
+    // TODO: 2 Student has set up component management for the forms in the app that makes sense for each form. 
+    
+    // fields: name, username, email, change password, usertype display, save button for acct changes
 
-    // TODO: axios get request or parse response
-    // TODO: Profile page displaying fields
     const [user, setUser] = useState();
     useEffect(() =>{
         console.log(status);
@@ -52,30 +47,50 @@ const Profile = ({ values, errors, touched, isSubmitting, status }) => {
     function hideLogin() {
     }
 
+    // TODO: Profile page displaying fields
     return (
         <div className='user-form'>      
         <Form>
+            {touched.name && errors.name && <p>{errors.name}</p>}
+            {touched.username && errors.username && <p>{errors.username}</p>}
             {touched.email && errors.email && <p>{errors.email}</p>}
             {touched.password && errors.password && <p>{errors.password}</p>}
+            <Field type="text" name="usertype" placeholder="Student" value={values.usertype} />
+            <Field type="text" name="name" placeholder="John or Jane Doe" value={values.name} />
+            <Field type="username" name="username" placeholder="username" value={values.username} />
             <Field type="email" name="email" placeholder="Email" value={values.email} />
             <Field type="password" name="password" placeholder="Password" value={values.password} />
-            <Button type="submit">Submit!</Button>
-        </Form>
-        <div><Link to="/signup" onClick={hideLogin}>Don't have an account?  Sign up here.</Link></div>
+            <Button type="submit">Save</Button>
+            {touched.password && errors.password && <p>{errors.password}</p>}
+            // TODO: 3 Student went above and beyond the project (search function?)
+            <SearchForm />
+            </Form>
         </div>
       
   );
 }
 
+    // TODO: 2 Some form validation is in place.
+    // TODO: 3 Form validation is in place for all fields, and covers all use cases. 
+	// TODO: 2 Student made the decision to use a third-party library, like Formik, or not, and can defend their decision. 
+
 const FormikForm = withFormik({    
     mapPropsToValues({ email, password }) {
         return {
+        name: name || "",
+        username: username || "",
         email: email || "",
         password: password || ""
         };
         },
         // validation schema
         validationSchema: Yup.object().shape({
+            name: Yup.string()
+                .min(5, "Name must be at least five characters.")
+                .required("Name is required"),
+            username: Yup.string()
+                .min(5, "Username must be at least five characters.")
+                .required("Username is required"),
             email: Yup.string()
                 .email("Email not valid")
                 .required("Email is required"),
@@ -84,6 +99,8 @@ const FormikForm = withFormik({
                 .required("Password is required"),
     }),
 
+    // TODO: 2 Student implemented GET requests using either Axios or Fetch to display 3rd party data on a deployed page. 
+    // TODO: axios get request or parse response
     handleSubmit(values, { setStatus, resetForm, setErrors, setSubmitting }) {
         
             axios
