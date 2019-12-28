@@ -1,12 +1,9 @@
-{"posts": [
-    { "id": 1, "title": "json-server", "author": "typicode" }
-  ],
-  "comments": [
-    { "id": 1, "body": "some comment", "postId": 1 }
-  ],
-  "profile": { "name": "typicode" },
-  "tickets": [
-    {
+{
+	"posts": [ { "id": 1, "title": "json-server", "author": "typicode" } ],
+	"comments": [ { "id": 1, "body": "some comment", "postId": 1 } ],
+	"profile": { "name": "typicode" },
+	"tickets": [
+		{
 			"id": 0,
 			"title": "test",
 			"date": "12/27/2019",
@@ -66,9 +63,9 @@
 			"submitid": 3,
 			"helperid": 2
 		}
-  ],
-  "contacts": [
-    {
+	],
+	"contacts": [
+		{
 			"id": 0,
 			"ticketid": "0",
 			"date": "12/1/2019",
@@ -159,14 +156,14 @@
 			"description": "test description contact what i did 12",
 			"submitid": "3"
 		}
-  ],
-  "userinfo": [
-    {
+	],
+	"userinfo": [
+		{
 			"id": 0,
 			"name": "Adam Ingram",
 			"username": "aingram",
-			"email": "evoingram@aquoco.onmicrosoft.com",
-			"password": "nopasswords",
+			"email": "evanostrand@gmail.com",
+			"password": "nopassword",
 			"usertype": "student"
 		},
 		{
@@ -181,7 +178,7 @@
 			"id": 2,
 			"name": "Tooth Fairy",
 			"username": "toothy",
-			"email": "evoingram@aquoco.onmicrosoft.com",
+			"email": "evoingram@gmail.com",
 			"password": "nopassword",
 			"usertype": "helper"
 		},
@@ -189,9 +186,9 @@
 			"id": 3,
 			"name": "Santa Claus",
 			"username": "santaclaus",
-			"email": "evoingram@aquoco.onmicrosoft.com",
+			"email": "inquiries@aquoco.co",
 			"password": "nopassword",
 			"usertype": "student"
 		}
-  ]
+	]
 }

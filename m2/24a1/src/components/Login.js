@@ -4,7 +4,6 @@ import * as Yup from "yup";
 import axios from "axios";
 // import { useInput } from './CustomHooks/InputHook'
 import styled from 'styled-components';
-import loadForm from './old pages/Form.js';
 import { Link } from 'react-router-dom';
 import hideLogin, { hideSignup } from './Hide.js';
 
@@ -16,7 +15,8 @@ const Button = styled.button`
   font-weight: bold;
   margin: 0 1em;
   padding: 0.25em 1em;
-`
+`   
+                                                            // supposed to go in UserForm parameters ", status"
 const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
 
     // TODO: 3 Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
@@ -35,14 +35,19 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
     // TODO: 2 Student's code was organized at the component level
     // TODO: 2 Student has set up component management for the forms in the app that makes sense for each form. 
     
-    const [user, setUser] = useState();
     const [lVisible, setLVisible] = useState(true);
+    const [currentUsertype, setCurrentUsertype] = useState("");
+    const [currentUserID, setCurrentUserID] = useState();
+    const [currentDate, setCurrentDate] = useState(new Date());
 
-    // setVisible(lVisible => { lVisible });
-
-    useEffect(() => {
-        console.log(status);
-        status && setUser(user => [...user, status]);
+    useEffect(() => {  
+        if (status != null) {
+            console.log("status = " + status);    
+            setCurrentUsertype(`${status.usertype}`);
+            setCurrentUserID(`${status.id}`);
+            console.log(`useEffect:  Today is ${currentDate}.`);
+            console.log(`useEffect:  ${status.username}'s usertype is ${status.usertype}.  Loading profile, assigned tickets, and queue.`);
+        };
     }, [status]);
 
 
@@ -51,14 +56,12 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
     }
 
     function afterLogin() {
-        // hide login form on click to log in
-        hideLogin();
+        // hide login form
+        toggleLVisible();
         // TODO:  get usertype of logging-in user 
-        // TODO:  if student, return Profile & TicketListS
+        // TODO:  if student, return Profile & TicketListS currentUsertype
         // TODO:  if helper, return Profile & TicketListH
     }
-    
-
     
         if (window.location.pathname === '/signup') {
             console.log('hiding login');
@@ -89,7 +92,8 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
     // TODO: 2 Some form validation is in place.
     // TODO: 3 Form validation is in place for all fields, and covers all use cases. 
     // TODO: 2 Student made the decision to use a third-party library, like Formik, or not, and can defend their decision. 
-    
+
+
 const FormikForm = withFormik({    
     mapPropsToValues({ email, password }) {
         return {
@@ -108,17 +112,21 @@ const FormikForm = withFormik({
         }),
         
     // TODO: 2 Student implemented GET requests using either Axios or Fetch to display 3rd party data on a deployed page. 
-
-    handleSubmit(values, { setStatus, resetForm, setErrors, setSubmitting }) {
-        
+        // statusT, currentUsertype, setCurrentDate, setCurrentUserID, setCurrentUsertype, setStatusT, 
+    handleSubmit(values, { status, setStatus, resetForm, setErrors, setSubmitting }) {
+        let url = `http://localhost:5000/userinfo?email=${values.email}`;
             axios
-                .get("http://localhost:3000/userinfo?email=" + values.email, values)
+                .get(url, values)
                 .then(res => {
-                    console.log("login response = " + res.data); // Data was created successfully and logs to console
-                    setStatus(res.data);
+                    console.log(url);
+                    console.log(`res response ${res.data[0]}`); // Data was created successfully and logs to console
+                    console.log(`res array response ${[res]}`); // Data was created successfully and logs to console
+                    setStatus(res.data[0]);
+                    console.log(values.email);
+                    console.log(values);
+                    console.log(`axios:  ${res.data[0].username}'s usertype is ${res.data[0].usertype}.  Loading profile, assigned tickets, and queue.`);
                     resetForm();
                     setSubmitting(false);
-                    loadForm();
                 })
                 .catch(err => {
                     console.log(err); // logs error creating the data 

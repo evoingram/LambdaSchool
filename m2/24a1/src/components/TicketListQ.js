@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { withFormik, Form, Field } from "formik";
-import * as Yup from "yup";
-import axios from "axios";
 // import { useInput } from './CustomHooks/InputHook'
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import hideLogin from './Hide.js';
 import hideSignup from './Hide.js';
@@ -11,6 +8,8 @@ import SearchForm from './SearchForm.js';
 import Ticket from './Ticket.js';
 import HeaderH from './HeaderH.js';
 
+
+/*
 const Button = styled.button`
   background: #002244;
   border-radius: 3px;
@@ -20,7 +19,7 @@ const Button = styled.button`
   margin: 0 1em;
   padding: 0.25em 1em;
 `
-
+*/
 
 const TicketListQ = props => {
   //fields: static header, ticket component
@@ -74,7 +73,7 @@ const TicketListQ = props => {
           {
             searchResults.map(
               ticket => (
-                <Ticket key={ticket.id} ticket={ticket} />
+                <Link to="/ticket"><Ticket key={ticket.id} ticket={ticket} /></Link>
               )
             )
           }

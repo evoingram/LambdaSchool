@@ -58,7 +58,7 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
     }
 
 
-    
+
     // hide login on clicking sign-up button
     if (window.location.pathname === '/login') return null;  
     return (
@@ -71,7 +71,7 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
             <Field type="password" name="password" placeholder="Password" value={values.password} />
             <Field type="password" name="cPassword" placeholder="Confirm password" value={values.cPassword} />
             <Button type="submit" onClick={registerUser}>Sign up!</Button>
-            <Link to="/login">
+            <Link to="/">
                 <Button type="submit"  onClick={toggleSVisible}>Back To Log In</Button>
             </Link>
             

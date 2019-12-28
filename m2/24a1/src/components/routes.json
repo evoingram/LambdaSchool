@@ -16,6 +16,5 @@
 	"/contacts/:ticketid": "/contacts?ticketid=:ticketid",
 	"/contacts/:submitid": "/contacts?submitid=:submitid",
 	"/contacts/:date": "/contacts?date=:date",
-	"/userinfo\\?usertype=:usertype": "/userinfo/:usertype",
 	"/articles\\?id=:id": "/posts/:id"
 }

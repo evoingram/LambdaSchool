@@ -15,25 +15,26 @@ const Button = styled.button`
 `
 const Form = {}
 
-function loadForm(){
-axios
-    .get("http://localhost:3000/data")
-    .then(res => {
-        console.log("form response = "); // Data was created successfully and logs to console
-        console.log(res.data.data);
-        console.log("form userinfo = " + res.data.userinfo);
-        console.log("form tickets = " + res.data.tickets);
-        console.log("form contacts = " + res.data.contacts);
+function loadForm() {
+    /*
+    axios
+        .get("http://localhost:3000/data")
+        .then(res => {
+            console.log("form response = "); // Data was created successfully and logs to console
+            console.log(res.data.data);
+            console.log("form userinfo = " + res.data.userinfo);
+            console.log("form tickets = " + res.data.tickets);
+            console.log("form contacts = " + res.data.contacts);
 
 
 
 
-    })
-    .catch(err => {
-        console.log(err); // logs error creating the data 
-    });  
-    
-    
+        })
+        .catch(err => {
+            console.log(err); // logs error creating the data 
+        });  
+        
+        */
         }
 loadForm();
 
