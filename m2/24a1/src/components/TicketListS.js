@@ -39,7 +39,7 @@ const TicketListS = props => {
     // TODO: 2 Student has set up component management for the forms in the app that makes sense for each form. 
     
   
-  // TODO: Ticket list for students
+    // // TODO: Ticket list for students
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
@@ -54,25 +54,17 @@ const TicketListS = props => {
   const handleChange = event => {
     setSearchTerm(event.target.value);
   };
+
+      // TODO: 3 Student went above and beyond the project (search function?)
   return (
     <section className="search-form">
-      <form>
-        <label htmlFor="name">Search:</label>
-        <input
-          id="name"
-          type="text"
-          name="textfield"
-          placeholder="Search"
-          value={searchTerm}
-          onChange={handleChange}
-        />
-      </form>
+      <SearchForm />
       <div className="character-list">
         <ul>
           {
             searchResults.map(
-              character => (
-                <CharacterCard key={character.id} character={character} />
+              ticket => (
+                <Ticket key={ticket.id} ticket={ticket} />
               )
             )
           }

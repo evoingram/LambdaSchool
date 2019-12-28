@@ -44,6 +44,11 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
 
         // TODO:  hide login form on click to sign up
     }
+    function afterLogin() {
+            // TODO:  get usertype of logging-in user 
+            // TODO:  if student, return Profile & TicketListS
+            // TODO:  if helper, return Profile & TicketListH
+    }
 
     return (
         <div className='user-form'>      

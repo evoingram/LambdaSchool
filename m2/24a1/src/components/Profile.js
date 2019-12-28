@@ -62,8 +62,6 @@ const Profile = ({ values, errors, touched, isSubmitting, status }) => {
             <Field type="password" name="password" placeholder="Password" value={values.password} />
             <Button type="submit">Save</Button>
             {touched.password && errors.password && <p>{errors.password}</p>}
-            // TODO: 3 Student went above and beyond the project (search function?)
-            <SearchForm />
             </Form>
         </div>
       
@@ -104,13 +102,16 @@ const FormikForm = withFormik({
     handleSubmit(values, { setStatus, resetForm, setErrors, setSubmitting }) {
         
             axios
-                .get("http://localhost:3000/userinfo?email=" + values.email, values)
+                .get("http://localhost:3000/userinfo?username=" + values.username, values)
                 .then(res => {
                     console.log("login response = " + res.data); // Data was created successfully and logs to console
                     setStatus(res.data);
                     resetForm();
                     setSubmitting(false);
                     loadForm();
+
+
+                    
                 })
                 .catch(err => {
                     console.log(err); // logs error creating the data 

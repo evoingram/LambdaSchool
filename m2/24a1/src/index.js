@@ -22,13 +22,13 @@ ReactDOM.render(
 	// Student implemented GET requests using either Axios or Fetch to display 3rd party data on a deployed page. 
 	-- Route management properly installed and used to show top level pages as well as nested views where necessary.
 	-- Student has set up component management for the forms in the app that makes sense for each form. 
-	-- Student made the decision to use a third-party library, like Formik, or not, and can defend their decision. 
-	-- Some form validation is in place.
+	// Student made the decision to use a third-party library, like Formik, or not, and can defend their decision. 
+	// Some form validation is in place.
 	// Student's work demonstrates that all MVP features were built
 
 Score 3:
 	-- Student showed great insight in setting up the state management for the app's forms. 
-	-- Form validation is in place for all fields, and covers all use cases. 
+	// Form validation is in place for all fields, and covers all use cases. 
 	-- Loading states and success/error notifications are in place and add to the overall UX of the app.
   -- Not only are standard network request techniques employed, the code is organized in such a fashion that the student    
         demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
