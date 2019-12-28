@@ -6,7 +6,7 @@ import hideLogin from './Hide.js';
 import hideSignup from './Hide.js';
 import SearchForm from './SearchForm.js';
 import Ticket from './Ticket.js';
-import HeaderH from './HeaderH.js';
+import HeaderQ from './HeaderQ.js';
 
 
 /*
@@ -69,7 +69,7 @@ const TicketListQ = props => {
       // TODO: ticket component linked to open ticket
   return (
     <section className="search-form">
-      <HeaderH />
+      <HeaderQ />
     <SearchForm />
       <div className="character-list">
         <ul>

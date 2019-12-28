@@ -17,6 +17,7 @@ import React from "react";
 	// TODO: 2 Student's code was organized at the component level
 	// TODO: 2 Student has set up component management for the forms in the app that makes sense for each form. 
 
+	// TODO:  Combine all headers into one if you have time
 export default function Header() {
   return (
     <header className="ui centered">

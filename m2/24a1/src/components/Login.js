@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import hideLogin, { hideSignup } from './Hide.js';
 import MainH from './MainH.js';
 import MainS from './MainS.js';
+import { browserHistory } from 'react-router';
 
 const Button = styled.button`
   background: #002244;
@@ -63,6 +64,7 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
                     console.log(`res array response ${[res]}`); // Data was created successfully and logs to console
                     setTickets(res.data);
                     console.log(`useEffect:  ${res.data[0].title}'s ticket category is ${res.data[0].category} and status is ${res.data[0].status}.  Loading profile, assigned tickets, and queue.`);
+
                 })
                 .catch(err => {
                     console.log(err); // logs error creating the data 
@@ -72,16 +74,19 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
             
             console.log(`current user type is ${status.usertype}`);
 
-            if (status.usertype === "helper") { 
-                // TODO:  if helper, return Profile & TicketListH
-                    setLinkTo("/MainH");
-            }
-                // TODO:  if student, return Profile & TicketListS currentUsertype
-            else { 
-                    setLinkTo("/MainS");
+                
+            console.log(`main page loading for a ${status.usertype}`);
 
-            };
+            if (status.usertype === "helper") {
+                // TODO:  if helper, return Profile & TicketListH
+            window.location.pathname = "/MainH";
+                // return (<MainH />);
             }
+            else { 
+                window.location.pathname = "/MainS";
+                // return (<MainS />);
+            }
+        }
 
     }, [status]);
 
@@ -90,6 +95,17 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
         setLVisible(!lVisible);
     }
 
+    function loadMainPage(status) { 
+        console.log(`main page loading for a ${status.usertype}`);
+        if (status.usertype === "helper") {
+            // TODO:  if helper, return Profile & TicketListH
+            return <MainH />;
+        }
+        else { 
+            return <MainS />;
+        }
+        
+    }
     
         if (window.location.pathname === '/signup' || window.location.pathname === '/MainS' || window.location.pathname === '/MainH' ) {
             console.log('hiding login');
@@ -104,22 +120,7 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
                         {touched.password && errors.password && <p>{errors.password}</p>}
                         <Field type="email" name="email" placeholder="Email" value={values.email} />
                         <Field type="password" name="password" placeholder="Password" value={values.password} />
-                        {/*
-                        <Link to={linkTo}>
-                            <Button type="submit">Submit!</Button>                        
-                        </Link>
-                        */}
-                        {
-                            ( currentUsertype === "helper" )
-                                ?
-                                (< Link to="/MainH">
-                                    <Button type="submit">Submit!</Button>
-                                 </Link>)
-                                :
-                                (<Link to="/MainS">
-                                    <Button type="submit">Submit!</Button>
-                                 </Link >)
-                        }
+                        <Button type="submit">Submit!</Button>
                     </Form>
                     {
                         // hide login form on click to sign up -- hideLogin();    

@@ -25,7 +25,7 @@ hideSignup();
 export default function Header() {
   return (
     <header className="ui centered">
-      <h1 className="ui center">Lambda School's DevDesk Helper Queue</h1>
+      <h1 className="ui center">Lambda School's DevDesk Ticket Queue</h1>
     </header>
   );
 }
