@@ -43,6 +43,7 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
     function hideLogin() {
 
         // TODO:  hide login form on click to sign up
+        if (window.location.pathname === '/signup') return null;
     }
     function afterLogin() {
             // TODO:  get usertype of logging-in user 

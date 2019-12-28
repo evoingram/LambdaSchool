@@ -45,6 +45,10 @@ const Profile = ({ values, errors, touched, isSubmitting, status }) => {
     }, [status]);
 
     function hideLogin() {
+        // TODO:  hide login on login submit
+        if (window.location.pathname === '/login') return null;
+        // TODO:  hide sign-up form on sign-up submit
+        if (window.location.pathname === '/signup') return null;
     }
 
     // TODO: Profile page displaying fields
@@ -111,7 +115,7 @@ const FormikForm = withFormik({
                     loadForm();
 
 
-                    
+
                 })
                 .catch(err => {
                     console.log(err); // logs error creating the data 

@@ -55,7 +55,12 @@ const TicketListS = props => {
     setSearchTerm(event.target.value);
   };
 
+  // hide current page when login showing
+  if (window.location.pathname === '/login') return null;
+  // hide current page when sign-up showing
+  if (window.location.pathname === '/signup') return null;
       // TODO: 3 Student went above and beyond the project (search function?)
+      // TODO: ticket component linked to open ticket
   return (
     <section className="search-form">
       <SearchForm />

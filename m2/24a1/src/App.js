@@ -12,11 +12,23 @@ import Signup from './components/Signup.js';
   // TODO: 
   
 export default function App() {
+  // click signup, hide login 
+  // click login, hide login & signup, load profile + ticketlistH/S
+
   return (
     <main>
-      <Header />
-      <Login />
-      <Route path="/signup" component={Signup}/>
+      <div>
+        <Router history={history}>
+          <Switch>
+            <Header />
+            <Login />
+            <Route path="/signup" component={Signup}/>
+            <Route path="/profile" component={Profile}/>
+            <Route path="/TicketListH" component={TicketListH}/>
+            <Route path="/TicketListS" component={TicketListS} />    
+          </Switch>
+        </Router>
+      </div>
     </main>
   );
 }
