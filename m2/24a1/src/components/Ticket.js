@@ -6,6 +6,7 @@ import axios from "axios";
 import styled from 'styled-components';
 import loadForm from './old pages/Form.js/index.js';
 import { Link } from 'react-router-dom';
+import Hide from 'Hide.js';
 
 const Button = styled.button`
   background: #002244;
@@ -49,9 +50,9 @@ const Ticket = props => {
 
     function hideLogin() {
       // hide current page when login showing
-      if (window.location.pathname === '/login') return null;
+      hideLogin();
       // hide current page when sign-up showing
-      if (window.location.pathname === '/signup') return null;
+      hideSignup();
     }
 
     return (

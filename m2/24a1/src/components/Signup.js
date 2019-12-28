@@ -6,6 +6,7 @@ import axios from "axios";
 import styled from 'styled-components';
 import loadForm from './old pages/Form.js';
 import { Link } from 'react-router-dom';
+import hideLogin from 'Hide.js';
 
 const Button = styled.button`
   background: #002244;
@@ -39,11 +40,12 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
         status && setUser(user => [...user, status]);
     }, [status]);
 
-    function registerUser(){
-
-            // TODO:  update users to include new user as student
-            // TODO:  get usertype of logging-in user 
-            // TODO:  return Profile & TicketListS
+    function registerUser() {
+        // hide login on clicking sign-up button
+        hideLogin();
+        // TODO:  update users to include new user as student
+        // TODO:  get usertype of logging-in user 
+        // TODO:  return Profile & TicketListS
     }
 
     

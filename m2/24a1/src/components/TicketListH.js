@@ -6,6 +6,10 @@ import axios from "axios";
 import styled from 'styled-components';
 import loadForm from './Form.js';
 import { Link } from 'react-router-dom';
+import hideLogin from 'Hide.js';
+import hideSignup from 'Hide.js';
+import SearchForm from 'SearchForm.js';
+import Ticket from 'Ticket.js';
 
 const Button = styled.button`
   background: #002244;
@@ -56,9 +60,9 @@ const TicketListH = props => {
   };
 
   // hide current page when login showing
-  if (window.location.pathname === '/login') return null;
+  hideLogin();
   // hide current page when sign-up showing
-  if (window.location.pathname === '/signup') return null;
+  hideSignup();
       // TODO: 3 Student went above and beyond the project (search function?)
       // TODO: ticket component linked to open ticket
   return (

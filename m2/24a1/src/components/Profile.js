@@ -6,6 +6,7 @@ import axios from "axios";
 import styled from 'styled-components';
 import loadForm from './old pages/Form.js/index.js';
 import { Link } from 'react-router-dom';
+import hideSignup from 'Hide.js';
 
 const Button = styled.button`
   background: #002244;
@@ -45,10 +46,10 @@ const Profile = ({ values, errors, touched, isSubmitting, status }) => {
     }, [status]);
 
     function hideLogin() {
-        // TODO:  hide login on login submit
-        if (window.location.pathname === '/login') return null;
-        // TODO:  hide sign-up form on sign-up submit
-        if (window.location.pathname === '/signup') return null;
+        // hide current page when login showing
+        hideLogin();
+        // hide current page when sign-up showing
+        hideSignup();
     }
 
     // TODO: Profile page displaying fields

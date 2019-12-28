@@ -6,6 +6,7 @@ import axios from "axios";
 import styled from 'styled-components';
 import loadForm from './old pages/Form.js';
 import { Link } from 'react-router-dom';
+import hideLogin from 'Hide.js';
 
 const Button = styled.button`
   background: #002244;
@@ -40,27 +41,29 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
         status && setUser(user => [...user, status]);
     }, [status]);
 
-    function hideLogin() {
-
-        // TODO:  hide login form on click to sign up
-        if (window.location.pathname === '/signup') return null;
-    }
     function afterLogin() {
-            // TODO:  get usertype of logging-in user 
-            // TODO:  if student, return Profile & TicketListS
-            // TODO:  if helper, return Profile & TicketListH
+        // hide login form on click to log in
+        hideLogin();
+        // TODO:  get usertype of logging-in user 
+        // TODO:  if student, return Profile & TicketListS
+        // TODO:  if helper, return Profile & TicketListH
     }
-
+    
     return (
         <div className='user-form'>      
-        <Form>
-            {touched.email && errors.email && <p>{errors.email}</p>}
-            {touched.password && errors.password && <p>{errors.password}</p>}
-            <Field type="email" name="email" placeholder="Email" value={values.email} />
-            <Field type="password" name="password" placeholder="Password" value={values.password} />
-            <Button type="submit">Submit!</Button>
-        </Form>
-        <div><Link to="/signup" onClick={hideLogin}>Don't have an account?  Sign up here.</Link></div>
+            <Form>
+                {touched.email && errors.email && <p>{errors.email}</p>}
+                {touched.password && errors.password && <p>{errors.password}</p>}
+                <Field type="email" name="email" placeholder="Email" value={values.email} />
+                <Field type="password" name="password" placeholder="Password" value={values.password} />
+                <Button type="submit">Submit!</Button>
+            </Form>
+            {
+                // hide login form on click to sign up -- hideLogin();    
+            }
+            <div>
+                <Link to="/signup" onClick={hideLogin}>Don't have an account?  Sign up here.</Link>
+            </div>
         </div>
       
   );
