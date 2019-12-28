@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import hideLogin, { hideSignup } from "./Hide";
 // import Ticket from '../components/Ticket.js';
     
     // TODO: 3 Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
@@ -20,9 +21,10 @@ import React, { useState, useEffect } from "react";
     // TODO: 2 Student has set up component management for the forms in the app that makes sense for each form. 
 
 // hide current page when login showing
-if (window.location.pathname === '/login') return null;
+hideLogin();
 // hide current page when sign-up showing
-if (window.location.pathname === '/signup') return null;
+hideSignup();
+
 const SearchForm = props => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);

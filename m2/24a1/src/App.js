@@ -9,12 +9,9 @@ import hideSignup from './components/Hide.js';
 import Profile from './components/Profile.js';
 import TicketListH from './components/TicketListH.js';
 import TicketListS from './components/TicketListS.js';
+import TicketListQ from './components/TicketListQ.js';
 
 	// TODO: 2 Route management properly installed and used to show top level pages as well as nested views where necessary.
-  // TODO: 
-  // TODO: 
-  // TODO: 
-  // TODO: 
   
 export default function App() {
   // click signup, hide login 
@@ -25,7 +22,7 @@ export default function App() {
       <div>
           <Header />
           <Login />
-          <Route path="/signup" component={Signup}/>
+          <Route path="/signup" component={Signup} onClick={hideLogin}/>
           <Route path="/profile" component={Profile}/>
           <Route path="/TicketListH" component={TicketListH}/>
           <Route path="/TicketListS" component={TicketListS} />  

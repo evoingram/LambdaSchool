@@ -6,7 +6,7 @@ import axios from "axios";
 import styled from 'styled-components';
 import loadForm from './old pages/Form.js';
 import { Link } from 'react-router-dom';
-import hideLogin from './Hide.js';
+import hideLogin, { hideSignup } from './Hide.js';
 
 const Button = styled.button`
   background: #002244;
@@ -36,10 +36,18 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
     // TODO: 2 Student has set up component management for the forms in the app that makes sense for each form. 
     
     const [user, setUser] = useState();
-    useEffect(() =>{
+    const [visible, setVisible] = useState(true);
+
+    // setVisible(visible => { visible });
+
+    useEffect(() => {
         console.log(status);
         status && setUser(user => [...user, status]);
     }, [status]);
+
+    function toggleVisible(){ 
+        setVisible(!visible);
+    }
 
     function afterLogin() {
         // hide login form on click to log in
@@ -49,24 +57,30 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
         // TODO:  if helper, return Profile & TicketListH
     }
     
-    return (
-        <div className='user-form'>      
-            <Form>
-                {touched.email && errors.email && <p>{errors.email}</p>}
-                {touched.password && errors.password && <p>{errors.password}</p>}
-                <Field type="email" name="email" placeholder="Email" value={values.email} />
-                <Field type="password" name="password" placeholder="Password" value={values.password} />
-                <Button type="submit">Submit!</Button>
-            </Form>
-            {
-                // hide login form on click to sign up -- hideLogin();    
-            }
-            <div>
-                <Link to="/signup" onClick={hideLogin}>Don't have an account?  Sign up here.</Link>
-            </div>
-        </div>
-      
-  );
+        if (window.location.pathname === '/signup') {
+            console.log('hiding login');
+            return null;
+        }
+        else {
+            console.log('showing login');
+            return (
+                <div className='user-form'>
+                    <Form>
+                        {touched.email && errors.email && <p>{errors.email}</p>}
+                        {touched.password && errors.password && <p>{errors.password}</p>}
+                        <Field type="email" name="email" placeholder="Email" value={values.email} />
+                        <Field type="password" name="password" placeholder="Password" value={values.password} />
+                        <Button type="submit">Submit!</Button>
+                    </Form>
+                    {
+                        // hide login form on click to sign up -- hideLogin();    
+                    }
+                    <div>
+                        <Link to="/signup"><Button type="submit" onClick={toggleVisible}>Register</Button></Link>
+                    </div>
+                </div>
+            );
+        }
 }
 
     // TODO: 2 Some form validation is in place.

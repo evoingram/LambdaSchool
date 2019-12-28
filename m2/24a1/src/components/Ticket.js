@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import axios from "axios";
 // import { useInput } from './CustomHooks/InputHook'
 import styled from 'styled-components';
-import loadForm from './old pages/Form.js/index.js';
+import loadForm from './Hide.js';
 import { Link } from 'react-router-dom';
 import hideLogin from './Hide.js';
 import hideSignup from './Hide.js';

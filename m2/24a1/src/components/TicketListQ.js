@@ -22,7 +22,7 @@ const Button = styled.button`
 `
 
 
-const TicketListH = props => {
+const TicketListQ = props => {
   //fields: static header, ticket component
     // TODO: 3 Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
   
@@ -85,6 +85,6 @@ const TicketListH = props => {
   );
 }
 
-export default TicketListH;
+export default TicketListQ;
 
 

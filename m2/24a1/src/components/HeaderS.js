@@ -1,4 +1,6 @@
 import React from "react";
+import hideLogin from './Hide.js';
+import hideSignup from './Hide.js';
   
   	// TODO: 3 Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
   
@@ -17,14 +19,15 @@ import React from "react";
 	// TODO: 2 Student's code was organized at the component level
 	// TODO: 2 Student has set up component management for the forms in the app that makes sense for each form. 
 
-    // hide current page when login showing
-    if (window.location.pathname === '/login') return null;
-    // hide current page when sign-up showing
-    if (window.location.pathname === '/signup') return null;
+// hide current page when login showing
+hideLogin();
+// hide current page when sign-up showing
+hideSignup();
+
 export default function Header() {
   return (
     <header className="ui centered">
-      <h1 className="ui center">Lambda School's DevDesk Queue</h1>
+      <h1 className="ui center">Your Tickets</h1>
     </header>
   );
 }

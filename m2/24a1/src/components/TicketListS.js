@@ -9,6 +9,7 @@ import hideLogin from './Hide.js';
 import hideSignup from './Hide.js';
 import SearchForm from './SearchForm.js';
 import Ticket from './Ticket.js';
+import HeaderS from './HeaderS.js';
 
 const Button = styled.button`
   background: #002244;
@@ -66,6 +67,7 @@ const TicketListS = props => {
       // TODO: ticket component linked to open ticket
   return (
     <section className="search-form">
+      <HeaderS />
       <SearchForm />
       <div className="character-list">
         <ul>

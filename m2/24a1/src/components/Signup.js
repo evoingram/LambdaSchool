@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import loadForm from './old pages/Form.js';
 import { Link } from 'react-router-dom';
 import hideLogin from './Hide.js';
+import hideSignup from './Hide.js';
 
 const Button = styled.button`
   background: #002244;
@@ -41,14 +42,14 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
     }, [status]);
 
     function registerUser() {
-        // hide login on clicking sign-up button
-        hideLogin();
+        if (window.location.pathname === '/login') return null;
         // TODO:  update users to include new user as student
         // TODO:  get usertype of logging-in user 
         // TODO:  return Profile & TicketListS
     }
 
-    
+    // hide login on clicking sign-up button
+    if (window.location.pathname === '/login') return null;  
     return (
         <div className='user-form'>      
         <Form>
