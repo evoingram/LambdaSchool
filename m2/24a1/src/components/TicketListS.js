@@ -46,11 +46,14 @@ const TicketListS = props => {
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    const results = props.characters.filter(character =>
-      character.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-      character.status.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setSearchResults(results);
+    if(props.tickets != null) {
+      const results = props.tickets.filter(ticket =>
+        ticket.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+        ticket.status.toLowerCase().includes(searchTerm.toLowerCase())
+        
+      );
+      setSearchResults(results);
+      }
   }, [searchTerm]);
 
   const handleChange = event => {

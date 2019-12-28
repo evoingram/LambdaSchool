@@ -42,6 +42,7 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
     const [currentUserID, setCurrentUserID] = useState();
     const [currentDate, setCurrentDate] = useState(new Date());
     const [tickets, setTickets] = useState();
+    const [linkTo, setLinkTo] = useState();
 
     useEffect(() => {  
         if (status != null) {
@@ -68,7 +69,20 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
             });  
             
             setTickets([]);
-        };
+            
+            console.log(`current user type is ${status.usertype}`);
+
+            if (status.usertype === "helper") { 
+                // TODO:  if helper, return Profile & TicketListH
+                    setLinkTo("/MainH");
+            }
+                // TODO:  if student, return Profile & TicketListS currentUsertype
+            else { 
+                    setLinkTo("/MainS");
+
+            };
+            }
+
     }, [status]);
 
 
@@ -76,20 +90,8 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
         setLVisible(!lVisible);
     }
 
-    const linkTo = ()=>{
-        console.log(`current user type is ${currentUsertype}`);
-        // TODO:  if helper, return Profile & TicketListH
-        if (currentUsertype === "helper") { 
-            return "/MainH";
-        }
-        // TODO:  if student, return Profile & TicketListS currentUsertype
-        else { 
-            return "/MainS";
-
-        }
-    }
     
-        if (window.location.pathname === '/signup') {
+        if (window.location.pathname === '/signup' || window.location.pathname === '/MainS' || window.location.pathname === '/MainH' ) {
             console.log('hiding login');
             return null;
         }
@@ -102,7 +104,22 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
                         {touched.password && errors.password && <p>{errors.password}</p>}
                         <Field type="email" name="email" placeholder="Email" value={values.email} />
                         <Field type="password" name="password" placeholder="Password" value={values.password} />
-                        <Link to={linkTo}><Button type="submit">Submit!</Button></Link>
+                        {/*
+                        <Link to={linkTo}>
+                            <Button type="submit">Submit!</Button>                        
+                        </Link>
+                        */}
+                        {
+                            ( currentUsertype === "helper" )
+                                ?
+                                (< Link to="/MainH">
+                                    <Button type="submit">Submit!</Button>
+                                 </Link>)
+                                :
+                                (<Link to="/MainS">
+                                    <Button type="submit">Submit!</Button>
+                                 </Link >)
+                        }
                     </Form>
                     {
                         // hide login form on click to sign up -- hideLogin();    
