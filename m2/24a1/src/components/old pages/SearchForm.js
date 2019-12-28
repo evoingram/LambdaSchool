@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import CharacterCard from '../components/CharacterCard.js';
+// import React, { useState, useEffect } from "react";
+// import CharacterCard from '../components/CharacterCard.js';
 
 const SearchForm = props => {
   const [searchTerm, setSearchTerm] = useState("");

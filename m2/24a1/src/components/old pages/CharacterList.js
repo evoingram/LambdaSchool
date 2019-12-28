@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import CharacterCard from '../components/CharacterCard.js';
-import axios from 'axios';
-import { Route } from 'react-router-dom';
-import SearchForm from './SearchForm.js';
+// import React, { useEffect, useState } from "react";
+// import CharacterCard from '../components/CharacterCard.js';
+// import axios from 'axios';
+// import { Route } from 'react-router-dom';
+// import SearchForm from './SearchForm.js';
 
 export default function CharacterList() {
   const  [characters, setCharacters] = useState([])

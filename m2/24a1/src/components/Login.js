@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import axios from "axios";
 // import { useInput } from './CustomHooks/InputHook'
 import styled from 'styled-components';
-import loadForm from './old pages/Form.js/index.js';
+import loadForm from './old pages/Form.js';
 import { Link } from 'react-router-dom';
 
 const Button = styled.button`
