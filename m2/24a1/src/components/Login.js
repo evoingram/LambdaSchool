@@ -58,6 +58,8 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
         // TODO:  if helper, return Profile & TicketListH
     }
     
+
+    
         if (window.location.pathname === '/signup') {
             console.log('hiding login');
             return null;
