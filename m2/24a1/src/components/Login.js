@@ -6,6 +6,8 @@ import axios from "axios";
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import hideLogin, { hideSignup } from './Hide.js';
+import MainH from './MainH.js';
+import MainS from './MainS.js';
 
 const Button = styled.button`
   background: #002244;
@@ -39,14 +41,33 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
     const [currentUsertype, setCurrentUsertype] = useState("");
     const [currentUserID, setCurrentUserID] = useState();
     const [currentDate, setCurrentDate] = useState(new Date());
+    const [tickets, setTickets] = useState();
 
     useEffect(() => {  
         if (status != null) {
             console.log("status = " + status);    
+            // get usertype/id of logging-in user 
             setCurrentUsertype(`${status.usertype}`);
             setCurrentUserID(`${status.id}`);
             console.log(`useEffect:  Today is ${currentDate}.`);
             console.log(`useEffect:  ${status.username}'s usertype is ${status.usertype}.  Loading profile, assigned tickets, and queue.`);
+            // afterLogin(status.usertype);
+            // TODO: another axios call to get list of tickets
+            let url = `localhost:5000/tickets?submitid=${status.id}`;
+            axios
+                .get(url, values)
+                .then(res => {
+                    console.log(url);
+                    console.log(`res response ${res.data[0]}`); // Data was created successfully and logs to console
+                    console.log(`res array response ${[res]}`); // Data was created successfully and logs to console
+                    setTickets(res.data);
+                    console.log(`useEffect:  ${res.data[0].title}'s ticket category is ${res.data[0].category} and status is ${res.data[0].status}.  Loading profile, assigned tickets, and queue.`);
+                })
+                .catch(err => {
+                    console.log(err); // logs error creating the data 
+            });  
+            
+            setTickets([]);
         };
     }, [status]);
 
@@ -55,12 +76,17 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
         setLVisible(!lVisible);
     }
 
-    function afterLogin() {
-        // hide login form
-        toggleLVisible();
-        // TODO:  get usertype of logging-in user 
-        // TODO:  if student, return Profile & TicketListS currentUsertype
+    const linkTo = ()=>{
+        console.log(`current user type is ${currentUsertype}`);
         // TODO:  if helper, return Profile & TicketListH
+        if (currentUsertype === "helper") { 
+            return "/MainH";
+        }
+        // TODO:  if student, return Profile & TicketListS currentUsertype
+        else { 
+            return "/MainS";
+
+        }
     }
     
         if (window.location.pathname === '/signup') {
@@ -76,7 +102,7 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
                         {touched.password && errors.password && <p>{errors.password}</p>}
                         <Field type="email" name="email" placeholder="Email" value={values.email} />
                         <Field type="password" name="password" placeholder="Password" value={values.password} />
-                        <Button type="submit">Submit!</Button>
+                        <Link to={linkTo}><Button type="submit">Submit!</Button></Link>
                     </Form>
                     {
                         // hide login form on click to sign up -- hideLogin();    
@@ -131,7 +157,8 @@ const FormikForm = withFormik({
                 .catch(err => {
                     console.log(err); // logs error creating the data 
                     setSubmitting(false);
-                });                
+            });  
+                      
                    
     }
 
