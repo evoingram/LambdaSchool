@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import axios from "axios";
 // import { useInput } from './CustomHooks/InputHook'
 import styled from 'styled-components';
-import loadForm from './Form.js';
+import loadForm from './old pages/Form.js/index.js';
 import { Link } from 'react-router-dom';
 
 const Button = styled.button`
@@ -23,6 +23,11 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
         status && setUser(user => [...user, status]);
     }, [status]);
 
+    function hideLogin() {
+
+        // TODO:  hide login form on click to sign up
+    }
+
     return (
         <div className='user-form'>      
         <Form>
@@ -32,12 +37,11 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
             <Field type="password" name="password" placeholder="Password" value={values.password} />
             <Button type="submit">Submit!</Button>
         </Form>
-        <div><Link to="/signup">Don't have an account?  Sign up here.</Link></div>
+        <div><Link to="/signup" onClick={hideLogin}>Don't have an account?  Sign up here.</Link></div>
         </div>
       
   );
 }
-
 
 const FormikForm = withFormik({    
     mapPropsToValues({ email, password }) {

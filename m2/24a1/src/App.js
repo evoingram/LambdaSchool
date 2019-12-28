@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Header from "./components/Header.js";
 import { Route } from 'react-router-dom';
 import Login from './components/Login.js';
-import Form from './components/Form.js';
+import Form from './components/old pages/Form.js/index.js';
 import Signup from './components/Signup.js';
 
 export default function App() {

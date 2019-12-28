@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import axios from "axios";
 // import { useInput } from './CustomHooks/InputHook'
 import styled from 'styled-components';
-import loadForm from './Form.js';
+import loadForm from './old pages/Form.js/index.js';
 import { Link } from 'react-router-dom';
 
 const Button = styled.button`
@@ -24,8 +24,8 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
     }, [status]);
 
     function registerUser(){
-        // axios put request
-        // update users to include new user as student
+        // TODO:  axios put request
+        // TODO:  update users to include new user as student
     }
 
     return (
