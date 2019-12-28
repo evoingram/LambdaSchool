@@ -36,17 +36,18 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
     // TODO: 2 Student has set up component management for the forms in the app that makes sense for each form. 
     
     const [user, setUser] = useState();
-    const [visible, setVisible] = useState(true);
+    const [lVisible, setLVisible] = useState(true);
 
-    // setVisible(visible => { visible });
+    // setVisible(lVisible => { lVisible });
 
     useEffect(() => {
         console.log(status);
         status && setUser(user => [...user, status]);
     }, [status]);
 
-    function toggleVisible(){ 
-        setVisible(!visible);
+
+    function toggleLVisible(){ 
+        setLVisible(!lVisible);
     }
 
     function afterLogin() {
@@ -76,7 +77,7 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
                         // hide login form on click to sign up -- hideLogin();    
                     }
                     <div>
-                        <Link to="/signup"><Button type="submit" onClick={toggleVisible}>Register</Button></Link>
+                        <Link to="/signup"><Button type="submit" onClick={toggleLVisible}>Register</Button></Link>
                     </div>
                 </div>
             );

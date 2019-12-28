@@ -10,7 +10,7 @@ function hideLogin() {
     // hide current page when sign-up showing
     if (window.location.pathname === '/signup') return null;
 }
-    
+
 
 function loadForm(){
 axios

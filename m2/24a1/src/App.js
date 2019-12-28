@@ -20,12 +20,13 @@ export default function App() {
   return (
     <main>
       <div>
-          <Header />
-          <Login />
-          <Route path="/signup" component={Signup} onClick={hideLogin}/>
-          <Route path="/profile" component={Profile}/>
-          <Route path="/TicketListH" component={TicketListH}/>
-          <Route path="/TicketListS" component={TicketListS} />  
+        <Header />
+        <Login />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+        <Route path="/profile" component={Profile}/>
+        <Route path="/TicketListH" component={TicketListH}/>
+        <Route path="/TicketListS" component={TicketListS} />  
       </div>
     </main>
   );

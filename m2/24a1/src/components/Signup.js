@@ -8,6 +8,8 @@ import loadForm from './old pages/Form.js';
 import { Link } from 'react-router-dom';
 import hideLogin from './Hide.js';
 import hideSignup from './Hide.js';
+import toggleLVisible from './Login.js';
+import Login from './Login.js';
 
 const Button = styled.button`
   background: #002244;
@@ -36,10 +38,17 @@ const Button = styled.button`
     
 const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
     const [user, setUser] = useState();
+    const [sVisible, setSVisible] = useState(true);
+
     useEffect(() =>{
         console.log(status);
         status && setUser(user => [...user, status]);
     }, [status]);
+
+    
+    function toggleSVisible(){ 
+        setSVisible(!sVisible);
+    }
 
     function registerUser() {
         if (window.location.pathname === '/login') return null;
@@ -60,6 +69,9 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
             <Field type="password" name="password" placeholder="Password" value={values.password} />
             <Field type="password" name="cPassword" placeholder="Confirm password" value={values.cPassword} />
             <Button type="submit" onClick={registerUser}>Sign up!</Button>
+            <Link to="/login">
+                <Button type="submit"  onClick={toggleSVisible}>Back To Log In</Button>
+            </Link>
             
         </Form>
         </div>
