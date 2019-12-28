@@ -7,6 +7,7 @@ import hideSignup from './Hide.js';
 import SearchForm from './SearchForm.js';
 import Ticket from './Ticket.js';
 import HeaderQ from './HeaderQ.js';
+import tickets from './Login.js'
 
 
 /*
@@ -22,6 +23,7 @@ const Button = styled.button`
 */
 
 const TicketListQ = props => {
+  console.log("TLQ props = " + props.tickets);
   //fields: static header, ticket component
     // TODO: 3 Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
   
@@ -45,15 +47,23 @@ const TicketListQ = props => {
   // TODO: Ticket list for helpers
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [tickets, setTickets] = useState({});
 
   useEffect(() => {
-    if(props.tickets != null) {
-      const results = props.tickets.filter(ticket =>
+    let url = `http://localhost:5000/tickets?submitid=${props.match.params.c urren}`;
+
+
+
+
+
+    if(tickets != null) {
+      const results = tickets.filter(ticket =>
         ticket.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
         ticket.status.toLowerCase().includes(searchTerm.toLowerCase())
         
       );
       setSearchResults(results);
+      console.log("useEffect props = " + props);
       }
   }, [searchTerm]);
 
@@ -67,25 +77,68 @@ const TicketListQ = props => {
   hideSignup();
       // TODO: 3 Student went above and beyond the project (search function?)
       // TODO: ticket component linked to open ticket
+      // TODO: needs separate axios call for all unresolved tickets
+  console.log(tickets);
+
   return (
     <section className="search-form">
       <HeaderQ />
     <SearchForm />
       <div className="character-list">
-        <ul>
           {
-            searchResults.map(
-              ticket => (
-                <Link to="/ticket"><Ticket key={ticket.id} ticket={ticket} /></Link>
+              tickets.map(
+                ticket => (
+                  <Link to="/ticket"><Ticket key={ticket.id} ticket={ticket} /></Link>
+                )
               )
-            )
           }
-        </ul>
       </div>
     </section>
     
   );
 }
+
+/*
+
+            // afterLogin(status.usertype);
+            console.log(`${status.id}`);
+            // TODO: another axios call to get list of tickets
+            let url = `http://localhost:5000/tickets?submitid=${status.id}`;
+
+            console.log("tickets url = " + url);
+            axios
+                .get(url)
+                .then(res => {
+                    console.log(`ticket response ${res.data[0]}`); // Data was created successfully and logs to console
+                    console.log(`ticket array response ${res.data}`); // Data was created successfully and logs to console
+                    setTickets([...res.data]);
+                    console.log(`useEffect:  ${res.data[0].title}'s ticket category is ${res.data[0].category} and status is ${res.data[0].status}.  Loading profile, assigned tickets, and queue.`);
+
+                    console.log(`current user type is ${status.usertype}`);
+                    console.log(`main page loading for a ${status.usertype}`);
+
+
+                    if (status.usertype === "helper") {
+                        // TODO:  if helper, return Profile & TicketListH
+                        console.log(`tickets = " + ${tickets}`);    
+                    window.location.pathname = "/MainH";
+                        // return (<MainH />);
+                    }
+                    else { 
+                        console.log(`tickets = " + ${tickets}`);    
+                        window.location.pathname = "/MainS";
+                        // return (<MainS />);
+                    }
+
+                })
+                .catch(err => {
+                    console.log(err); // logs error creating the data 
+            });  
+            
+            
+        }
+
+*/
 
 export default TicketListQ;
 

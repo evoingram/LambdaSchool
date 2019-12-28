@@ -39,11 +39,10 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
     // TODO: 2 Student has set up component management for the forms in the app that makes sense for each form. 
     
     const [lVisible, setLVisible] = useState(true);
-    const [currentUsertype, setCurrentUsertype] = useState("");
-    const [currentUserID, setCurrentUserID] = useState();
+    const [currentUsertype, setCurrentUsertype] = useState("student");
+    const [currentUserID, setCurrentUserID] = useState("");
     const [currentDate, setCurrentDate] = useState(new Date());
-    const [tickets, setTickets] = useState();
-    const [linkTo, setLinkTo] = useState();
+    const [tickets, setTickets] = useState({});
 
     useEffect(() => {  
         if (status != null) {
@@ -52,40 +51,44 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
             setCurrentUsertype(`${status.usertype}`);
             setCurrentUserID(`${status.id}`);
             console.log(`useEffect:  Today is ${currentDate}.`);
-            console.log(`useEffect:  ${status.username}'s usertype is ${status.usertype}.  Loading profile, assigned tickets, and queue.`);
+            console.log(`useEffect:  ${status.username}'s usertype is ${status.usertype} and ID is ${status.id}.  Loading profile, assigned tickets, and queue.`);
+
             // afterLogin(status.usertype);
+            console.log(`${status.id}`);
             // TODO: another axios call to get list of tickets
-            let url = `localhost:5000/tickets?submitid=${status.id}`;
+            let url = `http://localhost:5000/tickets?submitid=${status.id}`;
+
+            console.log("tickets url = " + url);
             axios
-                .get(url, values)
+                .get(url)
                 .then(res => {
-                    console.log(url);
-                    console.log(`res response ${res.data[0]}`); // Data was created successfully and logs to console
-                    console.log(`res array response ${[res]}`); // Data was created successfully and logs to console
-                    setTickets(res.data);
+                    console.log(`ticket response ${res.data[0]}`); // Data was created successfully and logs to console
+                    console.log(`ticket array response ${res.data}`); // Data was created successfully and logs to console
+                    setTickets([...res.data]);
                     console.log(`useEffect:  ${res.data[0].title}'s ticket category is ${res.data[0].category} and status is ${res.data[0].status}.  Loading profile, assigned tickets, and queue.`);
+
+                    console.log(`current user type is ${status.usertype}`);
+                    console.log(`main page loading for a ${status.usertype}`);
+
+
+                    if (status.usertype === "helper") {
+                        // TODO:  if helper, return Profile & TicketListH
+                        console.log(`tickets = " + ${tickets}`);    
+                    window.location.pathname = "/MainH";
+                        // return (<MainH />);
+                    }
+                    else { 
+                        console.log(`tickets = " + ${tickets}`);    
+                        window.location.pathname = "/MainS";
+                        // return (<MainS />);
+                    }
 
                 })
                 .catch(err => {
                     console.log(err); // logs error creating the data 
             });  
             
-            setTickets([]);
             
-            console.log(`current user type is ${status.usertype}`);
-
-                
-            console.log(`main page loading for a ${status.usertype}`);
-
-            if (status.usertype === "helper") {
-                // TODO:  if helper, return Profile & TicketListH
-            window.location.pathname = "/MainH";
-                // return (<MainH />);
-            }
-            else { 
-                window.location.pathname = "/MainS";
-                // return (<MainS />);
-            }
         }
 
     }, [status]);
@@ -99,10 +102,10 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
         console.log(`main page loading for a ${status.usertype}`);
         if (status.usertype === "helper") {
             // TODO:  if helper, return Profile & TicketListH
-            return <MainH />;
+            return <MainH tickets={tickets}/>;
         }
         else { 
-            return <MainS />;
+            return <MainS tickets={tickets}/>;
         }
         
     }
@@ -182,4 +185,5 @@ const FormikForm = withFormik({
 
 })(UserForm);
 
+// export {currentUserID, currentUsertype, tickets};   
 export default FormikForm;

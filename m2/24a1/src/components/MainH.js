@@ -3,12 +3,12 @@ import Profile from './Profile.js';
 import TicketListH from './TicketListH.js';
 import TicketListQ from './TicketListQ.js';
 
-function MainH() {
+function MainH(tickets) {
     return (
         <div>
             <Profile />
-            <TicketListH />
-            <TicketListQ />
+            <TicketListH tickets={tickets}/>
+            <TicketListQ tickets={tickets}/>
         </div>
     );
 }
