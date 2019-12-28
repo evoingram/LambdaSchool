@@ -13,15 +13,21 @@ const Button = styled.button`
   margin: 0 1em;
   padding: 0.25em 1em;
 `
-function Form(){
+const Form = {}
+
+function loadForm(){
 axios
     .get("http://localhost:3000/data")
     .then(res => {
-        console.log("response = "); // Data was created successfully and logs to console
-        console.log(res.data);
-        console.log("userinfo = " + res.data.userinfo);
-        console.log("tickets = " + res.data.tickets);
-        console.log("contacts = " + res.data.contacts);
+        console.log("form response = "); // Data was created successfully and logs to console
+        console.log(res.data.data);
+        console.log("form userinfo = " + res.data.userinfo);
+        console.log("form tickets = " + res.data.tickets);
+        console.log("form contacts = " + res.data.contacts);
+
+
+
+
     })
     .catch(err => {
         console.log(err); // logs error creating the data 
@@ -29,5 +35,6 @@ axios
     
     
         }
-Form();
+loadForm();
+
 export default Form;
