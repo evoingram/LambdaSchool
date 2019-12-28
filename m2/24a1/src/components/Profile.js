@@ -4,9 +4,10 @@ import * as Yup from "yup";
 import axios from "axios";
 // import { useInput } from './CustomHooks/InputHook'
 import styled from 'styled-components';
-import loadForm from './old pages/Form.js/index.js';
+import loadForm from './old pages/Form.js';
 import { Link } from 'react-router-dom';
-import hideSignup from 'Hide.js';
+import hideLogin from './Hide.js';
+import hideSignup from './Hide.js';
 
 const Button = styled.button`
   background: #002244;
@@ -78,7 +79,7 @@ const Profile = ({ values, errors, touched, isSubmitting, status }) => {
 	// TODO: 2 Student made the decision to use a third-party library, like Formik, or not, and can defend their decision. 
 
 const FormikForm = withFormik({    
-    mapPropsToValues({ email, password }) {
+    mapPropsToValues({ name, username, email, password }) {
         return {
         name: name || "",
         username: username || "",

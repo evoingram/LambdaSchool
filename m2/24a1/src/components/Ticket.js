@@ -6,7 +6,8 @@ import axios from "axios";
 import styled from 'styled-components';
 import loadForm from './old pages/Form.js/index.js';
 import { Link } from 'react-router-dom';
-import Hide from 'Hide.js';
+import hideLogin from './Hide.js';
+import hideSignup from './Hide.js';
 
 const Button = styled.button`
   background: #002244;
@@ -18,7 +19,7 @@ const Button = styled.button`
   padding: 0.25em 1em;
 `
 
-const Ticket = props => {
+const Ticket = ({ values, errors, touched, isSubmitting, status }) => {
 
   // TODO: 3 Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
   
@@ -61,7 +62,7 @@ const Ticket = props => {
             {touched.title && errors.title && <p>{errors.title}</p>}
             {touched.date && errors.date && <p>{errors.date}</p>}
             {touched.category && errors.category && <p>{errors.category}</p>}
-            {touched.status && errors.status && <p>{errors.status}</p>}
+            {touched.statusT && errors.statusT && <p>{errors.statusT}</p>}
             {touched.description && errors.description && <p>{errors.description}</p>}
             {
               // TODO: possibly the following two lines should go in another component???
@@ -75,7 +76,7 @@ const Ticket = props => {
             }
             <Field type="date" name="date" placeholder="John or Jane Doe" value={values.date} />
             <Field type="text" name="category" placeholder="category" value={values.category} />
-            <Field type="text" name="status" placeholder="status" value={values.status} />
+            <Field type="text" name="statusT" placeholder="status" value={values.statusT} />
             <Field type="text" name="description" placeholder="What I've Tried This Time" value={values.description} />
             <Button type="submit">Save</Button>
             {
@@ -96,10 +97,14 @@ const Ticket = props => {
   // TODO: 3 Form validation is in place for all fields, and covers all use cases. 
 	// TODO: 2 Student made the decision to use a third-party library, like Formik, or not, and can defend their decision. 
 const FormikForm = withFormik({    
-    mapPropsToValues({ email, password }) {
+    mapPropsToValues({ submitid, date, title, category, statusT, description }) {
         return {
-        email: email || "",
-        password: password || ""
+        submitid: submitid || "",
+        date: date || "",
+        title: title || "",
+        category: category || "",
+        statusT: statusT || "",
+        description: description || ""
         };
         },
         // validation schema

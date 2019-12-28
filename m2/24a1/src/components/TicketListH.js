@@ -4,12 +4,11 @@ import * as Yup from "yup";
 import axios from "axios";
 // import { useInput } from './CustomHooks/InputHook'
 import styled from 'styled-components';
-import loadForm from './Form.js';
 import { Link } from 'react-router-dom';
-import hideLogin from 'Hide.js';
-import hideSignup from 'Hide.js';
-import SearchForm from 'SearchForm.js';
-import Ticket from 'Ticket.js';
+import hideLogin from './Hide.js';
+import hideSignup from './Hide.js';
+import SearchForm from './SearchForm.js';
+import Ticket from './Ticket.js';
 
 const Button = styled.button`
   background: #002244;

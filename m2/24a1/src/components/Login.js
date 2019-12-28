@@ -6,7 +6,7 @@ import axios from "axios";
 import styled from 'styled-components';
 import loadForm from './old pages/Form.js';
 import { Link } from 'react-router-dom';
-import hideLogin from 'Hide.js';
+import hideLogin from './Hide.js';
 
 const Button = styled.button`
   background: #002244;

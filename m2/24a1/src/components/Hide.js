@@ -27,4 +27,5 @@ var Hide = function (){
         );
 }
 */
-export { hideLogin, hideSignup };
+export { hideSignup };
+export default hideLogin;
