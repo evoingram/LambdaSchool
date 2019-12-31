@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // import { useInput } from './CustomHooks/InputHook'
 // import styled from 'styled-components';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import hideLogin from './Hide.js';
 import hideSignup from './Hide.js';
@@ -23,7 +24,6 @@ const Button = styled.button`
 */
 
 const TicketListQ = props => {
-  console.log("TLQ props = " + props.tickets);
   //fields: static header, ticket component
     // TODO: 3 Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
   
@@ -47,50 +47,28 @@ const TicketListQ = props => {
   // TODO: Ticket list for helpers
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [tickets, setTickets] = useState({});
-
-  useEffect(() => {
-    let url = `http://localhost:5000/tickets?submitid=${props.match.params.c urren}`;
-
-
-
-
-
-    if(tickets != null) {
-      const results = tickets.filter(ticket =>
-        ticket.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-        ticket.status.toLowerCase().includes(searchTerm.toLowerCase())
-        
-      );
-      setSearchResults(results);
-      console.log("useEffect props = " + props);
-      }
-  }, [searchTerm]);
-
-  const handleChange = event => {
-    setSearchTerm(event.target.value);
-  };
 
   // hide current page when login showing
   hideLogin();
   // hide current page when sign-up showing
   hideSignup();
+  
       // TODO: 3 Student went above and beyond the project (search function?)
       // TODO: ticket component linked to open ticket
       // TODO: needs separate axios call for all unresolved tickets
-  console.log(tickets);
+  console.log("TLQ tickets = " + props.ticketsQ);
 
   return (
     <section className="search-form">
       <HeaderQ />
     <SearchForm />
       <div className="character-list">
-          {
-              tickets.map(
-                ticket => (
-                  <Link to="/ticket"><Ticket key={ticket.id} ticket={ticket} /></Link>
-                )
+        {
+            props.ticketsQ.map(
+              ticket => (
+                <Link to="/ticket"><Ticket key={ticket.id} ticket={ticket} /></Link>
               )
+            )
           }
       </div>
     </section>

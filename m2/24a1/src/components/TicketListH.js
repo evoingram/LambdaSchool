@@ -56,7 +56,7 @@ const TicketListH = props => {
       );
       setSearchResults(results);
       }
-  }, [searchTerm]);
+  }, [props.tickets]);
 
   const handleChange = event => {
     setSearchTerm(event.target.value);

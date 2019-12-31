@@ -3,12 +3,13 @@ import Profile from './Profile.js';
 import TicketListH from './TicketListH.js';
 import TicketListQ from './TicketListQ.js';
 
-function MainH(tickets) {
+const MainH = props => {
+    console.log("MainH = " + props.tickets);
     return (
         <div>
             <Profile />
-            <TicketListH tickets={tickets}/>
-            <TicketListQ tickets={tickets}/>
+            <TicketListH tickets={props.tickets}/>
+            <TicketListQ tickets={props.tickets}/>
         </div>
     );
 }
