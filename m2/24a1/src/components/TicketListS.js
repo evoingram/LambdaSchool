@@ -47,14 +47,15 @@ const TicketListS = props => {
   hideSignup();
       // TODO: 3 Student went above and beyond the project (search function?)
       // TODO: ticket component linked to open ticket
+  console.log("TLS tickets = " + props.searchResults);
   return (
     <section className="search-form">
       <HeaderS />
-      <SearchForm />
+      <SearchForm tickets={props.tickets} searchResults={props.searchResults} setSearchResults={props.setSearchResults}/>
       <div className="character-list">
         <ul>
           {
-            props.tickets.map(
+            props.searchResults.map(
               ticket => (
                 <Link to="/ticket"><Ticket key={ticket.id} ticket={ticket} /></Link>
               )

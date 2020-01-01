@@ -53,19 +53,27 @@ const Ticket = ({ ticket, values, errors, touched, isSubmitting, status }) => {
       console.log(event.target.id);
       ticket.status = "queue"
     }
-    console.log(ticketID);
-    console.log(values);
+    console.log("ticketID = " + ticketID);
+    console.log("values = " + values);
     let url = `http://localhost:5000/tickets/${ticketID}`;
-    axios.defaults.headers.common['Content-Type'] = "application/json";
+    axios.defaults.headers.put['Content-Type'] = 'application/json';
+    let axiosConfig = {
+      "url": `http://localhost:5000/tickets/${ticketID}`,
+      "method": "PUT",
+      "headers":{"Content-Type": "application/json"},
+      "body": values
+  }
     axios
-      .put(url, ticket)
-        .then(res => {
-          console.log("res = " + res);
-        
-        })
-        .catch(err => {
-          console.log(err); // logs error creating the data 
-    });  
+      .put(url, {"status": values.statusT}, axiosConfig) 
+      .then(res => {
+        console.log("res = " + res);
+        console.log({"id": ticketID, "title": ticket.title, "date": ticket.date, "category": ticket.category, "status": values.statusT, "description": ticket.description, "submitid": ticket.submitid, "helperid": ticket.helperid});
+      
+      })
+      .catch(err => {
+        console.log(err); // logs error creating the data 
+        console.log({id: ticketID, title: ticket.title, date: ticket.date, category: ticket.category, status: values.statusT, description: ticket.description, submitid: ticket.submitid, helperid: ticket.helperid});
+      });  
 
   }
   return (
@@ -92,13 +100,7 @@ const Ticket = ({ ticket, values, errors, touched, isSubmitting, status }) => {
           <Field type="text" name="statusT" placeholder={values.statusT} value={values.statusT} />
           <Field type="text" name="description" placeholder={values.description} value={values.description} />
         <Button type="submit">Save</Button>
-          {
-            // TODO: helper only
-          }
         <Button type="submit" id={"btnR" + ticket.id} onClick={(event)=>updateTicket(ticket.id, "resolved", event)}>Resolved</Button>
-          {
-            // TODO: helper only
-          }
           <Button type="submit" id={"btnQ" + ticket.id} onClick={(event)=>updateTicket(ticket.id, "queue", event)}>Send to Queue</Button>
         </Form>
       </div>

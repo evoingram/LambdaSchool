@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import hideLogin, { hideSignup } from "./Hide";
+import { Link } from 'react-router-dom';
+import TicketH from './TicketH.js';
+
 // import Ticket from '../components/Ticket.js';
     
     // TODO: 3 Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
@@ -27,20 +30,21 @@ hideSignup();
 
 const SearchForm = props => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState([props.tickets]);
+  const [searchResults, setSearchResults] = useState([]);
+
 
   useEffect(() => {
-    if(props.tickets != null) {
+    if (props.tickets != null) {
       const results = props.tickets.filter(ticket =>
-        ticket.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-        ticket.status.toLowerCase().includes(searchTerm.toLowerCase()) || 
-        ticket.description.toLowerCase().includes(searchTerm.toLowerCase()) || 
-        ticket.category.toLowerCase().includes(searchTerm.toLowerCase()) || 
-        ticket.statusT.toLowerCase().includes(searchTerm.toLowerCase())
-        
+        ticket.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        ticket.status.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        ticket.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        ticket.category.toLowerCase().includes(searchTerm.toLowerCase())  ||
+        ticket.date.toLowerCase().includes(searchTerm.toLowerCase()) 
       );
-      setSearchResults(results);
-      }
+      console.log("useEffect Search Results = " + results);
+      setSearchResults([...results]);
+    }
   }, [searchTerm, props.tickets]);
 
   const handleChange = event => {
@@ -49,6 +53,7 @@ const SearchForm = props => {
 
   return (
     <section className="search-form">
+      <h1>Your Tickets:  </h1>
       <form>
         <label htmlFor="name">Search:</label>
         <input
@@ -59,6 +64,13 @@ const SearchForm = props => {
           value={searchTerm}
           onChange={handleChange}
         />
+        {
+          searchResults.map(
+            ticket => (
+              <Link to="/ticket"><TicketH key={ticket.id} ticket={ticket} /></Link>
+            )
+          )
+        }
       </form>
     </section>
     

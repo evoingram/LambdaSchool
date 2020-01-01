@@ -46,9 +46,6 @@ const Ticket = ({ ticket, values, errors, touched, isSubmitting, status }) => {
   values.description = ticket.description
   
   function updateTicket(ticket, values, event) {
-    console.log(ticket.id);
-    console.log(values);
-    console.log(ticket);
     ticket = values;
     let url = `http://localhost:5000/tickets/${ticket.id}`;
     axios.defaults.headers.common['Content-Type'] = "application/json";
@@ -127,7 +124,6 @@ const FormikForm = withFormik({
             axios
                 .get("http://localhost:3000/userinfo?email=" + values.email, values)
                 .then(res => {
-                    console.log("login response = " + res.data); // Data was created successfully and logs to console
                     setStatus(res.data);
                     resetForm();
                     setSubmitting(false);

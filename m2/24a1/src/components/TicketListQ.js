@@ -4,8 +4,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import hideLogin from './Hide.js';
 import hideSignup from './Hide.js';
-import SearchForm from './SearchForm.js';
-import TicketH from './TicketH.js';
+import Ticket from './Ticket.js';
 import HeaderQ from './HeaderQ.js';
 
 
@@ -48,18 +47,16 @@ const TicketListQ = props => {
   hideSignup();
   
       // TODO: 3 Student went above and beyond the project (search function?)
-      // TODO: ticket component linked to open ticket
-  console.log("TLQ tickets = " + props.ticketsQ);
+  // console.log("TLQ tickets = " + props.ticketsQ);
 
   return (
     <section className="search-form">
       <HeaderQ />
-    <SearchForm />
       <div className="character-list">
         {
             props.ticketsQ.map(
               ticket => (
-                <Link to="/ticket"><TicketH key={ticket.id} ticket={ticket} /></Link>
+                <Link to="/ticket"><Ticket key={ticket.id} ticket={ticket} /></Link>
               )
             )
           }
@@ -71,5 +68,3 @@ const TicketListQ = props => {
 
 
 export default TicketListQ;
-
-

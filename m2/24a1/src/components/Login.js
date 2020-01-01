@@ -6,7 +6,7 @@ import axios from "axios";
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import MainLoad from './MainLoad.js';
-
+import setSearchResults from './SearchForm.js';
 const Button = styled.button`
   background: #002244;
   border-radius: 3px;
@@ -38,23 +38,15 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
     const [loggedIn, setLoggedIn] = useState(false);
     const [lVisible, setLVisible] = useState(true);
     const [currentUsertype, setCurrentUsertype] = useState("student");
-    const [currentUserID, setCurrentUserID] = useState("");
     const [ticketURL, setTicketURL] = useState("");
     const [currentDate, setCurrentDate] = useState(new Date().toLocaleString());
     const [tickets, setTickets] = useState([]);
     const [ticketsQ, setTicketsQ] = useState([]);
     const [profile, setProfile] = useState([]);
-
-    useEffect(() => {  
+    useEffect((props) => {  
         if (status != null) {
-            console.log("status = " + status);    
             // get usertype/id of logging-in user 
             setCurrentUsertype(`${status.usertype}`);
-            setCurrentUserID(`${status.id}`);
-            setProfile(`${status}`);
-            console.log(`LG useEffect:  Today is ${currentDate}.`);
-            console.log(`LG useEffect:  ${status.username}'s usertype is ${status.usertype} and ID is ${status.id}.  Loading profile, assigned tickets, and queue.`);
-            // fields: name, username, email, change password, usertype display
             setProfile({
                 name: status.name,
                 username: status.username,
@@ -62,26 +54,19 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
                 password: status.password,
                 usertype: status.usertype
             });
-            // afterLogin(status.usertype);
-            console.log(`${status.id}`);
             // TODO: another axios call to get list of tickets
             let url;
             if (status.usertype === "helper") { 
                 url = `http://localhost:5000/tickets?status=queue`;
-            axios
-                .get(url)
-                .then(res => {
-                    console.log(`LG ticket response ${res.data[0]}`); // Data was created successfully and logs to console
-                    console.log(`LG ticket array response ${res.data}`); // Data was created successfully and logs to console
-                    setTicketsQ(res.data);
-                    console.log(`LG useEffect:  ${res.data[0].title}'s ticket category is ${res.data[0].category} and status is ${res.data[0].status}.  Loading profile, assigned tickets, and queue.`);
-                    console.log(`LG tickets = " + ${ticketsQ}`);    
+                axios
+                    .get(url)
+                    .then(res => {
+                        setTicketsQ(res.data);
 
-                })
-                .catch(err => {
-                    console.log(err); // logs error creating the data 
-                });  
-            
+                    })
+                    .catch(err => {
+                        console.log(err); // logs error creating the data 
+                    });             
                 setTicketURL(`http://localhost:5000/tickets?helperid= & ${status.id}`);   
                 url = `http://localhost:5000/tickets?helperid=${status.id}`;
             }
@@ -89,60 +74,48 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
                 setTicketURL(`http://localhost:5000/tickets?submitid=${status.id}`);
                 url = `http://localhost:5000/tickets?submitid=${status.id}`;
             }
-
-            console.log(`LG current user type is ${status.usertype}`);
-            console.log(`LG main page loading for a ${status.usertype}`);
-            
             setLoggedIn(!loggedIn);
+            
             axios
                 .get(url)
                 .then(res => {
-                    console.log(`LG ticket response ${res.data[0]}`); // Data was created successfully and logs to console
-                    console.log(`LG ticket array response ${res.data}`); // Data was created successfully and logs to console
                     setTickets(res.data);
-                    console.log(`LG useEffect:  ${res.data[0].title}'s ticket category is ${res.data[0].category} and status is ${res.data[0].status}.  Loading profile, assigned tickets, and queue.`);
-                    console.log(`LG tickets = " + ${tickets}`);    
-
                 })
                 .catch(err => {
                     console.log(err); // logs error creating the data 
                 });  
-            
 
         }
-
     }, [status, tickets, currentDate, ticketsQ, loggedIn]);
 
     function toggleLVisible(){ 
         setLVisible(!lVisible);
     }
     
-        if (window.location.pathname === '/signup') {
-            console.log('hiding login');
-            return null;
-        }
-        else if (loggedIn === true) { 
-            return (<MainLoad currentUsertype={currentUsertype} ticketURL={ticketURL} tickets={tickets} ticketsQ={ticketsQ} profile={profile}/>);
-        }
-        else {
-            console.log('showing login');
-            return (
-                <div className='user-form'>
-                    <Form>
-                        {touched.email && errors.email && <p>{errors.email}</p>}
-                        {touched.password && errors.password && <p>{errors.password}</p>}
-                        <Field type="email" name="email" placeholder="Email" value={values.email} />
-                        <Field type="password" name="password" placeholder="Password" value={values.password} />
-                        <Button type="submit">Submit!</Button>
-                    </Form>
-                    {
-                        // hide login form on click to sign up -- hideLogin();    
-                    }
-                    <div>
-                        <Link to="/signup"><Button type="submit" onClick={toggleLVisible}>Register</Button></Link>
-                    </div>
+    if (window.location.pathname === '/signup') {
+        return null;
+    }
+    else if (loggedIn === true) { 
+        return (<MainLoad currentUsertype={currentUsertype} ticketURL={ticketURL} tickets={tickets} ticketsQ={ticketsQ} profile={profile} searchResults={tickets} setSearchResults={setSearchResults}/>);
+    }
+    else {
+        return (
+            <div className='user-form'>
+                <Form>
+                    {touched.email && errors.email && <p>{errors.email}</p>}
+                    {touched.password && errors.password && <p>{errors.password}</p>}
+                    <Field type="email" name="email" placeholder="Email" value={values.email} />
+                    <Field type="password" name="password" placeholder="Password" value={values.password} />
+                    <Button type="submit">Submit!</Button>
+                </Form>
+                {
+                    // hide login form on click to sign up -- hideLogin();    
+                }
+                <div>
+                    <Link to="/signup"><Button type="submit" onClick={toggleLVisible}>Register</Button></Link>
                 </div>
-            );
+            </div>
+        );
     }
     
 }
@@ -151,7 +124,7 @@ let FormikForm;
     // TODO: 3 Form validation is in place for all fields, and covers all use cases. 
     // TODO: 2 Student made the decision to use a third-party library, like Formik, or not, and can defend their decision. 
 if (UserForm.loggedIn === true) { 
-    FormikForm = () => { return (<MainLoad />) };        
+    FormikForm = () => { return (<MainLoad />); };        
 }
 else {
     FormikForm = withFormik({    
@@ -172,30 +145,24 @@ else {
             }),
             
         // TODO: 2 Student implemented GET requests using either Axios or Fetch to display 3rd party data on a deployed page. 
-            // statusT, currentUsertype, setCurrentDate, setCurrentUserID, setCurrentUsertype, setStatusT, 
+            // statusT, currentUsertype, setCurrentDate, setCurrentUsertype, setStatusT, 
         handleSubmit(values, { status, setStatus, resetForm, setErrors, setSubmitting }) {
             let url = `http://localhost:5000/userinfo?email=${values.email}`;
-                axios
-                    .get(url, values)
-                    .then(res => {
-                        console.log(url);
-                        console.log(`res response ${res.data[0]}`); // Data was created successfully and logs to console
-                        console.log(`res array response ${[res]}`); // Data was created successfully and logs to console
-                        setStatus(res.data[0]);
-                        console.log(values.email);
-                        console.log(values);
-                        console.log(`axios:  ${res.data[0].username}'s usertype is ${res.data[0].usertype}.  Loading profile, assigned tickets, and queue.`);
-                        resetForm();
-                        setSubmitting(false);
-                    })
-                    .catch(err => {
-                        console.log(err); // logs error creating the data 
-                        setSubmitting(false);
-                });  
-                        
-                    
-        }
+            axios
+                .get(url, values)
+                .then(res => {
+                    setStatus(res.data[0]);
+                    resetForm();
+                    setSubmitting(false);
+                })
+                .catch(err => {
+                    console.log(err); // logs error creating the data 
+                    setSubmitting(false);
+                });
+            
+                
 
+        }
     })(UserForm);
 };
 

@@ -5,10 +5,8 @@ import { Link } from 'react-router-dom';
 import hideLogin from './Hide.js';
 import hideSignup from './Hide.js';
 import SearchForm from './SearchForm.js';
-// import Ticket from './Ticket.js';
-import HeaderH from './HeaderH.js';
 import TicketH from './TicketH.js';
-
+import HeaderH from './HeaderH.js';
 
 /*
 const Button = styled.button`
@@ -22,8 +20,7 @@ const Button = styled.button`
 `
 */
 
-
-const TicketListH = props => {
+const TicketListS = props => {
   //fields: static header, ticket component
     // TODO: 3 Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
   
@@ -43,7 +40,7 @@ const TicketListH = props => {
     // TODO: 2 Student's code was organized at the component level
     // TODO: 2 Student has set up component management for the forms in the app that makes sense for each form. 
     
-  
+
   // hide current page when login showing
   hideLogin();
   // hide current page when sign-up showing
@@ -52,8 +49,8 @@ const TicketListH = props => {
       // TODO: ticket component linked to open ticket
   return (
     <section className="search-form">
+      <SearchForm tickets={props.tickets} searchResults={props.searchResults} setSearchResults={props.setSearchResults}/>
       <HeaderH />
-    <SearchForm />
       <div className="character-list">
         <ul>
           {
@@ -70,6 +67,4 @@ const TicketListH = props => {
   );
 }
 
-export default TicketListH;
-
-
+export default TicketListS;
