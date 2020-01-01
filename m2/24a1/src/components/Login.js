@@ -42,9 +42,10 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
     const [currentUsertype, setCurrentUsertype] = useState("student");
     const [currentUserID, setCurrentUserID] = useState("");
     const [ticketURL, setTicketURL] = useState("");
-    const [currentDate, setCurrentDate] = useState(new Date());
+    const [currentDate, setCurrentDate] = useState(new Date().toLocaleString());
     const [tickets, setTickets] = useState([]);
     const [ticketsQ, setTicketsQ] = useState([]);
+    const [profile, setProfile] = useState([]);
 
     useEffect(() => {  
         if (status != null) {
@@ -52,8 +53,17 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
             // get usertype/id of logging-in user 
             setCurrentUsertype(`${status.usertype}`);
             setCurrentUserID(`${status.id}`);
+            setProfile(`${status}`);
             console.log(`LG useEffect:  Today is ${currentDate}.`);
             console.log(`LG useEffect:  ${status.username}'s usertype is ${status.usertype} and ID is ${status.id}.  Loading profile, assigned tickets, and queue.`);
+            // fields: name, username, email, change password, usertype display
+            setProfile({
+                name: status.name,
+                username: status.username,
+                email: status.email,
+                password: status.password,
+                usertype: status.usertype
+            });
             // afterLogin(status.usertype);
             console.log(`${status.id}`);
             // TODO: another axios call to get list of tickets
@@ -116,7 +126,7 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
             return null;
         }
         else if (loggedIn === true) { 
-            return (<MainLoad currentUsertype={currentUsertype} ticketURL={ticketURL} tickets={tickets} ticketsQ={ticketsQ}/>);
+            return (<MainLoad currentUsertype={currentUsertype} ticketURL={ticketURL} tickets={tickets} ticketsQ={ticketsQ} profile={profile}/>);
         }
         else {
             console.log('showing login');

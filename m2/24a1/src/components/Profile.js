@@ -19,7 +19,7 @@ const Button = styled.button`
   padding: 0.25em 1em;
 `
 
-const Profile = ({ values, errors, touched, isSubmitting, status }) => {
+const Profile = ({ props, profile, values, errors, touched, isSubmitting, status }) => {
     
     // TODO: 3 Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
   
@@ -53,6 +53,31 @@ const Profile = ({ values, errors, touched, isSubmitting, status }) => {
         hideSignup();
     }
 
+    console.log("profile profile = " + profile.username);    
+    values.name = profile.name
+    values.username = profile.username
+    values.usertype = profile.usertype
+    values.email = profile.email
+    values.password = profile.password
+
+    function updateProfile(profile, values, event) {
+        console.log(profile.id);
+        console.log(values);
+        console.log(profile);
+        profile = values;
+        let url = `http://localhost:5000/userinfo/${profile.id}`;
+        axios.defaults.headers.common['Content-Type'] = "application/json";
+        axios
+        .put(url, profile)
+            .then(res => {
+            console.log("res = " + res);
+            
+            })
+            .catch(err => {
+            console.log(err); // logs error creating the data 
+        });  
+
+    }
     // TODO: Profile page displaying fields
     return (
         <div className='user-form'>      
@@ -61,10 +86,10 @@ const Profile = ({ values, errors, touched, isSubmitting, status }) => {
             {touched.username && errors.username && <p>{errors.username}</p>}
             {touched.email && errors.email && <p>{errors.email}</p>}
             {touched.password && errors.password && <p>{errors.password}</p>}
-            <Field type="text" name="usertype" placeholder="Student" value={values.usertype} />
-            <Field type="text" name="name" placeholder="John or Jane Doe" value={values.name} />
-            <Field type="username" name="username" placeholder="username" value={values.username} />
-            <Field type="email" name="email" placeholder="Email" value={values.email} />
+                <Field type="text" name="usertype" placeholder={profile.usertype} value={values.usertype} />
+            <Field type="text" name="name" placeholder={profile.name} value={values.name} />
+            <Field type="username" name="username" placeholder={profile.username} value={values.username} />
+            <Field type="email" name="email" placeholder={profile.email} value={values.email} />
             <Field type="password" name="password" placeholder="Password" value={values.password} />
             <Button type="submit">Save</Button>
             {touched.password && errors.password && <p>{errors.password}</p>}

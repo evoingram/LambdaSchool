@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom';
 import hideLogin from './Hide.js';
 import hideSignup from './Hide.js';
 import SearchForm from './SearchForm.js';
-import Ticket from './Ticket.js';
+// import Ticket from './Ticket.js';
 import HeaderH from './HeaderH.js';
+import TicketH from './TicketH.js';
 
 
 /*
@@ -77,7 +78,7 @@ const TicketListH = props => {
           {
             searchResults.map(
               ticket => (
-                <Link to="/ticket"><Ticket key={ticket.id} ticket={ticket} /></Link>
+                <Link to="/ticket"><TicketH key={ticket.id} ticket={ticket} /></Link>
               )
             )
           }

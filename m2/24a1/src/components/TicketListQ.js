@@ -7,6 +7,7 @@ import hideLogin from './Hide.js';
 import hideSignup from './Hide.js';
 import SearchForm from './SearchForm.js';
 import Ticket from './Ticket.js';
+import TicketH from './TicketH.js';
 import HeaderQ from './HeaderQ.js';
 import tickets from './Login.js'
 
@@ -44,7 +45,6 @@ const TicketListQ = props => {
     // TODO: 2 Student has set up component management for the forms in the app that makes sense for each form. 
     
   
-  // TODO: Ticket list for helpers
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
@@ -55,7 +55,6 @@ const TicketListQ = props => {
   
       // TODO: 3 Student went above and beyond the project (search function?)
       // TODO: ticket component linked to open ticket
-      // TODO: needs separate axios call for all unresolved tickets
   console.log("TLQ tickets = " + props.ticketsQ);
 
   return (
@@ -66,7 +65,7 @@ const TicketListQ = props => {
         {
             props.ticketsQ.map(
               ticket => (
-                <Link to="/ticket"><Ticket key={ticket.id} ticket={ticket} /></Link>
+                <Link to="/ticket"><TicketH key={ticket.id} ticket={ticket} /></Link>
               )
             )
           }

@@ -54,8 +54,6 @@ const Ticket = ({ ticket, values, errors, touched, isSubmitting, status }) => {
       // hide current page when sign-up showing
       hideSignup();
   }
-
-  
   values.title = ticket.title
   values.date = ticket.date
   console.log(values.date);
@@ -63,12 +61,18 @@ const Ticket = ({ ticket, values, errors, touched, isSubmitting, status }) => {
   values.statusT = ticket.status
   values.description = ticket.description
   
-  function updateTicket(ticket, values, event) {
-    console.log(ticket.id);
+  function updateTicket(ticketID, currentTicketStatus, event) {
+    if (currentTicketStatus === "resolved" && event.target.id === "btnR" + ticketID) { 
+      console.log(event.target.id);
+      ticket.status = "resolved"
+    }
+    if (currentTicketStatus === "queue" && event.target.id === "btnQ" + ticketID) { 
+      console.log(event.target.id);
+      ticket.status = "queue"
+    }
+    console.log(ticketID);
     console.log(values);
-    console.log(ticket);
-    ticket = values;
-    let url = `http://localhost:5000/tickets/${ticket.id}`;
+    let url = `http://localhost:5000/tickets/${ticketID}`;
     axios.defaults.headers.common['Content-Type'] = "application/json";
     axios
       .put(url, ticket)
@@ -101,10 +105,18 @@ const Ticket = ({ ticket, values, errors, touched, isSubmitting, status }) => {
             // TODO: not enterable, auto-date
           }
           <Field type="text" name="date" placeholder={ticket.date} value={values.date} />
-          <Field type="text" name="category" placeholder={ticket.category} value={values.category} />
-          <Field type="text" name="statusT" placeholder={ticket.statusT} value={values.statusT} />
-          <Field type="text" name="description" placeholder={ticket.description} value={values.description} />
-        <Button type="submit" onClick={(event) => updateTicket(ticket, values, event)}>Save</Button>
+          <Field type="text" name="category" placeholder={values.category} value={values.category} />
+          <Field type="text" name="statusT" placeholder={values.statusT} value={values.statusT} />
+          <Field type="text" name="description" placeholder={values.description} value={values.description} />
+        <Button type="submit">Save</Button>
+          {
+            // TODO: helper only
+          }
+        <Button type="submit" id={"btnR" + ticket.id} onClick={(event)=>updateTicket(ticket.id, "resolved", event)}>Resolved</Button>
+          {
+            // TODO: helper only
+          }
+          <Button type="submit" id={"btnQ" + ticket.id} onClick={(event)=>updateTicket(ticket.id, "queue", event)}>Send to Queue</Button>
         </Form>
       </div>
     
