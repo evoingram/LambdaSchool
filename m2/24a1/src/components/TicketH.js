@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 // import { useInput } from './CustomHooks/InputHook'
 import styled from 'styled-components';
 import loadForm from './Hide.js';
-// import { Link } from 'react-router-dom';
-import hideLogin from './Hide.js';
-import hideSignup from './Hide.js';
 
 const Button = styled.button`
   background: #002244;
@@ -40,20 +37,6 @@ const Ticket = ({ ticket, values, errors, touched, isSubmitting, status }) => {
   // fields: title, date, category, status, description, contact component
   // helper-only fields: resolved button, back to queue button
   
-  // TODO: ticket component displaying fields
-
-      const [user, setUser] = useState();
-    useEffect(() =>{
-      status && setUser(user => [...user, status]);
-      
-    }, [status]);
-
-    function hideLogin() {
-      // hide current page when login showing
-      hideLogin();
-      // hide current page when sign-up showing
-      hideSignup();
-  }
   values.title = ticket.title
   values.date = ticket.date
   console.log(values.date);

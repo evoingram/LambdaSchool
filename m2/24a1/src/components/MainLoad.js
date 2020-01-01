@@ -3,12 +3,10 @@ import Profile from './Profile.js';
 import TicketListS from './TicketListS.js';
 import TicketListH from './TicketListH.js';
 import TicketListQ from './TicketListQ.js';
-import ticketURL from './Login.js'
 
 const MainLoad = props => { 
     console.log("Mainload props.profile = " + props.profile);
     if (props.currentUsertype === "helper") {
-        console.log("MainH = " + props.ticketURL);
         return (
             <div>
                 <Profile profile={props.profile}/>
@@ -19,7 +17,6 @@ const MainLoad = props => {
 
     }
     else {
-        console.log("MainS = " + props.ticketURL);
         return (
             <div>
                 <Profile profile={props.profile}/>

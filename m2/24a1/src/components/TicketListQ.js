@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 // import { useInput } from './CustomHooks/InputHook'
 // import styled from 'styled-components';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import hideLogin from './Hide.js';
 import hideSignup from './Hide.js';
 import SearchForm from './SearchForm.js';
-import Ticket from './Ticket.js';
 import TicketH from './TicketH.js';
 import HeaderQ from './HeaderQ.js';
-import tickets from './Login.js'
 
 
 /*
@@ -45,9 +42,6 @@ const TicketListQ = props => {
     // TODO: 2 Student has set up component management for the forms in the app that makes sense for each form. 
     
   
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
-
   // hide current page when login showing
   hideLogin();
   // hide current page when sign-up showing
@@ -75,47 +69,6 @@ const TicketListQ = props => {
   );
 }
 
-/*
-
-            // afterLogin(status.usertype);
-            console.log(`${status.id}`);
-            // TODO: another axios call to get list of tickets
-            let url = `http://localhost:5000/tickets?submitid=${status.id}`;
-
-            console.log("tickets url = " + url);
-            axios
-                .get(url)
-                .then(res => {
-                    console.log(`ticket response ${res.data[0]}`); // Data was created successfully and logs to console
-                    console.log(`ticket array response ${res.data}`); // Data was created successfully and logs to console
-                    setTickets([...res.data]);
-                    console.log(`useEffect:  ${res.data[0].title}'s ticket category is ${res.data[0].category} and status is ${res.data[0].status}.  Loading profile, assigned tickets, and queue.`);
-
-                    console.log(`current user type is ${status.usertype}`);
-                    console.log(`main page loading for a ${status.usertype}`);
-
-
-                    if (status.usertype === "helper") {
-                        // TODO:  if helper, return Profile & TicketListH
-                        console.log(`tickets = " + ${tickets}`);    
-                    window.location.pathname = "/MainH";
-                        // return (<MainH />);
-                    }
-                    else { 
-                        console.log(`tickets = " + ${tickets}`);    
-                        window.location.pathname = "/MainS";
-                        // return (<MainS />);
-                    }
-
-                })
-                .catch(err => {
-                    console.log(err); // logs error creating the data 
-            });  
-            
-            
-        }
-
-*/
 
 export default TicketListQ;
 

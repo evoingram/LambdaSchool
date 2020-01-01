@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 // import { useInput } from './CustomHooks/InputHook'
 // import styled from 'styled-components';
 import { Link } from 'react-router-dom';
@@ -40,25 +40,6 @@ const TicketListS = props => {
     // TODO: 2 Student's code was organized at the component level
     // TODO: 2 Student has set up component management for the forms in the app that makes sense for each form. 
     
-  
-    // // TODO: Ticket list for students
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
-
-  useEffect(() => {
-    if(props.tickets != null) {
-      const results = props.tickets.filter(ticket =>
-        ticket.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-        ticket.status.toLowerCase().includes(searchTerm.toLowerCase())
-        
-      );
-      setSearchResults(results);
-      }
-  }, [props.tickets]);
-
-  const handleChange = event => {
-    setSearchTerm(event.target.value);
-  };
 
   // hide current page when login showing
   hideLogin();
@@ -73,7 +54,7 @@ const TicketListS = props => {
       <div className="character-list">
         <ul>
           {
-            searchResults.map(
+            props.tickets.map(
               ticket => (
                 <Link to="/ticket"><Ticket key={ticket.id} ticket={ticket} /></Link>
               )

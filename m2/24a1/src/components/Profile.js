@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 // import { useInput } from './CustomHooks/InputHook'
 import styled from 'styled-components';
 import loadForm from './old pages/Form.js';
-import { Link } from 'react-router-dom';
-import hideLogin from './Hide.js';
-import hideSignup from './Hide.js';
 
 const Button = styled.button`
   background: #002244;
@@ -19,7 +16,7 @@ const Button = styled.button`
   padding: 0.25em 1em;
 `
 
-const Profile = ({ props, profile, values, errors, touched, isSubmitting, status }) => {
+const Profile = ({ profile, values, errors, touched, status }) => {
     
     // TODO: 3 Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
   
@@ -39,19 +36,6 @@ const Profile = ({ props, profile, values, errors, touched, isSubmitting, status
     // TODO: 2 Student has set up component management for the forms in the app that makes sense for each form. 
     
     // fields: name, username, email, change password, usertype display, save button for acct changes
-
-    const [user, setUser] = useState();
-    useEffect(() =>{
-        console.log(status);
-        status && setUser(user => [...user, status]);
-    }, [status]);
-
-    function hideLogin() {
-        // hide current page when login showing
-        hideLogin();
-        // hide current page when sign-up showing
-        hideSignup();
-    }
 
     console.log("profile profile = " + profile.username);    
     values.name = profile.name
@@ -91,7 +75,7 @@ const Profile = ({ props, profile, values, errors, touched, isSubmitting, status
             <Field type="username" name="username" placeholder={profile.username} value={values.username} />
             <Field type="email" name="email" placeholder={profile.email} value={values.email} />
             <Field type="password" name="password" placeholder="Password" value={values.password} />
-            <Button type="submit">Save</Button>
+                <Button type="submit" onClick={(event) => updateProfile(profile, values, event)}>Save</Button>
             {touched.password && errors.password && <p>{errors.password}</p>}
             </Form>
         </div>

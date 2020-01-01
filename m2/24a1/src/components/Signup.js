@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -6,10 +6,6 @@ import axios from "axios";
 import styled from 'styled-components';
 import loadForm from './old pages/Form.js';
 import { Link } from 'react-router-dom';
-import hideLogin from './Hide.js';
-import hideSignup from './Hide.js';
-import toggleLVisible from './Login.js';
-import Login from './Login.js';
 
 const Button = styled.button`
   background: #002244;
@@ -37,15 +33,9 @@ const Button = styled.button`
     // TODO: 2 Student has set up component management for the forms in the app that makes sense for each form. 
     
 const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
-    const [user, setUser] = useState();
+
     const [sVisible, setSVisible] = useState(true);
 
-    useEffect(() =>{
-        console.log(status);
-        status && setUser(user => [...user, status]);
-    }, [status]);
-
-    
     function toggleSVisible(){ 
         setSVisible(!sVisible);
     }

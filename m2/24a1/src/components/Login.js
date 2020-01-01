@@ -5,9 +5,7 @@ import axios from "axios";
 // import { useInput } from './CustomHooks/InputHook'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import hideLogin, { hideSignup } from './Hide.js';
 import MainLoad from './MainLoad.js';
-import { browserHistory } from 'react-router';
 
 const Button = styled.button`
   background: #002244;
@@ -94,7 +92,8 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
 
             console.log(`LG current user type is ${status.usertype}`);
             console.log(`LG main page loading for a ${status.usertype}`);
-            toggleLoggedIn();
+            
+            setLoggedIn(!loggedIn);
             axios
                 .get(url)
                 .then(res => {
@@ -112,13 +111,10 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
 
         }
 
-    }, [status]);
+    }, [status, tickets, currentDate, ticketsQ, loggedIn]);
 
     function toggleLVisible(){ 
         setLVisible(!lVisible);
-    }
-    function toggleLoggedIn() {
-        setLoggedIn(!loggedIn);
     }
     
         if (window.location.pathname === '/signup') {

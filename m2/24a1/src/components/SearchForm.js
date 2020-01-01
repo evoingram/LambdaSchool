@@ -27,22 +27,26 @@ hideSignup();
 
 const SearchForm = props => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState([props.tickets]);
 
   useEffect(() => {
     if(props.tickets != null) {
       const results = props.tickets.filter(ticket =>
         ticket.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-        ticket.status.toLowerCase().includes(searchTerm.toLowerCase())
+        ticket.status.toLowerCase().includes(searchTerm.toLowerCase()) || 
+        ticket.description.toLowerCase().includes(searchTerm.toLowerCase()) || 
+        ticket.category.toLowerCase().includes(searchTerm.toLowerCase()) || 
+        ticket.statusT.toLowerCase().includes(searchTerm.toLowerCase())
         
       );
       setSearchResults(results);
       }
-  }, [searchTerm]);
+  }, [searchTerm, props.tickets]);
 
   const handleChange = event => {
     setSearchTerm(event.target.value);
   };
+
   return (
     <section className="search-form">
       <form>
