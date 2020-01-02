@@ -181,17 +181,17 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
             <FormField>
               <Label>Email:</Label>
               <SCField>
-                        <Field type="email" name="email" placeholder="Email" value={values.email} />
+                        <Field type="email" name="email" placeholder="Email" value={values.email} style={fieldLength} />
               </SCField>          
             </FormField>
             <FormField>
               <Label>Password:</Label>
               <SCField>
-                        <Field type="password" name="password" placeholder="Password" value={values.password} />
+                        <Field type="password" name="password" placeholder="Password" value={values.password} style={fieldLength} />
               </SCField>          
             </FormField>
             <ButtonRow>
-                        <Button type="submit">Submit!</Button>
+                        <Button type="submit">Log In</Button>
                         <Link to="/signup"><Button type="submit" onClick={toggleLVisible}>Register</Button></Link>
             </ButtonRow>
                     </Form>
