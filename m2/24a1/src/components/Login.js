@@ -39,18 +39,6 @@ const H1 = styled.h1`
     color: #383651;
     font-size: 1rem;
 `
-             
-const Div1 = styled.div`
-    width: 70%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    margin: 0;
-    border-bottom: 2px solid #383651;
-    border-top: 2px solid #383651;
-`
 const FormField = styled.div`
     display: flex;
     width: 100%;

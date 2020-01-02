@@ -55,10 +55,16 @@ Score 3:
 	// Student's work demonstrates that all MVP features were built.
 	// Student went above and beyond the project (search function?).
 	// Pair programmed with the Web UI and Back end Architect
-*/
 
-// TODO: add 'help student' button to assign ticket to yourself
-// TODO: make helper lists closed and open on click
-// TODO: Finish Styling TicketQ, HeaderQ, Signup
-// TODO: Slackbot ticket api
-// TODO: Rearranged/changed size of login fields
+
+
+	
+	-- TODO: add 'help student' button to assign ticket to yourself
+	-- TODO: make helper lists closed and open on click
+	-- TODO: Finish Styling TicketQ, HeaderQ, Signup
+	// TODO: add name field to sign-up page
+	-- TODO: Slackbot ticket api
+	-- TODO: sign-up post request to userinfo
+
+	// TODO: Rearranged/changed size of login fields
+*/
