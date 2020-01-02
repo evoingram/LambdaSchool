@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import hideLogin, { hideSignup } from "./Hide";
 // import { Link } from 'react-router-dom';
-import TicketH from './TicketH.js';
 import Ticket from './Ticket.js';
 import styled from 'styled-components';
 // import Ticket from '../components/Ticket.js';
@@ -14,6 +13,7 @@ const H1 = styled.h1`
     width: 100%;
     justify-content: center;
     text-align: center;
+    padding: 0;
 `
 const Form = styled.form`
     width: 80%;
@@ -31,6 +31,7 @@ const Center = styled.div`
     padding: 0;
     border-top: 2px solid #383651;
     border-bottom: 2px solid #383651;
+    padding-bottom: 10%;
 `
 const Div1 = styled.div`
     width: 100%;
@@ -43,7 +44,7 @@ const fieldLength = {
     "color": "#383651",
     "font-size": "1.5rem",
     "width": "100%",
-    "margin": "2%",
+    "margin": "0",
     "padding": "0"
 }
 const SearchDiv = styled.div`
@@ -51,6 +52,9 @@ const SearchDiv = styled.div`
     flex-wrap: wrap;
     width: 100%;
     justify-content: center;
+    padding: 0;
+    margin: 0;
+    align-items: top;
 `
     // TODO: 3 Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
   
@@ -83,7 +87,7 @@ const SearchForm = props => {
 
 
   useEffect(() => {
-    if (props.tickets != null) {
+    if (props.tickets !== null) {
       const results = props.tickets.filter(ticket =>
         ticket.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         ticket.status.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -102,26 +106,12 @@ const SearchForm = props => {
   console.log("profile id = " + props.profile.id);
 
   function expandList() {
-    let ut = props.profile.usertype;
     let listToExpand = document.getElementById("searchForm");
     console.log("ticketListH height = " + listToExpand.style.height);
     let currentDisplay = listToExpand.style.display;
-    console.log(currentDisplay);
+    console.log("display before changing = " + currentDisplay);
     let expandDivText = document.getElementById("expandListText");
-    if (ut === "helper") { 
-      if (currentDisplay != "none") {
-        listToExpand.style.display = "none";
-        listToExpand.style.height = "0%";
-        expandDivText.textContent = "click header to show your assigned tickets"
-      }
-      else {
-        listToExpand.style.display = "flex";
-        listToExpand.style.height = "100%";
-        expandDivText.textContent = "click header to hide your assigned tickets"
-      }
-    }
-    else {
-    if (currentDisplay != "none") {
+    if (currentDisplay !== "none") {
       listToExpand.style.display = "none";
       listToExpand.style.height = "0%";
       expandDivText.textContent = "click header to show your tickets"
@@ -130,47 +120,20 @@ const SearchForm = props => {
       listToExpand.style.display = "flex";
       listToExpand.style.height = "100%";
       expandDivText.textContent = "click header to hide your tickets"
-    } }
+    }
 
   }
 
-  if (props.profile.usertype === "helper") {
-  return (
-        <Center>  
-      <Div1>
-        <div id="expandListText" style={{ color: '#86929d', fontSize: '0.75rem', fontStyle: 'italic' }}>click header to show your assigned tickets</div>
-      <H1 onClick={expandList} >Your Assigned Tickets:  </H1>
-      <Form id="searchForm" style={{display: 'none', height: '0%'}}>
-        <SearchDiv>
-                <input
-                  id="name"
-                  type="text"
-                  name="textfield"
-                  placeholder="Search"
-                  value={searchTerm}
-                  onChange={handleChange}
-                  style={fieldLength}
-          />
-          </SearchDiv>
-                {
-                  searchResults.map(
-                    ticket => (
-                        <TicketH key={ticket.id} ticket={ticket} />
-                    )
-                  )
-        }
-            </Form></Div1>
-    </Center>
-    
-    );
+  if (props.tickets === null) { 
+    return (null);
   }
-  else {
+  else {    
     return (
     <Center>  
         <Div1>
-        <div id="expandListText">click header to hide your tickets</div>
-          <H1 onClick={expandList} >Your Tickets:  </H1>
-          <Form>
+        <div id="expandListText" style={{ color: '#86929d', fontSize: '0.75rem', fontStyle: 'italic' }}>click header to hide your tickets</div>
+          <H1 onClick={expandList} >Your Submitted Tickets:  </H1>
+          <Form id="searchForm" style={{ display: 'none', height: '0%' }}>
             <SearchDiv>
                     <input
                       id="name"
@@ -194,10 +157,8 @@ const SearchForm = props => {
     </Center>
     
   );
-}
 
-
-
+  }
 }
 
 export default SearchForm;

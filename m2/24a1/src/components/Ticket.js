@@ -99,6 +99,7 @@ const Ticket = ({ ticket, values, errors, touched, isSubmitting, status }) => {
   values.title = ticket.title
   values.date = ticket.date
   console.log(values.date);
+  console.log(values.date);
   values.category = ticket.category
   values.statusT = ticket.status
   values.description = ticket.description
@@ -120,8 +121,7 @@ const Ticket = ({ ticket, values, errors, touched, isSubmitting, status }) => {
   }
   return (
       <Div1>
-      <H1>Ticket:</H1>
-            
+      <H1>Ticket:</H1>            
       <Form>
         <Div>
           {touched.title && errors.title && <p>{errors.title}</p>}
@@ -201,7 +201,7 @@ const FormikForm = withFormik({
     handleSubmit(values, { setStatus, resetForm, setErrors, setSubmitting }) {
         
             axios
-                .get("http://localhost:3000/userinfo?email=" + values.email, values)
+                .get("http://localhost:3000/tickets?submitid=" + values.submitid, values)
                 .then(res => {
                     setStatus(res.data);
                     resetForm();

@@ -56,9 +56,21 @@ Score 3:
 	// Student went above and beyond the project (search function?).
 	// Pair programmed with the Web UI and Back end Architect
 
+	MVP
+	// Two user types: Student and Helper
+	// As a student I want to log in and have the ability to see tickets that are currently open for help. 
+	// As a student I want to be able to create a new help ticket with a title, description, what I've tried and a category (i.e. React).
+	// As a helper I want to be able to login and see a list of open tickets. 
+	// As a helper I want to be able to assign a ticket to myself by clicking a "help student" button. 
+	// As a helper I want to be able to mark the ticket as "resolved", or re-assign the ticket back to the queue if I cannot resolve the ticket.
+
 
 	// TODO: make helper lists closed and open on click
-	-- TODO: Slackbot ticket api
+	-- TODO: Make it so a user can be both a student and a helper. 
+	-- TODO: Rerender after posting new ticket not working
+	// TODO: Check post requests for resolved/send to queue are correct
+	-- TODO: SLACK:  Build an integrated slack-bot that allows students to submit help tickets through slack. 
+	-- TODO: SLACK:  Allow the ability to subscribe to the Queue in slack to be notified if someone opens a ticket. 
 	-- TODO: Change urls for post/get/put/patch requests when backend up
 	// TODO: add 'help student' button to assign ticket to yourself
 	// TODO: Finish Styling TicketQ
@@ -69,4 +81,15 @@ Score 3:
 	// TODO: sign-up post request to userinfo
 
 	// TODO: Rearranged/changed size of login fields
+*/
+
+
+/*
+Slack plan
+
+When user sends message to bot /helpdesk:
+	-- initiate ticket
+	-- send back notification
+	-- subscribe command
+
 */

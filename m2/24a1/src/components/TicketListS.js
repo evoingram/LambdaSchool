@@ -1,6 +1,6 @@
 import React from 'react';
 // import { useInput } from './CustomHooks/InputHook'
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import hideLogin from './Hide.js';
 import hideSignup from './Hide.js';
@@ -8,6 +8,7 @@ import SearchForm from './SearchForm.js';
 import Ticket from './Ticket.js';
 import HeaderS from './HeaderS.js';
 
+/*
 const Button = styled.button`
   background: #bb1333;
   border-radius: 3px;
@@ -17,6 +18,7 @@ const Button = styled.button`
   margin: 0 1em;
   padding: 0.25em 1em;
 `   
+*/
 
 const TicketListS = props => {
   //fields: static header, ticket component

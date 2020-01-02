@@ -7,6 +7,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import MainLoad from './MainLoad.js';
 import setSearchResults from './SearchForm.js';
+import setSearchResultsH from './SearchFormH.js';
+import setSearchResultsQ from './SearchFormQ.js';
 
 const Button = styled.button`
   background: #bb1333;
@@ -99,8 +101,10 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
     const [ticketURL, setTicketURL] = useState("");
     const [currentDate, setCurrentDate] = useState(new Date().toLocaleString());
     const [tickets, setTickets] = useState([]);
+    const [ticketsH, setTicketsH] = useState([]);
     const [ticketsQ, setTicketsQ] = useState([]);
     const [profile, setProfile] = useState([]);
+    
     useEffect((props) => {  
         if (status != null) {
             // get usertype/id of logging-in user 
@@ -127,13 +131,26 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
                     .catch(err => {
                         console.log(err); // logs error creating the data 
                     });             
-                setTicketURL(`http://localhost:5000/tickets?helperid= & ${status.id}`);   
-                url = `http://localhost:5000/tickets?helperid=${status.id}`;
+                    setTicketURL(`http://localhost:5000/tickets?helperid= & ${status.id}`);  
+                    url = `http://localhost:5000/tickets?helperid=${status.id}`;
+                    
+                    axios
+                        .get(url)
+                        .then(res => {
+                            setTicketsH(res.data);
+                            console.log("helper = " + res.data);
+                        })
+                        .catch(err => {
+                            console.log(err); // logs error creating the data 
+                        });  
+
             }
+
             else { 
                 setTicketURL(`http://localhost:5000/tickets?submitid=${status.id}`);
-                url = `http://localhost:5000/tickets?submitid=${status.id}`;
             }
+            url = `http://localhost:5000/tickets?submitid=${status.id}`;
+
             setLoggedIn(!loggedIn);
             
             axios
@@ -156,7 +173,7 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
         return null;
     }
     else if (loggedIn === true) { 
-        return (<MainLoad currentUsertype={currentUsertype} ticketURL={ticketURL} tickets={tickets} ticketsQ={ticketsQ} profile={profile} searchResults={tickets} setSearchResults={setSearchResults}/>);
+        return (<MainLoad currentUsertype={currentUsertype} ticketURL={ticketURL} tickets={tickets} ticketsQ={ticketsQ} ticketsH={ticketsH} profile={profile} searchResults={tickets} searchResultsH={ticketsH} searchResultsQ={ticketsQ} setSearchResults={setSearchResults} setSearchResultsH={setSearchResultsH} setSearchResultsQ={setSearchResultsQ}/>);
     }
     else {
         return (

@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import { useInput } from './InputHook.js'
 import styled from 'styled-components';
-import loadForm from './Hide.js';
+// import loadForm from './Hide.js';
 
 const Button = styled.button`
   background: #bb1333;
@@ -16,9 +16,12 @@ const Button = styled.button`
   padding: 1em 2em;
 `   
 const H1 = styled.h1`
+    width: 100%;
     color: #383651;
     font-size: 2.5rem;
     margin-left: 3%;
+    justify-content: center;
+    text-align: center;
 `
 const FormField = styled.div`
     display: flex;
@@ -27,7 +30,7 @@ const FormField = styled.div`
     flex-wrap: nowrap;
 `
 const Div = styled.div`
-    width: 80%;
+    width: 90%;
     display: flex;
     flex-wrap: wrap;
     justify-content: right;
@@ -89,7 +92,7 @@ const Ticket = ({ profile, currentUserID, values, errors, touched, isSubmitting,
   // fields: title, date, category, status, description, contact component
   // helper-only fields: resolved button, back to queue button
     
-
+    
     const {value:tickets, hook:bindTickets} = useInput('')
 
     return (

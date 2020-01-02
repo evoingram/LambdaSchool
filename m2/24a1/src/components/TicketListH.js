@@ -1,13 +1,13 @@
 import React from 'react';
 // import { useInput } from './CustomHooks/InputHook'
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+// import styled from 'styled-components';
+// import { Link } from 'react-router-dom';
 import hideLogin from './Hide.js';
 import hideSignup from './Hide.js';
 import SearchForm from './SearchForm.js';
 import TicketH from './TicketH.js';
 import HeaderH from './HeaderH.js';
-
+/*
 const Button = styled.button`
   background: #bb1333;
   border-radius: 3px;
@@ -16,7 +16,7 @@ const Button = styled.button`
   font-weight: bold;
   margin: 0 1em;
   padding: 0.25em 1em;
-`   
+`   */
 
 const TicketListS = props => {
   //fields: static header, ticket component
@@ -54,7 +54,7 @@ const TicketListS = props => {
     let currentDisplay = listToExpand.style.display;
     console.log(currentDisplay);
     let expandDivText = document.getElementById("expandListText");
-    if (currentDisplay != "none") {
+    if (currentDisplay !== "none") {
       listToExpand.style.display = "none";
       listToExpand.style.height = "0%";
       expandDivText.textContent = "(click header to show your assigned tickets)"
@@ -70,7 +70,7 @@ const TicketListS = props => {
     <section className="search-form">
       <SearchForm tickets={props.tickets} searchResults={props.searchResults} setSearchResults={props.setSearchResults}/>
       <div id="expandListText">(click header to show your assigned tickets)</div>
-      <HeaderH onClick={expandListT} onLoad={expandListT} />
+      <HeaderH onClick={expandListT} />
       <div className="character-list" id="ticketListH">
           {
             props.searchResults.map(

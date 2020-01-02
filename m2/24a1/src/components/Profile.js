@@ -134,7 +134,7 @@ const Profile = ({ profile, values, errors, touched, status }) => {
                     </SCField>
                 </FormField>
                 <FormField>
-                    <Label>Username:</Label>
+                    <Label>Slack Username:</Label>
                     <SCField>
                         <Field type="username" name="username" placeholder={profile.username} value={values.username} style={fieldLength} />
                     </SCField>

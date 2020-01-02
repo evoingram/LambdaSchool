@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import axios from "axios";
 // import { useInput } from './CustomHooks/InputHook'
 import styled from 'styled-components';
-import loadForm from './old pages/Form.js';
+// import loadForm from './old pages/Form.js';
 import { Link } from 'react-router-dom';
 
 const Button = styled.button`
@@ -128,7 +128,7 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
               </SCField>          
             </FormField>
             <FormField>
-              <Label>Username:</Label>
+              <Label>Slack Username:</Label>
               <SCField>
             <Field type="text" name="username" placeholder="Username" value={values.username} style={fieldLength} />
               </SCField>          

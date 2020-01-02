@@ -1,13 +1,13 @@
 import React from 'react';
 // import { useInput } from './CustomHooks/InputHook'
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+// import styled from 'styled-components';
+// import { Link } from 'react-router-dom';
 import hideLogin from './Hide.js';
 import hideSignup from './Hide.js';
 import TicketQ from './Ticket.js';
 import HeaderQ from './HeaderQ.js';
 
-
+/*
 const Button = styled.button`
   background: #bb1333;
   border-radius: 3px;
@@ -17,6 +17,7 @@ const Button = styled.button`
   margin: 0 1em;
   padding: 0.25em 1em;
 `   
+*/
 const TicketListQ = props => {
   //fields: static header, ticket component
     // TODO: 3 Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.

@@ -24,12 +24,6 @@ const H1 = styled.h1`
     justify-content: center;
     text-align: center;
 `
-const Div = styled.div`
-    width: 100%;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-`
 const FormField = styled.div`
     display: flex;
     width: 100%;
