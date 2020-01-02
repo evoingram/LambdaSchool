@@ -1,5 +1,28 @@
 import React from "react";
 import hideLogin, { hideSignup } from "./Hide";
+import styled from 'styled-components';
+
+const Div = styled.div`
+  	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: row;
+  	border-bottom: 2px solid #383651;
+  	font-weight: bold;
+  	padding: 1em;
+	max-width: 96%;
+	margin: 1%;
+`
+
+const AppName = styled.h1`
+	display: flex;
+  	color: #383651;
+  	text-align: right;
+	justify-content: right;
+	font-size: 3.5rem;
+	font-weight: bold;
+	margin-left: 6%;  
+	max-width: 27%;
+`
 
   	// TODO: 3 Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
   
@@ -24,8 +47,8 @@ hideLogin();
 hideSignup();
 export default function Header() {
   return (
-    <header className="ui centered">
-      <h1 className="ui center">Lambda School's DevDesk Ticket Queue</h1>
-    </header>
+	  	<Div>
+      		<AppName >Lambda School's DevDesk Ticket Queue</AppName >
+	  	</Div>
   );
 }
