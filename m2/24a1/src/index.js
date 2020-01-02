@@ -48,7 +48,7 @@ Score 3:
 	// Student showed great insight in setting up the state management for the app's forms. 
 	// Form validation is in place for all fields, and covers all use cases. 
 	// Loading states and success/error notifications are in place and add to the overall UX of the app.
-  	-- Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
+  	// Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
 	// Student was able to architect components to be easily reused. 
 	-- Student used advanced React techniques like the composition pattern, custom hooks, render props, HOCs, etc.
 	-- Student incorporated a third party event/animation library like unto Greensock, Anime, React-motion etc.
@@ -66,12 +66,13 @@ Score 3:
 
 
 	// TODO: make helper lists closed and open on click
-	-- TODO: Make it so a user can be both a student and a helper. 
-	-- TODO: Rerender after posting new ticket not working
+	// TODO: Make it so a user can be both a student and a helper. 
 	// TODO: Check post requests for resolved/send to queue are correct
+	-- TODO: Rerender after posting new ticket not working
 	-- TODO: SLACK:  Build an integrated slack-bot that allows students to submit help tickets through slack. 
 	-- TODO: SLACK:  Allow the ability to subscribe to the Queue in slack to be notified if someone opens a ticket. 
 	-- TODO: Change urls for post/get/put/patch requests when backend up
+	-- TODO: If time allows, redo components to streamline headers/etc
 	// TODO: add 'help student' button to assign ticket to yourself
 	// TODO: Finish Styling TicketQ
 	// TODO: Finish Styling HeaderQ
