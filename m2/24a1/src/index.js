@@ -60,7 +60,7 @@ Score 3:
 	-- TODO: add 'help student' button to assign ticket to yourself
 	-- TODO: make helper lists closed and open on click
 	-- TODO: Finish Styling TicketQ
-	-- TODO: Finish Styling HeaderQ
+	// TODO: Finish Styling HeaderQ
 	-- TODO: Slackbot ticket api
 	// TODO: Finish Styling Signup
 	// TODO: add name field to sign-up page

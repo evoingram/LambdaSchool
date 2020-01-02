@@ -6,22 +6,20 @@ const Div = styled.div`
   	display: flex;
 	flex-wrap: nowrap;
 	flex-direction: row;
-  	border-bottom: 2px solid #383651;
   	font-weight: bold;
   	padding: 1em;
-	max-width: 96%;
 	margin: 1%;
+  	text-align: center;
+	justify-content: center;
 `
 
 const AppName = styled.h1`
 	display: flex;
   	color: #383651;
-  	text-align: right;
-	justify-content: right;
+  	text-align: center;
+	justify-content: center;
 	font-size: 3.5rem;
 	font-weight: bold;
-	margin-left: 6%;  
-	max-width: 27%;
 `
 
   	// TODO: 3 Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
@@ -48,7 +46,7 @@ hideSignup();
 export default function Header() {
   return (
 	  	<Div>
-      		<AppName >Lambda School's DevDesk Ticket Queue</AppName >
+      		<AppName >Queued Tickets:</AppName >
 	  	</Div>
   );
 }
