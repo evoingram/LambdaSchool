@@ -20,6 +20,9 @@ const H1 = styled.h1`
     color: #383651;
     font-size: 2.5rem;
     margin-left: 3%;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
 `
 const FormField = styled.div`
     display: flex;

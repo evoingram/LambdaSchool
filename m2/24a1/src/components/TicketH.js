@@ -6,16 +6,73 @@ import axios from "axios";
 import styled from 'styled-components';
 import loadForm from './Hide.js';
 
+const Div1 = styled.div`
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin: 0;
+    border-bottom: 2px solid #383651;
+    border-top: 2px solid #383651;
+`
+const H1 = styled.h1`
+    color: #383651;
+    font-size: 2.5rem;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+`
+const Div = styled.div`
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+`
+const FormField = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: right;
+    flex-wrap: nowrap;
+`
+const Label = styled.label`
+    width: 40%;
+    margin: 0;
+    padding: 0;
+    justify-content: right;
+    text-align: right;
+    padding-right: 1%;
+    text-decoration: none;
+`
+const SCField = styled.div`
+    width: 100%;
+    margin: 0;
+    padding: 0;
+`
 const Button = styled.button`
   background: #bb1333;
   border-radius: 3px;
   border: 2px solid #383651;
   color: #ffffff;
   font-weight: bold;
-  margin: 0 1em;
-  padding: 0.25em 1em;
-`   
+  margin: 1em;
+  padding: 1em 2em;
+`  
+const ButtonRow = styled.div`
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+`
 
+const fieldLength = {
+        "width": "97%",
+        "margin": "0",
+        "padding": "0"
+}
 const Ticket = ({ ticket, values, errors, touched, isSubmitting, status }) => {
 
   // TODO: 3 Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
@@ -77,34 +134,51 @@ const Ticket = ({ ticket, values, errors, touched, isSubmitting, status }) => {
 
   }
   return (
-      <div className='user-form'>      
+      <Div1>
+        <H1>Ticket:</H1>
         <Form>
-          {touched.title && errors.title && <p>{errors.title}</p>}
-          {touched.date && errors.date && <p>{errors.date}</p>}
-          {touched.category && errors.category && <p>{errors.category}</p>}
-          {touched.statusT && errors.statusT && <p>{errors.statusT}</p>}
-        {touched.description && errors.description && <p>{errors.description}</p>}
-        {
-          // insert username/usertype component here
-          /*
-          <Field type="text" name="username" placeholder={props.currentUsername} value={values.currentUsername} />
-          <Field type="text" name="usertype" placeholder="Student" value={values.currentUsertype} />
-          */
-        }
-          <Field type="text" name="title" placeholder={ticket.title} value={values.title} />
-          {
-            // TODO: not enterable, auto-date
-          }
-          <Field type="text" name="date" placeholder={ticket.date} value={values.date} />
-          <Field type="text" name="category" placeholder={values.category} value={values.category} />
-          <Field type="text" name="statusT" placeholder={values.statusT} value={values.statusT} />
-          <Field type="text" name="description" placeholder={values.description} value={values.description} />
-        <Button type="submit">Save</Button>
-        <Button type="submit" id={"btnR" + ticket.id} onClick={(event)=>updateTicket(ticket.id, "resolved", event)}>Resolved</Button>
-          <Button type="submit" id={"btnQ" + ticket.id} onClick={(event)=>updateTicket(ticket.id, "queue", event)}>Send to Queue</Button>
-        </Form>
-      </div>
-    
+            {touched.title && errors.title && <p>{errors.title}</p>}
+            {touched.date && errors.date && <p>{errors.date}</p>}
+            {touched.category && errors.category && <p>{errors.category}</p>}
+            {touched.statusT && errors.statusT && <p>{errors.statusT}</p>}
+            {touched.description && errors.description && <p>{errors.description}</p>}
+            <FormField>
+              <Label>Title:</Label>
+              <SCField>
+                <Field type="text" name="title" placeholder={ticket.title} value={values.title} style={fieldLength} />
+              </SCField>          
+            </FormField>
+            <FormField>
+              <Label>Date Submitted:</Label>
+              <SCField>
+                <Field type="text" name="date" placeholder={ticket.date} value={values.date} style={fieldLength} />
+              </SCField>          
+            </FormField>
+            <FormField>
+              <Label>Category:</Label>
+              <SCField>
+                <Field type="text" name="category" placeholder={values.category} value={values.category} style={fieldLength} />
+              </SCField>          
+            </FormField>
+            <FormField>
+              <Label>Status:</Label>
+              <SCField>
+                <Field type="text" name="statusT" placeholder={values.statusT} value={values.statusT} style={fieldLength} />
+              </SCField>          
+            </FormField>
+            <FormField>
+              <Label>What Student Tried:</Label>
+              <SCField>
+                <Field type="text" name="description" placeholder={values.description} value={values.description} style={fieldLength} />
+              </SCField>          
+            </FormField>
+            <ButtonRow>
+              <Button type="submit">Save</Button>
+              <Button type="submit" id={"btnR" + ticket.id} onClick={(event)=>updateTicket(ticket.id, "resolved", event)}>Resolved</Button>
+              <Button type="submit" id={"btnQ" + ticket.id} onClick={(event) => updateTicket(ticket.id, "queue", event)}>Send to Queue</Button>
+            </ButtonRow>
+          </Form>
+        </Div1>
   );
 }
 

@@ -56,15 +56,14 @@ const Center = styled.div`
     padding: 0;
 `
 const Div1 = styled.div`
-    width: 40%;
     display: flex;
     flex-wrap: wrap;
     justify-content: right;
-    margin-right: 12.5%;
+    margin-right: 5%;
 `
 
 const fieldLength = {
-    "width": "100%",
+    "width": "95%",
     "margin": "0",
     "padding": "0"
 }
@@ -105,19 +104,19 @@ const Ticket = ({ profile, currentUserID, values, errors, touched, isSubmitting,
                     {touched.description && errors.description && <p>{errors.description}</p>}
                     <div id="complete"></div>                    
                     <FormField>
-                        <Label>Ticket Title:</Label>
+                        <Label>Title:</Label>
                         <SCField>
                             <Field type="text" name="title" placeholder="ticket title" value={values.title} width="100%"  style={fieldLength}/>
                         </SCField>
                     </FormField>
                     <FormField>
-                        <Label>Category of Problem:</Label>
+                        <Label>Category:</Label>
                         <SCField>
                             <Field type="text" name="category" placeholder="category of problem" value={values.category} style={fieldLength}/> 
                         </SCField>
                     </FormField>
                     <FormField>
-                        <Label>What have you tried:</Label>
+                        <Label>What You Tried:</Label>
                         <SCField>
                             <Field type="text" name="description" placeholder="What have you tried?" value={values.description} width="100%" style={fieldLength}/>
                         </SCField>

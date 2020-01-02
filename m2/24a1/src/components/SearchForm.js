@@ -2,28 +2,18 @@ import React, { useState, useEffect, Profiler } from "react";
 import hideLogin, { hideSignup } from "./Hide";
 import { Link } from 'react-router-dom';
 import TicketH from './TicketH.js';
+import Ticket from './Ticket.js';
 import styled from 'styled-components';
 // import Ticket from '../components/Ticket.js';
 
-const Button = styled.button`
-  background: #bb1333;
-  border-radius: 3px;
-  border: 2px solid #383651;
-  color: #ffffff;
-  font-weight: bold;
-  margin: 1em;
-  padding: 1em 2em;
-`   
 const H1 = styled.h1`
     color: #383651;
     font-size: 2.5rem;
     margin-left: 3%;
-`
-const FormField = styled.div`
-    display: flex;
+    text-align: center;
     width: 100%;
-    justify-content: right;
-    flex-wrap: nowrap;
+    justify-content: center;
+    text-align: center;
 `
 const Form = styled.form`
     width: 80%;
@@ -31,17 +21,6 @@ const Form = styled.form`
     flex-wrap: wrap;
     justify-content: center;
     margin-left: 5%;
-`
-const Label = styled.label`
-    color: #383651;
-    font-size: 1.5rem;
-    text-align: center;
-`
-
-const SCField = styled.div`
-    width: 100%;
-    margin: 0;
-    padding: 0;
 `
 const Center = styled.div`
     display: flex;
@@ -52,21 +31,25 @@ const Center = styled.div`
     padding: 0;
 `
 const Div1 = styled.div`
-    width: 40%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: right;
-    margin-right: 12.5%;
+    justify-content: center;
 `
 
 const fieldLength = {
     "color": "#383651",
     "font-size": "1.5rem",
-    "width": "97%",
-    "margin-left": "-3%",
-    "margin-bottom": "3%",
-    "padding-bottom": "0"
+    "width": "100%",
+    "margin": "2%",
+    "padding": "0"
 }
+const SearchDiv = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+`
     // TODO: 3 Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
   
 	  // TODO: 3 Student showed great insight in setting up the state management for the app's forms. 
@@ -84,6 +67,7 @@ const fieldLength = {
 	  // TODO: 2 the UI is composed of small reusable components
 	  // TODO: 2 Student's code was organized at the component level
     // TODO: 2 Student has set up component management for the forms in the app that makes sense for each form. 
+
 
 // hide current page when login showing
 hideLogin();
@@ -113,11 +97,15 @@ const SearchForm = props => {
     setSearchTerm(event.target.value);
   };
   console.log("profile id = " + props.profile.id);
+
+
+  if (props.profile.usertype === "helper") {
   return (
         <Center>  
-          <H1>Your Tickets:  </H1>
-            <Form>
-                <Label htmlFor="name">Search:</Label>
+      <Div1>
+      <H1>Your Tickets:  </H1>
+      <Form>
+        <SearchDiv>
                 <input
                   id="name"
                   type="text"
@@ -126,18 +114,52 @@ const SearchForm = props => {
                   value={searchTerm}
                   onChange={handleChange}
                   style={fieldLength}
-                />
+          />
+          </SearchDiv>
                 {
                   searchResults.map(
                     ticket => (
-                      <Link to="/ticket"><TicketH key={ticket.id} ticket={ticket} /></Link>
+                        <TicketH key={ticket.id} ticket={ticket} />
                     )
                   )
         }
-            </Form>
+            </Form></Div1>
+    </Center>
+    
+    );
+  }
+  else {
+  return (
+        <Center>  
+      <Div1>
+      <H1>Your Tickets:  </H1>
+      <Form>
+        <SearchDiv>
+                <input
+                  id="name"
+                  type="text"
+                  name="textfield"
+                  placeholder="Search"
+                  value={searchTerm}
+                  onChange={handleChange}
+                  style={fieldLength}
+          />
+          </SearchDiv>
+                {
+                  searchResults.map(
+                    ticket => (
+                        <Ticket key={ticket.id} ticket={ticket} />
+                    )
+                  )
+        }
+            </Form></Div1>
     </Center>
     
   );
+}
+
+
+
 }
 
 export default SearchForm;
