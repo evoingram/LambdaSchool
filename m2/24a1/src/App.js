@@ -7,17 +7,16 @@ import Signup from './components/Signup.js';
 // import hideLogin from './components/Hide.js';
 // import hideSignup from './components/Hide.js';
 import Profile from './components/Profile.js';
-import MainH from './components/MainH.js';
-import MainS from './components/MainS.js';
+import MainLoad from './components/MainLoad.js';
 import TicketListH from './components/TicketListH.js';
 import TicketListS from './components/TicketListS.js';
-// import TicketListQ from './components/TicketListQ.js';
+import TicketListQ from './components/TicketListQ.js';
+import SearchForm from './components/SearchForm.js';
+import SearchFormQ from './components/SearchFormQ.js';
 
 	// TODO: 2 Route management properly installed and used to show top level pages as well as nested views where necessary.
   
 export default function App() {
-  // click signup, hide login 
-  // click login, hide login & signup, load profile + ticketlistH/S
 
   return (
     <main>
@@ -26,17 +25,14 @@ export default function App() {
         <Route path="/" component={Login} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        {/*
-          <MainH />
-          <MainS />
-        */}
-        <Route path="/MainH" component={MainH}/>
-        <Route path="/MainS" component={MainS}/>
+        <Route path="/main" component={MainLoad}/>
         <Route path="/profile" component={Profile}/>
-        <Route path="/TicketListH" component={TicketListH}/>
-        <Route path="/TicketListS" component={TicketListS} />  
+        <Route path="/ticketlisth" component={TicketListH}/>
+        <Route path="/ticketlists" component={TicketListS} />  
+        <Route path="/ticketlistq" component={TicketListQ} />  
+        <Route path="/searchform" component={SearchForm} />  
+        <Route path="/searchformq" component={SearchFormQ} />    
       </div>
     </main>
   );
 }
-/*<Route path="/" component={Form} />*/

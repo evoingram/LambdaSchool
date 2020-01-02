@@ -28,6 +28,8 @@ const Center = styled.div`
     justify-content: center;
     margin: 0;
     padding: 0;
+    border-top: 2px solid #383651;
+    border-bottom: 2px solid #383651;
 `
 const Div1 = styled.div`
     width: 100%;
@@ -68,6 +70,8 @@ const SearchDiv = styled.div`
     // TODO: 2 Student has set up component management for the forms in the app that makes sense for each form. 
 
 
+    // // TODO:  make each list headline clickable to expand height
+
 // hide current page when login showing
 hideLogin();
 // hide current page when sign-up showing
@@ -97,30 +101,49 @@ const SearchForm = props => {
   };
   console.log("profile id = " + props.profile.id);
 
+  function expandListQ() {
+    let listToExpand = document.getElementById("searchFormQ");
+    console.log("ticketListH height = " + listToExpand.style.height);
+    let currentDisplay = listToExpand.style.display;
+    console.log(currentDisplay);
+    let expandDivText = document.getElementById("expandListTextQ");
+    if (currentDisplay != "none") {
+      listToExpand.style.display = "none";
+      listToExpand.style.height = "0%";
+      expandDivText.textContent = "click header to show ticket queue"
+    }
+    else {
+      listToExpand.style.display = "flex";
+      listToExpand.style.height = "100%";
+      expandDivText.textContent = "click header to hide ticket queue"
+    }
+  }
   return (
-        <Center>  
+    <Center>  
       <Div1>
-      <H1>Ticket Queue:  </H1>
-      <Form>
-        <SearchDiv>
-                <input
-                  id="name"
-                  type="text"
-                  name="textfield"
-                  placeholder="Search"
-                  value={searchTerm}
-                  onChange={handleChange}
-                  style={fieldLength}
-          />
-          </SearchDiv>
-                {
-                  searchResults.map(
-                    ticket => (
-                        <TicketQ key={ticket.id} ticket={ticket} />
+        <div id="expandListTextQ" style={{ color: '#86929d', fontSize: '0.75rem', fontStyle: 'italic' }}>click header to show ticket queue</div>
+        <H1 onClick={expandListQ} onLoad={expandListQ} >Ticket Queue:  </H1>
+        <Form id="searchFormQ" style={{display: 'none', height: '0%'}}>
+          <SearchDiv>
+                  <input
+                    id="name"
+                    type="text"
+                    name="textfield"
+                    placeholder="Search"
+                    value={searchTerm}
+                    onChange={handleChange}
+                    style={fieldLength}
+            />
+            </SearchDiv>
+                  {
+                    searchResults.map(
+                      ticket => (
+                          <TicketQ key={ticket.id} ticket={ticket} />
+                      )
                     )
-                  )
-        }
-            </Form></Div1>
+          }
+        </Form>
+      </Div1>
     </Center>
     
   );

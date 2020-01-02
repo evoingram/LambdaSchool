@@ -1,10 +1,10 @@
 import React from 'react';
 import Profile from './Profile.js';
-// import TicketListS from './TicketListS.js';
 import TicketListH from './TicketListH.js';
 import SearchFormQ from './SearchFormQ.js';
 import SearchForm from './SearchForm.js';
 import NewTicket from './NewTicket.js';
+
 
 const MainLoad = props => { 
     console.log("Mainload props.searchResults = " + props.searchResults);

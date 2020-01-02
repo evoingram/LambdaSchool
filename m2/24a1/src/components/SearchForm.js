@@ -29,6 +29,8 @@ const Center = styled.div`
     justify-content: center;
     margin: 0;
     padding: 0;
+    border-top: 2px solid #383651;
+    border-bottom: 2px solid #383651;
 `
 const Div1 = styled.div`
     width: 100%;
@@ -74,6 +76,7 @@ hideLogin();
 // hide current page when sign-up showing
 hideSignup();
 
+    // // TODO:  make each list headline clickable to expand height
 const SearchForm = props => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -98,13 +101,46 @@ const SearchForm = props => {
   };
   console.log("profile id = " + props.profile.id);
 
+  function expandList() {
+    let ut = props.profile.usertype;
+    let listToExpand = document.getElementById("searchForm");
+    console.log("ticketListH height = " + listToExpand.style.height);
+    let currentDisplay = listToExpand.style.display;
+    console.log(currentDisplay);
+    let expandDivText = document.getElementById("expandListText");
+    if (ut === "helper") { 
+      if (currentDisplay != "none") {
+        listToExpand.style.display = "none";
+        listToExpand.style.height = "0%";
+        expandDivText.textContent = "click header to show your assigned tickets"
+      }
+      else {
+        listToExpand.style.display = "flex";
+        listToExpand.style.height = "100%";
+        expandDivText.textContent = "click header to hide your assigned tickets"
+      }
+    }
+    else {
+    if (currentDisplay != "none") {
+      listToExpand.style.display = "none";
+      listToExpand.style.height = "0%";
+      expandDivText.textContent = "click header to show your tickets"
+    }
+    else {
+      listToExpand.style.display = "flex";
+      listToExpand.style.height = "100%";
+      expandDivText.textContent = "click header to hide your tickets"
+    } }
+
+  }
 
   if (props.profile.usertype === "helper") {
   return (
         <Center>  
       <Div1>
-      <H1>Your Assigned Tickets:  </H1>
-      <Form>
+        <div id="expandListText" style={{ color: '#86929d', fontSize: '0.75rem', fontStyle: 'italic' }}>click header to show your assigned tickets</div>
+      <H1 onClick={expandList} >Your Assigned Tickets:  </H1>
+      <Form id="searchForm" style={{display: 'none', height: '0%'}}>
         <SearchDiv>
                 <input
                   id="name"
@@ -129,30 +165,32 @@ const SearchForm = props => {
     );
   }
   else {
-  return (
-        <Center>  
-      <Div1>
-      <H1>Your Tickets:  </H1>
-      <Form>
-        <SearchDiv>
-                <input
-                  id="name"
-                  type="text"
-                  name="textfield"
-                  placeholder="Search"
-                  value={searchTerm}
-                  onChange={handleChange}
-                  style={fieldLength}
-          />
-          </SearchDiv>
-                {
-                  searchResults.map(
-                    ticket => (
-                        <Ticket key={ticket.id} ticket={ticket} />
-                    )
-                  )
-        }
-            </Form></Div1>
+    return (
+    <Center>  
+        <Div1>
+        <div id="expandListText">click header to hide your tickets</div>
+          <H1 onClick={expandList} >Your Tickets:  </H1>
+          <Form>
+            <SearchDiv>
+                    <input
+                      id="name"
+                      type="text"
+                      name="textfield"
+                      placeholder="Search"
+                      value={searchTerm}
+                      onChange={handleChange}
+                      style={fieldLength}
+              />
+            </SearchDiv>
+                    {
+                      searchResults.map(
+                        ticket => (
+                            <Ticket key={ticket.id} ticket={ticket} />
+                        )
+                      )
+            }
+          </Form>
+        </Div1>
     </Center>
     
   );

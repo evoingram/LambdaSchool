@@ -37,7 +37,7 @@ ux #204C8C
 	// proper usage of useState and useEffect hooks are clearly incorporated and correctly implemented. 
 	// Student used Array methods to dynamically render HTML elements.
 	// Student implemented GET requests using either Axios or Fetch to display 3rd party data on a deployed page. 
-	-- Route management properly installed and used to show top level pages as well as nested views where necessary.
+	// Route management properly installed and used to show top level pages as well as nested views where necessary.
 	// Student has set up component management for the forms in the app that makes sense for each form. 
 	// Student made the decision to use a third-party library, like Formik, or not, and can defend their decision. 
 	// Some form validation is in place.
@@ -57,11 +57,12 @@ Score 3:
 	// Pair programmed with the Web UI and Back end Architect
 
 
+	// TODO: make helper lists closed and open on click
+	-- TODO: Slackbot ticket api
+	-- TODO: Change urls for post/get/put/patch requests when backend up
 	// TODO: add 'help student' button to assign ticket to yourself
-	-- TODO: make helper lists closed and open on click
 	// TODO: Finish Styling TicketQ
 	// TODO: Finish Styling HeaderQ
-	-- TODO: Slackbot ticket api
 	// TODO: add 'assigned' status or 'in progress' once assigned
 	// TODO: Finish Styling Signup
 	// TODO: add name field to sign-up page

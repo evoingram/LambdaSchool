@@ -45,12 +45,33 @@ const TicketListS = props => {
   hideSignup();
       // TODO: 3 Student went above and beyond the project (search function?)
       // TODO: ticket component linked to open ticket
+  
+      // TODO:  make each list headline clickable to expand height
+  
+  function expandListT() {
+    let listToExpand = document.getElementById("ticketListH");
+    console.log("ticketListH height = " + listToExpand.style.height);
+    let currentDisplay = listToExpand.style.display;
+    console.log(currentDisplay);
+    let expandDivText = document.getElementById("expandListText");
+    if (currentDisplay != "none") {
+      listToExpand.style.display = "none";
+      listToExpand.style.height = "0%";
+      expandDivText.textContent = "(click header to show your assigned tickets)"
+    }
+    else {
+      listToExpand.style.display = "flex";
+      listToExpand.style.height = "100%";
+      expandDivText.textContent = "(click header to hide your assigned tickets)"
+    }
+
+  }
   return (
     <section className="search-form">
       <SearchForm tickets={props.tickets} searchResults={props.searchResults} setSearchResults={props.setSearchResults}/>
-      <HeaderH />
-      <div className="character-list">
-        <ul>
+      <div id="expandListText">(click header to show your assigned tickets)</div>
+      <HeaderH onClick={expandListT} onLoad={expandListT} />
+      <div className="character-list" id="ticketListH">
           {
             props.searchResults.map(
               ticket => (
@@ -58,7 +79,6 @@ const TicketListS = props => {
               )
             )
           }
-        </ul>
       </div>
     </section>
     

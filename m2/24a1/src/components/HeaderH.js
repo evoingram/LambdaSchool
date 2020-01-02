@@ -22,6 +22,7 @@ import hideLogin, { hideSignup } from "./Hide";
 hideLogin();
 // hide current page when sign-up showing
 hideSignup();
+
 export default function Header() {
   return (
     <header className="ui centered">
