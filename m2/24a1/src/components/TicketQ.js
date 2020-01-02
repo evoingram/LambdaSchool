@@ -101,17 +101,8 @@ const Ticket = ({ profile, ticket, values, errors, touched, isSubmitting, status
   values.statusT = ticket.status
   values.description = ticket.description
   
-  function updateTicket(ticketID, currentTicketStatus, event) {
-    if (currentTicketStatus === "resolved" && event.target.id === "btnR" + ticketID) { 
-      console.log(event.target.id);
-      ticket.status = "resolved"
-    }
-    if (currentTicketStatus === "queue" && event.target.id === "btnQ" + ticketID) { 
-      console.log(event.target.id);
-      ticket.status = "queue"
-    }
-    console.log("ticketID = " + ticketID);
-    console.log("values = " + values);
+  function updateTicket(ticketID, currentTicketStatus, helperID, event) {
+    values.helperid = helperID;
     let url = `http://localhost:5000/tickets/${ticketID}`;
     axios.defaults.headers.put['Content-Type'] = 'application/json';
     let axiosConfig = {
@@ -177,7 +168,7 @@ const Ticket = ({ profile, ticket, values, errors, touched, isSubmitting, status
         </Div>
             <ButtonRow>
               <Button type="submit">Save</Button>
-              <Button type="submit" id={"btnR" + ticket.id} onClick={(event)=>updateTicket(ticket.id, "in progress", event)}>Help Student</Button>
+              <Button type="submit" id={"btnR" + ticket.id} onClick={(event)=>updateTicket(ticket.id, profile.id, event)}>Help Student</Button>
             </ButtonRow>
           </Form>
         </Div1>

@@ -45,7 +45,7 @@ ux #204C8C
 
 
 Score 3:
-	-- Student showed great insight in setting up the state management for the app's forms. 
+	// Student showed great insight in setting up the state management for the app's forms. 
 	// Form validation is in place for all fields, and covers all use cases. 
 	// Loading states and success/error notifications are in place and add to the overall UX of the app.
   	-- Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
@@ -57,12 +57,12 @@ Score 3:
 	// Pair programmed with the Web UI and Back end Architect
 
 
-	-- TODO: add 'help student' button to assign ticket to yourself
+	// TODO: add 'help student' button to assign ticket to yourself
 	-- TODO: make helper lists closed and open on click
-	-- TODO: Finish Styling TicketQ
+	// TODO: Finish Styling TicketQ
 	// TODO: Finish Styling HeaderQ
 	-- TODO: Slackbot ticket api
-	-- TODO: add 'assigned' status or 'in progress' once assigned
+	// TODO: add 'assigned' status or 'in progress' once assigned
 	// TODO: Finish Styling Signup
 	// TODO: add name field to sign-up page
 	// TODO: sign-up post request to userinfo
