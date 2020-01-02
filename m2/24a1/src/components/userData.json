@@ -78,10 +78,94 @@
       "helperid": 2
     },
     {
+      "title": "new ticket",
+      "date": "Wed, Jan 1, 2020",
+      "category": "mysql",
+      "status": "queue",
+      "description": "nothing",
+      "submitid": 0,
+      "helperid": "",
       "id": 6
     },
     {
+      "title": "new ticket 2",
+      "date": "Wed, Jan 1, 2020",
+      "category": "vba",
+      "status": "queue",
+      "description": "nothinggggggg",
+      "submitid": 0,
+      "helperid": "",
       "id": 7
+    },
+    {
+      "title": "another ticket",
+      "date": "Wed, Jan 1, 2020",
+      "category": "pebcak",
+      "status": "queue",
+      "description": "nothing",
+      "submitid": 0,
+      "helperid": "",
+      "id": 8
+    },
+    {
+      "title": "ticket 3",
+      "date": "Wed, Jan 1, 2020",
+      "category": "reactjs",
+      "status": "queue",
+      "description": "everything",
+      "submitid": 0,
+      "helperid": "",
+      "id": 9
+    },
+    {
+      "title": "test4",
+      "date": "Wed, Jan 1, 2020",
+      "category": "vba",
+      "status": "queue",
+      "description": "pebcak",
+      "submitid": 0,
+      "helperid": "",
+      "id": 10
+    },
+    {
+      "title": "test5",
+      "date": "Wed, Jan 1, 2020",
+      "category": "css",
+      "status": "queue",
+      "description": "erew1rwea",
+      "submitid": 0,
+      "helperid": "",
+      "id": 11
+    },
+    {
+      "title": "test6",
+      "date": "Wed, Jan 1, 2020",
+      "category": "mysql",
+      "status": "queue",
+      "description": "452safsd",
+      "submitid": 0,
+      "helperid": "",
+      "id": 12
+    },
+    {
+      "title": "test7",
+      "date": "Wed, Jan 1, 2020",
+      "category": "html",
+      "status": "queue",
+      "description": "uikujhh",
+      "submitid": 0,
+      "helperid": "",
+      "id": 13
+    },
+    {
+      "title": "test8",
+      "date": "Wed, Jan 1, 2020",
+      "category": "vba",
+      "status": "queue",
+      "description": "juykyuk",
+      "submitid": 0,
+      "helperid": "",
+      "id": 14
     }
   ],
   "contacts": [

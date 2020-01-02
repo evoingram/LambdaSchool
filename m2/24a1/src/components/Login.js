@@ -38,6 +38,7 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
     const [loggedIn, setLoggedIn] = useState(false);
     const [lVisible, setLVisible] = useState(true);
     const [currentUsertype, setCurrentUsertype] = useState("student");
+    const [currentUserID, setCurrentUserID] = useState("student");
     const [ticketURL, setTicketURL] = useState("");
     const [currentDate, setCurrentDate] = useState(new Date().toLocaleString());
     const [tickets, setTickets] = useState([]);
@@ -47,7 +48,9 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
         if (status != null) {
             // get usertype/id of logging-in user 
             setCurrentUsertype(`${status.usertype}`);
+            setCurrentUserID(`${status.id}`);
             setProfile({
+                id: status.id,
                 name: status.name,
                 username: status.username,
                 email: status.email,

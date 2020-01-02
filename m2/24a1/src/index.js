@@ -11,6 +11,23 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
+
+/*  
+Lambda colors: 
+
+red #bb1333
+navy #383651
+blue #233D6E
+nav menu gray 1 #707486
+copyrightgray #4C5962
+black #14131C
+
+track icon colors:
+ds #66F2FF
+web #373459
+ios df173C
+ux #204C8C
+*/
 /* 
 
 	-- Student created functional components and used events in application to add dynamic functionality to app.

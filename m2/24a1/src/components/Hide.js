@@ -11,15 +11,18 @@ function hideLogin() {
 }
 
 
-function loadForm(){
-axios
-    .get("http://localhost:3000/data")
-    .then(res => {
-        console.log("form response = "); // Data was created successfully and logs to console
-        console.log(res.data.data);
-        console.log("form userinfo = " + res.data.userinfo);
-        console.log("form tickets = " + res.data.tickets);
-        console.log("form contacts = " + res.data.contacts);
+function loadForm(props){
+    let url = `http://localhost:5000/tickets?submitid=${props.currentUserID}`;
+    axios
+        .get(url)
+        .then(res => {
+            console.log("form response = "); 
+            console.log(res.data.data);
+            console.log("form userinfo = " + res.data.userinfo);
+            console.log("form tickets = " + res.data.tickets);
+            console.log("form contacts = " + res.data.contacts);
+            props.setTickets(res.data);
+            props.setSearchResults(res.data);
 
 
 
@@ -28,7 +31,6 @@ axios
     .catch(err => {
         console.log(err); // logs error creating the data 
     });  
-    
     
 }
         

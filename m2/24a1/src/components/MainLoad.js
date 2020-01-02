@@ -4,6 +4,7 @@ import Profile from './Profile.js';
 import TicketListH from './TicketListH.js';
 import TicketListQ from './TicketListQ.js';
 import SearchForm from './SearchForm.js';
+import NewTicket from './NewTicket.js';
 
 const MainLoad = props => { 
     console.log("Mainload props.searchResults = " + props.searchResults);
@@ -32,6 +33,7 @@ const MainLoad = props => {
         return (
             <div>
                 <Profile profile={props.profile}/>
+                <NewTicket profile={props.profile} currentUserID={props.currentUserID} setTickets={props.setTickets} setSearchResults={props.setSearchResults}/>
                 <SearchForm tickets={props.tickets} searchResults={props.searchResults} setSearchResults={props.setSearchResults}/>
             </div>
         );

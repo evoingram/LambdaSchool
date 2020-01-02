@@ -1,4 +1,6 @@
 import React from "react";
+import styled from 'styled-components';
+
 
   	// TODO: 3 Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
   
@@ -18,10 +20,29 @@ import React from "react";
 	// TODO: 2 Student has set up component management for the forms in the app that makes sense for each form. 
 
 	// TODO:  Combine all headers into one if you have time
+
+	
+const AppHeader = styled.header`
+  border-bottom: 2px solid #383651;
+  font-weight: bold;
+  margin: 0 1em;
+  padding: 1em 1em;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+`
+
+const AppName = styled.h1`
+  color: #383651;
+  font-weight: bold;
+  align-text: right;
+`
+
 export default function Header() {
   return (
-    <header className="ui centered">
-      <h1 className="ui center">Lambda School's DevDesk</h1>
-    </header>
+	  <AppHeader className="">
+		  <img src={`${process.env.PUBLIC_URL}/img/lambda-logo.png`}/>
+		  <AppName className="">DevDesk</AppName>
+    </AppHeader>
   );
 }
