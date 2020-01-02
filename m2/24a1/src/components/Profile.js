@@ -7,15 +7,61 @@ import styled from 'styled-components';
 import loadForm from './old pages/Form.js';
 
 const Button = styled.button`
-  background: #002244;
+  background: #bb1333;
   border-radius: 3px;
-  border: 2px solid #69BE28;
-  color: #A5ACAF;
+  border: 2px solid #383651;
+  color: #ffffff;
   font-weight: bold;
-  margin: 0 1em;
-  padding: 0.25em 1em;
+  margin: 1em;
+  padding: 1em 2em;
+`   
+
+const H1 = styled.h1`
+    color: #383651;
+    font-size: 2.5rem;
+    margin-left: 3%;
+`
+const FormField = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: right;
+    flex-wrap: nowrap;
+`
+const Div = styled.div`
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    margin-left: 15%;
+`
+const Label = styled.label`
+    width: 30%;
+    margin: 0;
+    padding: 0;
+    justify-content: right;
+    text-align: right;
+    padding-right: 1%;
 `
 
+const SCField = styled.div`
+    width: 100%;
+    margin: 0;
+    padding: 0;
+`
+const Center = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+`
+
+const fieldLength = {
+        "width": "100%",
+        "margin": "0",
+        "padding": "0"
+}
 const Profile = ({ profile, values, errors, touched, status }) => {
     
     // TODO: 3 Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
@@ -64,21 +110,49 @@ const Profile = ({ profile, values, errors, touched, status }) => {
     }
     // TODO: Profile page displaying fields
     return (
-        <div className='user-form'>      
+        <Center>  
+        <H1>Profile Information:</H1>    
         <Form>
-            {touched.name && errors.name && <p>{errors.name}</p>}
-            {touched.username && errors.username && <p>{errors.username}</p>}
-            {touched.email && errors.email && <p>{errors.email}</p>}
-            {touched.password && errors.password && <p>{errors.password}</p>}
-                <Field type="text" name="usertype" placeholder={profile.usertype} value={values.usertype} />
-            <Field type="text" name="name" placeholder={profile.name} value={values.name} />
-            <Field type="username" name="username" placeholder={profile.username} value={values.username} />
-            <Field type="email" name="email" placeholder={profile.email} value={values.email} />
-            <Field type="password" name="password" placeholder="Password" value={values.password} />
+            <Div>
+                {touched.name && errors.name && <p>{errors.name}</p>}
+                {touched.username && errors.username && <p>{errors.username}</p>}
+                {touched.email && errors.email && <p>{errors.email}</p>}
+                {touched.password && errors.password && <p>{errors.password}</p>}
+                <FormField>
+                    <Label>User Type:</Label>
+                    <SCField>
+                        <Field type="text" name="usertype" placeholder={profile.usertype} value={values.usertype} style={fieldLength} />
+                    </SCField>
+                </FormField>
+                <FormField>
+                    <Label>Name:</Label>
+                    <SCField>
+                        <Field type="text" name="name" placeholder={profile.name} value={values.name} style={fieldLength} />
+                    </SCField>
+                </FormField>
+                <FormField>
+                    <Label>Username:</Label>
+                    <SCField>
+                        <Field type="username" name="username" placeholder={profile.username} value={values.username} style={fieldLength} />
+                    </SCField>
+                </FormField>
+                <FormField>
+                    <Label>Email:</Label>
+                    <SCField>
+                        <Field type="email" name="email" placeholder={profile.email} value={values.email} style={fieldLength} />
+                    </SCField>
+                </FormField>
+                <FormField>
+                    <Label>Password:</Label>
+                    <SCField>
+                        <Field type="password" name="password" placeholder="Password" value={values.password} style={fieldLength} />
+                    </SCField>
+                </FormField>
                 <Button type="submit" onClick={(event) => updateProfile(profile, values, event)}>Save</Button>
-            {touched.password && errors.password && <p>{errors.password}</p>}
-            </Form>
-        </div>
+                {touched.password && errors.password && <p>{errors.password}</p>}
+            </Div>
+        </Form>
+    </Center>
       
   );
 }

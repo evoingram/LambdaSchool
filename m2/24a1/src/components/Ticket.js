@@ -7,14 +7,14 @@ import styled from 'styled-components';
 import loadForm from './Hide.js';
 
 const Button = styled.button`
-  background: #002244;
+  background: #bb1333;
   border-radius: 3px;
-  border: 2px solid #69BE28;
-  color: #A5ACAF;
+  border: 2px solid #383651;
+  color: #ffffff;
   font-weight: bold;
   margin: 0 1em;
   padding: 0.25em 1em;
-`
+`   
 
 const Ticket = ({ ticket, values, errors, touched, isSubmitting, status }) => {
 

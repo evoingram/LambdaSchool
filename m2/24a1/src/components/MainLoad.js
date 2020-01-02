@@ -23,7 +23,7 @@ const MainLoad = props => {
             return (
                 <div>
                     <Profile profile={props.profile} />
-                    <SearchForm tickets={props.tickets} searchResults={props.searchResults} setSearchResults={props.setSearchResults}/>
+                    <SearchForm tickets={props.tickets} searchResults={props.searchResults} setSearchResults={props.setSearchResults} profile={props.profile} />
                     <TicketListQ ticketsQ={props.ticketsQ}/>
                 </div>
             );
@@ -34,7 +34,7 @@ const MainLoad = props => {
             <div>
                 <Profile profile={props.profile}/>
                 <NewTicket profile={props.profile} currentUserID={props.currentUserID} setTickets={props.setTickets} setSearchResults={props.setSearchResults}/>
-                <SearchForm tickets={props.tickets} searchResults={props.searchResults} setSearchResults={props.setSearchResults}/>
+                <SearchForm tickets={props.tickets} searchResults={props.searchResults} setSearchResults={props.setSearchResults} profile={props.profile} />
             </div>
         );
     }

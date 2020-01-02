@@ -7,15 +7,68 @@ import styled from 'styled-components';
 import loadForm from './Hide.js';
 
 const Button = styled.button`
-  background: #002244;
+  background: #bb1333;
   border-radius: 3px;
-  border: 2px solid #69BE28;
-  color: #A5ACAF;
+  border: 2px solid #383651;
+  color: #ffffff;
   font-weight: bold;
-  margin: 0 1em;
-  padding: 0.25em 1em;
+  margin: 1em;
+  padding: 1em 2em;
+`   
+const H1 = styled.h1`
+    color: #383651;
+    font-size: 2.5rem;
+    margin-left: 3%;
 `
-    
+const FormField = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: right;
+    flex-wrap: nowrap;
+`
+const Div = styled.div`
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    margin-left: 5%;
+`
+const Label = styled.label`
+    width: 30%;
+    margin: 0;
+    padding: 0;
+    justify-content: right;
+    text-align: right;
+    padding-right: 1%;
+`
+
+const SCField = styled.div`
+    width: 100%;
+    margin: 0;
+    padding: 0;
+`
+const Center = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+`
+const Div1 = styled.div`
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    margin-right: 12.5%;
+`
+
+const fieldLength = {
+    "width": "100%",
+    "margin": "0",
+    "padding": "0"
+}
+
 const Ticket = ({ profile, currentUserID, values, errors, touched, isSubmitting, status, setSearchResults, setTickets }) => {
 
   // TODO: 3 Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
@@ -41,20 +94,39 @@ const Ticket = ({ profile, currentUserID, values, errors, touched, isSubmitting,
     const {value:tickets, hook:bindTickets} = useInput('')
 
     return (
-        <div className='user-form'>      
+        <Center>  
+            <H1>Submit a New Ticket:</H1>        
             <Form>
-                {touched.title && errors.title && <p>{errors.title}</p>}
-                {touched.date && errors.date && <p>{errors.date}</p>}
-                {touched.category && errors.category && <p>{errors.category}</p>}
-                {touched.statusT && errors.statusT && <p>{errors.statusT}</p>}
-                {touched.description && errors.description && <p>{errors.description}</p>}
-                <div id="complete"></div>
-                <Field type="text" name="title" placeholder="ticket title" value={values.title} />
-                <Field type="text" name="category" placeholder="category of problem" value={values.category} />
-                <Field type="text" name="description" placeholder="What have you tried?" value={values.description} />
-                <Button type="submit">Save</Button>
+                <Div>
+                    {touched.title && errors.title && <p>{errors.title}</p>}
+                    {touched.date && errors.date && <p>{errors.date}</p>}
+                    {touched.category && errors.category && <p>{errors.category}</p>}
+                    {touched.statusT && errors.statusT && <p>{errors.statusT}</p>}
+                    {touched.description && errors.description && <p>{errors.description}</p>}
+                    <div id="complete"></div>                    
+                    <FormField>
+                        <Label>Ticket Title:</Label>
+                        <SCField>
+                            <Field type="text" name="title" placeholder="ticket title" value={values.title} width="100%"  style={fieldLength}/>
+                        </SCField>
+                    </FormField>
+                    <FormField>
+                        <Label>Category of Problem:</Label>
+                        <SCField>
+                            <Field type="text" name="category" placeholder="category of problem" value={values.category} style={fieldLength}/> 
+                        </SCField>
+                    </FormField>
+                    <FormField>
+                        <Label>What have you tried:</Label>
+                        <SCField>
+                            <Field type="text" name="description" placeholder="What have you tried?" value={values.description} width="100%" style={fieldLength}/>
+                        </SCField>
+                    </FormField>
+                    <Div1><Button type="submit">Save</Button></Div1>
+                </Div>
             </Form>
-        </div>
+        </Center>
+      
         
     );
 }

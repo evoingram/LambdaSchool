@@ -7,16 +7,40 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import MainLoad from './MainLoad.js';
 import setSearchResults from './SearchForm.js';
+
 const Button = styled.button`
-  background: #002244;
+  background: #bb1333;
   border-radius: 3px;
-  border: 2px solid #69BE28;
-  color: #A5ACAF;
+  border: 2px solid #383651;
+  color: #ffffff;
   font-weight: bold;
   margin: 0 1em;
-  padding: 0.25em 1em;
+  padding: 1em 2em;
 `   
-                                                            // supposed to go in UserForm parameters ", status"
+
+const LoginFormatting = styled.form`
+    display: flex;
+    color: #4C5962;
+    font-weight: bold;
+    margin: 1em;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+`              
+const Div = styled.div`
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+`
+                 
+const H1 = styled.h1`
+    color: #383651;
+    font-size: 1rem;
+`
+                    
+// supposed to go in UserForm parameters ", status"
 const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
 
     // TODO: 3 Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
@@ -103,21 +127,19 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
     }
     else {
         return (
-            <div className='user-form'>
-                <Form>
-                    {touched.email && errors.email && <p>{errors.email}</p>}
-                    {touched.password && errors.password && <p>{errors.password}</p>}
-                    <Field type="email" name="email" placeholder="Email" value={values.email} />
-                    <Field type="password" name="password" placeholder="Password" value={values.password} />
-                    <Button type="submit">Submit!</Button>
-                </Form>
-                {
-                    // hide login form on click to sign up -- hideLogin();    
-                }
-                <div>
-                    <Link to="/signup"><Button type="submit" onClick={toggleLVisible}>Register</Button></Link>
-                </div>
-            </div>
+            <Div>
+                <H1>Login or Register for an account to view and submit tickets:</H1>
+                <LoginFormatting>
+                    <Form>
+                        {touched.email && errors.email && <p>{errors.email}</p>}
+                        {touched.password && errors.password && <p>{errors.password}</p>}
+                        <Field type="email" name="email" placeholder="Email" value={values.email} />
+                        <Field type="password" name="password" placeholder="Password" value={values.password} />
+                        <Button type="submit">Submit!</Button>
+                        <Link to="/signup"><Button type="submit" onClick={toggleLVisible}>Register</Button></Link>
+                    </Form>
+                </LoginFormatting>
+            </Div>
         );
     }
     

@@ -1,10 +1,72 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Profiler } from "react";
 import hideLogin, { hideSignup } from "./Hide";
 import { Link } from 'react-router-dom';
 import TicketH from './TicketH.js';
-
+import styled from 'styled-components';
 // import Ticket from '../components/Ticket.js';
-    
+
+const Button = styled.button`
+  background: #bb1333;
+  border-radius: 3px;
+  border: 2px solid #383651;
+  color: #ffffff;
+  font-weight: bold;
+  margin: 1em;
+  padding: 1em 2em;
+`   
+const H1 = styled.h1`
+    color: #383651;
+    font-size: 2.5rem;
+    margin-left: 3%;
+`
+const FormField = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: right;
+    flex-wrap: nowrap;
+`
+const Form = styled.form`
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: 5%;
+`
+const Label = styled.label`
+    color: #383651;
+    font-size: 1.5rem;
+    text-align: center;
+`
+
+const SCField = styled.div`
+    width: 100%;
+    margin: 0;
+    padding: 0;
+`
+const Center = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+`
+const Div1 = styled.div`
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    margin-right: 12.5%;
+`
+
+const fieldLength = {
+    "color": "#383651",
+    "font-size": "1.5rem",
+    "width": "97%",
+    "margin-left": "-3%",
+    "margin-bottom": "3%",
+    "padding-bottom": "0"
+}
     // TODO: 3 Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
   
 	  // TODO: 3 Student showed great insight in setting up the state management for the app's forms. 
@@ -50,29 +112,30 @@ const SearchForm = props => {
   const handleChange = event => {
     setSearchTerm(event.target.value);
   };
-
+  console.log("profile id = " + props.profile.id);
   return (
-    <section className="search-form">
-      <h1>Your Tickets:  </h1>
-      <form>
-        <label htmlFor="name">Search:</label>
-        <input
-          id="name"
-          type="text"
-          name="textfield"
-          placeholder="Search"
-          value={searchTerm}
-          onChange={handleChange}
-        />
-        {
-          searchResults.map(
-            ticket => (
-              <Link to="/ticket"><TicketH key={ticket.id} ticket={ticket} /></Link>
-            )
-          )
+        <Center>  
+          <H1>Your Tickets:  </H1>
+            <Form>
+                <Label htmlFor="name">Search:</Label>
+                <input
+                  id="name"
+                  type="text"
+                  name="textfield"
+                  placeholder="Search"
+                  value={searchTerm}
+                  onChange={handleChange}
+                  style={fieldLength}
+                />
+                {
+                  searchResults.map(
+                    ticket => (
+                      <Link to="/ticket"><TicketH key={ticket.id} ticket={ticket} /></Link>
+                    )
+                  )
         }
-      </form>
-    </section>
+            </Form>
+    </Center>
     
   );
 }
