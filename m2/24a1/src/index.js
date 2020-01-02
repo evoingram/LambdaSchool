@@ -72,7 +72,7 @@ Score 3:
 	-- TODO: SLACK:  Build an integrated slack-bot that allows students to submit help tickets through slack. 
 	-- TODO: SLACK:  Allow the ability to subscribe to the Queue in slack to be notified if someone opens a ticket. 
 	-- TODO: Change urls for post/get/put/patch requests when backend up
-	-- TODO: If time allows, redo components to streamline headers/etc
+	-- TODO: If time allows, redo components to streamline headers, include classes, etc
 	// TODO: add 'help student' button to assign ticket to yourself
 	// TODO: Finish Styling TicketQ
 	// TODO: Finish Styling HeaderQ
