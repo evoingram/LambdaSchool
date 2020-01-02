@@ -39,7 +39,52 @@ const H1 = styled.h1`
     color: #383651;
     font-size: 1rem;
 `
-                    
+             
+const Div1 = styled.div`
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin: 0;
+    border-bottom: 2px solid #383651;
+    border-top: 2px solid #383651;
+`
+const FormField = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: right;
+    flex-wrap: nowrap;
+`
+const Label = styled.label`
+    width: 40%;
+    margin: 0;
+    padding: 0;
+    justify-content: right;
+    text-align: right;
+    padding-right: 1%;
+    text-decoration: none;
+`
+const SCField = styled.div`
+    width: 100%;
+    margin: 0;
+    padding: 0;
+`
+const ButtonRow = styled.div`
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 2%;
+`
+
+const fieldLength = {
+        "width": "97%",
+        "margin": "0",
+        "padding": "0"
+}       
 // supposed to go in UserForm parameters ", status"
 const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
 
@@ -127,16 +172,28 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
     }
     else {
         return (
-            <Div>
+      <Div>
                 <H1>Login or Register for an account to view and submit tickets:</H1>
                 <LoginFormatting>
                     <Form>
                         {touched.email && errors.email && <p>{errors.email}</p>}
                         {touched.password && errors.password && <p>{errors.password}</p>}
+            <FormField>
+              <Label>Email:</Label>
+              <SCField>
                         <Field type="email" name="email" placeholder="Email" value={values.email} />
+              </SCField>          
+            </FormField>
+            <FormField>
+              <Label>Password:</Label>
+              <SCField>
                         <Field type="password" name="password" placeholder="Password" value={values.password} />
+              </SCField>          
+            </FormField>
+            <ButtonRow>
                         <Button type="submit">Submit!</Button>
                         <Link to="/signup"><Button type="submit" onClick={toggleLVisible}>Register</Button></Link>
+            </ButtonRow>
                     </Form>
                 </LoginFormatting>
             </Div>

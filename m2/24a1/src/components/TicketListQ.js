@@ -53,7 +53,7 @@ const TicketListQ = props => {
         {
             props.ticketsQ.map(
               ticket => (
-                <Link to="/ticket"><Ticket key={ticket.id} ticket={ticket} /></Link>
+                <Ticket key={ticket.id} ticket={ticket} />
               )
             )
           }

@@ -54,7 +54,7 @@ const TicketListS = props => {
           {
             props.searchResults.map(
               ticket => (
-                <Link to="/ticket"><TicketH key={ticket.id} ticket={ticket} /></Link>
+                <TicketH key={ticket.id} ticket={ticket} />
               )
             )
           }
