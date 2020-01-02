@@ -2,7 +2,7 @@ import React from 'react';
 import Profile from './Profile.js';
 // import TicketListS from './TicketListS.js';
 import TicketListH from './TicketListH.js';
-import TicketListQ from './TicketListQ.js';
+import SearchFormQ from './SearchFormQ.js';
 import SearchForm from './SearchForm.js';
 import NewTicket from './NewTicket.js';
 
@@ -15,7 +15,7 @@ const MainLoad = props => {
             <div>
                 <Profile profile={props.profile} />
                 <TicketListH tickets={props.searchResults} searchResults={props.searchResults} setSearchResults={props.setSearchResults}/>
-                <TicketListQ ticketsQ={props.ticketsQ}/>
+                <SearchFormQ tickets={props.ticketsQ} searchResults={props.searchResults} setSearchResults={props.setSearchResults} profile={props.profile} />
             </div>
             );
         }
@@ -24,7 +24,7 @@ const MainLoad = props => {
                 <div>
                     <Profile profile={props.profile} />
                     <SearchForm tickets={props.tickets} searchResults={props.searchResults} setSearchResults={props.setSearchResults} profile={props.profile} />
-                    <TicketListQ ticketsQ={props.ticketsQ}/>
+                    <SearchFormQ ticketsQ={props.ticketsQ} searchResults={props.searchResults} setSearchResults={props.setSearchResults} profile={props.profile} />
                 </div>
             );
         }

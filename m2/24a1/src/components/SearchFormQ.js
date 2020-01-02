@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import hideLogin, { hideSignup } from "./Hide";
 // import { Link } from 'react-router-dom';
-import TicketH from './TicketH.js';
-import Ticket from './Ticket.js';
+import TicketQ from './TicketQ.js';
 import styled from 'styled-components';
 // import Ticket from '../components/Ticket.js';
 
@@ -80,8 +79,8 @@ const SearchForm = props => {
 
 
   useEffect(() => {
-    if (props.tickets != null) {
-      const results = props.tickets.filter(ticket =>
+    if (props.ticketsQ != null) {
+      const results = props.ticketsQ.filter(ticket =>
         ticket.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         ticket.status.toLowerCase().includes(searchTerm.toLowerCase()) ||
         ticket.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -91,19 +90,17 @@ const SearchForm = props => {
       console.log("useEffect Search Results = " + results);
       setSearchResults([...results]);
     }
-  }, [searchTerm, props.tickets]);
+  }, [searchTerm, props.ticketsQ]);
 
   const handleChange = event => {
     setSearchTerm(event.target.value);
   };
   console.log("profile id = " + props.profile.id);
 
-
-  if (props.profile.usertype === "helper") {
   return (
         <Center>  
       <Div1>
-      <H1>Your Assigned Tickets:  </H1>
+      <H1>Ticket Queue:  </H1>
       <Form>
         <SearchDiv>
                 <input
@@ -119,36 +116,7 @@ const SearchForm = props => {
                 {
                   searchResults.map(
                     ticket => (
-                        <TicketH key={ticket.id} ticket={ticket} />
-                    )
-                  )
-        }
-            </Form></Div1>
-    </Center>
-    
-    );
-  }
-  else {
-  return (
-        <Center>  
-      <Div1>
-      <H1>Your Tickets:  </H1>
-      <Form>
-        <SearchDiv>
-                <input
-                  id="name"
-                  type="text"
-                  name="textfield"
-                  placeholder="Search"
-                  value={searchTerm}
-                  onChange={handleChange}
-                  style={fieldLength}
-          />
-          </SearchDiv>
-                {
-                  searchResults.map(
-                    ticket => (
-                        <Ticket key={ticket.id} ticket={ticket} />
+                        <TicketQ key={ticket.id} ticket={ticket} />
                     )
                   )
         }
@@ -156,8 +124,6 @@ const SearchForm = props => {
     </Center>
     
   );
-}
-
 
 
 }

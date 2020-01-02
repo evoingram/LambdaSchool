@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import hideLogin from './Hide.js';
 import hideSignup from './Hide.js';
-import Ticket from './Ticket.js';
+import TicketQ from './Ticket.js';
 import HeaderQ from './HeaderQ.js';
 
 
@@ -53,7 +53,7 @@ const TicketListQ = props => {
         {
             props.ticketsQ.map(
               ticket => (
-                <Ticket key={ticket.id} ticket={ticket} />
+                <TicketQ key={ticket.id} ticket={ticket} profile={props.profile}/>
               )
             )
           }

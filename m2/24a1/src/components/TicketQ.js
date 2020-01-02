@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import loadForm from './Hide.js';
 
 const Div1 = styled.div`
-    width: 80%;
+    width: 70%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -27,7 +27,7 @@ const H1 = styled.h1`
 const Div = styled.div`
     width: 100%;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: center;
 `
 const FormField = styled.div`
@@ -73,7 +73,7 @@ const fieldLength = {
         "margin": "0",
         "padding": "0"
 }
-const Ticket = ({ ticket, values, errors, touched, isSubmitting, status }) => {
+const Ticket = ({ profile, ticket, values, errors, touched, isSubmitting, status }) => {
 
   // TODO: 3 Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
   
@@ -133,6 +133,7 @@ const Ticket = ({ ticket, values, errors, touched, isSubmitting, status }) => {
       });  
 
   }
+  // TODO: Add name/slack username of submitter
   return (
       <Div1>
         <H1>Ticket:</H1>
@@ -142,6 +143,7 @@ const Ticket = ({ ticket, values, errors, touched, isSubmitting, status }) => {
             {touched.category && errors.category && <p>{errors.category}</p>}
             {touched.statusT && errors.statusT && <p>{errors.statusT}</p>}
             {touched.description && errors.description && <p>{errors.description}</p>}
+        <Div>
             <FormField>
               <Label>Title:</Label>
               <SCField>
@@ -172,10 +174,10 @@ const Ticket = ({ ticket, values, errors, touched, isSubmitting, status }) => {
                 <Field type="text" name="description" placeholder={values.description} value={values.description} style={fieldLength} />
               </SCField>          
             </FormField>
+        </Div>
             <ButtonRow>
               <Button type="submit">Save</Button>
-              <Button type="submit" id={"btnR" + ticket.id} onClick={(event)=>updateTicket(ticket.id, "resolved", event)}>Resolved</Button>
-              <Button type="submit" id={"btnQ" + ticket.id} onClick={(event) => updateTicket(ticket.id, "queue", event)}>Send to Queue</Button>
+              <Button type="submit" id={"btnR" + ticket.id} onClick={(event)=>updateTicket(ticket.id, "in progress", event)}>Help Student</Button>
             </ButtonRow>
           </Form>
         </Div1>
@@ -214,7 +216,7 @@ const FormikForm = withFormik({
     handleSubmit(values, { setStatus, resetForm, setErrors, setSubmitting }) {
         
             axios
-                .get("http://localhost:3000/userinfo?email=" + values.email, values)
+                .get("http://localhost:5000/tickets?status=queue")
                 .then(res => {
                     console.log("login response = " + res.data); // Data was created successfully and logs to console
                     setStatus(res.data);

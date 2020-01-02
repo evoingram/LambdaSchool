@@ -62,6 +62,7 @@ Score 3:
 	-- TODO: Finish Styling TicketQ
 	// TODO: Finish Styling HeaderQ
 	-- TODO: Slackbot ticket api
+	-- TODO: add 'assigned' status or 'in progress' once assigned
 	// TODO: Finish Styling Signup
 	// TODO: add name field to sign-up page
 	// TODO: sign-up post request to userinfo
