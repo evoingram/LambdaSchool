@@ -7,3 +7,5 @@
 - [ ] Change urls for post/get/put/patch requests when backend up
 - [ ] If time allows, redo components to streamline headers, include classes, etc
 - [ ] If time allows, change background color of hover over ticket
+- [ ] Use advanced React techniques like the composition pattern, custom hooks, render props, HOCs, etc.
+- [ ] Incorporate a third party event/animation library like unto Greensock, Anime, React-motion etc.
