@@ -11,7 +11,6 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-
 /*  
 Lambda colors: 
 
@@ -28,6 +27,17 @@ web #373459
 ios df173C
 ux #204C8C
 */
+
+/*
+Slack plan
+
+When user sends message to bot /helpdesk:
+	-- initiate ticket
+	-- send back notification
+	-- subscribe command
+
+*/
+
 /* 
 
 	// Student created functional components and used events in application to add dynamic functionality to app.
@@ -50,11 +60,11 @@ Score 3:
 	// Loading states and success/error notifications are in place and add to the overall UX of the app.
   	// Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
 	// Student was able to architect components to be easily reused. 
-	-- Student used advanced React techniques like the composition pattern, custom hooks, render props, HOCs, etc.
-	-- Student incorporated a third party event/animation library like unto Greensock, Anime, React-motion etc.
 	// Student's work demonstrates that all MVP features were built.
 	// Student went above and beyond the project (search function?).
 	// Pair programmed with the Web UI and Back end Architect
+	-- Student used advanced React techniques like the composition pattern, custom hooks, render props, HOCs, etc.
+	-- Student incorporated a third party event/animation library like unto Greensock, Anime, React-motion etc.
 
 	MVP
 	// Two user types: Student and Helper
@@ -68,11 +78,6 @@ Score 3:
 	// TODO: make helper lists closed and open on click
 	// TODO: Make it so a user can be both a student and a helper. 
 	// TODO: Check post requests for resolved/send to queue are correct
-	-- TODO: Rerender after posting new ticket not working
-	-- TODO: SLACK:  Build an integrated slack-bot that allows students to submit help tickets through slack. 
-	-- TODO: SLACK:  Allow the ability to subscribe to the Queue in slack to be notified if someone opens a ticket. 
-	-- TODO: Change urls for post/get/put/patch requests when backend up
-	-- TODO: If time allows, redo components to streamline headers, include classes, etc
 	// TODO: add 'help student' button to assign ticket to yourself
 	// TODO: Finish Styling TicketQ
 	// TODO: Finish Styling HeaderQ
@@ -80,17 +85,14 @@ Score 3:
 	// TODO: Finish Styling Signup
 	// TODO: add name field to sign-up page
 	// TODO: sign-up post request to userinfo
-
 	// TODO: Rearranged/changed size of login fields
+	
+	-- TODO: Rerender after posting new ticket not working
+	-- TODO: Can't change/save profile info
+	-- TODO: SLACK:  Build an integrated slack-bot that allows students to submit help tickets through slack. 
+	-- TODO: SLACK:  Allow the ability to subscribe to the Queue in slack to be notified if someone opens a ticket. 
+	-- TODO: Change urls for post/get/put/patch requests when backend up
+	-- TODO: If time allows, redo components to streamline headers, include classes, etc
+	-- TODO: If time allows, change background color of hover over ticket or alternating bg colors 
 */
 
-
-/*
-Slack plan
-
-When user sends message to bot /helpdesk:
-	-- initiate ticket
-	-- send back notification
-	-- subscribe command
-
-*/

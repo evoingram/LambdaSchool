@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-// import { useInput } from './CustomHooks/InputHook'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import MainLoad from './MainLoad.js';
@@ -77,22 +76,6 @@ const fieldLength = {
 }       
 // supposed to go in UserForm parameters ", status"
 const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
-
-    // TODO: 3 Not only are standard network request techniques employed, the code is organized in such a fashion that the student demonstrated proper use of container vs presentational components or other industry standards, conventions or patterns.
-    
-    // TODO: 3 Student showed great insight in setting up the state management for the app's forms. 
-    // TODO: 2 proper usage of state and props are demonstrated throughout the project
-    // TODO: 2 proper usage of useState and useEffect hooks are clearly incorporated and correctly implemented. 
-    
-    // TODO: 2 Student used Array methods to dynamically render HTML elements.
-    // TODO: 3 Loading states and success/error notifications are in place and add to the overall UX of the app.
-    // TODO: 3 Student used advanced React techniques like the composition pattern, custom hooks, render props, HOCs, etc.
-    
-    // TODO: 3 Student was able to architect components to be easily reused. 
-    // TODO: 2 Student created functional components and used events in application to add dynamic functionality to app.
-    // TODO: 2 the UI is composed of small reusable components
-    // TODO: 2 Student's code was organized at the component level
-    // TODO: 2 Student has set up component management for the forms in the app that makes sense for each form. 
     
     const [loggedIn, setLoggedIn] = useState(false);
     const [lVisible, setLVisible] = useState(true);
@@ -118,7 +101,6 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
                 password: status.password,
                 usertype: status.usertype
             });
-            // TODO: another axios call to get list of tickets
             let url;
             if (status.usertype === "helper") { 
                 url = `http://localhost:5000/tickets?status=queue`;
@@ -129,7 +111,7 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
 
                     })
                     .catch(err => {
-                        console.log(err); // logs error creating the data 
+                        console.log(err); 
                     });             
                     setTicketURL(`http://localhost:5000/tickets?helperid= & ${status.id}`);  
                     url = `http://localhost:5000/tickets?helperid=${status.id}`;
@@ -141,7 +123,7 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
                             console.log("helper = " + res.data);
                         })
                         .catch(err => {
-                            console.log(err); // logs error creating the data 
+                            console.log(err); 
                         });  
 
             }
@@ -159,7 +141,7 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
                     setTickets(res.data);
                 })
                 .catch(err => {
-                    console.log(err); // logs error creating the data 
+                    console.log(err); 
                 });  
 
         }
@@ -207,9 +189,7 @@ const UserForm = ({ values, errors, touched, isSubmitting, status }) => {
     
 }
 let FormikForm;
-    // TODO: 2 Some form validation is in place.
-    // TODO: 3 Form validation is in place for all fields, and covers all use cases. 
-    // TODO: 2 Student made the decision to use a third-party library, like Formik, or not, and can defend their decision. 
+
 if (UserForm.loggedIn === true) { 
     FormikForm = () => { return (<MainLoad />); };        
 }
@@ -231,8 +211,6 @@ else {
                     .required("Password is required"),
             }),
             
-        // TODO: 2 Student implemented GET requests using either Axios or Fetch to display 3rd party data on a deployed page. 
-            // statusT, currentUsertype, setCurrentDate, setCurrentUsertype, setStatusT, 
         handleSubmit(values, { status, setStatus, resetForm, setErrors, setSubmitting }) {
             let url = `http://localhost:5000/userinfo?email=${values.email}`;
             axios
@@ -243,7 +221,7 @@ else {
                     setSubmitting(false);
                 })
                 .catch(err => {
-                    console.log(err); // logs error creating the data 
+                    console.log(err); 
                     setSubmitting(false);
                 });
             
