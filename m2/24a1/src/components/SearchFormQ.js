@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import hideLogin, { hideSignup } from "./Hide";
-import Ticket from './Ticket.js';
+import TicketQ from './TicketQ.js';
 import styled from 'styled-components';
 
 const H1 = styled.h1`
@@ -11,7 +11,6 @@ const H1 = styled.h1`
     width: 100%;
     justify-content: center;
     text-align: center;
-    padding: 0;
 `
 const Form = styled.form`
     width: 80%;
@@ -42,7 +41,7 @@ const fieldLength = {
     "color": "#383651",
     "font-size": "1.5rem",
     "width": "100%",
-    "margin": "0",
+    "margin": "2%",
     "padding": "0"
 }
 const SearchDiv = styled.div`
@@ -50,26 +49,21 @@ const SearchDiv = styled.div`
     flex-wrap: wrap;
     width: 100%;
     justify-content: center;
-    padding: 0;
-    margin: 0;
-    align-items: top;
 `
-
 
 // hide current page when login showing
 hideLogin();
 // hide current page when sign-up showing
 hideSignup();
 
-    // // TODO:  make each list headline clickable to expand height
-const SearchForm = props => {
+const SearchFormQ = props => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResultsQ, setSearchResultsQ] = useState([]);
 
 
   useEffect(() => {
-    if (props.tickets !== null) {
-      const results = props.tickets.filter(ticket =>
+    if (props.ticketsQ != null) {
+      const results = props.ticketsQ.filter(ticket =>
         ticket.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         ticket.status.toLowerCase().includes(searchTerm.toLowerCase()) ||
         ticket.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -77,69 +71,69 @@ const SearchForm = props => {
         ticket.date.toLowerCase().includes(searchTerm.toLowerCase()) 
       );
       console.log("useEffect Search Results = " + results);
-      setSearchResults([...results]);
+      setSearchResultsQ([...results]);
     }
-  }, [searchTerm, props.tickets]);
+  }, [searchTerm, props.ticketsQ]);
 
   const handleChange = event => {
     setSearchTerm(event.target.value);
   };
   console.log("profile id = " + props.profile.id);
 
-  function expandList() {
-    let listToExpand = document.getElementById("searchForm");
-    console.log("ticketListH height = " + listToExpand.style.height);
+  function expandListQ() {
+    let listToExpand = document.getElementById("searchFormQ");
+    console.log("ticketListQ height = " + listToExpand.style.height);
     let currentDisplay = listToExpand.style.display;
-    console.log("display before changing = " + currentDisplay);
-    let expandDivText = document.getElementById("expandListText");
+    console.log(currentDisplay);
+    let expandDivText = document.getElementById("expandListTextQ");
     if (currentDisplay !== "none") {
       listToExpand.style.display = "none";
       listToExpand.style.height = "0%";
-      expandDivText.textContent = "click header to show your tickets"
+      expandDivText.textContent = "click header to show ticket queue"
     }
     else {
       listToExpand.style.display = "flex";
       listToExpand.style.height = "100%";
-      expandDivText.textContent = "click header to hide your tickets"
+      expandDivText.textContent = "click header to hide ticket queue"
     }
-
   }
 
-  if (props.tickets === null) { 
+  
+  if (props.ticketsQ === null) {
     return (null);
   }
-  else {    
+  else {
     return (
-    <Center>  
+      <Center>
         <Div1>
-        <div id="expandListText" style={{ color: '#86929d', fontSize: '0.75rem', fontStyle: 'italic' }}>click header to hide your tickets</div>
-          <H1 onClick={expandList} >Your Submitted Tickets:  </H1>
-          <Form id="searchForm" style={{ display: 'none', height: '0%' }}>
+          <div id="expandListTextQ" style={{ color: '#86929d', fontSize: '0.75rem', fontStyle: 'italic' }}>click header to show ticket queue</div>
+          <H1 onClick={expandListQ}>Ticket Queue:  </H1>
+          <Form id="searchFormQ" style={{ display: 'none', height: '0%' }}>
             <SearchDiv>
-                    <input
-                      id="name"
-                      type="text"
-                      name="textfield"
-                      placeholder="Search"
-                      value={searchTerm}
-                      onChange={handleChange}
-                      style={fieldLength}
+              <input
+                id="name"
+                type="text"
+                name="textfield"
+                placeholder="Search"
+                value={searchTerm}
+                onChange={handleChange}
+                style={fieldLength}
               />
             </SearchDiv>
-                    {
-                      searchResults.map(
-                        ticket => (
-                            <Ticket key={ticket.id} ticket={ticket} />
-                        )
-                      )
+            {
+              searchResultsQ.map(
+                ticket => (
+                  <TicketQ key={ticket.id} ticket={ticket} />
+                )
+              )
             }
           </Form>
         </Div1>
-    </Center>
+      </Center>
     
-  );
-
+    );
   }
+
 }
 
-export default SearchForm;
+export default SearchFormQ;

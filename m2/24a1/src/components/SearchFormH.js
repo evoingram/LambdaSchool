@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import hideLogin, { hideSignup } from "./Hide";
-import Ticket from './Ticket.js';
+import TicketH from './TicketH.js';
 import styled from 'styled-components';
 
 const H1 = styled.h1`
@@ -11,7 +11,6 @@ const H1 = styled.h1`
     width: 100%;
     justify-content: center;
     text-align: center;
-    padding: 0;
 `
 const Form = styled.form`
     width: 80%;
@@ -42,7 +41,7 @@ const fieldLength = {
     "color": "#383651",
     "font-size": "1.5rem",
     "width": "100%",
-    "margin": "0",
+    "margin": "2%",
     "padding": "0"
 }
 const SearchDiv = styled.div`
@@ -50,11 +49,7 @@ const SearchDiv = styled.div`
     flex-wrap: wrap;
     width: 100%;
     justify-content: center;
-    padding: 0;
-    margin: 0;
-    align-items: top;
 `
-
 
 // hide current page when login showing
 hideLogin();
@@ -62,14 +57,14 @@ hideLogin();
 hideSignup();
 
     // // TODO:  make each list headline clickable to expand height
-const SearchForm = props => {
+const SearchFormH = props => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResultsH, setSearchResultsH] = useState([]);
 
 
   useEffect(() => {
-    if (props.tickets !== null) {
-      const results = props.tickets.filter(ticket =>
+    if (props.ticketsH !== null) {
+      const results = props.ticketsH.filter(ticket =>
         ticket.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         ticket.status.toLowerCase().includes(searchTerm.toLowerCase()) ||
         ticket.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -77,9 +72,9 @@ const SearchForm = props => {
         ticket.date.toLowerCase().includes(searchTerm.toLowerCase()) 
       );
       console.log("useEffect Search Results = " + results);
-      setSearchResults([...results]);
+      setSearchResultsH([...results]);
     }
-  }, [searchTerm, props.tickets]);
+  }, [searchTerm, props.ticketsH]);
 
   const handleChange = event => {
     setSearchTerm(event.target.value);
@@ -87,59 +82,59 @@ const SearchForm = props => {
   console.log("profile id = " + props.profile.id);
 
   function expandList() {
-    let listToExpand = document.getElementById("searchForm");
+    let listToExpand = document.getElementById("searchFormH");
     console.log("ticketListH height = " + listToExpand.style.height);
     let currentDisplay = listToExpand.style.display;
-    console.log("display before changing = " + currentDisplay);
-    let expandDivText = document.getElementById("expandListText");
-    if (currentDisplay !== "none") {
-      listToExpand.style.display = "none";
-      listToExpand.style.height = "0%";
-      expandDivText.textContent = "click header to show your tickets"
-    }
-    else {
-      listToExpand.style.display = "flex";
-      listToExpand.style.height = "100%";
-      expandDivText.textContent = "click header to hide your tickets"
-    }
+    console.log(currentDisplay);
+    let expandDivText = document.getElementById("expandListTextH");
+      if (currentDisplay !== "none") {
+        listToExpand.style.display = "none";
+        listToExpand.style.height = "0%";
+        expandDivText.textContent = "click header to show your assigned tickets"
+      }
+      else {
+        listToExpand.style.display = "flex";
+        listToExpand.style.height = "100%";
+        expandDivText.textContent = "click header to hide your assigned tickets"
+      }
+    
 
   }
 
-  if (props.tickets === null) { 
+  if (props.ticketsH === null) { 
     return (null);
   }
-  else {    
-    return (
+  else {  
+  return (
     <Center>  
-        <Div1>
-        <div id="expandListText" style={{ color: '#86929d', fontSize: '0.75rem', fontStyle: 'italic' }}>click header to hide your tickets</div>
-          <H1 onClick={expandList} >Your Submitted Tickets:  </H1>
-          <Form id="searchForm" style={{ display: 'none', height: '0%' }}>
-            <SearchDiv>
-                    <input
-                      id="name"
-                      type="text"
-                      name="textfield"
-                      placeholder="Search"
-                      value={searchTerm}
-                      onChange={handleChange}
-                      style={fieldLength}
-              />
-            </SearchDiv>
-                    {
-                      searchResults.map(
-                        ticket => (
-                            <Ticket key={ticket.id} ticket={ticket} />
-                        )
-                      )
-            }
-          </Form>
-        </Div1>
+      <Div1>
+        <div id="expandListTextH" style={{ color: '#86929d', fontSize: '0.75rem', fontStyle: 'italic' }}>click header to show your assigned tickets</div>
+        <H1 onClick={expandList} >Your Assigned Tickets:  </H1>
+        <Form id="searchFormH" style={{display: 'none', height: '0%'}}>
+          <SearchDiv>
+            <input
+              id="name"
+              type="text"
+              name="textfield"
+              placeholder="Search"
+              value={searchTerm}
+              onChange={handleChange}
+              style={fieldLength}
+            />
+          </SearchDiv>
+          {
+            searchResultsH.map(
+              ticket => (
+                  <TicketH key={ticket.id} ticket={ticket} />
+              )
+            )
+          }
+        </Form>
+      </Div1>
     </Center>
     
-  );
-
-  }
+    );
+        }
 }
 
-export default SearchForm;
+export default SearchFormH;
