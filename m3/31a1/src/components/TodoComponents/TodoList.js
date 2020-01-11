@@ -1,2 +1,14 @@
-// your components will all go in this `component` directory.
-// feel free to change this component.js into TodoList.js
+
+import React from 'react';
+
+class TodoForm extends React.Component {
+  render() {
+    return (
+      <div>
+        <h2>Todo List Will Go Here</h2>
+      </div>
+    );
+  }
+}
+
+export default TodoForm;
