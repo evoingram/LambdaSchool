@@ -1,5 +1,6 @@
 import React from 'react';
 import Data from '../../Data.js';
+import Todo from './Todo.js';
 
 class TodoForm extends React.Component {
   render() {
@@ -10,7 +11,7 @@ class TodoForm extends React.Component {
             {
                 Data.data.map(
                 todoItem => (
-                    <li>{todoItem.task} </li>
+                    <Todo key={todoItem.id} todoItem={todoItem} task={todoItem.task} id={todoItem.id} completed={todoItem.completed}/>
                 )
                 )
             }
@@ -19,5 +20,6 @@ class TodoForm extends React.Component {
     );
   }
 }
+
 
 export default TodoForm;
