@@ -47,10 +47,9 @@ const Div = styled.div`
 `
 
 class TodoForm extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            
+    constructor(props) {
+        super(props);
+        this.state = {            
           };
   }
 
@@ -63,18 +62,15 @@ class TodoForm extends React.Component {
           <FormField>
             <Label>Title:</Label>
             <SCField>
-                <input type="text" name="title" placeholder="...todo" onChange={props.todoChange} value={props.value}/>
+                <input type="text" name="title" placeholder="...todo" value={this.props.value} onChange={this.props.todoChange} />
             </SCField>          
           </FormField>
         </Div>
         <ButtonRow>
-          <Button type="submit" onClick={props.addTodo} onkeypress={(e) => { if (e.keyCode === 13) { e.preventDefault(); props.addTodo; } } } >Add Todo</Button>
-          <Button type="submit" onClick={props.todoClear} >Clear Completed</Button>
+            <Button type="submit" onSubmit={this.props.todoAddClick} onKeyPress={this.props.todoAdd}>Add Todo</Button>
+            <Button type="button" onClick={this.props.todoClear} >Clear Completed</Button>
         </ButtonRow>
         </form>
-
-
-
       </div>
     );
   }
