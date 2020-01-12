@@ -11,8 +11,8 @@ We're going to practice building a stateful class component with this project. E
 
 ## Instructions
 
-- [ ] Your job is to write the components to complete the Todo List application.
-- [ ] Your todo list should be fully functional and you should design it however you'd like. Feel free to get creative here. I have supplied a gif for you to see what the MVP functionality is.
+- [X] Your job is to write the components to complete the Todo List application.
+- [X] Your todo list should be fully functional and you should design it however you'd like. Feel free to get creative here. I have supplied a gif for you to see what the MVP functionality is.
 
 ![Todo App MVP](todo.gif)
 
@@ -33,29 +33,29 @@ We're going to practice building a stateful class component with this project. E
 ];
 ```
 
-- [ ] The `task` field is the todo title that will be shown to the user.
-- [ ] The `completed` field should default to `false` and will be the field that we toggle when we complete a todo.
-- [ ] The `id` field is a unique `Time Stamp` that will be assigned by `Date.now()`.
+- [X] The `task` field is the todo title that will be shown to the user.
+- [X] The `completed` field should default to `false` and will be the field that we toggle when we complete a todo.
+- [X] The `id` field is a unique `Time Stamp` that will be assigned by `Date.now()`.
 
 #### Instructions
 
-- [ ] **Don't focus on styling yet**. We want you to worry about function over form today.
-- [ ] Your todo list should display a list of todos, an input field, a submit button, and a clear all button.
-- [ ] Be sure to use the given files for building out these components.
+- [X] **Don't focus on styling yet**. We want you to worry about function over form today.
+- [X] Your todo list should display a list of todos, an input field, a submit button, and a clear all button.
+- [X] Be sure to use the given files for building out these components.
 - [X] `<App />` will hold all the data needed for this project. It will also be the container for your Todo Components.
-  - [ ] All of your application data will be stored here on `<App />`.
-  - [ ] All of your `handler` functions should live here on `<App />`.
-- [ ] `<TodoList />` receives your Todos array and iterates over the list generating a new `<Todo />` for each element in the array.
-- `<Todo />` is a component that takes in the `todo` data and displays the task to the screen.
-- [ ] `<TodoForm>` will hold your input field and your `Add Todo` and `Clear Completed` buttons.
-  - [ ] Your input field should take in user input, and allow a user to press `Enter` or click on the `Submit Button` to add a todo to your list.
-  - [ ] Once a todo is submitted, the Todo List should re-render and show the added todo.
+- [X] All of your application data will be stored here on `<App />`.
+- [X] All of your `handler` functions should live here on `<App />`.
+- [X] `<TodoList />` receives your Todos array and iterates over the list generating a new `<Todo />` for each element in the array.
+- [X] `<Todo />` is a component that takes in the `todo` data and displays the task to the screen.
+- [X] `<TodoForm>` will hold your input field and your `Add Todo` and `Clear Completed` buttons.
+- [X] Your input field should take in user input, and allow a user to press `Enter` or click on the `Submit Button` to add a todo to your list.
+- [X] Once a todo is submitted, the Todo List should re-render and show the added todo.
 
 ---
 
 - [ ] Add the functionality to toggle your todo's completed flag from `false` to `true`.
-  - [ ] Once a todo is completed, be sure to demonstrate to the user that the todo is completed by adding a line-through style property if the completed flag is true.
-- [ ] Add the ability to remove any todos that you have completed. `.filter` will be your best friend here. When a user clicks on the `Clear Completed` button call your handler function that will filter out any todos that have the completed flag toggled to `true`.
+- [X] Once a todo is completed, be sure to demonstrate to the user that the todo is completed by adding a line-through style property if the completed flag is true.
+- [X] Add the ability to remove any todos that you have completed. `.filter` will be your best friend here. When a user clicks on the `Clear Completed` button call your handler function that will filter out any todos that have the completed flag toggled to `true`.
 - [ ] **Now is the time to style** Take your time to make this an app that you can be proud of.
 
 #### Stretch Problems

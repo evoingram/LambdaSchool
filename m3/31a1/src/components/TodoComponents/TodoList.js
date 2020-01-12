@@ -6,7 +6,7 @@ class TodoForm extends React.Component {
   render() {
     return (
       <div>
-        <h2>Todo List Will Go Here</h2>
+        <h2>Click to Complete a Todo:</h2>
         <ul>
             {
                 Data.data.map(

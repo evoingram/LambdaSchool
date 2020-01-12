@@ -1,23 +1,80 @@
 import React from 'react';
-/*
+import styled from 'styled-components';
 
-- [ ] The `task` field is the todo title that will be shown to the user.
-- [ ] The `completed` field should default to `false` and will be the field that we toggle when we complete a todo.
-- [ ] The `id` field is a unique `Time Stamp` that will be assigned by `Date.now()`.
+const FormField = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: right;
+    flex-wrap: nowrap;
+`
+const Label = styled.label`
+    width: 40%;
+    margin: 0;
+    padding: 0;
+    justify-content: right;
+    text-align: right;
+    padding-right: 1%;
+    text-decoration: none;
+`
+const SCField = styled.div`
+    width: 100%;
+    margin: 0;
+    padding: 0;
+`
+const Button = styled.button`
+  background: #002244;
+  border-radius: 3px;
+  border: 2px solid #69BE28;
+  color: #A5ACAF;
+  font-weight: bold;
+  margin: 1em;
+  padding: 1em 2em;
+`  
+const ButtonRow = styled.div`
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+`
 
-
-*/
-
+const Div = styled.div`
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+`
 
 class TodoForm extends React.Component {
     constructor() {
         super();
-        this.state = {};
-    }
+        this.state = {
+            
+          };
+  }
+
   render() {
     return (
       <div>
-        <h2>Todo Form Will Go Here</h2>
+        <h2>Add a Todo:</h2>
+        <form>
+        <Div>
+          <FormField>
+            <Label>Title:</Label>
+            <SCField>
+                <input type="text" name="title" placeholder="...todo" onChange={props.todoChange} value={props.value}/>
+            </SCField>          
+          </FormField>
+        </Div>
+        <ButtonRow>
+          <Button type="submit" onClick={props.addTodo} onkeypress={(e) => { if (e.keyCode === 13) { e.preventDefault(); props.addTodo; } } } >Add Todo</Button>
+          <Button type="submit" onClick={props.todoClear} >Clear Completed</Button>
+        </ButtonRow>
+        </form>
+
+
+
       </div>
     );
   }
