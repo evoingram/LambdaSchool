@@ -49,25 +49,28 @@ const Div = styled.div`
 class TodoForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {            
-          };
+        this.state = {         
+        };
   }
+
+
+
 
   render() {
     return (
       <div>
         <h2>Add a Todo:</h2>
-        <form>
+        <form onSubmit={this.props.todoAdd}>
         <Div>
           <FormField>
             <Label>Title:</Label>
             <SCField>
-                <input type="text" name="title" placeholder="...todo" value={this.props.value} onChange={this.props.todoChange} />
+                <input type="text" name="task" placeholder="...todo" value={this.state.addedTaskItem} onChange={this.props.todoChange} />
             </SCField>          
           </FormField>
         </Div>
         <ButtonRow>
-            <Button type="submit" onSubmit={this.props.todoAddClick} onKeyPress={this.props.todoAdd}>Add Todo</Button>
+            <Button type="button" onClick={this.props.todoAdd}>Add Todo</Button>
             <Button type="button" onClick={this.props.todoClear} >Clear Completed</Button>
         </ButtonRow>
         </form>
