@@ -13,6 +13,7 @@ class UserCard extends React.Component {
       
     }
     
+    
 
     render() {
         return (<h2>THIS IS THE USERCARD COMPONENT!</h2>
