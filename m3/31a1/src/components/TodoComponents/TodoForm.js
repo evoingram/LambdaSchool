@@ -22,10 +22,10 @@ const SCField = styled.div`
     padding: 0;
 `
 const Button = styled.button`
-  background: #002244;
+  background: #7D387D;
   border-radius: 3px;
-  border: 2px solid #69BE28;
-  color: #A5ACAF;
+  border: 2px solid #E1D89F;
+  color: #E1D89F;
   font-weight: bold;
   margin: 1em;
   padding: 1em 2em;
@@ -46,6 +46,15 @@ const Div = styled.div`
     justify-content: center;
 `
 
+const fieldLength = {
+    "color": "#383651",
+    "fontSize": "1.5rem",
+    "width": "75%",
+    "margin": "0",
+    "padding": "0",
+    "backgroundColor": "#C45BAA",
+    "color": "#27474E"
+}
 class TodoForm extends React.Component {
     constructor(props) {
         super(props);
@@ -65,7 +74,8 @@ class TodoForm extends React.Component {
           <FormField>
             <Label>Title:</Label>
             <SCField>
-                <input type="text" name="task" placeholder="...todo" value={this.state.addedTaskItem} onChange={this.props.todoChange} />
+                <input type="text" name="task" placeholder="...todo" value={this.state.addedTaskItem} onChange={this.props.todoChange} 
+                      style={fieldLength}/>
             </SCField>          
           </FormField>
         </Div>

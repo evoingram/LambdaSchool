@@ -19,6 +19,8 @@ const Center = styled.div`
     border-top: 2px solid #383651;
     border-bottom: 2px solid #383651;
     padding-bottom: 10%;
+    background-color: #27474E;
+    color: #C45BAA;
 `
 const Div1 = styled.div`
     width: 100%;
@@ -32,7 +34,9 @@ const fieldLength = {
     "fontSize": "1.5rem",
     "width": "100%",
     "margin": "0",
-    "padding": "0"
+    "padding": "0",
+    "backgroundColor": "#C45BAA",
+    "color": "#27474E"
 }
 const SearchDiv = styled.div`
     display: flex;
