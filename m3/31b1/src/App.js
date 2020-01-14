@@ -58,18 +58,17 @@ class App extends React.Component {
         .catch(err => {
             console.log(err); 
         });  
-    /*
-        let responseSummaryText = "Summary of pull requests, issues opened, and commits made by " + `${username}`;
+    
+        let responseSummaryText = "Summary of pull requests, issues opened, and commits made by " + `${this.state.username}`;
           // let responseProxy = "urlreq";
           let responseGlobalStats="true";
           let responseResponsive="true";
           let calendarOptions = new Object();
-          calendarOptions.summary_text = await GitHubCalendar(".calendar", `${username}`);
-          calendarOptions.global_stats = await GitHubCalendar(".calendar", `${username}`);
-          calendarOptions.responsive = await GitHubCalendar(".calendar", `${username}`);
+          calendarOptions.summary_text = GitHubCalendar(".calendar", `${this.state.username}`);
+          calendarOptions.global_stats = GitHubCalendar(".calendar", `${this.state.username}`);
+          calendarOptions.responsive = GitHubCalendar(".calendar", `${this.state.username}`);
           console.log("GitHub calendar options:" + `${calendarOptions}`);
-          await GitHubCalendar(".calendar", `${username}`);
-    */
+          GitHubCalendar(".calendar", `${this.state.username}`);
   }
 
     /*
