@@ -64,13 +64,13 @@ When you have those completed, you're ready to start coding!
 ## STEP 2 - Display the User Data
 
 - [X] Pass the data to the component that will be displaying it
-- [ ] Build out a user card using the data that the Github API returns to you
+- [X] Build out a user card using the data that the Github API returns to you
 - [X] You may reference your old project for this, or you may wish to build this from scratch yourself
 
 ## STEP 3 - Fetch the User's Followers
 
-- [ ] When your component mounts, you will also fetch the user's followers using this endpoint:  https://api.github.com/users/< Your github name >/followers
-- [ ] Set that data to state as well, and display the data in your app
+- [X] When your component mounts, you will also fetch the user's followers using this endpoint:  https://api.github.com/users/< Your github name >/followers
+- [X] Set that data to state as well, and display the data in your app
 
 ## STEP 4 - Style the User Card
 
@@ -79,7 +79,7 @@ When you have those completed, you're ready to start coding!
 
 ## STEP 5 - Project Retrospective
 
-- [ ] Now that you have completed the MVP, I want you to think about the process it took you to get here. Is there anything you wish you had planned better? Anything you would do differently?  Now take a minute think about how you would accomplish these same objectives with function components and hooks. You have experience with both formats now, so you can form opinions, but more importantly, you can back up those opinions. That's a really exciting level to be at! If you have time now, go ahead and move onto the stretch problems.
+- [X] Now that you have completed the MVP, I want you to think about the process it took you to get here. Is there anything you wish you had planned better? Anything you would do differently?  Now take a minute think about how you would accomplish these same objectives with function components and hooks. You have experience with both formats now, so you can form opinions, but more importantly, you can back up those opinions. That's a really exciting level to be at! If you have time now, go ahead and move onto the stretch problems.
 
 ## Stretch Problems
 

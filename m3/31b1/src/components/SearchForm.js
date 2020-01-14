@@ -1,18 +1,19 @@
 
 import React from 'react';
+import styled from 'styled-components';
 
     // - search github users with `componentDidUpdate`
     
 class SearchForm extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
         };
       
     }
     
     render() {
-        return (<h2>THIS IS THE SEARCHFORM COMPONENT!</h2>
+        return (<button>THIS IS THE SEARCHFORM COMPONENT!</button>
       );
     }
 }

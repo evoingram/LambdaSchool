@@ -6,60 +6,77 @@ import UserCard from './components/UserCard.js';
 import axios from 'axios';
 import GitHubCalendar from 'github-calendar';
 
+  
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      githubProfile: '',
+      githubProfile: {},
+      githubFollowers: [{}],
       username: 'evoingram'
     };
       
   }
 
-  getRequestGH = (username) => { 
-  // - function for get request & setState
-    let url = `https://api.github.com/users/${username}`;                    
-    axios({
-      method: "get",
-      url: url,
-      headers: {
+  componentDidMount() {
+      // - function for get request & setState
+    let url = `https://api.github.com/users/${this.state.username}`;
+      axios({
+        method: "get",
+        url: url,
+        headers: {
           Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
           "Content-Type": "application/json"
-      }
-    })
-    .then(githubProfile => {
-      console.log("GitHub response = " + githubProfile);
-      this.setState({ githubProfile: githubProfile });
-    })
-    .catch(err => {
-        console.log(err); 
-    });  
+        }
+      })
+        .then(githubProfileResponse => {
+          console.log([githubProfileResponse]);
+          this.setState({ githubProfile: githubProfileResponse.data });
+        console.log(this.state.githubProfile);
+        console.log(`githubProfile img url = ${this.state.githubProfile.avatar_url}`);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+      
+        url = `https://api.github.com/users/${this.state.username}/followers`;                    
+        axios({
+          method: "get",
+          url: url,
+          headers: {
+              Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
+              "Content-Type": "application/json"
+          }
+        })
+        .then(githubFollowerResponse => {
+          console.log("GitHub follower response = " + githubFollowerResponse);
+          this.setState({ githubFollowers: githubFollowerResponse });
+          console.log("GitHub follower state = " + `${this.state.githubFollowers}`);
+        })
+        .catch(err => {
+            console.log(err); 
+        });  
+    /*
+        let responseSummaryText = "Summary of pull requests, issues opened, and commits made by " + `${username}`;
+          // let responseProxy = "urlreq";
+          let responseGlobalStats="true";
+          let responseResponsive="true";
+          let calendarOptions = new Object();
+          calendarOptions.summary_text = await GitHubCalendar(".calendar", `${username}`);
+          calendarOptions.global_stats = await GitHubCalendar(".calendar", `${username}`);
+          calendarOptions.responsive = await GitHubCalendar(".calendar", `${username}`);
+          console.log("GitHub calendar options:" + `${calendarOptions}`);
+          await GitHubCalendar(".calendar", `${username}`);
+    */
   }
 
-  getRequestGHF = (username) => { 
-  // - function for get request & setState
-    let url = `https://api.github.com/users/${username}/followers`;                    
-    axios({
-      method: "get",
-      url: url,
-      headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
-          "Content-Type": "application/json"
-      }
-    })
-    .then(githubProfile => {
-      console.log("GitHub response = " + githubProfile);
-      this.setState({ githubProfile: githubProfile });
-    })
-    .catch(err => {
-        console.log(err); 
-    });  
-  }
-
-  async githubContributions(username) {     
+    /*
+async githubContributions(username) { 
+  
+    event.preventDefault();
   // - maybe function for contrib graph
       let responseSummaryText = "Summary of pull requests, issues opened, and commits made by " + `${username}`;
-      /*let responseProxy = "urlreq";*/
+      // let responseProxy = "urlreq";
       let responseGlobalStats="true";
       let responseResponsive="true";
       let calendarOptions = new Object();
@@ -70,6 +87,7 @@ class App extends React.Component {
       await GitHubCalendar(".calendar", `${username}`);
   }
 
+    */
 
   todoSearch = event => {
     // search function
@@ -118,7 +136,7 @@ class App extends React.Component {
         </a>
         </header>
         <SearchForm getRequestGH={this.getRequestGH} githubContributions={this.githubContributions} todoSearch={this.todoSearch} changeSearchTerm={this.changeSearchTerm}/>
-        <UserCard getRequestGH={this.getRequestGH} githubContributions={this.githubContributions}/>
+        <UserCard getRequestGH={this.getRequestGH} githubContributions={this.githubContributions} githubProfile={this.state.githubProfile} githubFollowers={this.state.githubFollowers}/>
       </div>
     );
   }
