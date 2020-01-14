@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import SearchForm from './components/SearchForm.js';
 import UserCard from './components/UserCard.js';
@@ -12,13 +11,16 @@ class App extends React.Component {
     super();
     this.state = {
       githubProfile: {},
-      githubFollowers: [{}],
-      username: 'evoingram'
+      githubFollowers: [],
+      username: 'evoingram',
+      searchTerm: ''
     };
       
   }
 
   componentDidMount() {
+    console.log("componentDidMount running");
+    console.log(this.state.username);
       // - function for get request & setState
     let url = `https://api.github.com/users/${this.state.username}`;
       axios({
@@ -49,9 +51,9 @@ class App extends React.Component {
           }
         })
         .then(githubFollowerResponse => {
-          console.log("GitHub follower response = " + githubFollowerResponse);
-          this.setState({ githubFollowers: githubFollowerResponse });
-          console.log("GitHub follower state = " + `${this.state.githubFollowers}`);
+          console.log(`GitHub follower response = ${[githubFollowerResponse]}`);
+          this.setState({ githubFollowers: githubFollowerResponse.data });
+          console.log(`GitHub follower state = ${this.state.githubFollowers}`);
         })
         .catch(err => {
             console.log(err); 
@@ -89,54 +91,84 @@ async githubContributions(username) {
 
     */
 
-  todoSearch = event => {
-    // search function
-    const results = this.state.data.filter(todoItem =>
-      todoItem.task.toLowerCase().includes(this.state.searchTerm.toLowerCase()) 
-    );
-    this.setState({
-      searchResults: [...results]
-    });
-  }
-
   changeSearchTerm = event => {
-  // - function for handleChange for the search
-    event.preventDefault();
-    if (event.target.value !== null && event.target.value !== undefined) { 
-      this.setState({
-        searchTerm: event.target.value
-      });
-    }
-    else {
-      this.setState({
-        searchTerm: ''
-      });
-    }
-    this.todoSearch();
+    console.log("changeSearchTerm running");
+    // - function for handleChange for the search
+    const newSearchTerm = event.target.value;
+    this.setState({searchTerm: newSearchTerm});    
+    console.log('event.target.value = ' + event.target.value);
+    console.log("search term = " + this.state.searchTerm);
   };
   
+  updateSearchTerm = event =>  {
+    console.log("updateSearchTerm running");
+    console.log("search term = " + this.state.searchTerm);
+    console.log("current username = " + this.state.username);  
+    const newUsername = this.state.searchTerm;
+    this.setState({username: newUsername});
+    console.log("current username = " + this.state.username);
+    this.getNewGHUser();
+  };
 
+  getNewGHUser = event => {
+    event.preventDefault();
+    console.log("getNewGHUser running");
+    console.log(this.state.searchTerm);
+      // - function for get request & setState
+    let url = `https://api.github.com/users/${this.state.searchTerm}`;
+      axios({
+        method: "get",
+        url: url,
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
+          "Content-Type": "application/json"
+        }
+      })
+        .then(githubProfileResponse => {
+          console.log([githubProfileResponse]);
+          this.setState({ githubProfile: githubProfileResponse.data });
+        console.log(this.state.githubProfile);
+        console.log(`githubProfile img url = ${this.state.githubProfile.avatar_url}`);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+      
+        url = `https://api.github.com/users/${this.state.searchTerm}/followers`;                    
+        axios({
+          method: "get",
+          url: url,
+          headers: {
+              Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
+              "Content-Type": "application/json"
+          }
+        })
+        .then(githubFollowerResponse => {
+          console.log(`GitHub follower response = ${githubFollowerResponse}`);
+          this.setState({ githubFollowers: [githubFollowerResponse] });
+          console.log(`GitHub follower state = ${this.state.githubFollowers.data}`);
+        })
+        .catch(err => {
+            console.log(err); 
+        });  
+  }
 
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-            
-        </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-        </a>
-        </header>
-        <SearchForm getRequestGH={this.getRequestGH} githubContributions={this.githubContributions} todoSearch={this.todoSearch} changeSearchTerm={this.changeSearchTerm}/>
-        <UserCard getRequestGH={this.getRequestGH} githubContributions={this.githubContributions} githubProfile={this.state.githubProfile} githubFollowers={this.state.githubFollowers}/>
+        <UserCard
+          getRequestGH={this.getRequestGH}
+          githubContributions={this.githubContributions}
+          githubProfile={this.state.githubProfile}
+          githubFollowers={this.state.githubFollowers} />
+        <SearchForm
+          searchTerm={this.state.searchTerm}
+          username={this.state.username}
+          githubContributions={this.githubContributions}
+          updateSearchTerm={this.updateSearchTerm}
+          changeSearchTerm={this.changeSearchTerm}
+          getNewGHUser={this.getNewGHUser}
+        />
       </div>
     );
   }

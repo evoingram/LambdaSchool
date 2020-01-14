@@ -74,8 +74,8 @@ When you have those completed, you're ready to start coding!
 
 ## STEP 4 - Style the User Card
 
-- [ ] Now it's time to style up your app.  You are free to choose how you style your app, but make it look as presentable as you can
-- [ ] Try something new here. Maybe that's a new CSS technique you haven't really practiced yet. Maybe it's using a styling library you haven't tried. Push yourself to get better in this area.
+- [X] Now it's time to style up your app.  You are free to choose how you style your app, but make it look as presentable as you can
+- [X] Try something new here. Maybe that's a new CSS technique you haven't really practiced yet. Maybe it's using a styling library you haven't tried. Push yourself to get better in this area.
 
 ## STEP 5 - Project Retrospective
 
@@ -85,6 +85,6 @@ When you have those completed, you're ready to start coding!
 
 After finishing your required elements, you can push your work further. These goals may or may not be things you have learned in this module but they build on the material you just studied. Time allowing, stretch your limits and see if you can deliver on the following optional goals:
 
-- [ ] Build a form that allows you to search for different Github users. When the form is submitted, use `componentDidUpdate` to fetch the data for the user you typed in. Set that new user's data to state to trigger the component to rerender and display your new user. Don't forget to fetch their followers as well.
+- [X] Build a form that allows you to search for different Github users. When the form is submitted, use `componentDidUpdate` to fetch the data for the user you typed in. Set that new user's data to state to trigger the component to rerender and display your new user. Don't forget to fetch their followers as well.
 
 - [ ] Look into adding your GitHub contribution graph. There are a number of different ways of doing this, this Stack Overflow discussion will get you started: https://stackoverflow.com/questions/34516592/embed-github-contributions-graph-in-website
