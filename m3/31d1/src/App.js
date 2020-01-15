@@ -57,7 +57,7 @@ class App extends React.Component {
 		}
 	};
 	recordOut = () => {
-		if (this.state.out < 3) {
+		if (this.state.outsH < 3 && this.state.outsA < 3) {
 			if (this.state.side === true) {
 				this.setState({ outsH: this.state.outsH + 1 });
 				this.setState({ outsTotal: this.state.outsTotal + 1 });
@@ -133,6 +133,7 @@ class App extends React.Component {
 					recordHit={this.recordHit}
 					recordRun={this.recordRun}
 					recordError={this.recordError}
+					recordOut={this.recordOut}
 				/>
 			</div>
 		);
