@@ -1,19 +1,26 @@
 import React from 'react';
 
-function Display() {
-	return (
-		<div className="App">
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>
-					Edit <code>src/App.js</code> and save to reload.
-				</p>
-				<a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-					Learn React
-				</a>
-			</header>
-		</div>
-	);
+/*
+		• display the count of balls and strikes for the at-bat.
+should be updated when the user records activity on the Dashboard component.
+*/
+
+class Display extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {};
+	}
+	render() {
+		return (
+			<div>
+				<h2>Balls: </h2>
+				<div>{this.props.balls}</div>
+
+				<h2>Strikes: </h2>
+				<div>{this.props.strikes}</div>
+			</div>
+		);
+	}
 }
 
 export default Display;

@@ -1,19 +1,25 @@
 import React from 'react';
 
-function Dashboard() {
-	return (
-		<div className="App">
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>
-					Edit <code>src/App.js</code> and save to reload.
-				</p>
-				<a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-					Learn React
-				</a>
-			</header>
-		</div>
-	);
-}
+/*
+		• provide a button that the person in charge can press every time there is a strike, ball, foul or hit.
+		• there is NO need to specify the type of hit (single, double, etc).
+changes recorded on this component should update the information shown by the Display component.
+*/
 
+class Dashboard extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {};
+	}
+	render() {
+		return (
+			<div>
+				<button onClick={this.props.recordStrike}>Strike</button>
+				<button onClick={this.props.recordBall}>Ball</button>
+				<button onClick={this.props.recordFoul}>Foul</button>
+				<button onClick={this.props.recordHit}>Hit</button>
+			</div>
+		);
+	}
+}
 export default Dashboard;
