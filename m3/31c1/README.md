@@ -16,22 +16,22 @@ In this project you'll take this crypto currency tracker app and build two custo
 
 ## Project Set Up
 
-- [ ] Create a forked copy of this project.
-- [ ] Add your team lead as collaborator on Github.
-- [ ] Clone your OWN version of the repository in your terminal
-- [ ] CD into the project base directory `cd dark-mode`
-- [ ] Download project dependencies by running one of these two commands `yarn` or `npm install`
-- [ ] Using the same command tool (yarn or npm) start up the app using `yarn start` or `npm start`
-- [ ] Create a new branch: git checkout -b `<firstName-lastName>`.
-- [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
-- [ ] Push commits: git push origin `<firstName-lastName>`.
+- [X] Create a forked copy of this project.
+- [X] Add your team lead as collaborator on Github.
+- [X] Clone your OWN version of the repository in your terminal
+- [X] CD into the project base directory `cd dark-mode`
+- [X] Download project dependencies by running one of these two commands `yarn` or `npm install`
+- [X] Using the same command tool (yarn or npm) start up the app using `yarn start` or `npm start`
+- [X] Create a new branch: git checkout -b `<firstName-lastName>`.
+- [X] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
+- [X] Push commits: git push origin `<firstName-lastName>`.
 
 Follow these steps for completing your project.
 
-- [ ] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's Repository). **Please don't merge your own pull request**
-- [ ] Add your team lead as a reviewer on the pull-request
-- [ ] Your team lead will count the project as complete by merging the branch back into master.
-- [ ] Do your magic!
+- [X] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's Repository). **Please don't merge your own pull request**
+- [X] Add your team lead as a reviewer on the pull-request
+- [X] Your team lead will count the project as complete by merging the branch back into master.
+- [X] Do your magic!
 
 ## Minimum Viable Product
 
@@ -48,12 +48,16 @@ Open your app and take a look around. The crypto currency data is being fetched 
 
 This is going to be a pretty cool hook. It will be used pretty much the same way as `useState`, but with a key and value passed into it - ie `const [name, setName] = useLocalStorage('name', 'Dustin')`. You can use `setName` to update the value of `name` on localStorage! Pretty cool, huh? Let's get to it!
 
-- Create a new directory called `hooks`, and a new file in it called `useLocalStorage`.
-- Build a function called `useLocalStorage`. Now, to set something to localStorage, we need a key (must be a string) and a value (can be anything). To retrieve something from localStorage, we need the key. To update something in localStorage, you use the same method as adding something new, and it will just replace the old key/value pair in localStorage. Knowing this, let's add `key` and `initialValue` as parameters to the hook.
-- We're going to set up some state here. Set up a state property called storedValue.
-  - This state property is going to take a function as it's initial value. When we do this, whatever that callback function returns is what gets set as the intialValue for the state property.
-  - In the callback function, we'll check to see if the item we passed in already exists in localStorage, and return that value, otherwise we'll return whatever initialValue was passed in.
-  - Quick note, if you pass in arrays or objects to localStorage, you will need to parse it into JSON. Then when you retrieve it, like we do below, you'll need to parse it back into regular JavaScript
+- [X] Create a new directory called `hooks`, and a new file in it called `useLocalStorage`.
+- [X] Build a function called `useLocalStorage`. 
+- [X] Now, to set something to localStorage, we need a key (must be a string) and a value (can be anything). 
+- [X] To retrieve something from localStorage, we need the key. 
+- [X] To update something in localStorage, you use the same method as adding something new, and it will just replace the old key/value pair in localStorage. 
+- [X] Knowing this, let's add `key` and `initialValue` as parameters to the hook.
+- [X] We're going to set up some state here. Set up a state property called storedValue.
+- [X] This state property is going to take a function as it's initial value. When we do this, whatever that callback function returns is what gets set as the intialValue for the state property.
+- [ ] In the callback function, we'll check to see if the item we passed in already exists in localStorage, and return that value, otherwise we'll return whatever initialValue was passed in.
+- [ ] Quick note, if you pass in arrays or objects to localStorage, you will need to parse it into JSON. Then when you retrieve it, like we do below, you'll need to parse it back into regular JavaScript
 
 ```js
 // To retrieve an item from localStorage, call localStorage.getItem('itemName')
@@ -64,6 +68,8 @@ const [storedValue, setStoredValue] = useState(() => {
   // Parse and return stored json or, if undefined, return initialValue
   return item ? JSON.parse(item) : initialValue;
 });
+
+
 ```
 
 - Now, let's return `storedValue` from this hook in an array:
