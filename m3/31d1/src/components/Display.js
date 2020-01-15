@@ -14,10 +14,22 @@ class Display extends React.Component {
 		return (
 			<div>
 				<h2>Balls: </h2>
-				<div>{this.props.balls}</div>
+				<div id="balls">{this.props.balls}</div>
 
 				<h2>Strikes: </h2>
-				<div>{this.props.strikes}</div>
+				<div id="strikes">{this.props.strikes}</div>
+
+				<h2>Inning: </h2>
+				<div id="inning">{this.props.inning}</div>
+
+				<h2>Home: </h2>
+				<div id="runsH">Runs: {this.props.runsH}</div>
+				<div id="errorsH">Errors: {this.props.errorsH}</div>
+				<div id="outs">Outs: {this.props.outsH}</div>
+				<h2>Away: </h2>
+				<div id="runsA">Runs: {this.props.runsA}</div>
+				<div id="errorsA">Errors: {this.props.errorsA}</div>
+				<div id="outs">Outs: {this.props.outsA}</div>
 			</div>
 		);
 	}

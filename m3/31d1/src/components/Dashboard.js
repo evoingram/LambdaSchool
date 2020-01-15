@@ -18,6 +18,9 @@ class Dashboard extends React.Component {
 				<button onClick={this.props.recordBall}>Ball</button>
 				<button onClick={this.props.recordFoul}>Foul</button>
 				<button onClick={this.props.recordHit}>Hit</button>
+				<button onClick={this.props.recordRun}>Run</button>
+				<button onClick={this.props.recordError}>Error</button>
+				<button onClick={this.props.recordOut}>Out</button>
 			</div>
 		);
 	}
