@@ -13,6 +13,7 @@ node_modules
 reactstrap-project
 m2/22c1/node_modules/
 m2/22c1/reactstrap-project/
+m3/**/.env
 node_modules/
 .env
 m1/SC-ACSS
