@@ -16,6 +16,7 @@ export const Reducer = (state, action) => {
 				completed: false,
 				id: Date.now()
 			};
+			console.log('TASK_ADD fired off @ case switch');
 			return {
 				...state,
 				tasks: [...state.tasks, addTask]

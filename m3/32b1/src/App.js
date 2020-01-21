@@ -3,6 +3,7 @@ import './App.css';
 import { task, Reducer } from './reducers/Reducer';
 import TodoForm from './components/TodoForm.js';
 // import SearchForm from './components/SearchForm.js';
+import TodoList from './components/TodoList.js';
 import styled from 'styled-components';
 
 const Div = styled.div`
@@ -47,7 +48,17 @@ function App() {
 			<TodoForm
 				dispatch={dispatch}
 				tasks={state.tasks}
-				value={state.task}
+				value={state.newTask}
+				newTask={state.newTask}
+				todoChange={todoChange}
+				todoClear={todoClear}
+				todoSubmit={todoSubmit}
+				toggleComplete={toggleComplete}
+			/>
+			<TodoList
+				dispatch={dispatch}
+				tasks={state.tasks}
+				value={state.newTask}
 				newTask={state.newTask}
 				todoChange={todoChange}
 				todoClear={todoClear}
