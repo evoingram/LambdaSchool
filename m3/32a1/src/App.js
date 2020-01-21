@@ -10,6 +10,7 @@ import ShoppingCart from './components/ShoppingCart';
 // Contexts
 import { ProductContext } from '../contexts/ProductContext';
 import { CartContext } from '../contexts/CartContext';
+import { RemoveItemContext } from '../contexts/RemoveItemContext';
 
 function App() {
 	const [products] = useState(data);
@@ -20,18 +21,29 @@ function App() {
 		setCart([...cart, item]);
 	};
 
+	const removeItem = (cart, item) => {
+		// remove the given item from the cart
+		var index = cart.indexOf(item);
+
+		if (index > -1) {
+			cart.splice(index, 1);
+		}
+	};
+
 	return (
 		<ProductContext.Provider value={{ products, addItem }}>
-			<CartContext.Provider value={{ cart }}>
-				<div className="App">
-					<Navigation cart={cart} />
+			<RemoveItemContext.Provider value={{ cart, item, removeItem }}>
+				<CartContext.Provider value={{ cart }}>
+					<div className="App">
+						<Navigation cart={cart} />
 
-					{/* Routes */}
-					<Route exact path="/" component={products} />
+						{/* Routes */}
+						<Route exact path="/" component={products} />
 
-					<Route path="/cart" render={() => <ShoppingCart cart={cart} />} />
-				</div>
-			</CartContext.Provider>
+						<Route path="/cart" render={() => <ShoppingCart cart={cart} />} />
+					</div>
+				</CartContext.Provider>
+			</RemoveItemContext.Provider>
 		</ProductContext.Provider>
 	);
 }
