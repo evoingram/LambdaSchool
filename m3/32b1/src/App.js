@@ -27,7 +27,7 @@ function App() {
 	};
 
 	todoSearch = event => {
-		const results = this.state.data.filter(todoItem =>
+		const results = this.state.tasks.filter(todoItem =>
 			todoItem.task.toLowerCase().includes(this.state.searchTerm.toLowerCase())
 		);
 		this.setState({
@@ -55,6 +55,7 @@ function App() {
 			payload: id
 		});
 	};
+
 	return (
 		<Div>
 			<h2>Todo List: MVP</h2>
@@ -64,8 +65,15 @@ function App() {
 				tasks={state.tasks}
 				changeSearchTerm={this.changeSearchTerm}
 				searchResults={this.state.searchResults}
+				toggleComplete={this.toggleComplete}
 			/>
-			<TodoForm dispatch={dispatch} tasks={state.tasks} value={this.state.task} todoChange={this.todoChange} />
+			<TodoForm
+				dispatch={dispatch}
+				tasks={state.tasks}
+				value={this.state.task}
+				todoChange={this.todoChange}
+				toggleComplete={this.toggleComplete}
+			/>
 		</Div>
 	);
 }
