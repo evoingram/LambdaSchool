@@ -1,52 +1,23 @@
-import React, { useReducer } from 'react';
+import React, { useState, useReducer } from 'react';
 import './App.css';
 import { task, Reducer } from './reducers/Reducer';
 import TodoForm from './components/TodoForm.js';
-import SearchForm from './components/SearchForm.js';
+// import SearchForm from './components/SearchForm.js';
 import styled from 'styled-components';
 
 const Div = styled.div`
 	background-color: #27474e;
 	color: #c45baa;
 `;
-
-const baseTodos = [
-	{
-		item: 'Learn about reducers',
-		completed: false,
-		id: 3892987589
-	}
-];
-
 function App() {
 	const [state, dispatch] = useReducer(Reducer, task);
 
-	todoChange = event => {
-		// update state while typing task title
-		this.setState({ addedTaskItem: event.target.value });
-	};
+	const [newTask, addNewTask] = useState('');
 
-	todoSearch = event => {
-		const results = this.state.tasks.filter(todoItem =>
-			todoItem.task.toLowerCase().includes(this.state.searchTerm.toLowerCase())
-		);
-		this.setState({
-			searchResults: [...results]
-		});
-	};
-
-	changeSearchTerm = event => {
+	const todoChange = event => {
 		event.preventDefault();
-		if (event.target.value !== null && event.target.value !== undefined) {
-			this.setState({
-				searchTerm: event.target.value
-			});
-		} else {
-			this.setState({
-				searchTerm: ''
-			});
-		}
-		this.todoSearch();
+		// update state while typing task title
+		addNewTask(event.target.value);
 	};
 
 	const toggleComplete = id => {
@@ -56,23 +27,32 @@ function App() {
 		});
 	};
 
+	const todoSubmit = event => {
+		event.preventDefault();
+		dispatch({ type: 'TASK_ADD', payload: newTask });
+		addNewTask('');
+	};
+
+	const todoClear = () => {
+		dispatch({ type: 'TASK_CLEAR_COMPLETED' });
+	};
+
 	return (
 		<Div>
 			<h2>Todo List: MVP</h2>
 			<h2>Type to Search or Click to Complete a Todo:</h2>
-			<SearchForm
-				dispatch={dispatch}
-				tasks={state.tasks}
-				changeSearchTerm={this.changeSearchTerm}
-				searchResults={this.state.searchResults}
-				toggleComplete={this.toggleComplete}
-			/>
+			{
+				// <SearchForm dispatch={dispatch} tasks={state.tasks} />
+			}
 			<TodoForm
 				dispatch={dispatch}
 				tasks={state.tasks}
-				value={this.state.task}
-				todoChange={this.todoChange}
-				toggleComplete={this.toggleComplete}
+				value={state.task}
+				newTask={state.newTask}
+				todoChange={todoChange}
+				todoClear={todoClear}
+				todoSubmit={todoSubmit}
+				toggleComplete={toggleComplete}
 			/>
 		</Div>
 	);

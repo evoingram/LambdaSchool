@@ -1,6 +1,6 @@
-import React, { useState, useReducer } from 'react';
+// import React, { useState, useReducer } from 'react';
 
-const task = {
+export const task = {
 	tasks: [{ item: 'Learn about reducers', completed: false, id: 3892987589 }]
 };
 
@@ -8,9 +8,7 @@ export const Reducer = (state, action) => {
 	switch (action.type) {
 		case 'TASK_CLEAR_COMPLETED':
 			return {
-				// todo: clear completed
-				...state,
-				editing: !state.editing
+				tasks: state.tasks.filter(todoItem => !todoItem.completed)
 			};
 		case 'TASK_ADD':
 			const addTask = {
@@ -20,7 +18,7 @@ export const Reducer = (state, action) => {
 			};
 			return {
 				...state,
-				tasks: [...state.tasks, newTask]
+				tasks: [...state.tasks, addTask]
 			};
 		case 'TASK_TOGGLE_COMPLETED':
 			return {

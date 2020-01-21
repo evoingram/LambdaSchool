@@ -12,7 +12,7 @@ class Todo extends React.Component {
 				style={this.props.completed ? { textDecoration: 'line-through' } : null}
 				onClick={() => this.props.toggleComplete(this.props.id)}
 			>
-				{props.title}
+				{this.props.title}
 			</li>
 		);
 	}
