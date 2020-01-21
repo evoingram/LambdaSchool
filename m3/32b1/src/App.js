@@ -7,8 +7,8 @@ import TodoList from './components/TodoList.js';
 import styled from 'styled-components';
 
 const Div = styled.div`
-	background-color: #27474e;
-	color: #c45baa;
+	background-color: #002244;
+	color: #a5acaf;
 `;
 function App() {
 	const [state, dispatch] = useReducer(Reducer, task);
@@ -23,6 +23,7 @@ function App() {
 
 	const toggleComplete = id => {
 		console.log('dispatch TASK_TOGGLE_COMPLETED fired off from App.js');
+		console.log('id = ' + id);
 		dispatch({
 			type: 'TASK_TOGGLE_COMPLETED',
 			payload: id

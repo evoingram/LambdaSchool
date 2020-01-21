@@ -1,7 +1,7 @@
 // import React, { useState, useReducer } from 'react';
 
 export const task = {
-	tasks: [{ item: 'Learn about reducers', completed: false, id: 3892987589 }]
+	tasks: [{ item: 'Learn about reducers', completed: false, id: 3892987589, dueDate: '01-21-2020' }]
 };
 
 export const Reducer = (state, action) => {
@@ -14,7 +14,8 @@ export const Reducer = (state, action) => {
 			const addTask = {
 				item: action.payload,
 				completed: false,
-				id: Date.now()
+				id: Date.now(),
+				dueDate: '01-21-2020'
 			};
 			console.log('TASK_ADD fired off @ case switch');
 			console.log(state.tasks);
@@ -27,6 +28,8 @@ export const Reducer = (state, action) => {
 			return {
 				...state,
 				tasks: state.tasks.map(task => {
+					console.log(task.id, task.item, task.completed);
+					console.log('action.payload = ' + action.payload);
 					if (task.id === action.payload) {
 						return { ...task, completed: !task.completed };
 					} else {

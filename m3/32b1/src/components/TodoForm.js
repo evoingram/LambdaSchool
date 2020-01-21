@@ -22,10 +22,10 @@ const SCField = styled.div`
 	padding: 0;
 `;
 const Button = styled.button`
-	background: #7d387d;
+	background-color: '#002244';
+	color: '#A5ACAF';
 	border-radius: 3px;
-	border: 2px solid #e1d89f;
-	color: #e1d89f;
+	border: 2px solid #69be28;
 	font-weight: bold;
 	margin: 1em;
 	padding: 1em 2em;
@@ -51,8 +51,8 @@ const fieldLength = {
 	width: '75%',
 	margin: '0',
 	padding: '0',
-	backgroundColor: '#C45BAA',
-	color: '#27474E'
+	backgroundColor: '#002244',
+	color: '#A5ACAF'
 };
 class TodoForm extends React.Component {
 	constructor(props) {

@@ -18,6 +18,8 @@ class TodoList extends React.Component {
 							toggleComplete={this.props.toggleComplete}
 							item={todoItem.item}
 							completed={todoItem.completed}
+							id={todoItem.id}
+							dueDate={todoItem.dueDate}
 						/> // {...todo}
 					))}
 				</ul>
