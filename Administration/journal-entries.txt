@@ -1,0 +1,287 @@
+introduction
+November 12, 2019, 00:00
+
+Hello, this will be a journal about my Lambda School experience as I complete it so as to document my experience.
+
+Obligatory:<ul>
+  https://www.github.com/evoingram" target="_blank  GitHub  
+  https://www.codewars.com/users/evoingram" target="_blank  Codewars  
+  https://www.aquoco.co" target="_blank  A Quo Co.  
+</ul>
+Just started codewars like a week or so ago. So I'm 38, have owned and operated a court transcription business for the last decade, still do, and I'm enrolled in Lambda School's full-stack web development track. I did Geocities and all that back in the day. I've always been interested in coding. But my real start in coding didn't come until I needed for my company, A, a website and, B, an end-to-end workflow/production management system. I was the only employee of my own business, so automating what I could within the rules, such as standard business operations, was important to me. Not having the money to pay a developer, it was worth my time to learn to code, so I did, and created a website. We are two iterations from that original page, and working on yet another one now that I've finished this unit, incorporating a bunch of the things I've learned there. It's going to be a portfolio piece when I'm done with it.
+
+Anyways, then I needed software, batch files, or something to help me get all these admin tasks done, like fill out endless forms with the same information over and over. So I made a database with VBA, and it's what i use for my company's production/business management. It does a ton of cool things, and I talk about it in my Github and on my blog, so I won't go into it here. But then I was interested in doing more than just this database. I thought I wanted to do coding professionally, so I did freeCodeCamp, got four certificates towards their umbrella cert. While doing that, I found out about Lambda, talked it over with my spouse, and thought about it for a few months before deciding the structure and benefits of it would be worth it if I put the work in, and here I am, four weeks in.
+
+The structure here has helped immensely as well as you don't know what you don't know, so that is one advantage with Lambda over self-teaching. If this is how it is for the rest of the program, the price is more than fair. So far, I feel very in my element, like I belong. A lot of people here, like me, are from alternative life/education paths. Everyone here is very enthusiastic, works very hard and actually wants to be where they are. I am extremely grateful for this opportunity, and it will not be wasted. This experience has made me remember how much I like learning and measurable objectives. It is very comforting to know specifically and exactly what is required of you. In my industry, people are frequently dealing with crises of some sort, of varying urgency, my services are frequently utilized after one side or the other is unhappy with the outcome of a court case, and it is just different, much more solemn, obviously.
+
+The environment and my study habits have helped me excel so far in this program. It is only unit 1, though, so we'll see. I learned Cornell note-taking for this program, and have moderate familiarity and follow the Getting Things Done productivity model. My study habit has been as follows: watch the required videos, take notes on paper from material provided by Lambda that I put in the OneNote notebook, highlight relevant/key parts of it, format code with NoteHighlight, and then review my written notes right before the lecture, and review the entire written notebook weekly. My git directory matches the numbering seen in this picture w/o the dash. So here's a picture of my OneNote notebook for Lambda: <img alt="" src="https://www.aquoco.co/lambda-notebook.png" width="900" />
+
+------------------------------------------------------------------
+11/13/2019
+November 13, 2019, 05:39
+
+ Pre-course work covered basic HTML, CSS, and JS.   Week 1 covered 'user interface and Git'; Git, HTML5, and moderate CSS.   This was a very productive week for me.  I learned how to use Git, and instead of having a separate repository for each project every day of the week like they taught us, I learned how to make one big repository just for Lambda and use branches and a numbering system to maintain the projects correctly.  It is not perfect, but my GitHub is moderately clean as a result, and easy for me to navigate.  I also learned more than I ever wanted to know about VS Code and Emmet through Burke Holland's Frontend  Masters course on it, as a six-month sub is included in the Github Student Pack that comes with Lambda enrollment (student pack is very cool, btw; tons of cool useful things in there).  I plan to watch a lot of the videos @ FM, as what I've seen there so far has been extremely useful/helpful. 
+ Week 2 covered 'advanced CSS'.  Here, I learned, over and above the curriculum, about CSS animations, gradients, and shapes. 
+ Week 3 was 'JS fundamentals'.  During this week, I finished Wes Bos's command line power user course because I used to know absolutely ZIP about bash, and started learning Bootstrap also.  This weekend, i plan to learn how to use XD.
+ <ul>
+  https://commandlinepoweruser.com/" target="_blank  Command Line Power User  
+  https://frontendmasters.com/courses/" target="_blank  Frontend Masters  
+  https://getbootstrap.com/docs/4.3/getting-started/introduction/" target="_blank  Bootstrap  
+  https://css-tricks.com/the-shapes-of-css/" target="_blank  CSS shapes  
+</ul>
+Tags: lambda school, lambda, lambdaschool
+------------------------------------------------------------------
+11/14/2019
+November 14, 2019, 05:40
+
+ Week 4, this coming week, is build week, and that project encompasses everything I learned in the rest of the unit.  Very  excited to put together everything I've learned to produce a real, working product.  All four tracks of the school come together into  groups to make an app, each with their own things to do corresponding  with their track.  Then we present on Friday.  The piece of the app you  do has to meet certain requirements corresponding with what you've  learned in the unit.  In anticipation of build week, I've  been learning Bootstrap because that is one of the extra credit items  for build week, to use a framework.  I have a tentative design laid out  and plan to learn how to use XD this weekend.  Soon, I might be able to afford a fine-tipped stylus and a glove for my touch screen so I can  properly write and draw on it. <ul>
+  https://getbootstrap.com/" target="_blank  Bootstrap  
+</ul>  
+Tags: lambda school, lambda, lambdaschool
+
+------------------------------------------------------------------
+
+11/16/2019
+November 16, 2019, 05:44
+
+ This weekend, productive was my middle name; I learned XD and used it to create a mock-up, which i uploaded to the BW repo, crafted an HTML skeleton for BW project, finished up taking notes for Unit 2, week one, caught up on JavaScript 30 projects; just finished day 5; and gave VB.NET a go. I would like to port my database to an online app, so now I'm finally sticking my toe in the water with that. But i also learned you can make sprites for css with Adobe Animate, which I have access to &gt;:D. So Animate is definitely going on my to-learn list.
+ <ul>
+  https://theblog.adobe.com/create-a-css-sprite-sheet-in-adobe-animate-cc/" target="_blank  How to Make Sprites in Adobe Animate  
+</ul>
+Tags: lambda school, lambda, lambdaschool
+------------------------------------------------------------------
+11/17/2019
+November 17, 2019, 07:07
+
+ Got into VB on Visual Studio and just learned about ASP.net; whew that is exciting!  i can pretty much create all of my database's forms and user interface with what i just learned from Lambda in Unit 1 and with Bootstrap.  I also got LESS hooked up to it, watch compiler and all. <ul>
+  https://getbootstrap.com/" target="_blank  Bootstrap  
+  http://lesscss.org/" target="_blank  LESS  
+  https://visualstudio.microsoft.com/" target="_blank  Visual Studio  
+  https://www.tutorialspoint.com/vb.net/index.htm" target="_blank  VB  
+  https://www.tutorialspoint.com/asp.net/index.htm" target="_blank  ASP.net  
+</ul>
+
+------------------------------------------------------------------
+
+11/18/2019
+November 19, 2019, 05:45
+
+ today i didn't learn much extra; worked on my  website for build week.  Learned how to use Bootstrap collapse and  incorporated several different animations into the page (from outside  left to middle, outside right to middle, and then bottom to middle).   Also learned how to make a checkmark with SVG and animate it being checked, so i now have six of those in my website.  i  actually screwed up today; i thought we were only doing stand-up with  our build groups, and mine has two international folks very far apart in  time zones from each other and me, so ours isn't at the regular time  and i didn't go to the stand-up.  But once i figured out what i did, i  turned in my stand-up report and told them what happened, showed them  what i worked on also.  Forgot to give them an assignment i will give  them in tomorrow's stand-up.
+
+today is day 7 of javascript 30.  Possibly tomorrow i will begin  working on next week's assignments.  i found out so much about VB; i now  have to go back and design a dashboard and all the pages in Adobe XD,  which will probably take me a little while. <ul>
+  https://codepen.io/maddesigns/pen/YRROgB" target="_blank  SVG Checkmark  
+  https://codepen.io/karaluton/pen/PXKvjy" target="_blank  Champagne Glass  
+  https://helpx.adobe.com/xd/how-to/what-is-xd.html?playlist=/ccx/v1/collection/product/xd/segment/designer/explevel/beginner/applaunch/ccl-get-started-1/collection.ccx.js&amp;ref=helpx.adobe.com&amp;guid=492fd836-cbc2-4643-a28a-b164676e6202&amp;location=PDP&amp;product=Creative Cloud Desktop&amp;product-version=5.0.0.354&amp;mv=product&amp;mv2=accc#access_token=eyJ4NXUiOiJpbXNfbmExLWtleS0xLmNlciIsImFsZyI6IlJTMjU2In0.eyJpZCI6IjE1NzM5MTIzMDc2MjhfNzA4M2Y0YjktOTQxNy00MzY0LWJlYWUtNzZjMzRmMzIyOTBhX3VlMSIsImNsaWVudF9pZCI6IkNyZWF0aXZlQ2xvdWRXZWIxIiwidXNlcl9pZCI6IjA5NDI1M0ExNUIzMjdGQjUwQTQ5NUM0MUBBZG9iZUlEIiwidHlwZSI6ImFjY2Vzc190b2tlbiIsImFzIjoiaW1zLW5hMSIsImZnIjoiVDZCUUtVVUhYTEU1TEhVMkNPUUxLS1FBSVE9PT09PT0iLCJzaWQiOiIxNTczOTExMzg0MTQyX2ZhYzAyMTU0LWNkYzItNGNlMC04ZmQ1LTgyODdlNzUwMTc3MV91ZTEiLCJtb2kiOiI3YTY0MzQ2NCIsImMiOiJCeU8vWm8xM09LS01hVUxjUUNUbzN3PT0iLCJleHBpcmVzX2luIjoiODY0MDAwMDAiLCJjcmVhdGVkX2F0IjoiMTU3MzkxMjMwNzYyOCIsInNjb3BlIjoib3BlbmlkLGNyZWF0aXZlX2Nsb3VkIn0.RCx1kC6hidtpVx_iiOHmtxTR-aPMpitdINuebxVBLRXTGZqIx7Ed84CnbhH-4_oWWX9g-RE9ZZguFysLtLD889SJ1fSPjm_pDNgC21Elj60PJEOrPFNsGNTPg5fbYmd-5M9PPpFGg5v0Vv_K37JPq4VIRRueuU-d8-fMohvW1eBdcxNFfRG7kC5k0PtW7xeGiaD_h0aFHjoVY6kS_4zR99CZEXpJtsYr8PFEhstJu8lSfZAp6DnHWn8_ZLqLpQKrlmJNvuBRiieMVanvv2jwDiDFCvNNf2X0p1aYSipJCloV3TVUVQthVzXKfp_6lTID6I8gK7cTMNVRuxdg0CsjCg&amp;token_type=bearer&amp;expires_in=86399992" target="_blank  Adobe XD tutorials  
+  https://javascript30.com/" target="_blank  JavaScript 30 
+ 
+</ul>
+Tags: lambda school, lambda, lambdaschool
+------------------------------------------------------------------
+11/19/2019
+November 20, 2019, 03:05
+
+ I am sooo excited; I learned how to do a digital JS timer.   https://github.com/evoingram/LambdaSchool/compare/21a1?expand=1" target="_blank  https://github.com/evoingram/LambdaSchool/compare/21a1?expand=1 
+
+Monday we're supposed to do DOM I, beginning DOM elements, and because I've already substantially completed the BW project with every stretch goal as i am aware, i went to start next week's assignments.  I have also made all notes for next week's lessons in my notebook.
+
+The stretch for Monday's assignment was to create a digital timer, and then there were stretches on top of the regular stretch timer, and i did all of them; pretty proud of myself for that.  Took me quite a while to figure out what i was doing wrong, but i got it eventually.
+
+This morning, i presented what i had to my team and i had the wrong git branch pulled, so there were still kinks left to work out, but it's because i forgot to get the latest git branch, because i was doing a j30 project and that one doesn't necessarily have the newest version of other things.  I have a master branch for my overall Lambda git folder, and then i make a mini 'master' branch with the original files for the particular project i'm working on with 'm' at the end, and then i use the same git branch name w/o the 'm' to make changes, commit, and do the project on.  Then my TL merges to the 'm' branch.  i figured this out during the git unit/section because i wasn't about to have 800 repositories just for school clogging up my Github; nope, nope, nope.  The school only teaches you to fork each project and clone it into a separate repository, so i figured out the rest on my own and with the resources they provided us all.  In the morning, I'll make sure my Build Week project is totally polished, which it should be or mostly should be if i pull the right git branch, and write some notes for a possible presentation, then go on to Tuesday's assignments. 
+Tags: lambda school, lambda, lambdaschool
+
+------------------------------------------------------------------
+11/20/2019
+November 20, 2019, 17:09
+
+ Today, having done my project already, I did the first three days of Unit 2, week 1's assignments, where I learned about components, utilized gsap, how to deploy to heroku and with heroku/git, and that's about it for today.  Most of today was finishing touches on the site, getting it deployed, and then just basic assignments.
+
+Tomorrow is feature freeze day and on Friday we present.
+
+Next week's Thanksgiving, so I guess we're not having school, time to load up on (paid transcription) work next week.  A whole week!  How far ahead will I be able to get on my assignments??? <ul>
+  https://blog.teamtreehouse.com/deploy-static-site-heroku" target="_blank  How to Deploy a Website on Heroku  
+  https://greensock.com/get-started/" target="_blank  GSAP  
+</ul>
+
+------------------------------------------------------------------
+
+11/22/2019
+November 22, 2019, 22:04
+
+ Today, I learned about basics of React, caught up on my careers assignments through the next assignment which is not due yet (week 5), and talked to a careers person during office hours about Lambda's hiring partners.  I did some reflecting on what I want when hiring time comes.
+
+I'm not posting any Lambda videos, but I will post other ones I watched such as these: <ul>
+  https://www.youtube.com/watch?v=sBws8MSXN7A" target="_blank  Brad Traversy's ReactJS Crash Course  
+</ul>
+Tags: lambda school, lambda, lambdaschool
+------------------------------------------------------------------
+11/26/2019
+November 26, 2019, 13:34
+
+ Today was a great day for productivity.  The company I sometimes do transcripts for said they had work for me, but didn't actually send me anything, so i spent the time coding.
+
+I tried out GH projects by putting my assignment mgmt in a project on my school repo.  Finished that setup through the end of Unit 4.
+
+Also, I did JS30 day 10 and 11.
+
+Then i spent the rest of the time refactoring my DB code.  Did not make it very far because the code is long, does a lot, and i had to write the faster/better code while commenting out what actually worked.  I did not want to take out what worked until i get the new stuff actually working.  So it was fairly tedious and took me a long time.  But i got through the Stage 1 module, and then turned to classes.  I made a parent class with &quot;subclasses&quot; or children that looked like this:
+
+Job --&gt; App0 through App6:  Ordering ID and each appearance ID
+           CaseInfo:  Case Name, Number, etc info about the case
+           Status:  Status checklist for that particular job
+
+The second three are children of &quot;Job&quot;.  Might create an invoice one; it'd be nice just to have those all under one subheading.  I can't believe i got the subclasses to work, though.  So my code looks like this when i use it now:
+
+Dim cJob as new Job
+cJob FindFirst &quot;ID=&quot; &amp; sCourtDatesID   'finds job by ID
+Debug.print cJob.AudioLength         'audio length of this job
+Debug.print cJob.App0.Company     'company name of ordering person, App1-6 is who was present at event
+Debug.print cJob.CaseInfo.Party1    'prints name of first party
+Debug.print cJob.Status.Transcribe 'prints true or false based on if this task is done or not
+
+there are a bajillion sub-items i can pick from now, every field from four tables, so the next step will be going through the code and implementing the classes.  I'm already picking through it to take out all the DAO methods of accessing a recordset where i can because I think the other SQL execute way is much faster.  But that's taking me a while, because the SQL statements I need to construct are pretty long and i used DAO everywhere.
+
+Also learned how to use Rubberduck, so I'm still playing around with that. 
+Tags: lambda school, lambda, lambdaschool
+
+------------------------------------------------------------------
+11/27/2019 to 12/01/2019
+December 02, 2019, 03:28
+
+ busy bee on school vacation this week: 
+ got some paid work done 
+ did two weeks' worth of assignments 
+ took three weeks' worth of notes for school lessons 
+ watched three weeks' worth of videos for school lessons 
+ watched supporting Frontend Masters videos on React, also Brad Traversy's videos on React 
+ learned a ton about React from Lambda curriculum also, to include how to use it with APIs 
+ built/learned a few cool things while doing my assignments such as a custom video player, how to slide images in and out, how to use Speech Synthesis and Recognition right in the browser, how to make a sticky nav bar with JS, how to use the NASA API to show random pictures from their various image databases, built a calculator interface that looks great, but doesn't totally function, with React 
+ caught up and got ahead two weeks on JavaScript 30; now just have about a week left 
+ learned about VB classes and got several working for database; this is a big deal.  I'm pretty sure when i get done refactoring to include these classes i will have sped up the database a ton. 
+ cleaned up a ton of VB code in my database, still have a lot to go 
+ caught up in taking notes up to today's planned VB tutorial sections 
+ took notes for this week's planned VB tutorial sections 
+ took notes for two weeks' worth of planned Emmet abbreviations lessons 
+ used GitHub projects feature to  https://github.com/evoingram/LambdaSchool/projects/1" target="_blank  create a project for my LambdaSchool repo , which i will use to manage my assignments. I was able to get very detailed, was very fun to set up. 
+ used GitHub projects feature to  https://github.com/evoingram/VBProjects/projects/1" target="_blank  create a project for my VB database , to include the new website, which will likely be branched out to yet another project 
+ learned how to use yarn, wow is it better than npm; no problems at all like the many i had with npm 
+ learned how to use styled-components and reactstrap 
+
+Tags: lambda school, lambda, lambdaschool
+
+------------------------------------------------------------------
+
+12/02/2019
+December 03, 2019, 09:21
+
+ Yesterday, i mostly worked on my portfolio; didn't learn much new.  Lambda gives everyone a yourname.com domain for a year for free!!  So i got that yesterday and then spent the day working on my portfolio.  i did the following:   https://codepen.io/evoingram/pen/JjojBJO  https://codepen.io/evoingram/pen/JjojBJO   I also worked on it in VS Code, and it looks better and different doing it in the regular browser than in Codepen; not sure why.  Spent several fruitless hours chasing down how to do SVGs because i originally wanted to do a bird flying around, but that's WAY more complicated than i expected.   
+Tags: lambda school, lambda, lambdaschool
+------------------------------------------------------------------
+
+12/03/2019
+December 04, 2019, 09:07
+
+ knocked out a WHOLE BUNCH of to-dos on my company's website and now i am down to only a couple things:  
+ <br> 
+ finish transferring the order form from old site to new/layout issues 
+ put up under-construction site on my name.com domain, probably a digital resume 
+ proofing 
+ <br> 
+ again, didn't learn as much as i knocked out about 10 things on my projects i needed to do.  Also developed my portfolio animation a little bit more, drew a bunch of rocks and 'built' a rockbed which consisted of me putting together about 30 differently shaped polygons. 
+------------------------------------------------------------------
+12/04/2019
+December 05, 2019, 08:54
+
+ not much to report; helped Danielle with Tuesday's assignment, finished up Wednesday's assignment, and finished fixing up my order form, now just need to proof the company website and it'll be ready to unveil.   
+
+------------------------------------------------------------------
+12/05/2019
+December 06, 2019, 06:16
+
+ Not much to report again today; helped Danielle with the previous day's assignment, fixed up my 'digital resume' to use as a placeholder for myname.com until i get a proper portfolio, fixed up the redirect, I think, so it's masked, and pretty much finished the company website.   
+ I have two things left to do, proofing and tablet/mobile versions, on the website, and it's already fairly responsive, so i likely won't have too much to do on that note.  But I want to do it last so everything else is perfect before I go making it smaller, so proofing will be my next task and possibly getting some feedback from some peeps.  i know i said that yesterday, but i kept finding weird quirks to fix, so you can see all the things on the  https://github.com/evoingram/newAQCWebsite  github list of things i did  how many things there were.  The last 11 items of that long list are things i did between yesterday and now. 
+ <br> 
+ Today's the sprint, but this was a really easy week, so i don't expect it will be difficult.  It being so easy is what allowed me to get this company website done and soon i will be able to use it as an example of my work in my portfolio.  It is way better than anything i've done previously.   
+ <br> 
+ i will say, my company's website has come a VERY long way since its first iteration!! 
+
+------------------------------------------------------------------
+12/06/2019
+December 09, 2019, 08:21
+
+ Aced the sprint!  Don't have much to report because I actually didn't do much school stuff this weekend; catching up on quality time with fam and then a little bit of work I needed to do; applied for a job, too!  Can't talk about it, but I really want it and I'm really nervous about it!  Wrote a lot in answers to the questions they asked and IDK if that will be frowned upon or not.</p
+
+------------------------------------------------------------------
+
+On November 12, 2019, I started blogging about what I learn at Lambda to document my experience there.  The 
+original purpose was so that, when/if I need it, I have a list to consult of things I've learned here at Lambda and so
+other people can see how far I've come in my time at school.  I started off on LiveJournal, but today I am going to 
+move my blogging over to GitHub Gists. 
+
+I'll be reposting all my previous posts here shortly.  It was going just fine over there for several weeks, but 
+they suspended me for some as-yet-unknown reason with no notice.  So I didn't know until I went to log in and post 
+one day after being busy with school and ReactJS all week.  So I don't even know how long it was down before I noticed, 
+nor do I know how long it will be before they respond.  Really not happy about being treated this way.
+
+You can read the content here for yourself since I'm reposting it; it's rated G stuff, nothing major, no plagiarism, 
+no cursing, no adult content, nothing even slightly controversial.  It's been two days since I asked what happened, 
+no answer, so I'm not terribly interested in blogging at a place where they'll just shut me down with no notice and 
+not tell me what happened.  
+
+Also, I haven't done anything wrong.  As I said, I haven't cursed, used adult content, nothing controversial or plagiarized,
+or anything like that.  This blog is literally me posting every day what I learned in school and sometimes some links 
+to resources related to what I learned.  As you can see for yourself, the posts almost entirely consist of, "I learned 
+X, then I learned Y.  I did this for my assignment today.  I worked on Z project, where I had to look W up or use this 
+framework, and here's where I learned a lot about W or this framework," I mean, really inane G-rated stuff.  My most recent
+post before it was suspended was probably the most inane of all of them, lol!
+
+I can't backdate here, but in my own interests and so I'm not supporting such an organization that would treat me in 
+such a fashion w/o so much as an automated e-mail, I'm moving it to here where I know things will be handled fairly.  
+Clearly, I can't trust LJ with my content, and this is probably a better place to blog anyway since I'm already coding
+a ton here.  People who this documented journey might matter to will be more likely to see it here as well, so that's 
+the plan today.  Onward and upward.
+
+(This post will be both the first one and the date I did the move so readers understand what happened.)
+
+---------------------------------------
+
+UPDATE: I've now finished putting up my old entries, so later this evening I will update about what I've learned since the last 
+post.  LOTS OF REACT!
+------------------------------------------------------------------
+
+
+------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

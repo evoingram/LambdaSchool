@@ -43,7 +43,8 @@ const CharacterCard = character => {
           Current Location:  <em>{character.character.location.name}</em>
         </Result>
       </Div>
-    </Wrapper> 
+    </Wrapper>
+    
   );
 }
 export default CharacterCard;
