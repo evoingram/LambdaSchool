@@ -13,7 +13,12 @@ class TodoList extends React.Component {
 				<h2>Click to Complete a Todo:</h2>
 				<ul>
 					{this.props.tasks.map(todoItem => (
-						<Todo key={todoItem.id} toggleComplete={this.props.toggleComplete} /> // {...todo}
+						<Todo
+							key={todoItem.id}
+							toggleComplete={this.props.toggleComplete}
+							item={todoItem.item}
+							completed={todoItem.completed}
+						/> // {...todo}
 					))}
 				</ul>
 			</div>

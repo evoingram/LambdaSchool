@@ -9,10 +9,10 @@ class Todo extends React.Component {
 	render() {
 		return (
 			<li
-				style={this.props.completed ? { textDecoration: 'line-through' } : null}
+				style={this.props.completed ? { textDecoration: 'line-through', color: 'white' } : { color: 'white' }}
 				onClick={() => this.props.toggleComplete(this.props.id)}
 			>
-				{this.props.title}
+				{this.props.item}
 			</li>
 		);
 	}

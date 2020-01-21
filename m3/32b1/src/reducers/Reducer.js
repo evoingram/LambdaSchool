@@ -12,16 +12,18 @@ export const Reducer = (state, action) => {
 			};
 		case 'TASK_ADD':
 			const addTask = {
-				title: action.payload,
+				item: action.payload,
 				completed: false,
 				id: Date.now()
 			};
 			console.log('TASK_ADD fired off @ case switch');
+			console.log(state.tasks);
 			return {
 				...state,
 				tasks: [...state.tasks, addTask]
 			};
 		case 'TASK_TOGGLE_COMPLETED':
+			console.log('TASK_TOGGLE_COMPLETED fired off @ case switch');
 			return {
 				...state,
 				tasks: state.tasks.map(task => {

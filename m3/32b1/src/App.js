@@ -22,8 +22,9 @@ function App() {
 	};
 
 	const toggleComplete = id => {
+		console.log('dispatch TASK_TOGGLE_COMPLETED fired off from App.js');
 		dispatch({
-			type: 'TOGGLE_TASK_COMPLETED',
+			type: 'TASK_TOGGLE_COMPLETED',
 			payload: id
 		});
 	};
