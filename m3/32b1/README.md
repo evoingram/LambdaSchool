@@ -42,8 +42,8 @@ Follow these steps for completing your project.
 
 ### STEP 1 - Build a simple reducer and initial state
 
-- [ ] In a folder called `reducers` add a reducer file and build out a simple reducer with just a default return for now
-- [ ] In the same file, build your initial state object that has a list of todos with the following shape:
+- [X] In a folder called `reducers` add a reducer file and build out a simple reducer with just a default return for now
+- [X] In the same file, build your initial state object that has a list of todos with the following shape:
 
 ```js
 {
@@ -53,7 +53,7 @@ Follow these steps for completing your project.
 }
 ```
 
-- [ ] Export both the reducer and the initial state object
+- [X] Export both the reducer and the initial state object
 
 ### STEP 2 - Set up state in your component
 
