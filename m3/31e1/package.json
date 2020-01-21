@@ -7,14 +7,12 @@
     "@testing-library/jest-dom": "^5.0.0",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^8.0.3",
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.19.0",
     "cors": "^2.8.3",
-    "express": "^4.15.2",
-    "jest": "^24.9.0",
-    "jest-dom": "^4.0.0"
+    "express": "^4.15.2"
   },
   "devDependencies": {
-    "nodemon": "^1.17.2"
+    "nodemon": "^2.0.2"
   },
   "scripts": {
     "start": "nodemon server.js",
