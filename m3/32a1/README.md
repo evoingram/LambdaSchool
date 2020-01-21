@@ -93,25 +93,25 @@ Before you get started, please take a few minutes and get acquainted with this a
 
 **STEP 4 - Consuming data with ProductContext**
 
-- [ ] Now that our `ProductContext` is now providing data we can finally consume it! To do so let's head over to our `Products` component and import the `useContext` hook as well as our `ProductContext`.
+- [X] Now that our `ProductContext` is now providing data we can finally consume it! To do so let's head over to our `Products` component and import the `useContext` hook as well as our `ProductContext`.
 
-- [ ] In the component, call the `useContext` hook and pass in the context object we want to use into it.
+- [X] In the component, call the `useContext` hook and pass in the context object we want to use into it.
 
-- [ ] When we do this, `useContext` is going to return value passed by our `ProductContext` Provider `value` prop. In our case we're getting back an object with two properties. A `products` property and a `addItem` property. We can go ahead and destructure those.
+- [X] When we do this, `useContext` is going to return value passed by our `ProductContext` Provider `value` prop. In our case we're getting back an object with two properties. A `products` property and a `addItem` property. We can go ahead and destructure those.
 
 ```js
 const { products, addItem } = useContext(ProductContext);
 ```
 
-- [ ] Now that we have all of the data we need we can refactor our `Products` component from using props.
+- [X] Now that we have all of the data we need we can refactor our `Products` component from using props.
 
-- [ ] To do so we just need to remove every instance of `props`.
+- [X] To do so we just need to remove every instance of `props`.
 
-  - [ ] Remove it from the function parameters
-  - [ ] Remove it from the products map
-  - [ ] Remove it from addItem prop
+  - [X] Remove it from the function parameters
+  - [X] Remove it from the products map
+  - [X] Remove it from addItem prop
 
-- [ ] Now our `Products` component is getting it's data solely from `Context API` 😃.
+- [X] Now our `Products` component is getting it's data solely from `Context API` 😃.
 
 **STEP 5 - Create the CartContext**
 
