@@ -1,21 +1,19 @@
 import React from 'react';
 
-class AdditionalFeature extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {};
-	}
+const AdditionalFeature = props => {
+	const buyItem = () => {
+		console.log('additionalfeature buyitem fired off');
+		props.buyItem(props.feature);
+	};
 
-	render() {
-		return (
-			<li>
-				<button className="button" onClick={this.props.buyItem}>
-					Add
-				</button>
-				{this.props.feature.name} (+{this.props.feature.price})
-			</li>
-		);
-	}
-}
+	return (
+		<li>
+			<button className="button" onClick={buyItem}>
+				Add
+			</button>
+			{props.feature.name} (+{props.feature.price})
+		</li>
+	);
+};
 
 export default AdditionalFeature;

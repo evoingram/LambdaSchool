@@ -1,21 +1,19 @@
 import React from 'react';
 
-class AddedFeature extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {};
-	}
+const AddedFeature = props => {
+	const removeFeature = () => {
+		console.log('additionalfeature removeitem fired off');
+		props.removeFeature(props.feature);
+	};
 
-	render() {
-		return (
-			<li>
-				<button className="button" onClick={this.props.removeFeature}>
-					X
-				</button>
-				{this.props.feature.name}
-			</li>
-		);
-	}
-}
+	return (
+		<li>
+			<button className="button" onClick={removeFeature}>
+				X
+			</button>
+			{props.feature.name}
+		</li>
+	);
+};
 
 export default AddedFeature;

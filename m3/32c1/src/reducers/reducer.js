@@ -16,10 +16,10 @@ export const initialState = {
 	]
 };
 
-export const reducer = (initialState, action) => {
-	let state = initialState;
+export const reducer = (state = initialState, action) => {
 	switch (action.type) {
 		case BUY_ITEM:
+			console.log('BUY_ITEM fired off');
 			if (state.car.features.includes(action.payload)) {
 				return state;
 			}
@@ -34,6 +34,7 @@ export const reducer = (initialState, action) => {
 			};
 
 		case REMOVE_FEATURE:
+			console.log('REMOVE_FEATURE fired off');
 			return {
 				...state,
 				car: {

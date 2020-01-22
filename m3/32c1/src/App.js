@@ -5,27 +5,25 @@ import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
 
-const App = () => {
-	const removeFeature = item => {
-		this.state.removeFeature(item.feature);
-	};
+class App extends React.Component {
+	constructor() {
+		super();
+		this.state = {};
+	}
 
-	const buyItem = item => {
-		this.state.buyItem(item.feature);
-	};
-
-	return (
-		<div className="boxes">
-			<div className="box">
-				<Header />
-				<AddedFeatures removeFeature={removeFeature} buyItem={buyItem} />
+	render() {
+		return (
+			<div className="boxes">
+				<div className="box">
+					<Header />
+					<AddedFeatures />
+				</div>
+				<div className="box">
+					<AdditionalFeatures />
+					<Total />
+				</div>
 			</div>
-			<div className="box">
-				<AdditionalFeatures removeFeature={removeFeature} buyItem={buyItem} />
-				<Total removeFeature={removeFeature} buyItem={buyItem} />
-			</div>
-		</div>
-	);
-};
-
+		);
+	}
+}
 export default App;
