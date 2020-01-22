@@ -21,7 +21,8 @@ function App() {
 		setCart([...cart, item]);
 	};
 
-	const removeItem = (cart, item) => {
+	const removeItem = item => {
+		console.log('removeItem running');
 		// remove the given item from the cart
 		var index = cart.indexOf(item);
 
@@ -33,12 +34,12 @@ function App() {
 	return (
 		<ProductContext.Provider value={{ products, addItem }}>
 			<RemoveItemContext.Provider value={{ cart, removeItem }}>
-				<CartContext.Provider value={{ cart }}>
+				<CartContext.Provider value={cart}>
 					<div className="App">
 						<Navigation cart={cart} />
 
 						{/* Routes */}
-						<Route exact path="/" component={products} />
+						<Route exact path="/" component={Products} />
 
 						<Route path="/cart" render={() => <ShoppingCart cart={cart} />} />
 					</div>

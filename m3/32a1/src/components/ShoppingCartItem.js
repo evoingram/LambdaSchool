@@ -1,8 +1,8 @@
-import React from 'react';
-import RemoveItemContext from '../contexts/RemoveItemContext';
+import React, { useContext } from 'react';
+import { RemoveItemContext } from '../contexts/RemoveItemContext';
 
 const Item = props => {
-	// const removeItem = useContext(RemoveItemContext);
+	const removeItem = useContext(RemoveItemContext);
 
 	return (
 		<div className="shopping-cart_item">
