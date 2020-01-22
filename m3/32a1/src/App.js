@@ -32,22 +32,18 @@ function App() {
 
 	return (
 		<ProductContext.Provider value={{ products, addItem }}>
-			{
-				//<RemoveItemContext.Provider value={{ cart, removeItem }}>
-			}
-			<CartContext.Provider value={{ cart }}>
-				<div className="App">
-					<Navigation cart={cart} />
+			<RemoveItemContext.Provider value={{ cart, removeItem }}>
+				<CartContext.Provider value={{ cart }}>
+					<div className="App">
+						<Navigation cart={cart} />
 
-					{/* Routes */}
-					<Route exact path="/" component={products} />
+						{/* Routes */}
+						<Route exact path="/" component={products} />
 
-					<Route path="/cart" render={() => <ShoppingCart cart={cart} />} />
-				</div>
-			</CartContext.Provider>
-			{
-				// </RemoveItemContext.Provider>
-			}
+						<Route path="/cart" render={() => <ShoppingCart cart={cart} />} />
+					</div>
+				</CartContext.Provider>
+			</RemoveItemContext.Provider>
 		</ProductContext.Provider>
 	);
 }
