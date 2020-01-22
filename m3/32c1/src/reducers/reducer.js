@@ -17,6 +17,7 @@ export const initialState = {
 };
 
 export const reducer = (state = initialState, action) => {
+	console.log('action type = ' + action.type);
 	switch (action.type) {
 		case BUY_ITEM:
 			console.log('BUY_ITEM fired off');
