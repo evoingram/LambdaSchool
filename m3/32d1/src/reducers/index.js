@@ -4,7 +4,10 @@ const initialState = {
 	isLoading: false,
 	activity: null,
 	error: '',
-	hdurl: ''
+	hdurl: '',
+	title: '',
+	date: '',
+	explanation: ''
 };
 
 export const reducer = (state = initialState, action) => {
@@ -19,7 +22,10 @@ export const reducer = (state = initialState, action) => {
 				...state,
 				isLoading: false,
 				activity: action.payload,
-				hdurl: action.payload.hdurl
+				hdurl: action.payload.hdurl,
+				title: action.payload.title,
+				date: action.payload.date,
+				explanation: action.payload.explanation
 			};
 		default:
 			return state;
