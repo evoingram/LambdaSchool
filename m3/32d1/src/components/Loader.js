@@ -30,7 +30,7 @@ const RocketOuterDiv = styled.div`
 	margin: 20px auto 0;
 	line-height: 1;
 	animation: ${Circle} 5s linear infinite;
-	transform-origin: 55% 325px;
+	transform-origin: 35% 275px;
 	overflow: hidden;
 `;
 const RocketInnerDiv = styled.div`
@@ -46,7 +46,7 @@ const WorldImg = styled.img`
 
 function Loader() {
 	return (
-		<section class="loader" id="loader">
+		<section className="loader" id="loader">
 			<div>
 				<RocketOuterDiv>
 					<RocketInnerDiv>
