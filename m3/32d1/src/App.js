@@ -7,6 +7,12 @@ function App() {
 	return (
 		<div className="App">
 			<header className="App-header">
+				<h2>Welcome to Erica's NASA APOD React-Redux App.</h2>
+				{
+					// 	If API info not loaded, load loader animation
+					// If API info loaded, load display page
+				}
+
 				<Loader />
 			</header>
 		</div>

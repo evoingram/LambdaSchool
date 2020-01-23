@@ -11,7 +11,7 @@ const loaderDiv = styled.div`
 `;
 
 const Circle = keyframes`
-    from { transform:rotate(360deg); }
+    from { transform:rotate(360deg) ; }
     to { transform:rotate(0deg); }
 `;
 
@@ -21,7 +21,7 @@ const InnerCircle = keyframes`
 `;
 const RocketSpin = keyframes`
 
-	  from { 	transform:rotate(0deg); }
+	  from { 	transform:rotate(0deg) ; }
   to { transform:rotate(360deg); }
 `;
 const RocketOuterDiv = styled.div`
@@ -31,6 +31,7 @@ const RocketOuterDiv = styled.div`
 	line-height: 1;
 	animation: ${Circle} 5s linear infinite;
 	transform-origin: 55% 325px;
+	overflow: hidden;
 `;
 const RocketInnerDiv = styled.div`
 	animation: ${InnerCircle} 5s linear infinite;
@@ -46,12 +47,6 @@ const WorldImg = styled.img`
 function Loader() {
 	return (
 		<section class="loader" id="loader">
-			<h2>Welcome to Erica's NASA APOD React-Redux App.</h2>
-			{
-				// 	If API info not loaded, load loader animation
-				// If API info loaded, load display page
-			}
-
 			<div>
 				<RocketOuterDiv>
 					<RocketInnerDiv>
