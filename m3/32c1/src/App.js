@@ -1,9 +1,7 @@
 import React from 'react';
-
-import Header from './components/Header';
-import AddedFeatures from './components/AddedFeatures';
-import AdditionalFeatures from './components/AdditionalFeatures';
-import Total from './components/Total';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import CarSelection from './components/CarSelection';
+import MainPage from './components/MainPage';
 
 class App extends React.Component {
 	constructor() {
@@ -13,16 +11,10 @@ class App extends React.Component {
 
 	render() {
 		return (
-			<div className="boxes">
-				<div className="box">
-					<Header />
-					<AddedFeatures />
-				</div>
-				<div className="box">
-					<AdditionalFeatures />
-					<Total />
-				</div>
-			</div>
+			<Router>
+				<Route path="/" component={CarSelection} />
+				<Route path="/main" component={MainPage} />
+			</Router>
 		);
 	}
 }
