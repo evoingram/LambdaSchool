@@ -13,6 +13,7 @@ function App() {
 
 	const addItem = item => {
 		// add the given item to the cart
+		setCart();
 	};
 
 	return (
@@ -20,21 +21,9 @@ function App() {
 			<Navigation cart={cart} />
 
 			{/* Routes */}
-			<Route
-				exact
-				path="/"
-				render={() => (
-					<Products
-						products={products}
-						addItem={addItem}
-					/>
-				)}
-			/>
+			<Route exact path="/" render={() => <Products products={products} addItem={addItem} />} />
 
-			<Route
-				path="/cart"
-				render={() => <ShoppingCart cart={cart} />}
-			/>
+			<Route path="/cart" render={() => <ShoppingCart cart={cart} />} />
 		</div>
 	);
 }
