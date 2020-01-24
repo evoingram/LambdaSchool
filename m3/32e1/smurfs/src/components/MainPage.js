@@ -36,7 +36,13 @@ const MainPage = props => {
 				{props.activity &&
 					!props.isLoading &&
 					props.activity.map(smurf => (
-						<DisplayAPI key={smurf.id} name={smurf.name} age={smurf.age} height={smurf.height} />
+						<DisplayAPI
+							key={smurf.id}
+							name={smurf.name}
+							age={smurf.age}
+							height={smurf.height}
+							id={smurf.id}
+						/>
 					))}
 			</div>
 		</div>
