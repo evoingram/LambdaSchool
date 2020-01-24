@@ -2,12 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
+import { reducer as formReducer } from 'redux-form';
 
 import { reducer } from './reducers';
+
+const rootReducer = combineReducers({
+	reducer: reducer,
+	form: formReducer
+});
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
 

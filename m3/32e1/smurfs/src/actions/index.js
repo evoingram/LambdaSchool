@@ -9,19 +9,8 @@ export const fetchActivity = () => dispatch => {
 	dispatch({ type: FETCHING_ACTIVITY_START });
 	dispatch({ type: DATE_SELECTED, payload: dispatch.date });
 
-	var randomDate;
-	var minYear = 2000;
-	var maxYear = 2019;
-	var randomYear = minYear + Math.round(Math.random() * (maxYear - minYear));
-	var minMonth = 1;
-	var maxMonth = 12;
-	var randomMonth = minMonth + Math.round(Math.random() * (maxMonth - minMonth));
-	var minDay = 1;
-	var maxDay = 28;
-	var randomDay = minDay + Math.round(Math.random() * (maxDay - minDay));
-	randomDate = randomYear + '-' + randomMonth + '-' + randomDay;
 	axios
-		.get('https://api.nasa.gov/planetary/apod?date=' + randomDate + '&api_key=' + process.env.REACT_APP_API_KEY)
+		.get('http://localhost:3333/smurfs')
 		.then(response => {
 			console.log('done contacting NASA apod');
 			console.log(response.data);
