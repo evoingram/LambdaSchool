@@ -1,4 +1,11 @@
-import { FETCHING_ACTIVITY_START, FETCHING_ACTIVITY_SUCCESS, FETCHING_ACTIVITY_FAILURE, FORM_SUBMIT } from '../actions';
+import {
+	FETCHING_ACTIVITY_START,
+	FETCHING_ACTIVITY_SUCCESS,
+	FETCHING_ACTIVITY_FAILURE,
+	FORM_SUBMIT,
+	FORM_START,
+	ADD_SMURF
+} from '../actions';
 
 const initialState = {
 	isLoading: false,
@@ -38,7 +45,7 @@ export const reducer = (state = initialState, action) => {
 			return state;
 	}
 };
-/*
+
 export const formReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case FORM_SUBMIT:
@@ -49,8 +56,9 @@ export const formReducer = (state = initialState, action) => {
 				age: action.payload.age,
 				height: action.payload.height
 			};
+		case ADD_SMURF:
+			return { ...state, name: action.payload.name, age: action.payload.age, height: action.payload.height };
 		default:
 			return state;
 	}
 };
-*/

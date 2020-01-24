@@ -4,7 +4,7 @@ import Loader from './Loader';
 import ContactForm from './ContactForm';
 
 import { connect } from 'react-redux';
-import { fetchActivity } from '../actions';
+import { fetchActivity, addSmurf } from '../actions';
 import DisplayAPI from './DisplayAPI';
 
 const container = {
@@ -13,12 +13,18 @@ const container = {
 	paddingTop: '0%'
 };
 const MainPage = props => {
-	const submit = (values, dispatch) => {
-		// print the form values to the console
-
-		console.log(values);
-		return dispatch(props.submitFormValues(values));
+	const submit = values => {
+		var data = {
+			isLoading: false,
+			activity: { name: values.name, age: values.age, height: values.height },
+			error: '',
+			name: values.name,
+			age: values.age,
+			height: values.height
+		};
+		this.props.addSmurf(data);
 	};
+
 	return (
 		<div className="App">
 			<div style={container}>
@@ -47,4 +53,11 @@ const mapStateToProps = state => {
 		height: state.height
 	};
 };
-export default connect(mapStateToProps, { fetchActivity })(MainPage);
+export default connect(mapStateToProps, { fetchActivity, addSmurf })(MainPage);
+/*
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators({ addFriendAction }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(MyComponent);
+*/

@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { reducer as formReducer } from 'redux-form';
+import registerServiceWorker from './registerServiceWorker';
 
 import { reducer } from './reducers';
 
@@ -24,3 +25,5 @@ ReactDOM.render(
 	</Provider>,
 	rootElement
 );
+
+registerServiceWorker();
