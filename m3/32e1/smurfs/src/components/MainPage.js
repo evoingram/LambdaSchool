@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Loader from './Loader';
+import ContactForm from './ContactForm';
 
 import { connect } from 'react-redux';
 import { fetchActivity } from '../actions';
@@ -12,6 +13,12 @@ const container = {
 	paddingTop: '0%'
 };
 const MainPage = props => {
+	const submit = (values, dispatch) => {
+		// print the form values to the console
+
+		console.log(values);
+		return dispatch(props.submitFormValues(values));
+	};
 	return (
 		<div className="App">
 			<div style={container}>
@@ -19,6 +26,7 @@ const MainPage = props => {
 				{!props.activity && !props.isLoading && <Loader />}
 				{props.isLoading && <Loader />}
 				<button onClick={props.fetchActivity}>Load Smurf Village</button>
+				{props.activity && !props.isLoading && <ContactForm onSubmit={submit} />}
 				{props.activity &&
 					!props.isLoading &&
 					props.activity.map(smurf => (

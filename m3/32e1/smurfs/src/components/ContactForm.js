@@ -1,23 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { fetchActivity } from '../actions';
+// import { connect } from 'react-redux';
+// import { fetchActivity } from '../actions';
 import { Field, reduxForm } from 'redux-form';
-
-{
-	// 	If API info not loaded, load loader animation
-	// If API info loaded, load display page
-	/*
-				
-				<form onSubmit={props.fetchActivity}>
-					Enter Date in YYYY-MM-DD Format: <input type="text" name="date" value={this.selectedDate} />
-				</form>
-				<button onClick={props.fetchActivity}>Get specific date</button>
-				
-				*/
-}
 
 let ContactForm = props => {
 	const { handleSubmit } = props;
+
 	return (
 		<form onSubmit={handleSubmit}>
 			<div>
