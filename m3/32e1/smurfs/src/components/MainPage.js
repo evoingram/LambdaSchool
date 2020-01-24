@@ -1,46 +1,32 @@
 import React from 'react';
+import './App.css';
 import Loader from './Loader';
 
 import { connect } from 'react-redux';
 import { fetchActivity } from '../actions';
 import DisplayAPI from './DisplayAPI';
 
+const container = {
+	width: '100%',
+	marginTop: '0%',
+	paddingTop: '0%'
+};
 const MainPage = props => {
-	// [selectedDate, setSelectedDate] = useState('');
-
 	return (
 		<div className="App">
-			<BackgroundImage className="App-header">
-				<div style={container}>
-					<h2>NASA APOD Picture Generator</h2>
-					{!props.activity && !props.isLoading && <Loader />}
-					{props.isLoading && <Loader />}
-					<h3>Launch status check complete.</h3>
-					<h3>Click to proceed with launch.</h3>
-					<Button onClick={props.fetchActivity}>Get APOD From Random Date</Button>
-
-					{props.activity && !props.isLoading && (
-						<DisplayAPI
-							hdurl={props.activity.hdurl}
-							title={props.activity.title}
-							date={props.activity.date}
-							explanation={props.activity.explanation}
-						/>
-					)}
-				</div>
-				{
-					// 	If API info not loaded, load loader animation
-					// If API info loaded, load display page
-					/*
-				
-				<form onSubmit={props.fetchActivity}>
-					Enter Date in YYYY-MM-DD Format: <input type="text" name="date" value={this.selectedDate} />
-				</form>
-				<button onClick={props.fetchActivity}>Get specific date</button>
-				
-				*/
-				}
-			</BackgroundImage>
+			<div style={container}>
+				<h2>Smurf Village</h2>
+				{!props.activity && !props.isLoading && <Loader />}
+				{props.isLoading && <Loader />}
+				<button onClick={props.fetchActivity}>Load Smurf Village</button>
+				{props.activity && !props.isLoading && (
+					<DisplayAPI
+						name={props.activity[0].name}
+						age={props.activity[0].age}
+						height={props.activity[0].height}
+					/>
+				)}
+			</div>
 		</div>
 	);
 };
@@ -50,7 +36,9 @@ const mapStateToProps = state => {
 		isLoading: state.isLoading,
 		activity: state.activity,
 		error: state.error,
-		date: state.selectedDate
+		name: state.name,
+		age: state.age,
+		height: state.height
 	};
 };
 export default connect(mapStateToProps, { fetchActivity })(MainPage);
