@@ -19,13 +19,11 @@ const MainPage = props => {
 				{!props.activity && !props.isLoading && <Loader />}
 				{props.isLoading && <Loader />}
 				<button onClick={props.fetchActivity}>Load Smurf Village</button>
-				{props.activity && !props.isLoading && (
-					<DisplayAPI
-						name={props.activity[0].name}
-						age={props.activity[0].age}
-						height={props.activity[0].height}
-					/>
-				)}
+				{props.activity &&
+					!props.isLoading &&
+					props.activity.map(smurf => (
+						<DisplayAPI key={smurf.id} name={smurf.name} age={smurf.age} height={smurf.height} />
+					))}
 			</div>
 		</div>
 	);
