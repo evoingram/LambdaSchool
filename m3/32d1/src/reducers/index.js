@@ -1,4 +1,9 @@
-import { FETCHING_ACTIVITY_START, FETCHING_ACTIVITY_SUCCESS, FETCHING_ACTIVITY_FAILURE } from '../actions';
+import {
+	FETCHING_ACTIVITY_START,
+	FETCHING_ACTIVITY_SUCCESS,
+	FETCHING_ACTIVITY_FAILURE,
+	DATE_SELECTED
+} from '../actions';
 
 const initialState = {
 	isLoading: false,
@@ -27,6 +32,12 @@ export const reducer = (state = initialState, action) => {
 				date: action.payload.date,
 				explanation: action.payload.explanation
 			};
+		case DATE_SELECTED:
+			return {
+				...state
+				// date: action.payload.date
+			};
+
 		default:
 			return state;
 	}

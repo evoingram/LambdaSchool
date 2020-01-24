@@ -43,6 +43,11 @@ const RocketImg = styled.img`
 const WorldImg = styled.img`
 	animation: ${RocketSpin} 9s linear infinite;
 `;
+const Button = styled.button`
+	background-color: '#002244';
+	border: '1px #a5acaf solid';
+	color: '#a5acaf';
+`;
 
 function Loader() {
 	return (
@@ -54,10 +59,10 @@ function Loader() {
 					</RocketInnerDiv>
 				</RocketOuterDiv>
 				<div>
-					<WorldImg src={world} width="35%" />
+					<WorldImg src={world} width="25%" />
 				</div>
+				<h3> Click to proceed with launch.</h3>
 			</div>
-			<h3>One moment while we perform a launch status check...</h3>
 		</section>
 	);
 }
