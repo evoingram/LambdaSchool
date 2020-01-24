@@ -1,18 +1,12 @@
-import {
-	FETCHING_ACTIVITY_START,
-	FETCHING_ACTIVITY_SUCCESS,
-	FETCHING_ACTIVITY_FAILURE,
-	DATE_SELECTED
-} from '../actions';
+import { FETCHING_ACTIVITY_START, FETCHING_ACTIVITY_SUCCESS, FETCHING_ACTIVITY_FAILURE } from '../actions';
 
 const initialState = {
 	isLoading: false,
 	activity: null,
 	error: '',
-	hdurl: '',
-	title: '',
-	date: '',
-	explanation: ''
+	name: '',
+	age: '',
+	height: ''
 };
 
 export const reducer = (state = initialState, action) => {
@@ -27,17 +21,10 @@ export const reducer = (state = initialState, action) => {
 				...state,
 				isLoading: false,
 				activity: action.payload,
-				hdurl: action.payload.hdurl,
-				title: action.payload.title,
-				date: action.payload.date,
-				explanation: action.payload.explanation
+				name: action.payload.name,
+				age: action.payload.age,
+				height: action.payload.height
 			};
-		case DATE_SELECTED:
-			return {
-				...state
-				// date: action.payload.date
-			};
-
 		default:
 			return state;
 	}

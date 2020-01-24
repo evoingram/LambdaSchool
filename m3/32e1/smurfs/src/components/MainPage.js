@@ -1,31 +1,10 @@
 import React from 'react';
-import '../App.css';
 import Loader from './Loader';
-import styled from 'styled-components';
-import milkyWay from './../img/milkyWay.jpg';
 
 import { connect } from 'react-redux';
 import { fetchActivity } from '../actions';
 import DisplayAPI from './DisplayAPI';
 
-const BackgroundImage = styled.div`
-	background-image: url(${milkyWay});
-`;
-
-const Button = styled.button`
-	background-color: #002244;
-	border: 1px #a5acaf solid;
-	color: #a5acaf;
-	padding: 2%;
-	font-size: 1.25rem;
-	font-weight: bold;
-`;
-
-const container = {
-	width: '100%',
-	marginTop: '0%',
-	paddingTop: '0%'
-};
 const MainPage = props => {
 	// [selectedDate, setSelectedDate] = useState('');
 
