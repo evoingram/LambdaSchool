@@ -61,7 +61,6 @@ function Loader() {
 				<div>
 					<WorldImg src={world} width="25%" />
 				</div>
-				<h3> Click to proceed with launch.</h3>
 			</div>
 		</section>
 	);

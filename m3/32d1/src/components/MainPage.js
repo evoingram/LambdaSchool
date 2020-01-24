@@ -34,10 +34,12 @@ const MainPage = props => {
 			<BackgroundImage className="App-header">
 				<div style={container}>
 					<h2>NASA APOD Picture Generator</h2>
-					<h6>Generates APOD images from random dates.</h6>
-					<h3>Launch status check complete.</h3>
 					{!props.activity && !props.isLoading && <Loader />}
 					{props.isLoading && <Loader />}
+					<h3>Launch status check complete.</h3>
+					<h3>Click to proceed with launch.</h3>
+					<Button onClick={props.fetchActivity}>Get APOD From Random Date</Button>
+
 					{props.activity && !props.isLoading && (
 						<DisplayAPI
 							hdurl={props.activity.hdurl}
@@ -46,7 +48,6 @@ const MainPage = props => {
 							explanation={props.activity.explanation}
 						/>
 					)}
-					<Button onClick={props.fetchActivity}>Get APOD From Random Date</Button>
 				</div>
 				{
 					// 	If API info not loaded, load loader animation
