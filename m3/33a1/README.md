@@ -14,6 +14,7 @@ Some of the topics covered were:
 
 You are allowed, and encouraged, to collaborate with your peers while working on this assignment. Remember to follow the _twenty-minute rule_ and post questions to your cohort's help channel before seeking support from your PM and Instructor.
 
+
 ## Commits
 
 Please push your code often and use descriptive commit messages, this helps you and your project manager.
@@ -28,18 +29,18 @@ The requirements are listed under the _Minimum Viable Product_ section below.
 
 Follow these steps to setup your git _fork_ and _branch_.
 
-- [ ] Fork this repository.
-- [ ] Use GitHub's website to add your project manager as collaborator on **your fork**.
-- [ ] **Clone your forked version** of the repository (**Not Lambda's**!).
-- [ ] Create a new branch: `git checkout -b <firstName-lastName>`.
-- [ ] Commit changes to your `<firstName-lastName>` branch.
-- [ ] Push often to your branch: `git push origin <firstName-lastName>`.
+- [X] Fork this repository.
+- [X] Use GitHub's website to add your project manager as collaborator on **your fork**.
+- [X] **Clone your forked version** of the repository (**Not Lambda's**!).
+- [X] Create a new branch: `git checkout -b <firstName-lastName>`.
+- [X] Commit changes to your `<firstName-lastName>` branch.
+- [X] Push often to your branch: `git push origin <firstName-lastName>`.
 
 Follow these steps for completing your project.
 
-- [ ] Submit a Pull-Request to merge the `<firstName-lastName>` branch into the master branch on your fork. **Please don't merge your own pull request**
-- [ ] Use GitHub's website to add your project manager as a reviewer on the pull-request.
-- [ ] Your project manager will count the project as complete by merging the branch back into the master branch of your forked repository.
+- [X] Submit a Pull-Request to merge the `<firstName-lastName>` branch into the master branch on your fork. **Please don't merge your own pull request**
+- [X] Use GitHub's website to add your project manager as a reviewer on the pull-request.
+- [X] Your project manager will count the project as complete by merging the branch back into the master branch of your forked repository.
 
 ## Minimum Viable Product
 
