@@ -1,52 +1,3 @@
-// Test away!
-import React from 'react';
-import { render, fireEvent, wait } from '@testing-library/react';
-import { addNewAnimal as mockAddNewAnimal } from '../api';
-import AnimalForm from './AnimalForm';
-
-jest.mock('../api');
-
-test('gate defaults to `unlocked` and `open`', async () => {
-	mockAddNewAnimal.mockResolvedValueOnce({ id: 1 });
-	// AAA Arrange, Act, Assert
-	const { getByLabelText, getByText } = render(<AnimalForm />);
-	// const component = render(<AnimalForm />)
-	// const getByLabelText = component.getByLabelText;
-	const speciesInput = getByLabelText(/species/i);
-	const ageInput = getByLabelText(/age/i);
-	const notesInput = getByLabelText(/notes/i);
-
-	const newAnimal = {
-		species: 'Test species',
-		age: 'Test age',
-		notes: 'test notes'
-	};
-	fireEvent.change(speciesInput, { target: { value: newAnimal.species } });
-	fireEvent.change(ageInput, { target: { value: newAnimal.age } });
-	fireEvent.change(notesInput, { target: { value: newAnimal.notes } });
-
-	const submitButton = getByText(/submit!/i);
-
-	fireEvent.click(submitButton);
-
-	expect(mockAddNewAnimal).toHaveBeenCalledTimes(1);
-	expect(mockAddNewAnimal).toHaveBeenCalledWith(newAnimal);
-
-	wait(() => expect(getByText(/Test species/i)));
-});
-
-test('cannot be closed or opened if it is locked', () => {});
-test('shows the controls and display', () => {});
-test('displays if gate is open/closed and if it is locked/unlocked', () => {});
-test('displays `Closed` if the `closed` prop is `true` and `Open` if otherwise', () => {});
-test('displays `Locked` if the `locked` prop is `true` and `Unlocked` if otherwise', () => {});
-test('when `locked` or `closed` use the `red-led` class', () => {});
-test('when `unlocked` or `open` use the `green-led` class', () => {});
-test('provide buttons to toggle the `closed` and `locked` states.', () => {});
-test('buttons text changes to reflect the state the door will be in if clicked', () => {});
-test('the closed toggle button is disabled if the gate is locked', () => {});
-test('the locked toggle button is disabled if the gate is open', () => {});
-
 /*
 ## Stretch Problem
 
@@ -54,3 +5,51 @@ This section is **optional** and not counted towards MVP. Start working on it af
 
 - add `Redux` and [read this example in the docs](https://testing-library.com/docs/example-react-redux) to learn how to write tests for it.
 */
+
+// counter.test.js
+import React from 'react';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { render, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import { initialState, reducer } from './reducer.js';
+import Counter from './counter.js';
+
+// this is a handy function that I normally make available for all my tests
+// that deal with connected components.
+// you can provide initialState for the entire store that the ui is rendered with
+function renderWithRedux(ui, { initialState, store = createStore(reducer, initialState) } = {}) {
+	return {
+		...render(<Provider store={store}>{ui}</Provider>),
+		// adding `store` to the returned utilities to allow us
+		// to reference it in our tests (just try to avoid using
+		// this to test implementation details).
+		store
+	};
+}
+
+test('can render with redux with defaults', () => {
+	const { getByTestId, getByText } = renderWithRedux(<Counter />);
+	fireEvent.click(getByText('+'));
+	expect(getByTestId('count-value')).toHaveTextContent('1');
+});
+
+test('can render with redux with custom initial state', () => {
+	const { getByTestId, getByText } = renderWithRedux(<Counter />, {
+		initialState: { count: 3 }
+	});
+	fireEvent.click(getByText('-'));
+	expect(getByTestId('count-value')).toHaveTextContent('2');
+});
+
+test('can render with redux with custom store', () => {
+	// this is a silly store that can never be changed
+	const store = createStore(() => ({ count: 1000 }));
+	const { getByTestId, getByText } = renderWithRedux(<Counter />, {
+		store
+	});
+	fireEvent.click(getByText('+'));
+	expect(getByTestId('count-value')).toHaveTextContent('1000');
+	fireEvent.click(getByText('-'));
+	expect(getByTestId('count-value')).toHaveTextContent('1000');
+});
