@@ -19,7 +19,6 @@ function App() {
 				</ul>
 				<Switch>
 					<PrivateRoute path="/protected" component={FriendsList} />
-					<ProtectedRoute path="/protected" component={FriendsList} />
 					{/* <PrivateRoute path="/dashboard" component={Dashboard} /> */}
 					<Route path="/login" component={Login} />
 					<Route component={Login} />
