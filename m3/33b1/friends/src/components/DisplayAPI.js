@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { fetchActivity, addSmurf, deleteSmurf } from '../actions';
 
+import { axiosWithAuth } from '../utils/axiosWithAuth';
+
 var container = {
 	width: '70%',
 	textAlign: 'center',
@@ -13,8 +15,8 @@ const DisplayAPI = props => {
 	const handleSubmit = (event, props) => {
 		event.preventDefault();
 		console.log(id);
-		axios
-			.delete(`http://localhost:5000/friends/${id}`)
+		axiosWithAuth()
+			.delete(`http://localhost:5000/api/friends/${id}`)
 			.then(res => {
 				console.log(res.data); // Data was created successfully and logs to console
 			})

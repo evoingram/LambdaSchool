@@ -48,7 +48,13 @@ class FriendsList extends React.Component {
 				{console.log('FriendsList.js Friends Response = ' + this.state.FriendsList)}
 				<ContactForm />
 				{this.state.FriendsList.map(friend => (
-					<DisplayAPI key={friend.id} name={friend.name} age={friend.age} email={friend.email} />
+					<DisplayAPI
+						key={friend.id}
+						name={friend.name}
+						age={friend.age}
+						email={friend.email}
+						id={friend.id}
+					/>
 				))}
 			</div>
 		);
