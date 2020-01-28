@@ -3,6 +3,7 @@ import axios from 'axios';
 import { fetchActivity, addSmurf, deleteSmurf } from '../actions';
 
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import styled from 'styled-components';
 
 var container = {
 	width: '70%',

@@ -8,6 +8,7 @@ function App() {
 	return (
 		<Router>
 			<div className="App">
+				{/*
 				<ul>
 					<li>
 						<Link to="/login">Login</Link>
@@ -16,6 +17,7 @@ function App() {
 						<Link to="/protected">FriendsList</Link>
 					</li>
 				</ul>
+				*/}
 				<Switch>
 					<PrivateRoute path="/protected" component={FriendsList} />
 					{/* <PrivateRoute path="/dashboard" component={Dashboard} /> */}

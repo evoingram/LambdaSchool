@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 // import { addFriend } from '../actions';
 import axios from 'axios';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import styled from 'styled-components';
 
 let ContactForm = props => {
 	const [name, setName] = useState('');

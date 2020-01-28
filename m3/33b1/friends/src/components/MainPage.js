@@ -7,6 +7,8 @@ import { connect } from 'react-redux';
 import { fetchActivity, addSmurf } from '../actions';
 import DisplayAPI from './DisplayAPI';
 
+import styled from 'styled-components';
+
 const container = {
 	width: '100%',
 	marginTop: '0%',

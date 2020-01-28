@@ -1,6 +1,31 @@
 import React from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 
+const Div = styled.div`
+	background-color: #1c2826;
+	width: 100%;
+	margin: 2%;
+	padding: 1%;
+`;
+const Input = styled.input`
+	margin: 2%;
+	padding: 1%;
+	background-color: #d64550;
+	color: #daefb3;
+`;
+const Form = styled.form`
+	padding: 2%;
+	margin: 2%;
+	background-color: #1c2826;
+`;
+const H3 = styled.h3`
+	padding: 1%;
+	text-align: 'center';
+	margin: 0.25%;
+	background-color: #1c2826;
+	color: #daefb3;
+`;
 class Login extends React.Component {
 	state = {
 		credentials: {
@@ -20,9 +45,6 @@ class Login extends React.Component {
 
 	login = e => {
 		e.preventDefault();
-		// make a POST request to the server
-		// the server will "authenticate" the user based on their credentials
-		// If they can be authenticated the server will return a token
 		axios
 			.post('http://localhost:5000/api/login', this.state.credentials)
 			.then(res => {
@@ -34,23 +56,24 @@ class Login extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<form onSubmit={this.login}>
-					<input
+			<Div>
+				<H3>Log In To View Your Friends List: </H3>
+				<Form onSubmit={this.login}>
+					<Input
 						type="text"
 						name="username"
 						value={this.state.credentials.username}
 						onChange={this.handleChange}
 					/>
-					<input
+					<Input
 						type="password"
 						name="password"
 						value={this.state.credentials.password}
 						onChange={this.handleChange}
 					/>
 					<button>Log in</button>
-				</form>
-			</div>
+				</Form>
+			</Div>
 		);
 	}
 }
