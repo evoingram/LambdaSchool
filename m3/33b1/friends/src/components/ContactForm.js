@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 // import { fetchActivity } from '../actions';
 // import { addFriend } from '../actions';
 import axios from 'axios';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 let ContactForm = props => {
 	const [name, setName] = useState('');
@@ -13,7 +14,7 @@ let ContactForm = props => {
 
 	const handleSubmit = (event, values) => {
 		event.preventDefault();
-		axios
+		axiosWithAuth()
 			.post('http://localhost:5000/api/friends', {
 				name: name,
 				age: age,
