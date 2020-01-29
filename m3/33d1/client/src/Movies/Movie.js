@@ -12,13 +12,13 @@ export default class Movie extends React.Component {
 
 	handleUpdate = e => {
 		e.preventDefault();
-		this.props.history.push(`/update-movie/${this.props.movie.id}`);
+		this.props.history.push(`/update-movie/${this.state.movie.id}`);
 	};
 
 	handleDelete = e => {
 		e.preventDefault();
 		axios
-			.delete(`http://localhost:3333/api/movies/${this.props.movie.id}`)
+			.delete(`http://localhost:3333/api/movies/${this.state.movie.id}`)
 			.then(res => {
 				this.props.setMovie(res.data);
 				this.props.history.push('/movies');

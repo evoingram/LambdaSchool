@@ -7,6 +7,7 @@ import UpdateList from './Movies/UpdateList';
 
 const App = () => {
 	const [savedList, setSavedList] = useState([]);
+	const [movies, setMovies] = useState([]);
 
 	const addToSavedList = movie => {
 		setSavedList([...savedList, movie]);
@@ -24,7 +25,7 @@ const App = () => {
 			/>
 			<Route
 				path="/update-movie/:id"
-				render={props => <UpdateList {...props} savedList={savedList} setSavedList={setSavedList} />}
+				render={props => <UpdateList {...props} movies={movies} setMovies={setMovies} />}
 			/>
 		</>
 	);

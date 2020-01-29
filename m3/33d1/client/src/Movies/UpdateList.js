@@ -2,59 +2,63 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-const initialItem = {
+const initialMovie = {
 	title: '',
 	director: '',
 	metascore: '',
-	stars: ''
+	stars: []
 };
 
 const UpdateForm = props => {
-	const [item, setItem] = useState(initialItem);
+	const [movie, setMovie] = useState(initialMovie);
+	const [error, setError] = useState('');
 	const { id } = useParams();
 
 	useEffect(() => {
-		const itemToUpdate = props.items.find(thing => `${thing.id}` === id);
+		const itemToUpdate = props.movies.find(movie => `${movie.id}` === props.match.params.id);
 
 		if (itemToUpdate) {
-			setItem(itemToUpdate);
+			setMovie(itemToUpdate);
 		}
-	}, [props.items, id]);
+	}, [props.movies, id]);
 
-	const changeHandler = ev => {
-		ev.persist();
-		let value = ev.target.value;
-		if (ev.target.name === 'director') {
-			value = parseInt(value, 10);
-		}
+	const changeHandler = event => {
+		event.persist();
 
-		setItem({
-			...item,
-			[ev.target.name]: value
+		setMovie({
+			...movie,
+			[event.target.name]: event.target.value
 		});
 	};
 
 	const handleSubmit = e => {
 		e.preventDefault();
 		// make a PUT request to edit the item
+
 		axios
-			.put(`http://localhost:5000/api/movies/${id}`, item)
+			.put(`http://localhost:5000/api/movies/${id}`, movie)
 			.then(res => {
 				// res.data is the FULL array with the updated item
 				// That's not always the case. Sometimes you need to build your
 				// own updated array
-				props.setItems(res.data);
+				console.log(res);
+				props.setMovies(res);
 				props.history.push(`/movies/${id}`);
+
+				/*
+				props.updateMovies(result.data);
+				props.history.goBack();
+				*/
 			})
 			.catch(err => console.log(err));
 	};
 
 	return (
 		<div>
-			<h2>Update Item</h2>
+			<h2>Update movie</h2>
 
 			<form onSubmit={handleSubmit}>
-				<input type="text" name="title" onChange={changeHandler} placeholder="title" value={item.title} />
+				<input type="text" name="title" onChange={changeHandler} placeholder="title" value={movie.title} />
 				<div className="baseline" />
 
 				<input
@@ -62,7 +66,7 @@ const UpdateForm = props => {
 					name="director"
 					onChange={changeHandler}
 					placeholder="director"
-					value={item.director}
+					value={movie.director}
 				/>
 				<div className="baseline" />
 
@@ -71,14 +75,16 @@ const UpdateForm = props => {
 					name="metascore"
 					onChange={changeHandler}
 					placeholder="metascore"
-					value={item.metascore}
+					value={movie.metascore}
 				/>
 				<div className="baseline" />
 
-				<input type="number" name="stars" onChange={changeHandler} placeholder="stars" value={item.stars} />
+				<input type="text" name="stars" onChange={changeHandler} placeholder="stars" value={movie.stars} />
 				<div className="baseline" />
 
-				<button className="md-button form-button">Update</button>
+				<button type="submit" className="md-button form-button">
+					Update
+				</button>
 			</form>
 		</div>
 	);
