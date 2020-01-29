@@ -11,7 +11,6 @@ const initialMovie = {
 
 const UpdateForm = props => {
 	const [movie, setMovie] = useState(initialMovie);
-	const [error, setError] = useState('');
 	const { id } = useParams();
 
 	useEffect(() => {
@@ -20,7 +19,7 @@ const UpdateForm = props => {
 		if (itemToUpdate) {
 			setMovie(itemToUpdate);
 		}
-	}, [props.movies, id]);
+	}, [props.movies, props.match.params.id]);
 
 	const changeHandler = event => {
 		event.persist();
@@ -33,29 +32,21 @@ const UpdateForm = props => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		// make a PUT request to edit the item
-
+		console.log({ ...movie, id: id });
 		axios
-			.put(`http://localhost:5000/api/movies/${id}`, movie)
+			.put(`http://localhost:5000/api/movies/${id}`, { ...movie, id: id })
 			.then(res => {
-				// res.data is the FULL array with the updated item
-				// That's not always the case. Sometimes you need to build your
-				// own updated array
-				console.log(res);
-				props.setMovies(res);
-				props.history.push(`/movies/${id}`);
-
-				/*
-				props.updateMovies(result.data);
-				props.history.goBack();
-				*/
+				console.log(res.data);
+				props.setMovies(res.data);
+				props.history.push(`/api/movies/${id}`);
+				// props.history.goBack();
 			})
 			.catch(err => console.log(err));
 	};
 
 	return (
 		<div>
-			<h2>Update movie</h2>
+			<h2>Update Movie</h2>
 
 			<form onSubmit={handleSubmit}>
 				<input type="text" name="title" onChange={changeHandler} placeholder="title" value={movie.title} />

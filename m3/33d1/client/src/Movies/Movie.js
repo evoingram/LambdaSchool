@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import MovieCard from './MovieCard';
-import { Route, NavLink } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 export default class Movie extends React.Component {
 	constructor(props) {
 		super(props);
@@ -18,10 +18,12 @@ export default class Movie extends React.Component {
 	handleDelete = e => {
 		e.preventDefault();
 		axios
-			.delete(`http://localhost:3333/api/movies/${this.state.movie.id}`)
+			.delete(`http://localhost:5000/api/movies/${this.state.movie.id}`)
 			.then(res => {
-				this.props.setMovie(res.data);
-				this.props.history.push('/movies');
+				console.log(res.data);
+				this.props.history.push('/api/movies');
+				this.props.history.goBack();
+				this.props.history.goBack();
 			})
 			.catch(err => console.log(err));
 	};
