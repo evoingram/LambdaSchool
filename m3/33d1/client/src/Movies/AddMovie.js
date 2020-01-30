@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 // import { fetchActivity } from '../actions';
 // import { addFriend } from '../actions';
 import axios from 'axios';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
 import styled from 'styled-components';
 
 var container = {
@@ -59,8 +58,9 @@ let ContactForm = props => {
 	const [title, setTitle] = useState('');
 	const [metascore, setMetascore] = useState('');
 	const [director, setDirector] = useState('');
+	const [stars, setStars] = useState('');
 	const [id, setID] = useState('');
-	const [movie, setNewMovie] = useState({ title: '', metascore: '', director: '' });
+	const [movie, setNewMovie] = useState({ title: '', metascore: '', director: '', stars: [] });
 
 	const handleSubmit = (event, values) => {
 		event.preventDefault();
@@ -68,10 +68,15 @@ let ContactForm = props => {
 			.post('http://localhost:5000/api/movies', {
 				title: title,
 				metascore: metascore,
-				director: director
+				director: director,
+				stars: stars
 			})
 			.then(res => {
-				console.log(res.data); // Data was created successfully and logs to console
+				console.log(res.data);
+				props.setMovies(res.data);
+				props.history.push(`/api/movies/${id}`);
+				props.history.goBack();
+				props.history.goBack();
 			})
 			.catch(err => {
 				console.log(err); // There was an error creating the data and logs to console
@@ -91,6 +96,10 @@ let ContactForm = props => {
 			<Div>
 				<H3 htmlFor="director">Title: </H3>
 				<Input type="text" name="director" onChange={event => setDirector(event.target.value)} />
+			</Div>
+			<Div>
+				<H3 htmlFor="stars">Title: </H3>
+				<Input type="text" name="stars" onChange={event => setStars(event.target.value)} />
 			</Div>
 			<Button type="submit">Submit</Button>
 		</Form>
