@@ -58,7 +58,7 @@ let ContactForm = props => {
 	const [title, setTitle] = useState('');
 	const [metascore, setMetascore] = useState('');
 	const [director, setDirector] = useState('');
-	const [stars, setStars] = useState('');
+	const [stars, setStars] = useState([]);
 	const [id, setID] = useState('');
 	const [movie, setNewMovie] = useState({ title: '', metascore: '', director: '', stars: [] });
 
@@ -82,6 +82,9 @@ let ContactForm = props => {
 				console.log(err); // There was an error creating the data and logs to console
 			});
 	};
+	const formatStars = props => {
+		setStars();
+	};
 	return (
 		<Form onSubmit={handleSubmit}>
 			<H2>Enter a Friend:</H2>
@@ -90,16 +93,16 @@ let ContactForm = props => {
 				<Input type="text" name="title" onChange={event => setTitle(event.target.value)} />
 			</Div>
 			<Div>
-				<H3 htmlFor="metascore"> Stars: </H3>
+				<H3 htmlFor="metascore"> Metascore: </H3>
 				<Input type="number" name="metascore" onChange={event => setMetascore(event.target.value)} />
 			</Div>
 			<Div>
-				<H3 htmlFor="director">Title: </H3>
+				<H3 htmlFor="director">Director: </H3>
 				<Input type="text" name="director" onChange={event => setDirector(event.target.value)} />
 			</Div>
 			<Div>
-				<H3 htmlFor="stars">Title: </H3>
-				<Input type="text" name="stars" onChange={event => setStars(event.target.value)} />
+				<H3 htmlFor="stars">Stars: </H3>
+				<Input type="text" name="stars" onChange={event => setStars(event.target.value.split(','))} />
 			</Div>
 			<Button type="submit">Submit</Button>
 		</Form>

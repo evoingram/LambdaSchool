@@ -18,7 +18,7 @@ export default class MovieList extends Component {
 	}
 	addMovie = (event, props) => {
 		event.preventDefault();
-		props.history.push(`/add-movie`);
+		this.props.history.push(`/add-movie`);
 	};
 
 	render() {
