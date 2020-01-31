@@ -2,6 +2,30 @@ import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
+const Div = styled.div`
+	background-color: #1c2826;
+	width: 100%;
+	margin: 2%;
+	padding: 1%;
+`;
+const Input = styled.input`
+	margin: 2%;
+	padding: 1%;
+	background-color: #d64550;
+	color: #daefb3;
+`;
+const Form = styled.form`
+	padding: 2%;
+	margin: 2%;
+	background-color: #1c2826;
+`;
+const H3 = styled.h3`
+	padding: 1%;
+	text-align: 'center';
+	margin: 0.25%;
+	background-color: #1c2826;
+	color: #daefb3;
+`;
 class Login extends React.Component {
 	state = {
 		credentials: {

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
+// import axios from 'axios';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-
+import ContactForm from './ContactForm';
 import Bubbles from './Bubbles';
 import ColorList from './ColorList';
 
@@ -25,6 +25,11 @@ class BubblePage extends React.Component {
 			})
 			.catch(err => console.log(err));
 	};
+	setColorList = colorList => {
+		this.setState({
+			colorList: colorList
+		});
+	};
 
 	render() {
 		return (
@@ -34,10 +39,14 @@ class BubblePage extends React.Component {
 						<p>Loading Data</p>
 					</div>
 				)}
-				{console.log('FriendsList.js Friends Response = ' + this.state.FriendsList)}
 				<ContactForm />
-				<ColorList colors={colorList} updateColors={setColorList} />
-				<Bubbles colors={colorList} />
+				<ColorList
+					colors={this.state.colorList}
+					updateColors={colorList => {
+						this.setState({ colorList: this.state.colorList });
+					}}
+				/>
+				<Bubbles colors={this.state.colorList} />
 			</>
 		);
 	}
