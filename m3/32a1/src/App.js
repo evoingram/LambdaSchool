@@ -7,6 +7,11 @@ import Navigation from './components/Navigation';
 import Products from './components/Products';
 import ShoppingCart from './components/ShoppingCart';
 
+// Contexts
+import { ProductContext } from './contexts/ProductContext';
+import { CartContext } from './contexts/CartContext';
+import { RemoveItemContext } from './contexts/RemoveItemContext';
+
 function App() {
 	const [products] = useState(data);
 	const [cart, setCart] = useState([]);
