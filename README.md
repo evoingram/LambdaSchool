@@ -22,45 +22,7 @@ projects for Lambda School full-stack web development track:
   * Unit 2(6) Intro To React
   * Unit 3(7) Single Page Applications
   * Unit 4(8) WEB Unit 2 Build
-- m3 = Module 3 Web Applications II
-  * Unit 1(9) Advanced React
-  * Unit 2(10) Advanced State Management
-  * Unit 3(11) Advanced Web Applications
-  * Unit 4(20) WEB Unit 3 Build
-- m4 = Module 4 Web API Node
-  * Unit 1(12) Build a Web API
-  * Unit 2(13) Adding Data Persistence
-  * Unit 3(14) Authentication and Testing
-  * Unit 4(20) Web Unit 4 Build 
-- m5 = Module 5 Web API Java
-  * Unit 1(17) WEB Java Fundamentals
-  * Unit 2(18) RDBMS and API Introduction
-  * Unit 3(19) Java Frameworks
-  * Unit 4(20) WEB Unit 5 Build
-- m6 = Module 6 Computer Science
-  * Unit 1(21) Intro to Python and OOP
-  * Unit 2(22) Algorithms
-  * Unit 3(23) Data Structures
-  * Unit 4(24) Hash Tables and Blockchain
-  * Unit 5(25) Graphs
-  * Unit 6(26) Computer Architecture
-- m7 = Module 7 Career Development
-  * Unit 1(27) Intro to Careers and the Tech Field
-  * Unit 2(28) Career Development I
-  * Unit 3(29) Career Development II
-  * Unit 4(30) Career Development III
-- m8 = Module 8 WEB Unit 8 Build
-- m9 = Module 9 Computer Science Annex
-  * Unit 1(31) Data Structures Heaps
-  * Unit 2(32) Intro to Django
-  * Unit 3(33) Python Django I Career Dev
-  * Unit 4(34) Python Django II Career Dev
-  * Unit 5(35) Python Django III Career Dev
-  * Unit 6(36) Project Week Cellular Automata
-  * Unit 7(37) C Programming Topics
-- m10 = Module 19 Ruby on Rails
-  * Unit 1(38) Ruby and Ruby on Rails Basics
-  * Unit 2(39) Intermediate Ruby on Rails
+- etc
 
 ## Directions on how to set up this repository:
 
