@@ -18,34 +18,18 @@ function App() {
 
 	const addItem = item => {
 		// add the given item to the cart
-		setCart([...cart, item]);
-	};
-
-	const removeItem = item => {
-		console.log('removeItem running');
-		// remove the given item from the cart
-		var index = cart.indexOf(item);
-
-		if (index > -1) {
-			cart.splice(index, 1);
-		}
+		setCart();
 	};
 
 	return (
-		<ProductContext.Provider value={{ products, addItem }}>
-			<RemoveItemContext.Provider value={{ cart, removeItem }}>
-				<CartContext.Provider value={cart}>
-					<div className="App">
-						<Navigation cart={cart} />
+		<div className="App">
+			<Navigation cart={cart} />
 
-						{/* Routes */}
-						<Route exact path="/" component={Products} />
+			{/* Routes */}
+			<Route exact path="/" render={() => <Products products={products} addItem={addItem} />} />
 
-						<Route path="/cart" render={() => <ShoppingCart cart={cart} />} />
-					</div>
-				</CartContext.Provider>
-			</RemoveItemContext.Provider>
-		</ProductContext.Provider>
+			<Route path="/cart" render={() => <ShoppingCart cart={cart} />} />
+		</div>
 	);
 }
 
