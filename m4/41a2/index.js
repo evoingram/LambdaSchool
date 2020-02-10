@@ -64,7 +64,7 @@ server.get('/api/users/:id', (req, res) => {
 server.post('/api/users', (req, res) => {
 	//axios post
 	const userInfo = req.body;
-	Users.add(userInfo)
+	Users.insert(userInfo)
 		.then(user => {
 			if (user) {
 				res.status(201).json(user);
@@ -121,11 +121,12 @@ server.delete(`/api/users/:id`, (req, res) => {
 */
 
 server.put(`/api/users/:id`, (req, res) => {
-	Users.update(req.params.id)
+	let userInfoChanges = req.body;
+	Users.update(req.params.id, userInfoChanges)
 		.then(updated => {
 			if (updated) {
 				res.status(200).json(updated);
-			} else if (!req.body.name || !req.body.bio) {
+			} else if (!userInfoChanges.name || !userInfoChanges.bio) {
 				res.status(400).json({ errorMessage: 'Please provide name and bio for the user.' });
 			} else {
 				res.status(404).json({ errorMessage: 'The user with the specified ID does not exist.' });
