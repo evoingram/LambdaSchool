@@ -34,13 +34,16 @@ server.get('/api/users', (req, res) => {
 // get
 server.get('/api/users/:id', (req, res) => {
 	Users.findById(req.params.id)
-		.then(users => {
-			console.log(users);
-			res.status(200).json(users);
+		.then(user => {
+			console.log(user);
+			if (user) {
+				res.status(200).json(user);
+			} else {
+				res.status(404).json({ errorMessage: 'The user with the specified ID does not exist.' });
+			}
 		})
 		.catch(err => {
 			console.log(err);
-			res.status(404).json({ errorMessage: 'The user with the specified ID does not exist.' });
 			res.status(500).json({ errorMessage: 'The user information could not be retrieved.' });
 		});
 });
@@ -63,11 +66,14 @@ server.post('/api/users', (req, res) => {
 	const userInfo = req.body;
 	Users.add(userInfo)
 		.then(user => {
-			res.status(201).json(user);
+			if (user) {
+				res.status(201).json(user);
+			} else {
+				res.status(400).json({ errorMessage: 'Please provide name and bio for the user.' });
+			}
 		})
 		.catch(err => {
 			console.log(err);
-			res.status(400).json({ errorMessage: 'Please provide name and bio for the user.' });
 			res.status(500).json({ errorMessage: 'There was an error while saving the user to the database.' });
 		});
 });
@@ -84,11 +90,14 @@ server.post('/api/users', (req, res) => {
 server.delete(`/api/users/:id`, (req, res) => {
 	Users.remove(req.params.id)
 		.then(removed => {
-			res.status(200).json(removed);
+			if (removed) {
+				res.status(200).json(removed);
+			} else {
+				res.status(404).json({ errorMessage: 'The user with the specified ID does not exist.' });
+			}
 		})
 		.catch(err => {
 			console.log(err);
-			res.status(404).json({ errorMessage: 'The user with the specified ID does not exist.' });
 			res.status(500).json({ errorMessage: 'The user could not be removed.' });
 		});
 });
@@ -114,12 +123,16 @@ server.delete(`/api/users/:id`, (req, res) => {
 server.put(`/api/users/:id`, (req, res) => {
 	Users.update(req.params.id)
 		.then(updated => {
-			res.status(200).json(updated);
+			if (updated) {
+				res.status(200).json(updated);
+			} else if (!req.body.name || !req.body.bio) {
+				res.status(400).json({ errorMessage: 'Please provide name and bio for the user.' });
+			} else {
+				res.status(404).json({ errorMessage: 'The user with the specified ID does not exist.' });
+			}
 		})
 		.catch(err => {
 			console.log(err);
-			res.status(400).json({ errorMessage: 'Please provide name and bio for the user.' });
-			res.status(404).json({ errorMessage: 'The user with the specified ID does not exist.' });
 			res.status(500).json({ errorMessage: 'The user information could not be modified.' });
 		});
 });
