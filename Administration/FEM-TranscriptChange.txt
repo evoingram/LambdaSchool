@@ -1,0 +1,1 @@
+Hi there, i'm a current lambda student and also a court transcriber as my job. i noticed you had an inaudible in Testing React Applications, v2, in the section "Test a Form Component Exercise" at approx. 37 seconds in. The inaudible is 'the import'.
