@@ -1,5 +1,5 @@
 const express = require('express');
-const Hubs = require('./data/db.js');
+const Users = require('./data/db.js');
 const server = express();
 
 server.use(express.json());
@@ -12,7 +12,7 @@ server.use(express.json());
 */
 // get
 server.get('/api/users', (req, res) => {
-	Hubs.find()
+	Users.find()
 		.then(users => {
 			res.status(200).json(users);
 		})
@@ -32,11 +32,11 @@ server.get('/api/users', (req, res) => {
 */
 
 // get
-server.get('/api/hubs/:id', (req, res) => {
-	Hubs.findById(req.params.id)
-		.then(hubs => {
-			console.log(hubs);
-			res.status(200).json(hubs);
+server.get('/api/users/:id', (req, res) => {
+	Users.findById(req.params.id)
+		.then(users => {
+			console.log(users);
+			res.status(200).json(users);
 		})
 		.catch(err => {
 			console.log(err);
@@ -60,10 +60,10 @@ server.get('/api/hubs/:id', (req, res) => {
 */
 server.post('/api/users', (req, res) => {
 	//axios post
-	const hubInfo = req.body;
-	Hubs.add(hubInfo)
-		.then(hub => {
-			res.status(201).json(hub);
+	const userInfo = req.body;
+	Users.add(userInfo)
+		.then(user => {
+			res.status(201).json(user);
 		})
 		.catch(err => {
 			console.log(err);
@@ -81,14 +81,15 @@ server.post('/api/users', (req, res) => {
 			○ respond with HTTP status code 500.
 			○ return the following JSON object: { errorMessage: "The user could not be removed" }.
 */
-server.delete(`/api/hubs/:id`, (req, res) => {
-	Hubs.remove(req.params.id)
+server.delete(`/api/users/:id`, (req, res) => {
+	Users.remove(req.params.id)
 		.then(removed => {
 			res.status(200).json(removed);
 		})
 		.catch(err => {
 			console.log(err);
-			res.status(500).json({ errorMessage: 'oops' });
+			res.status(404).json({ errorMessage: 'The user with the specified ID does not exist.' });
+			res.status(500).json({ errorMessage: 'The user could not be removed.' });
 		});
 });
 /*
@@ -109,5 +110,19 @@ server.delete(`/api/hubs/:id`, (req, res) => {
 
 
 */
+
+server.put(`/api/users/:id`, (req, res) => {
+	Users.update(req.params.id)
+		.then(updated => {
+			res.status(200).json(updated);
+		})
+		.catch(err => {
+			console.log(err);
+			res.status(400).json({ errorMessage: 'Please provide name and bio for the user.' });
+			res.status(404).json({ errorMessage: 'The user with the specified ID does not exist.' });
+			res.status(500).json({ errorMessage: 'The user information could not be modified.' });
+		});
+});
+
 const port = 5000;
 server.listen(port, () => console.log(`\n** API on port 5000 ${port} \n`));
