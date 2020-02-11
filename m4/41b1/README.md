@@ -15,3 +15,13 @@ In this project we will learn how to create a very simple Web API using `Node.js
 - [ ] type `npm i` to download dependencies.
 
 Please follow along as the instructor builds the API step by step.
+
+Sending info from client to server:
+
+query string = req.query
+url parameters = req.params
+body = req.body
+headers = req.headers
+
+
+assembling route handlers
