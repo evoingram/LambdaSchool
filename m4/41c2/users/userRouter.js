@@ -38,7 +38,15 @@ function validateUserId(req, res, next) {
 		});
 }
 
-function validateUser(req, res, next) {}
+function validateUser(req, res, next) {
+	const name = req.body.name;
+	if (!name) {
+		res.status(404).json({ errorMessage: 'missing user data' });
+	} else {
+		req.user = name;
+		next();
+	}
+}
 
 function validatePost(req, res, next) {}
 
