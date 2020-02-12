@@ -48,6 +48,14 @@ function validateUser(req, res, next) {
 	}
 }
 
-function validatePost(req, res, next) {}
+function validatePost(req, res, next) {
+	const post = (req.body.text, req.params.id);
+	if (!req.body.text) {
+		res.status(404).json({ errorMessage: 'missing post data' });
+	} else {
+		req.text = post;
+		next();
+	}
+}
 
 module.exports = router;
