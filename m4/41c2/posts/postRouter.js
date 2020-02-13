@@ -15,12 +15,12 @@ router.get('/', validatePostId, (req, res) => {
 		});
 });
 
-router.get('/:user_id', validatePostId, (req, res) => {
-	const userID = req.params.user_id;
+router.get('/:id', validatePostId, (req, res) => {
+	const postID = req.params.user_id;
 	posts
-		.getUserPosts(userID)
-		.then(posts => {
-			res.status(200).json(posts);
+		.getUserPosts(postID)
+		.then(post => {
+			res.status(200).json(post);
 		})
 		.catch(error => {
 			res.status(500).json({ errorMessage: 'Posts for this user not available.', error });
