@@ -29,7 +29,7 @@ router.post('/:id/posts', validateUser, validatePost, (req, res) => {
 		});
 });
 
-router.get('/', (req, res) => {
+router.get('/', validateUserId, (req, res) => {
 	users
 		.get()
 		.then(users => {
@@ -59,7 +59,7 @@ router.get('/:id/posts', validateUserId, (req, res) => {
 		});
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', validateUserId, (req, res) => {
 	const userID = req.user.id;
 	users
 		.remove(userID)
@@ -71,7 +71,18 @@ router.delete('/:id', (req, res) => {
 		});
 });
 
-router.put('/:id', (req, res) => {});
+router.put('/:id', (req, res) => {
+	const reqBody = req.body;
+	const userID = req.params.id;
+	users
+		.update(userID, reqBody)
+		.then(user => {
+			res.status(200).json(user);
+		})
+		.catch(error => {
+			res.status(500).json({ errorMessage: 'User not updated.', error });
+		});
+});
 
 //custom middleware
 
