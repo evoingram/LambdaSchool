@@ -4,7 +4,17 @@ const posts = require('../posts/postDB');
 
 const router = express.Router();
 
-router.post('/', (req, res) => {});
+router.post('/', validateUser, (req, res) => {
+	const reqBody = req.body;
+	users
+		.insert(reqBody)
+		.then(user => {
+			res.status(200).json(user);
+		})
+		.catch(error => {
+			res.status(500).json({ errorMessage: 'No user added', error });
+		});
+});
 
 router.post('/:id/posts', (req, res) => {});
 
