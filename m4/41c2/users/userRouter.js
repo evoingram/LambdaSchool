@@ -59,7 +59,17 @@ router.get('/:id/posts', validateUserId, (req, res) => {
 		});
 });
 
-router.delete('/:id', (req, res) => {});
+router.delete('/:id', (req, res) => {
+	const userID = req.user.id;
+	users
+		.remove(userID)
+		.then(() => {
+			res.status(200).json({ message: `user id ${userID} was deleted` });
+		})
+		.catch(error => {
+			res.status(500).json({ errorMessage: 'User not deleted.', error });
+		});
+});
 
 router.put('/:id', (req, res) => {});
 
