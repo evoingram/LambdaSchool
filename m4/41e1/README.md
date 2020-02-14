@@ -69,8 +69,8 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 Design and build the necessary endpoints to:
 
-- [ ] Perform CRUD operations on _projects_ and _actions_. When adding an action, make sure the `project_id` provided belongs to an existing `project`. If you try to add an action with an `id` of 3 and there is no project with that `id` the database will return an error.
-- [ ] Retrieve the list of actions for a project.
+- [X] Perform CRUD operations on _projects_ and _actions_. When adding an action, make sure the `project_id` provided belongs to an existing `project`. If you try to add an action with an `id` of 3 and there is no project with that `id` the database will return an error.
+- [X] Retrieve the list of actions for a project.
 
 Please read the following sections before implementing the Minimum Viable Product, they describe how the database is structured and the files and methods available for interacting with the data.
 
@@ -114,7 +114,7 @@ We have provided test data for all the resources.
 
 ## Stretch Goal
 
-- [ ] Use `create-react-app` to create an application in a separate folder (outside the API project folder). Name it anything you want.
+- [X] Use `create-react-app` to create an application in a separate folder (outside the API project folder). Name it anything you want.
 - [ ] From the React application show a list of all _projects_ using the API you built.
 - [ ] Add functionality to show the details of a project, including its actions, when clicking a project name in the list. Use React Router to navigate to a separate route to show the project details.
 - [ ] Add styling!

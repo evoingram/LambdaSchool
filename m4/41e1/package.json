@@ -22,6 +22,7 @@
 	},
 	"homepage": "https://github.com/LambdaSchool/node-api-challenge#readme",
 	"dependencies": {
+		"cors": "^2.8.5",
 		"dotenv": "^8.2.0",
 		"express": "^4.17.1",
 		"helmet": "^3.21.2",
