@@ -40,7 +40,7 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [X] Mention two parts of Express that you learned about this week.
 
-    Routing/router, Middleware, convenience helpers
+    routing, middleware, convenience helpers
 
 - [X] Describe Middleware?
 
@@ -56,7 +56,7 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [X] What can the API return to help clients know if a request was successful?
 
-    200 status code/201 status code
+    200/201 status code
 
 - [X] How can we partition our application into sub-applications?
 
