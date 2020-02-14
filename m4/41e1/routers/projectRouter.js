@@ -6,8 +6,6 @@ router.use(express.json());
 
 const projects = require('../data/helpers/projectModel');
 
-// crud here
-
 // get list of projects
 
 router.get('/', (req, res) => {
@@ -18,10 +16,11 @@ router.get('/', (req, res) => {
 		})
 		.catch(err => {
 			console.log(err);
-			res.status(500).json({ errorMessage: 'The project information could not be retrieved.' });
+			res.status(500).json({ errorMessage: 'The project list could not be retrieved.' });
 		});
 });
 //get one project
+
 router.get('/:id', (req, res) => {
 	const projectID = req.params.id;
 	projects
@@ -79,7 +78,6 @@ router.delete('/projects/:id', (req, res) => {
 // create one project
 
 router.post('/projects', (req, res) => {
-	const projectID = req.params.id;
 	const projectName = req.params.name;
 	const projectDescription = req.params.description;
 	projects
