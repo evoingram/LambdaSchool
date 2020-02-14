@@ -12,9 +12,9 @@ Use Node.js and Express to build an API that performs CRUD operations on users.
 
 ### Download Project Files and Install Dependencies
 
-- **Fork** and **Clone** this repository.
-- **CD into the folder** where you cloned the repository.
-- Type `npm install` to download all dependencies listed inside `package.json`.
+- [ ] **Fork** and **Clone** this repository.
+- [ ] **CD into the folder** where you cloned the repository.
+- [ ] Type `npm install` to download all dependencies listed inside `package.json`.
 
 ### Database access
 
@@ -30,9 +30,9 @@ Now that we have a way to add, update, remove and retrieve data from the provide
 
 ### Start the API and Implement Requirements
 
-- To start the server, type `npm run server` from the root folder (where the _package.json_ file is). The server is configured to restart automatically as you make changes.
-- Add the code necessary to implement the API requirements.
-- **Test the API using a REST Client like [insomnia](https://insomnia.rest/download/) or [Postman](https://www.getpostman.com/downloads/) as you work through the exercises.**
+- [ ] To start the server, type `npm run server` from the root folder (where the _package.json_ file is). The server is configured to restart automatically as you make changes.
+- [ ] Add the code necessary to implement the API requirements.
+- [ ] **Test the API using a REST Client like [insomnia](https://insomnia.rest/download/) or [Postman](https://www.getpostman.com/downloads/) as you work through the exercises.**
 
 ### User Schema
 
@@ -49,7 +49,7 @@ Users in the database conform to the following object structure:
 
 ### Write endpoints to perform the following queries
 
-Inside `index.js` add the code necessary to implement the following _endpoints_:
+- [ ] Inside `index.js` add the code necessary to implement the following _endpoints_:
 
 | Method | URL            | Description                                                                                                                       |
 | ------ | -------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -63,67 +63,67 @@ Inside `index.js` add the code necessary to implement the following _endpoints_:
 
 When the client makes a `POST` request to `/api/users`:
 
-- If the request body is missing the `name` or `bio` property:
+- [ ] If the request body is missing the `name` or `bio` property:
 
   - respond with HTTP status code `400` (Bad Request).
   - return the following JSON response: `{ errorMessage: "Please provide name and bio for the user." }`.
 
-- If the information about the _user_ is valid:
+- [ ] If the information about the _user_ is valid:
 
   - save the new _user_ the the database.
   - respond with HTTP status code `201` (Created).
   - return the newly created _user document_.
 
-- If there's an error while saving the _user_:
+- [ ] If there's an error while saving the _user_:
   - respond with HTTP status code `500` (Server Error).
   - return the following JSON object: `{ errorMessage: "There was an error while saving the user to the database" }`.
 
 When the client makes a `GET` request to `/api/users`:
 
-- If there's an error in retrieving the _users_ from the database:
+- [ ] If there's an error in retrieving the _users_ from the database:
   - respond with HTTP status code `500`.
   - return the following JSON object: `{ errorMessage: "The users information could not be retrieved." }`.
 
 When the client makes a `GET` request to `/api/users/:id`:
 
-- If the _user_ with the specified `id` is not found:
+- [ ] If the _user_ with the specified `id` is not found:
 
   - respond with HTTP status code `404` (Not Found).
   - return the following JSON object: `{ message: "The user with the specified ID does not exist." }`.
 
-- If there's an error in retrieving the _user_ from the database:
+- [ ] If there's an error in retrieving the _user_ from the database:
   - respond with HTTP status code `500`.
   - return the following JSON object: `{ errorMessage: "The user information could not be retrieved." }`.
 
 When the client makes a `DELETE` request to `/api/users/:id`:
 
-- If the _user_ with the specified `id` is not found:
+- [ ] If the _user_ with the specified `id` is not found:
 
   - respond with HTTP status code `404` (Not Found).
   - return the following JSON object: `{ message: "The user with the specified ID does not exist." }`.
 
-- If there's an error in removing the _user_ from the database:
+- [ ] If there's an error in removing the _user_ from the database:
   - respond with HTTP status code `500`.
   - return the following JSON object: `{ errorMessage: "The user could not be removed" }`.
 
 When the client makes a `PUT` request to `/api/users/:id`:
 
-- If the _user_ with the specified `id` is not found:
+- [ ] If the _user_ with the specified `id` is not found:
 
   - respond with HTTP status code `404` (Not Found).
   - return the following JSON object: `{ message: "The user with the specified ID does not exist." }`.
 
-- If the request body is missing the `name` or `bio` property:
+- [ ] If the request body is missing the `name` or `bio` property:
 
   - respond with HTTP status code `400` (Bad Request).
   - return the following JSON response: `{ errorMessage: "Please provide name and bio for the user." }`.
 
-- If there's an error when updating the _user_:
+- [ ] If there's an error when updating the _user_:
 
   - respond with HTTP status code `500`.
   - return the following JSON object: `{ errorMessage: "The user information could not be modified." }`.
 
-- If the user is found and the new information is valid:
+- [ ] If the user is found and the new information is valid:
 
   - update the user document in the database using the new information sent in the `request body`.
   - respond with HTTP status code `200` (OK).
@@ -133,13 +133,13 @@ When the client makes a `PUT` request to `/api/users/:id`:
 
 To work on the stretch problems you'll need to enable the `cors` middleware. Follow these steps:
 
-- add the `cors` npm module: `npm i cors`.
-- add `server.use(cors())` after `server.use(express.json())`.
+- [ ] add the `cors` npm module: `npm i cors`.
+- [ ] add `server.use(cors())` after `server.use(express.json())`.
 
 Create a new React application and connect it to your server:
 
-- the React application can be anywhere, but, for this project create it inside the folder for the solution.
-- connect to the `/api/users` endpoint in the API and show the list of users.
-- add a delete button to each displayed user that will remove it from the server.
-- add forms to add and update data.
-- Style the list of users however you see fit.
+- [ ] the React application can be anywhere, but, for this project create it inside the folder for the solution.
+- [ ] connect to the `/api/users` endpoint in the API and show the list of users.
+- [ ] add a delete button to each displayed user that will remove it from the server.
+- [ ] add forms to add and update data.
+- [ ] Style the list of users however you see fit.
