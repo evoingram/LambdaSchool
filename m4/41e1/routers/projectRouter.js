@@ -41,11 +41,11 @@ router.get('/:id', (req, res) => {
 
 // update one project
 
-router.put('/:id', (req, res) => {
+router.put('/projects/:id', (req, res) => {
 	const projectID = req.params.id;
 	const projectName = req.params.name;
 	const projectDescription = req.params.description;
-	posts
+	projects
 		.update(projectID, { projectName, projectDescription })
 		.then(project => {
 			if (project) {
@@ -61,29 +61,38 @@ router.put('/:id', (req, res) => {
 
 // delete one project
 
-router.delete('/:id', (req, res) => {
+router.delete('/projects/:id', (req, res) => {
 	const projectID = req.params.id;
-	posts
+	projects
 		.remove(projectID)
 		.then(() => {
-			res.status(200).json({ message: `Post ${projectID} was deleted` });
+			if (project) {
+				res.status(200).json({ message: `Project ${projectID} was deleted` });
+			} else {
+				res.status(404).json({ errorMessage: 'No project found with that I.D.' });
+			}
 		})
 		.catch(error => {
-			res.status(500).json({ errorMessage: `Post ${projectID} not deleted.`, error });
+			res.status(500).json({ errorMessage: `Project ${projectID} not deleted.`, error });
 		});
 });
 // create one project
 
-router.post('/:id/posts', (req, res) => {
+router.post('/projects', (req, res) => {
 	const projectID = req.params.id;
-	const bodyText = req.body.text;
-	posts
-		.insert({ user_id: projectID, text: bodyText })
-		.then(post => {
-			res.status(200).json({ message: post });
+	const projectName = req.params.name;
+	const projectDescription = req.params.description;
+	projects
+		.insert({ name: projectName, description: projectDescription })
+		.then(project => {
+			if (project) {
+				res.status(200).json({ message: project });
+			} else {
+				res.status(404).json({ errorMessage: 'No project was created.' });
+			}
 		})
 		.catch(error => {
-			res.status(500).json({ errorMessage: 'Error adding post.', error });
+			res.status(500).json({ errorMessage: 'Error adding project.', error });
 		});
 });
 
