@@ -1,4 +1,4 @@
-const express = require('experss');
+const express = require('express');
 
 const Hubs = require('./hubs-model.js');
 
@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
 	const pagination = req.query;
 	console.log('pagination', pagination);
-
+	B;
 	Hubs.find(pagination)
 		.then(hubs => {
 			res.status(200).json(hubs);
