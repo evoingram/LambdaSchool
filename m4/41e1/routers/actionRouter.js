@@ -22,12 +22,12 @@ router.get('/', (req, res) => {
 });
 //get one actions
 
-router.get('/actions/:id', (req, res) => {
+router.get('/:id', (req, res) => {
 	const actionID = req.params.id;
 	actions
 		.get(actionID)
 		.then(action => {
-			if (action) {
+			if (actionID) {
 				res.status(200).json(action);
 			} else {
 				res.status(404).json({ errorMessage: 'No action found with that I.D.' });
@@ -41,14 +41,19 @@ router.get('/actions/:id', (req, res) => {
 
 // update one action
 // action:  project_id, description, notes, completed
-router.put('/actions/:id', (req, res) => {
+router.put('/:id', (req, res) => {
 	const actionID = req.params.id;
-	const projectID = req.params.project_id;
-	const actionNotes = req.params.notes;
-	const actionDescription = req.params.description;
-	const actionCompleted = req.params.completed;
+	const projectID = req.body.project_id;
+	const actionNotes = req.body.notes;
+	const actionDescription = req.body.description;
+	const actionCompleted = req.body.completed;
 	actions
-		.update(actionID, { projectID, actionNotes, actionDescription, actionCompleted })
+		.update(actionID, {
+			project_id: projectID,
+			notes: actionNotes,
+			description: actionDescription,
+			completed: actionCompleted
+		})
 		.then(action => {
 			if (action) {
 				res.status(200).json(action);
@@ -62,16 +67,12 @@ router.put('/actions/:id', (req, res) => {
 });
 
 // delete one action
-router.delete('/actions/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
 	const actionID = req.params.id;
 	actions
 		.remove(actionID)
 		.then(() => {
-			if (action) {
-				res.status(200).json({ message: `action ${actionID} was deleted` });
-			} else {
-				res.status(404).json({ errorMessage: 'No action found with that I.D.' });
-			}
+			res.status(200).json({ message: `action ${actionID} was deleted` });
 		})
 		.catch(error => {
 			res.status(500).json({ errorMessage: `action ${actionID} not deleted.`, error });
@@ -80,27 +81,26 @@ router.delete('/actions/:id', (req, res) => {
 
 // create one action
 // action:  project_id, description, notes, completed
-router.post('/actions', (req, res) => {
-	const projectID = req.params.project_id;
-	const actionNotes = req.params.notes;
-	const actionDescription = req.params.description;
-	const actionCompleted = req.params.completed;
+router.post('/', (req, res) => {
+	const projectID = req.body.project_id;
+	const actionNotes = req.body.notes;
+	const actionDescription = req.body.description;
+	const actionCompleted = req.body.completed;
 	actions
 		.insert({
 			project_id: projectID,
 			notes: actionNotes,
 			description: actionDescription,
-			complete: actionCompleted
+			completed: actionCompleted
 		})
-		.then(action => {
-			if (action) {
-				res.status(200).json({ message: action });
-			} else {
-				res.status(404).json({ errorMessage: 'No action was created.' });
-			}
+		.then(actions => {
+			res.status(201).json(actions);
 		})
 		.catch(error => {
-			res.status(500).json({ errorMessage: 'Error adding action.', error });
+			res.status(404).json;
+			console.log(error)({
+				errorMessage: 'Could not create action'
+			});
 		});
 });
 module.exports = router;
