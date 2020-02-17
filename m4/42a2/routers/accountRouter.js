@@ -1,20 +1,15 @@
 const express = require('express');
 
-const accountRouter = require('./routers/accountRouter.js');
-
-const server = express();
-
 // database access using knex
-const db = require('./data/dbConfig.js');
+const db = require('../data/dbConfig.js');
 
-server.use(express.json());
-
-server.use('/api/accounts', accountRouter);
+const router = express.Router();
 
 // get list of accounts
 
-server.get('/', (req, res) => {
-	db('accounts')
+router.get('/', (req, res) => {
+	db.select('*')
+		.from('accounts')
 		.then(posts => {
 			res.status(200).json(posts);
 		})
@@ -27,7 +22,7 @@ server.get('/', (req, res) => {
 
 //get one account
 
-server.get('/:id', (req, res) => {
+router.get('/:id', (req, res) => {
 	const accountID = req.params.id;
 	db('accounts')
 		.where({ id: accountID })
@@ -46,7 +41,7 @@ server.get('/:id', (req, res) => {
 
 // create one account
 
-server.post('/', (req, res) => {
+router.post('/', (req, res) => {
 	const newaccount = req.body;
 	const accountName = req.body.name;
 	const accountBudget = req.body.budget;
@@ -67,7 +62,7 @@ server.post('/', (req, res) => {
 
 // update one account
 
-server.put('/:id', (req, res) => {
+router.put('/:id', (req, res) => {
 	const accountID = req.params.id;
 	const accountName = req.body.name;
 	const accountBudget = req.body.budget;
@@ -88,7 +83,7 @@ server.put('/:id', (req, res) => {
 
 // delete one account
 
-server.delete('/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
 	const accountID = req.params.id;
 	db('accounts')
 		.delete(accountID)
@@ -105,4 +100,10 @@ server.delete('/:id', (req, res) => {
 		});
 });
 
-module.exports = server;
+module.exports = router;
+
+function getById(id) {
+	return db('posts')
+		.where({ id })
+		.first();
+}
