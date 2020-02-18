@@ -1,5 +1,5 @@
 exports.up = function(knex, Promise) {
-	return knex.schema.createTable('accounts', tbl => {
+	return knex.schema.createTable('cars', tbl => {
 		tbl.increments();
 		tbl.text('VIN', 256)
 			.unique()
@@ -17,5 +17,5 @@ exports.up = function(knex, Promise) {
 	});
 };
 exports.down = function(knex, Promise) {
-	return knex.schema.dropTableIfExists('accounts');
+	return knex.schema.dropTableIfExists('cars');
 };
