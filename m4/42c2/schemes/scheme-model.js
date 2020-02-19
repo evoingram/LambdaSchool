@@ -1,3 +1,14 @@
+const db = require('../data/db-config');
+
+module.exports = {
+	find,
+	findById,
+	findSteps,
+	add,
+	update,
+	remove
+};
+
 function find() {
 	return db('schemes');
 }
@@ -21,19 +32,25 @@ function add(scheme) {
 }
 function update(newScheme, id) {
 	db('schemes')
-		.where({ id: id })
-		.update(id, newScheme)
+		.where({ id })
+		.update(newScheme)
 		.then(ids => {
-			return findById(id);
+			return ids;
 		});
 }
 
 function remove(id) {
 	let scheme = findById(id);
-	db('schemes');
 	db('schemes')
-		.delete(id)
+		.delete()
+		.where({ id: id })
 		.then(ids => {
 			return scheme;
 		});
+}
+
+function update(id, changes) {
+	return db('users')
+		.where({ id })
+		.update(changes);
 }
