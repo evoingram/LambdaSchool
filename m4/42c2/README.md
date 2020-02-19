@@ -12,7 +12,7 @@
 For this lab you will
 
 - [X] write SQL statements against the `northwind.db3` database. Once you have the correct SQL Statement for each query, write it inside the _queries.sql_ file under the corresponding comment.
-- [ ] write the db helper methods for the `schemes` resource in `./schemes/scheme-model.js`
+- [X] write the db helper methods for the `schemes` resource in `./schemes/scheme-model.js`
 
 ### Multi Table Queries
 
@@ -42,11 +42,11 @@ Write helpers methods in `./schemes/scheme-model.js` that match the following sp
     -   Expects a scheme object.
     -   Inserts scheme into the database.
     -   Resolves to the newly inserted scheme, including `id`.
-- [ ] `update(changes, id)`:
+- [X] `update(changes, id)`:
     -   Expects a changes object and an `id`.
     -   Updates the scheme with the given id.
     -   Resolves to the newly updated scheme object.
-- [ ] `remove(id)`:
+- [X] `remove(id)`:
     -   Removes the scheme object with the provided id.
     -   Resolves to the removed scheme
     -   Resolves to `null` on an invalid id.
