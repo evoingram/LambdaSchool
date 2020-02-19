@@ -19,19 +19,21 @@ function add(scheme) {
 			return findById(ids[0]);
 		});
 }
-// still need to fix:
-function update(scheme) {
+function update(newScheme, id) {
 	db('schemes')
-		.update(scheme)
+		.where({ id: id })
+		.update(id, newScheme)
 		.then(ids => {
-			return findById(ids[0]);
+			return findById(id);
 		});
 }
 
 function remove(id) {
+	let scheme = findById(id);
+	db('schemes');
 	db('schemes')
 		.delete(id)
 		.then(ids => {
-			return find();
+			return scheme;
 		});
 }
