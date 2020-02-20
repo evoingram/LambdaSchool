@@ -34,7 +34,7 @@ In addition to the `migrations` and `seeding` scripts, write a data access file 
 
 - [X] `getRecipes()`: should return a list of all recipes in the database.
 - [X] `getShoppingList(recipe_id)`: should return a list of all ingredients and quantities for a given recipe
-- [ ] `getInstructions(recipe_id)`: should return a list of step by step instructions for preparing a recipe
+- [X] `getInstructions(recipe_id)`: should return a list of step by step instructions for preparing a recipe
 
 Organize and name your files anyway you see fit.
 
