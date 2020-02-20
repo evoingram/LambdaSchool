@@ -37,11 +37,15 @@ JOIN recipes ON recipesinstructions.recipeid=recipes.recipeid
 WHERE recipes.recipeid=1
 Order BY instructions.stepnumber
 */
-function getInstructions(id) {
+function getInstructions(recipeid) {
 	return db('recipes')
-		.where({ id })
-		.first();
+		.where({ recipeid: recipeid })
+		.join('recipesinstructions', 'recipes.recipeid', 'recipesinstructions.recipeid')
+		.join('instructions', 'recipesinstructions.instructionsid', 'instructions.instructionsid')
+		.select('instructions.instruction', 'instructions.stepnumber')
+		.orderBy('instructions.stepnumber');
 }
+
 function add(recipe) {
 	db('recipes')
 		.insert(recipe)
