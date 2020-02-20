@@ -5,7 +5,7 @@ const Recipes = require('./recipeModel.js');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-	Recipes.find()
+	Recipes.getRecipes()
 		.then(recipes => {
 			res.json(recipes);
 		})
@@ -14,8 +14,8 @@ router.get('/', (req, res) => {
 		});
 });
 
-router.get('/:id', (req, res) => {
-	const { id } = req.params;
+router.get('/:id/shoppingList', (req, res) => {
+	const id = req.params.id;
 
 	Recipes.getShoppingList(id)
 		.then(recipe => {
@@ -30,7 +30,7 @@ router.get('/:id', (req, res) => {
 		});
 });
 
-router.get('/:id/steps', (req, res) => {
+router.get('/:id/instructions', (req, res) => {
 	const { id } = req.params;
 
 	Recipes.getInstructions(id)

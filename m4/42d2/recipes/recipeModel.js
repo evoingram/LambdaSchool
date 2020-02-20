@@ -23,10 +23,10 @@ WHERE recipes.recipeid=1;
 */
 function getShoppingList(recipeid) {
 	return db('recipes')
-		.where({ recipeid: recipeid })
+		.select('ingredients.ingredientname')
 		.join('recipesingredients', 'recipes.recipeid', 'recipesingredients.recipeid')
 		.join('ingredients', 'recipesingredients.ingredientsid', 'ingredients.ingredientsid')
-		.select('ingredients.ingredientname');
+		.where({ 'recipes.recipeid': recipeid });
 }
 // `getInstructions(recipe_id)`: should return a list of step by step instructions for preparing a recipe
 /*
