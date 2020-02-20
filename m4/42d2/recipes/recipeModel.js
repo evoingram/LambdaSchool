@@ -37,6 +37,7 @@ JOIN recipesinstructions ON recipesinstructions.instructionsid=instructions.inst
 JOIN recipes ON recipesinstructions.recipeid=recipes.recipeid
 WHERE recipes.recipeid=1
 Order BY instructions.stepnumber
+
 */
 function getInstructions(recipeid) {
 	return db('recipes')
@@ -54,6 +55,8 @@ JOIN recipesingredients ON recipesingredients.recipeid=recipes.recipeid
 JOIN ingredients ON recipesingredients.ingredientsid=ingredients.ingredientsid
 WHERE ingredients.ingredientsid=3
 Order BY recipes.recipename;
+
+- [X] `GET /api/ingredients/:id/recipes`: all recipes in the system that utilize a single ingredient 
 */
 function getIngredientRecipes(ingredientid) {
 	return db('recipes')
