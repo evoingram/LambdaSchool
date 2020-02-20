@@ -64,6 +64,7 @@ function getIngredientRecipes(ingredientid) {
 		.orderBy('recipes.recipename');
 }
 
+/*
 function add(recipe) {
 	db('recipes')
 		.insert(recipe)
@@ -95,3 +96,4 @@ function update(id, changes) {
 		.where({ id })
 		.update(changes);
 }
+*/
