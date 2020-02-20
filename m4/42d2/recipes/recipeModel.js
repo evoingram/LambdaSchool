@@ -4,6 +4,7 @@ module.exports = {
 	getRecipes,
 	getShoppingList,
 	getInstructions,
+	getIngredientRecipes,
 	add,
 	update,
 	remove
@@ -39,11 +40,28 @@ Order BY instructions.stepnumber
 */
 function getInstructions(recipeid) {
 	return db('recipes')
-		.where({ recipeid: recipeid })
+		.select('instructions.instruction', 'instructions.stepnumber')
 		.join('recipesinstructions', 'recipes.recipeid', 'recipesinstructions.recipeid')
 		.join('instructions', 'recipesinstructions.instructionsid', 'instructions.instructionsid')
-		.select('instructions.instruction', 'instructions.stepnumber')
+		.where({ 'recipes.recipeid': recipeid })
 		.orderBy('instructions.stepnumber');
+}
+
+/*
+SELECT recipes.recipename
+FROM recipes
+JOIN recipesingredients ON recipesingredients.recipeid=recipes.recipeid
+JOIN ingredients ON recipesingredients.ingredientsid=ingredients.ingredientsid
+WHERE ingredients.ingredientsid=3
+Order BY recipes.recipename;
+*/
+function getIngredientRecipes(ingredientid) {
+	return db('recipes')
+		.select('recipes.recipename')
+		.join('recipesingredients', 'recipesingredients.recipeid', 'recipes.recipeid')
+		.join('ingredients', 'recipesingredients.ingredientsid', 'ingredients.ingredientsid')
+		.where({ 'ingredients.ingredientsid': ingredientid })
+		.orderBy('recipes.recipename');
 }
 
 function add(recipe) {

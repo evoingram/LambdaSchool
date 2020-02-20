@@ -34,15 +34,29 @@ router.get('/:id/instructions', (req, res) => {
 	const { id } = req.params;
 
 	Recipes.getInstructions(id)
-		.then(steps => {
-			if (steps.length) {
-				res.json(steps);
+		.then(instructions => {
+			if (instructions.length) {
+				res.json(instructions);
 			} else {
-				res.status(404).json({ message: 'Could not find steps for given recipe' });
+				res.status(404).json({ message: 'Could not find instructions for given recipe' });
 			}
 		})
 		.catch(err => {
-			res.status(500).json({ message: 'Failed to get steps' });
+			res.status(500).json({ message: 'Failed to get instructions' });
+		});
+});
+router.get('/ingredients/:id/recipes', (req, res) => {
+	const { id } = req.params;
+	Recipes.getIngredientRecipes(id)
+		.then(recipelist => {
+			if (recipelist.length) {
+				res.json(recipelist);
+			} else {
+				res.status(404).json({ message: 'Could not find recipes for given ingredient' });
+			}
+		})
+		.catch(err => {
+			res.status(500).json({ message: 'Failed to get recipes' });
 		});
 });
 
