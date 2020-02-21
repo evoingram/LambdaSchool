@@ -39,25 +39,12 @@ router.get('/resources', (req, res) => {
 			res.status(500).json({ message: 'Failed to get resources' });
 		});
 });
-router.get('/ingredients/:id/projects', (req, res) => {
-	const { id } = req.params;
-	Projects.getIngredientProjects(id)
-		.then(projectlist => {
-			if (projectlist.length) {
-				res.json(projectlist);
-			} else {
-				res.status(404).json({ message: 'Could not find projects for given ingredient' });
-			}
-		})
-		.catch(err => {
-			res.status(500).json({ message: 'Failed to get projects' });
-		});
-});
 
+// add project
 router.post('/', (req, res) => {
 	const projectData = req.body;
 
-	Projects.add(projectData)
+	Projects.addProject(projectData)
 		.then(project => {
 			res.status(201).json(project);
 		})
@@ -65,23 +52,42 @@ router.post('/', (req, res) => {
 			res.status(500).json({ message: 'Failed to create new project' });
 		});
 });
-
-router.post('/:id/steps', (req, res) => {
-	const stepData = req.body;
-	const { id } = req.params;
-
-	Projects.findById(id)
-		.then(project => {
-			if (project) {
-				Projects.addStep(stepData, id).then(step => {
-					res.status(201).json(step);
-				});
+// add task
+router.post('/:id/tasks', (req, res) => {
+	const projectid = req.params.id;
+	const taskDescription = req.body.taskdescription;
+	const taskNotes = req.body.tasknotes;
+	const taskCompleted = req.body.taskcompleted;
+	const taskData = {
+		projectid: projectid,
+		taskdescription: taskDescription,
+		tasknotes: taskNotes,
+		taskcompleted: taskCompleted
+	};
+	Projects.addTask(taskData)
+		.then(tasks => {
+			if (tasks) {
+				res.status(201).json(tasks);
 			} else {
 				res.status(404).json({ message: 'Could not find project with given id.' });
 			}
 		})
 		.catch(err => {
-			res.status(500).json({ message: 'Failed to create new step' });
+			res.status(500).json({ message: 'Failed to create new task' });
+		});
+});
+
+// add resource
+
+router.post('/resources', (req, res) => {
+	const resourceData = req.body;
+
+	Projects.addResource(resourceData)
+		.then(resource => {
+			res.status(201).json(resource);
+		})
+		.catch(err => {
+			res.status(500).json({ message: 'Failed to create new resource' });
 		});
 });
 

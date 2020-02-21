@@ -4,6 +4,7 @@ module.exports = {
 	getTasks,
 	getProjects,
 	getResources,
+	getProject,
 	addTask,
 	addProject,
 	addResource
@@ -38,41 +39,28 @@ function getTasks(projectid) {
 			'tasks.taskcompleted'
 		)
 		.join('tasks', 'projects.projectid', 'tasks.projectid')
-		.where({ 'projects.projectid': projectid })
-		.orderBy('projects.projectname');
+		.where({ 'projects.projectid': projectid });
 }
 
-// adding resources.
-/*
-SELECT resources.resourcename
-FROM resources 
-JOIN projectsresources ON projectsresources.resourcesid=resources.resourcesid
-JOIN projects ON projectsresources.projectid=projects.projectid
-WHERE projects.projectid=1;
-*/
-function addResource(project) {
+// adding resource
+function addResource(resource) {
 	db('resources')
-		.insert(project)
+		.insert(resource)
 		.then(ids => {
-			return findById(ids[0]);
+			return getResources();
 		});
 }
+// retrieve project
+function getProject(projectid) {
+	return db('projects').where({ 'projects.projectid': projectid });
+}
 
-// adding projects
-/*
-SELECT instructions.instruction, instructions.stepnumber
-FROM instructions 
-JOIN projectsinstructions ON projectsinstructions.instructionsid=instructions.instructionsid
-JOIN projects ON projectsinstructions.projectid=projects.projectid
-WHERE projects.projectid=1
-Order BY instructions.stepnumber
-
-*/
+// adding project
 function addProject(project) {
 	db('projects')
 		.insert(project)
 		.then(ids => {
-			return findById(ids[0]);
+			return getProject(ids[0]);
 		});
 }
 // adding tasks
@@ -85,11 +73,11 @@ WHERE projects.projectid=1
 Order BY instructions.stepnumber
 
 */
-function addTask(project) {
+function addTask(taskData) {
 	db('tasks')
-		.insert(project)
+		.insert(taskData)
 		.then(ids => {
-			return findById(ids[0]);
+			return getTasks(taskData.projectid);
 		});
 }
 
