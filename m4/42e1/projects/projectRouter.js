@@ -7,6 +7,11 @@ const router = express.Router();
 router.get('/', (req, res) => {
 	Projects.getProjects()
 		.then(projects => {
+			if (projects.projectcompleted === 0) {
+				projects.projectcompleted = false;
+			} else {
+				projects.projectcompleted = true;
+			}
 			res.json(projects);
 		})
 		.catch(err => {
@@ -20,6 +25,11 @@ router.get('/:projectid/tasks', (req, res) => {
 	Projects.getTasks(id)
 		.then(project => {
 			if (project) {
+				if (project.taskcompleted === 0) {
+					project.taskcompleted = false;
+				} else {
+					project.taskcompleted = true;
+				}
 				res.json(project);
 			} else {
 				res.status(404).json({ message: 'Could not find project with given id.' });
@@ -46,6 +56,11 @@ router.get('/:projectid', (req, res) => {
 	Projects.getFullProject(id)
 		.then(project => {
 			if (project) {
+				if (project.projectcompleted === 0) {
+					project.projectcompleted = false;
+				} else {
+					project.projectcompleted = true;
+				}
 				res.json(project);
 			} else {
 				res.status(404).json({ message: 'Could not find project with given id.' });
@@ -61,6 +76,11 @@ router.post('/', (req, res) => {
 
 	Projects.addProject(projectData)
 		.then(project => {
+			if (project.projectcompleted === 0) {
+				project.projectcompleted = false;
+			} else {
+				project.projectcompleted = true;
+			}
 			res.status(201).json(project);
 		})
 		.catch(err => {
@@ -82,6 +102,11 @@ router.post('/:projectid/tasks', (req, res) => {
 	Projects.addTask(taskData)
 		.then(tasks => {
 			if (tasks) {
+				if (tasks.taskcompleted === 0) {
+					tasks.taskcompleted = false;
+				} else {
+					tasks.taskcompleted = true;
+				}
 				res.status(201).json(tasks);
 			} else {
 				res.status(404).json({ message: 'Could not find project with given id.' });
@@ -117,6 +142,11 @@ router.put('/:projectid', (req, res) => {
 	Projects.updateProject(updatedProject, projectid)
 		.then(project => {
 			if (project) {
+				if (project.projectcompleted === 0) {
+					project.projectcompleted = false;
+				} else {
+					project.projectcompleted = true;
+				}
 				res.json(project);
 			} else {
 				res.status(404).json({ message: 'Could not find project with given id' });
@@ -135,6 +165,11 @@ router.delete('/:projectid', (req, res) => {
 	Projects.removeProject(id)
 		.then(deleted => {
 			if (deleted) {
+				if (deleted.projectcompleted === 0) {
+					deleted.projectcompleted = false;
+				} else {
+					deleted.projectcompleted = true;
+				}
 				res.json({ removed: deleted });
 			} else {
 				res.status(404).json({ message: 'Could not find scheme with given id' });
@@ -152,6 +187,11 @@ router.delete('/:projectid/tasks/:taskid', (req, res) => {
 	Projects.removeTask(projectid, taskid)
 		.then(deleted => {
 			if (deleted) {
+				if (deleted.taskcompleted === 0) {
+					deleted.taskcompleted = false;
+				} else {
+					deleted.taskcompleted = true;
+				}
 				res.json({ removed: deleted });
 			} else {
 				res.status(404).json({ message: 'Could not find task with given id' });
