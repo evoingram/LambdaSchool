@@ -14,15 +14,15 @@ router.get('/', (req, res) => {
 		});
 });
 
-router.get('/:id/shoppingList', (req, res) => {
+router.get('/:id/tasks', (req, res) => {
 	const id = req.params.id;
 
-	Projects.getShoppingList(id)
-		.then(recipe => {
-			if (recipe) {
-				res.json(recipe);
+	Projects.getTasks(id)
+		.then(project => {
+			if (project) {
+				res.json(project);
 			} else {
-				res.status(404).json({ message: 'Could not find recipe with given id.' });
+				res.status(404).json({ message: 'Could not find project with given id.' });
 			}
 		})
 		.catch(err => {
@@ -30,27 +30,21 @@ router.get('/:id/shoppingList', (req, res) => {
 		});
 });
 
-router.get('/:id/instructions', (req, res) => {
-	const { id } = req.params;
-
-	Projects.getInstructions(id)
-		.then(instructions => {
-			if (instructions.length) {
-				res.json(instructions);
-			} else {
-				res.status(404).json({ message: 'Could not find instructions for given recipe' });
-			}
+router.get('/resources', (req, res) => {
+	Projects.getResources()
+		.then(resources => {
+			res.json(resources);
 		})
 		.catch(err => {
-			res.status(500).json({ message: 'Failed to get instructions' });
+			res.status(500).json({ message: 'Failed to get resources' });
 		});
 });
 router.get('/ingredients/:id/projects', (req, res) => {
 	const { id } = req.params;
 	Projects.getIngredientProjects(id)
-		.then(recipelist => {
-			if (recipelist.length) {
-				res.json(recipelist);
+		.then(projectlist => {
+			if (projectlist.length) {
+				res.json(projectlist);
 			} else {
 				res.status(404).json({ message: 'Could not find projects for given ingredient' });
 			}
@@ -61,14 +55,14 @@ router.get('/ingredients/:id/projects', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-	const recipeData = req.body;
+	const projectData = req.body;
 
-	Projects.add(recipeData)
-		.then(recipe => {
-			res.status(201).json(recipe);
+	Projects.add(projectData)
+		.then(project => {
+			res.status(201).json(project);
 		})
 		.catch(err => {
-			res.status(500).json({ message: 'Failed to create new recipe' });
+			res.status(500).json({ message: 'Failed to create new project' });
 		});
 });
 
@@ -77,13 +71,13 @@ router.post('/:id/steps', (req, res) => {
 	const { id } = req.params;
 
 	Projects.findById(id)
-		.then(recipe => {
-			if (recipe) {
+		.then(project => {
+			if (project) {
 				Projects.addStep(stepData, id).then(step => {
 					res.status(201).json(step);
 				});
 			} else {
-				res.status(404).json({ message: 'Could not find recipe with given id.' });
+				res.status(404).json({ message: 'Could not find project with given id.' });
 			}
 		})
 		.catch(err => {
@@ -96,8 +90,8 @@ router.put('/:id', (req, res) => {
 	const changes = req.body;
 
 	Projects.findById(id)
-		.then(recipe => {
-			if (recipe) {
+		.then(project => {
+			if (project) {
 				Projects.update(changes, id).then(updatedRecipe => {
 					res.json(updatedRecipe);
 				});
