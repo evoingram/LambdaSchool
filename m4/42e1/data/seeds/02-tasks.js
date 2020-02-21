@@ -1,18 +1,18 @@
 exports.seed = function(knex) {
 	return knex('tasks').insert([
 		{
-			id: 1,
+			taskid: 1,
 			projectid: 1,
-			description: 'task description',
-			notes: 'the task notes',
-			completed: false // or true
+			taskdescription: 'task description',
+			tasknotes: 'the task notes',
+			taskcompleted: false // or true
 		},
 		{
-			id: 7,
+			taskid: 7,
 			projectid: 1,
-			description: 'another task description',
-			notes: 'the task notes',
-			completed: false // or true
+			taskdescription: 'another task description',
+			tasknotes: 'the task notes',
+			taskcompleted: false // or true
 		}
 	]);
 };

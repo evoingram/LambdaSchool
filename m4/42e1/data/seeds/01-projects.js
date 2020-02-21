@@ -3,10 +3,10 @@ exports.seed = function(knex) {
 	// extra code is required to convert 1 to true & 0 to false.
 	return knex('projects').insert([
 		{
-			id: 1,
-			name: 'project name here',
-			description: 'the project description',
-			completed: false
+			projectid: 1,
+			projectname: 'project name here',
+			projectdescription: 'the project description',
+			projectcompleted: false
 		}
 	]);
 };

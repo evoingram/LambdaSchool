@@ -1,50 +1,51 @@
 exports.up = function(knex) {
 	return knex.schema
-		.createTable('projects', tbl => {
-			tbl.increments('projectid');
-			tbl.text('projectname', 128)
+		.createTable('recipes', tbl => {
+			tbl.increments('recipeid');
+			tbl.text('recipename', 128)
 				.unique()
 				.notNullable();
-			tbl.text('projectdescription', 128).Nullable();
-			tbl.text('projectcompleted', 128)
-				.boolean()
-				.defaultTo('false')
-				.notNullable();
 		})
-		.createTable('tasks', tbl => {
-			tbl.increments('taskid');
-			tbl.integer('projectid')
+		.createTable('instructions', tbl => {
+			tbl.increments('instructionsid');
+			tbl.integer('stepnumber')
+				.unsigned()
+				.notNullable();
+			tbl.text('instruction').notNullable();
+		})
+		.createTable('ingredients', tbl => {
+			tbl.increments('ingredientsid');
+			tbl.text('ingredientname').notNullable();
+		})
+		.createTable('recipesingredients', tbl => {
+			tbl.integer('recipeid')
 				.unsigned()
 				.notNullable()
-				.references('projectid')
-				.inTable('projects')
+				.references('recipeid')
+				.inTable('recipes')
 				.onUpdate('CASCADE')
 				.onDelete('CASCADE');
-			tbl.text('tasknotes', 128).Nullable();
-			tbl.text('taskdescription').notNullable();
-			tbl.text('taskcompleted', 128)
-				.boolean()
-				.defaultTo('false')
-				.notNullable();
-		})
-		.createTable('resources', tbl => {
-			tbl.increments('resourceid');
-			tbl.text('resourcename').notNullable();
-			tbl.text('resourcedescription', 128).Nullable();
-		})
-		.createTable('projectsresources', tbl => {
-			tbl.integer('projectid')
+			tbl.integer('ingredientsid')
 				.unsigned()
 				.notNullable()
-				.references('projectid')
-				.inTable('projects')
+				.references('ingredientsid')
+				.inTable('ingredients')
 				.onUpdate('CASCADE')
 				.onDelete('CASCADE');
-			tbl.integer('resourceid')
+		})
+		.createTable('recipesinstructions', tbl => {
+			tbl.integer('recipeid')
 				.unsigned()
 				.notNullable()
-				.references('resourceid')
-				.inTable('resources')
+				.references('recipeid')
+				.inTable('recipes')
+				.onUpdate('CASCADE')
+				.onDelete('CASCADE');
+			tbl.integer('instructionsid')
+				.unsigned()
+				.notNullable()
+				.references('instructionsid')
+				.inTable('instructions')
 				.onUpdate('CASCADE')
 				.onDelete('CASCADE');
 		});
@@ -52,8 +53,9 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
 	return knex.schema
-		.dropTableIfExists('project')
-		.dropTableIfExists('tasks')
-		.dropTableIfExists('resources')
-		.dropTableIfExists('projectsresources');
+		.dropTableIfExists('instructions')
+		.dropTableIfExists('ingredients')
+		.dropTableIfExists('recipes')
+		.dropTableIfExists('recipesingredients')
+		.dropTableIfExists('recipesinstructions');
 };

@@ -1,14 +1,14 @@
 exports.seed = function(knex) {
 	return knex('resources').insert([
-    {
-      id: 1,
-      name: 'Lambda Student',
-      description: 'a soon to be hired developer'
-    },
-    {
-      id: 2,
-      name: 'MacBook Pro #1'
-      description: 'an overly expensive laptop computer'
-    }
+		{
+			resourceid: 1,
+			resourcename: 'Lambda Student',
+			resourcedescription: 'a soon to be hired developer'
+		},
+		{
+			resourceid: 2,
+			resourcename: 'MacBook Pro #1',
+			resourcedescription: 'an overly expensive laptop computer'
+		}
 	]);
 };

@@ -6,9 +6,7 @@ module.exports = {
 	getResources,
 	addTask,
 	addProject,
-	addResource,
-	update,
-	remove
+	addResource
 };
 
 // retrieving a list of resources
@@ -37,7 +35,7 @@ function getTasks(projectid) {
 			'projects.projectdescription',
 			'tasks.taskdescription',
 			'tasks.tasknotes',
-			'tasks.taskscompleted'
+			'tasks.taskcompleted'
 		)
 		.join('tasks', 'projects.projectid', 'tasks.projectid')
 		.where({ 'projects.projectid': projectid })
