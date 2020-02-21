@@ -30,6 +30,10 @@ exports.up = function(knex) {
 			tbl.text('resourcename').notNullable();
 			tbl.text('resourcedescription', 128);
 		})
+		.createTable('contexts', tbl => {
+			tbl.increments('contextid');
+			tbl.text('contextname').notNullable();
+		})
 		.createTable('projectsresources', tbl => {
 			tbl.integer('projectid')
 				.unsigned()
@@ -45,6 +49,22 @@ exports.up = function(knex) {
 				.inTable('resources')
 				.onUpdate('CASCADE')
 				.onDelete('CASCADE');
+		})
+		.createTable('taskscontexts', tbl => {
+			tbl.integer('taskid')
+				.unsigned()
+				.notNullable()
+				.references('taskid')
+				.inTable('tasks')
+				.onUpdate('CASCADE')
+				.onDelete('CASCADE');
+			tbl.integer('contextid')
+				.unsigned()
+				.notNullable()
+				.references('contextid')
+				.inTable('contexts')
+				.onUpdate('CASCADE')
+				.onDelete('CASCADE');
 		});
 };
 
@@ -53,5 +73,7 @@ exports.down = function(knex) {
 		.dropTableIfExists('project')
 		.dropTableIfExists('tasks')
 		.dropTableIfExists('resources')
-		.dropTableIfExists('projectsresources');
+		.dropTableIfExists('contexts')
+		.dropTableIfExists('projectsresources')
+		.dropTableIfExists('taskscontexts');
 };

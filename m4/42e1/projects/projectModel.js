@@ -47,6 +47,28 @@ function getTasks(projectid) {
 		.where({ 'projects.projectid': projectid });
 }
 
+// retrieving a list of contexts
+function getProjects() {
+	return db('contexts');
+}
+
+// retrieving a list of contexts for a task
+
+function getContextsForTask() {
+	return db('contexts')
+		.select('contexts.contextname')
+		.join('tasks', 'tasks.taskid', 'taskscontexts,taskid')
+		.join('taskscontexts', 'taskscontexts.contextid', 'contexts.contextid');
+}
+// retrieving a list of tasks for a context
+
+function getTasksForContext() {
+	return db('tasks')
+		.select('tasks.taskdescription', 'task.tasknotes', 'task.taskcompleted')
+		.join('contexts', 'contexts.contextid', 'taskscontexts.contextid')
+		.join('taskscontexts', 'taskscontexts.taskid', 'tasks.taskid');
+}
+
 // adding resource
 function addResource(resource) {
 	db('resources')
