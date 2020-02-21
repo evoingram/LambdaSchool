@@ -8,6 +8,7 @@ module.exports = {
 	getFullProject,
 	getContexts,
 	getContextsForTask,
+	getTasksForContext,
 	addTask,
 	addProject,
 	addResource,
@@ -57,20 +58,22 @@ function getContexts() {
 
 // retrieving a list of contexts for a task
 
-function getContextsForTask() {
+function getContextsForTask(taskid) {
 	return db('contexts')
 		.select('contexts.contextname')
 		.join('tasks', 'tasks.taskid', 'taskscontexts,taskid')
-		.join('taskscontexts', 'taskscontexts.contextid', 'contexts.contextid');
+		.join('taskscontexts', 'taskscontexts.contextid', 'contexts.contextid')
+		.where({ 'tasks.taskid': taskid });
 }
 // retrieving a list of tasks for a context
 
 // or true, the database will return 1 for true and 0 for false, extra code is required to convert a 1 to true and a 0 to false.
-function getTasksForContext() {
+function getTasksForContext(contextid) {
 	return db('tasks')
 		.select('tasks.taskdescription', 'task.tasknotes', 'task.taskcompleted')
 		.join('contexts', 'contexts.contextid', 'taskscontexts.contextid')
-		.join('taskscontexts', 'taskscontexts.taskid', 'tasks.taskid');
+		.join('taskscontexts', 'taskscontexts.taskid', 'tasks.taskid')
+		.where({ 'context.contextid': contextid });
 }
 
 // adding resource

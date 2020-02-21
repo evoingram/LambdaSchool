@@ -70,6 +70,46 @@ router.get('/:projectid', (req, res) => {
 			res.status(500).json({ message: 'Failed to get tasks' });
 		});
 });
+// get contexts
+router.get('/contexts', (req, res) => {
+	Projects.getContexts()
+		.then(projects => {
+			if (projects.projectcompleted === 0) {
+				projects.projectcompleted = false;
+			} else {
+				projects.projectcompleted = true;
+			}
+			res.json(projects);
+		})
+		.catch(err => {
+			res.status(500).json({ message: 'Failed to get projects' });
+		});
+});
+
+// get list of contexts for a task
+router.get('/:taskid/contexts', (req, res) => {
+	const taskid = req.params.taskid;
+	Projects.getContextsForTask(taskid)
+		.then(contexts => {
+			res.json(contexts);
+		})
+		.catch(err => {
+			res.status(500).json({ message: 'Failed to get projects' });
+		});
+});
+
+// get list of tasks for a context
+router.get('/contexts/:contextid', (req, res) => {
+	const contextid = req.params.contextid;
+	Projects.getTasksForContext(contextid)
+		.then(contexts => {
+			res.json(contexts);
+		})
+		.catch(err => {
+			res.status(500).json({ message: 'Failed to get projects' });
+		});
+});
+
 // add project
 router.post('/', (req, res) => {
 	const projectData = req.body;
