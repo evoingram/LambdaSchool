@@ -1,23 +1,23 @@
 const express = require('express');
 
-const Recipes = require('./recipeModel.js');
+const Projects = require('./projectModel.js');
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
-	Recipes.getRecipes()
-		.then(recipes => {
-			res.json(recipes);
+	Projects.getProjects()
+		.then(projects => {
+			res.json(projects);
 		})
 		.catch(err => {
-			res.status(500).json({ message: 'Failed to get recipes' });
+			res.status(500).json({ message: 'Failed to get projects' });
 		});
 });
 
 router.get('/:id/shoppingList', (req, res) => {
 	const id = req.params.id;
 
-	Recipes.getShoppingList(id)
+	Projects.getShoppingList(id)
 		.then(recipe => {
 			if (recipe) {
 				res.json(recipe);
@@ -26,14 +26,14 @@ router.get('/:id/shoppingList', (req, res) => {
 			}
 		})
 		.catch(err => {
-			res.status(500).json({ message: 'Failed to get Recipes' });
+			res.status(500).json({ message: 'Failed to get projects' });
 		});
 });
 
 router.get('/:id/instructions', (req, res) => {
 	const { id } = req.params;
 
-	Recipes.getInstructions(id)
+	Projects.getInstructions(id)
 		.then(instructions => {
 			if (instructions.length) {
 				res.json(instructions);
@@ -45,25 +45,25 @@ router.get('/:id/instructions', (req, res) => {
 			res.status(500).json({ message: 'Failed to get instructions' });
 		});
 });
-router.get('/ingredients/:id/recipes', (req, res) => {
+router.get('/ingredients/:id/projects', (req, res) => {
 	const { id } = req.params;
-	Recipes.getIngredientRecipes(id)
+	Projects.getIngredientProjects(id)
 		.then(recipelist => {
 			if (recipelist.length) {
 				res.json(recipelist);
 			} else {
-				res.status(404).json({ message: 'Could not find recipes for given ingredient' });
+				res.status(404).json({ message: 'Could not find projects for given ingredient' });
 			}
 		})
 		.catch(err => {
-			res.status(500).json({ message: 'Failed to get recipes' });
+			res.status(500).json({ message: 'Failed to get projects' });
 		});
 });
 
 router.post('/', (req, res) => {
 	const recipeData = req.body;
 
-	Recipes.add(recipeData)
+	Projects.add(recipeData)
 		.then(recipe => {
 			res.status(201).json(recipe);
 		})
@@ -76,10 +76,10 @@ router.post('/:id/steps', (req, res) => {
 	const stepData = req.body;
 	const { id } = req.params;
 
-	Recipes.findById(id)
+	Projects.findById(id)
 		.then(recipe => {
 			if (recipe) {
-				Recipes.addStep(stepData, id).then(step => {
+				Projects.addStep(stepData, id).then(step => {
 					res.status(201).json(step);
 				});
 			} else {
@@ -95,10 +95,10 @@ router.put('/:id', (req, res) => {
 	const { id } = req.params;
 	const changes = req.body;
 
-	Recipes.findById(id)
+	Projects.findById(id)
 		.then(recipe => {
 			if (recipe) {
-				Recipes.update(changes, id).then(updatedRecipe => {
+				Projects.update(changes, id).then(updatedRecipe => {
 					res.json(updatedRecipe);
 				});
 			} else {
@@ -113,7 +113,7 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
 	const { id } = req.params;
 
-	Recipes.remove(id)
+	Projects.remove(id)
 		.then(deleted => {
 			if (deleted) {
 				res.json({ removed: deleted });
