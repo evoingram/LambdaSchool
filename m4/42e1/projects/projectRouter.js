@@ -14,8 +14,8 @@ router.get('/', (req, res) => {
 		});
 });
 
-router.get('/:id/tasks', (req, res) => {
-	const id = req.params.id;
+router.get('/:projectid/tasks', (req, res) => {
+	const id = req.params.projectid;
 
 	Projects.getTasks(id)
 		.then(project => {
@@ -40,6 +40,21 @@ router.get('/resources', (req, res) => {
 		});
 });
 
+router.get('/:projectid', (req, res) => {
+	const id = req.params.projectid;
+
+	Projects.getFullProject(id)
+		.then(project => {
+			if (project) {
+				res.json(project);
+			} else {
+				res.status(404).json({ message: 'Could not find project with given id.' });
+			}
+		})
+		.catch(err => {
+			res.status(500).json({ message: 'Failed to get tasks' });
+		});
+});
 // add project
 router.post('/', (req, res) => {
 	const projectData = req.body;
@@ -53,8 +68,8 @@ router.post('/', (req, res) => {
 		});
 });
 // add task
-router.post('/:id/tasks', (req, res) => {
-	const projectid = req.params.id;
+router.post('/:projectid/tasks', (req, res) => {
+	const projectid = req.params.projectid;
 	const taskDescription = req.body.taskdescription;
 	const taskNotes = req.body.tasknotes;
 	const taskCompleted = req.body.taskcompleted;
@@ -91,29 +106,33 @@ router.post('/resources', (req, res) => {
 		});
 });
 
-router.put('/:id', (req, res) => {
-	const { id } = req.params;
-	const changes = req.body;
+//update project
 
-	Projects.findById(id)
+router.put('/:projectid', (req, res) => {
+	const projectid = req.params.projectid;
+	const projectName = req.body.projectname;
+	const projectDescription = req.body.projectdescription;
+	const updatedProject = { projectid: projectid, projectname: projectName, projectdescription: projectDescription };
+
+	Projects.updateProject(updatedProject, projectid)
 		.then(project => {
 			if (project) {
-				Projects.update(changes, id).then(updatedRecipe => {
-					res.json(updatedRecipe);
-				});
+				res.json(project);
 			} else {
-				res.status(404).json({ message: 'Could not find scheme with given id' });
+				res.status(404).json({ message: 'Could not find project with given id' });
 			}
 		})
 		.catch(err => {
-			res.status(500).json({ message: 'Failed to update scheme' });
+			res.status(500).json({ message: 'Failed to update project' });
 		});
 });
 
-router.delete('/:id', (req, res) => {
-	const { id } = req.params;
+//update task
 
-	Projects.remove(id)
+router.delete('/:projectid', (req, res) => {
+	const id = req.params.projectid;
+
+	Projects.removeProject(id)
 		.then(deleted => {
 			if (deleted) {
 				res.json({ removed: deleted });
@@ -123,6 +142,23 @@ router.delete('/:id', (req, res) => {
 		})
 		.catch(err => {
 			res.status(500).json({ message: 'Failed to delete scheme' });
+		});
+});
+
+router.delete('/:projectid/tasks/:taskid', (req, res) => {
+	const taskid = req.params.taskid;
+	const projectid = req.params.projectid;
+
+	Projects.removeTask(projectid, taskid)
+		.then(deleted => {
+			if (deleted) {
+				res.json({ removed: deleted });
+			} else {
+				res.status(404).json({ message: 'Could not find task with given id' });
+			}
+		})
+		.catch(err => {
+			res.status(500).json({ message: 'Failed to delete task' });
 		});
 });
 

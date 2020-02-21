@@ -5,9 +5,14 @@ module.exports = {
 	getProjects,
 	getResources,
 	getProject,
+	getFullProject,
 	addTask,
 	addProject,
-	addResource
+	addResource,
+	removeProject,
+	removeTask,
+	updateTask,
+	updateProject
 };
 
 // retrieving a list of resources
@@ -81,6 +86,84 @@ function addTask(taskData) {
 		});
 }
 
+// retrieve project with full details
+/*
+SELECT projects.projectname, projects.projectdescription, tasks.taskdescription, tasks.tasknotes, tasks.taskcompleted
+FROM projects 
+JOIN tasks ON tasks.projectid=projects.projectid
+JOIN ProjectsResources on ProjectsResources.projectid=projects.projectid
+JOIN Resources ON Resources.resourceid=ProjectsResources.resourceid
+WHERE projects.projectid=1
+ORDER BY projects.projectname;
+*/
+function getFullProject(projectid) {
+	return db('projects')
+		.select(
+			'projects.projectname',
+			'projects.projectdescription',
+			'tasks.taskdescription',
+			'tasks.tasknotes',
+			'tasks.taskcompleted'
+		)
+		.join('tasks', 'tasks.projectid', 'projects.projectid')
+		.join('ProjectsResources', 'ProjectsResources.projectid', 'projects.projectid')
+		.join('Resources', 'Resources.resourceid', 'ProjectsResources.resourceid')
+		.where({ 'projects.projectid': projectid })
+		.options({ nestTables: true });
+}
+
+// update project
+function updateProject(newproject, id) {
+	db('projects')
+		.where({ projectid: id })
+		.update(newproject)
+		.then(ids => {
+			return ids;
+		});
+}
+
+// update task
+function updateTask(newtask, id) {
+	db('tasks')
+		.where({ taskid: id })
+		.update(newtask)
+		.then(ids => {
+			return ids;
+		});
+}
+
+// delete project
+function removeProject(id) {
+	let project = getProject(id);
+	db('projects')
+		.delete()
+		.where({ projectid: id })
+		.then(ids => {
+			return project;
+		});
+}
+
+// delete task
+function removeTask(projectid, taskid) {
+	let project = getProject(projectid);
+	db('tasks')
+		.delete()
+		.where({ taskid: taskid })
+		.then(ids => {
+			return project;
+		});
+}
+
+/*
+   knex('users')
+    .innerJoin('user_emails','users.id','user_emails.user_id')
+    .select([
+      'users.id as userID',
+      'users.name as userName',
+      knex.raw('ARRAY_AGG(user_emails.adress) as email')
+    ])
+    .groupBy('users.id','users.name')
+*/
 /*
 function add(project) {
 	db('projects')

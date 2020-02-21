@@ -145,7 +145,7 @@ This section is **optional** and not counted towards MVP. Start working on it af
 }
 ```
 
-- [ ] Add the remaining CRUD operations for projects and tasks.
+- [X] Add the remaining CRUD operations for projects and tasks.
 
 - [ ] Use `knex` to add _data seeding_ scripts for projects and tasks.
 
