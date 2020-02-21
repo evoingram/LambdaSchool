@@ -1,51 +1,50 @@
 exports.up = function(knex) {
 	return knex.schema
-		.createTable('recipes', tbl => {
-			tbl.increments('recipeid');
-			tbl.text('recipename', 128)
+		.createTable('projects', tbl => {
+			tbl.increments('projectid');
+			tbl.text('projectname', 128)
 				.unique()
 				.notNullable();
-		})
-		.createTable('instructions', tbl => {
-			tbl.increments('instructionsid');
-			tbl.integer('stepnumber')
-				.unsigned()
+			tbl.text('projectdescription', 128).Nullable();
+			tbl.text('projectcompleted', 128)
+				.boolean()
+				.defaultTo('false')
 				.notNullable();
-			tbl.text('instruction').notNullable();
 		})
-		.createTable('ingredients', tbl => {
-			tbl.increments('ingredientsid');
-			tbl.text('ingredientname').notNullable();
-		})
-		.createTable('recipesingredients', tbl => {
-			tbl.integer('recipeid')
+		.createTable('tasks', tbl => {
+			tbl.increments('taskid');
+			tbl.integer('projectid')
 				.unsigned()
 				.notNullable()
-				.references('recipeid')
-				.inTable('recipes')
+				.references('projectid')
+				.inTable('projects')
 				.onUpdate('CASCADE')
 				.onDelete('CASCADE');
-			tbl.integer('ingredientsid')
-				.unsigned()
-				.notNullable()
-				.references('ingredientsid')
-				.inTable('ingredients')
-				.onUpdate('CASCADE')
-				.onDelete('CASCADE');
+			tbl.text('tasknotes', 128).Nullable();
+			tbl.text('taskdescription').notNullable();
+			tbl.text('taskcompleted', 128)
+				.boolean()
+				.defaultTo('false')
+				.notNullable();
 		})
-		.createTable('recipesinstructions', tbl => {
-			tbl.integer('recipeid')
+		.createTable('resources', tbl => {
+			tbl.increments('resourceid');
+			tbl.text('resourcename').notNullable();
+			tbl.text('resourcedescription', 128).Nullable();
+		})
+		.createTable('projectsresources', tbl => {
+			tbl.integer('projectid')
 				.unsigned()
 				.notNullable()
-				.references('recipeid')
-				.inTable('recipes')
+				.references('projectid')
+				.inTable('projects')
 				.onUpdate('CASCADE')
 				.onDelete('CASCADE');
-			tbl.integer('instructionsid')
+			tbl.integer('resourceid')
 				.unsigned()
 				.notNullable()
-				.references('instructionsid')
-				.inTable('instructions')
+				.references('resourceid')
+				.inTable('resources')
 				.onUpdate('CASCADE')
 				.onDelete('CASCADE');
 		});
@@ -53,9 +52,8 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
 	return knex.schema
-		.dropTableIfExists('instructions')
-		.dropTableIfExists('ingredients')
-		.dropTableIfExists('recipes')
-		.dropTableIfExists('recipesingredients')
-		.dropTableIfExists('recipesinstructions');
+		.dropTableIfExists('project')
+		.dropTableIfExists('tasks')
+		.dropTableIfExists('resources')
+		.dropTableIfExists('projectsresources');
 };
