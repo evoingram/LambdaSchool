@@ -36,6 +36,7 @@ JOIN tasks ON tasks.projectid=projects.projectid
 WHERE projects.projectid=1
 ORDER BY projects.projectname;
 */
+// or true, the database will return 1 for true and 0 for false, extra code is required to convert a 1 to true and a 0 to false.
 function getTasks(projectid) {
 	return db('projects')
 		.select(
@@ -64,6 +65,7 @@ function getContextsForTask() {
 }
 // retrieving a list of tasks for a context
 
+// or true, the database will return 1 for true and 0 for false, extra code is required to convert a 1 to true and a 0 to false.
 function getTasksForContext() {
 	return db('tasks')
 		.select('tasks.taskdescription', 'task.tasknotes', 'task.taskcompleted')
@@ -72,21 +74,23 @@ function getTasksForContext() {
 }
 
 // adding resource
-function addResource(resource) {
-	db('resources')
-		.insert(resource)
+async function addResource(resource) {
+	const [id] = await db('resources')
+		.insert(resource, 'id')
 		.then(ids => {
 			return getResources();
 		});
 }
+// or true, the database will return 1 for true and 0 for false, extra code is required to convert a 1 to true and a 0 to false.
 // retrieve project
 function getProject(projectid) {
 	return db('projects').where({ 'projects.projectid': projectid });
 }
 
 // adding project
-function addProject(project) {
-	db('projects')
+// or true, the database will return 1 for true and 0 for false, extra code is required to convert a 1 to true and a 0 to false.
+async function addProject(project) {
+	const [id] = await db('projects')
 		.insert(project)
 		.then(ids => {
 			return getProject(ids[0]);
@@ -102,8 +106,9 @@ WHERE projects.projectid=1
 Order BY instructions.stepnumber
 
 */
-function addTask(taskData) {
-	db('tasks')
+// or true, the database will return 1 for true and 0 for false, extra code is required to convert a 1 to true and a 0 to false.
+async function addTask(taskData) {
+	const [id] = await db('tasks')
 		.insert(taskData)
 		.then(ids => {
 			return getTasks(taskData.projectid);
