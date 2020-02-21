@@ -6,6 +6,8 @@ module.exports = {
 	getResources,
 	getProject,
 	getFullProject,
+	getContexts,
+	getContextsForTask,
 	addTask,
 	addProject,
 	addResource,
@@ -48,7 +50,7 @@ function getTasks(projectid) {
 }
 
 // retrieving a list of contexts
-function getProjects() {
+function getContexts() {
 	return db('contexts');
 }
 
