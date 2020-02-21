@@ -94,7 +94,7 @@ router.get('/:taskid/contexts', (req, res) => {
 			res.json(contexts);
 		})
 		.catch(err => {
-			res.status(500).json({ message: 'Failed to get projects' });
+			res.status(500).json({ message: 'Failed to get contexts' });
 		});
 });
 
@@ -106,7 +106,7 @@ router.get('/contexts/:contextid', (req, res) => {
 			res.json(contexts);
 		})
 		.catch(err => {
-			res.status(500).json({ message: 'Failed to get projects' });
+			res.status(500).json({ message: 'Failed to get tasks' });
 		});
 });
 
@@ -149,7 +149,7 @@ router.post('/:projectid/tasks', (req, res) => {
 				}
 				res.status(201).json(tasks);
 			} else {
-				res.status(404).json({ message: 'Could not find project with given id.' });
+				res.status(404).json({ message: 'Could not find task with given id.' });
 			}
 		})
 		.catch(err => {
@@ -212,11 +212,11 @@ router.delete('/:projectid', (req, res) => {
 				}
 				res.json({ removed: deleted });
 			} else {
-				res.status(404).json({ message: 'Could not find scheme with given id' });
+				res.status(404).json({ message: 'Could not find project with given id' });
 			}
 		})
 		.catch(err => {
-			res.status(500).json({ message: 'Failed to delete scheme' });
+			res.status(500).json({ message: 'Failed to delete project' });
 		});
 });
 
