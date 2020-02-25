@@ -8,6 +8,7 @@ const authRouter = require('../auth/authRouter.js');
 const apiRouter = require('./apiRouter.js');
 const usersRouter = require('../users/usersRouter.js');
 const configureMiddleware = require('./configureMW.js');
+const restricted = require('../auth/restrictedMW.js');
 const knex = require('../database/dbConfig.js'); // stores sessions in db
 
 const server = express();
@@ -37,7 +38,7 @@ server.use(express.json());
 server.use(cors());
 server.use(session(sessionConfig)); // turn on session MW
 
-server.use('/api/auth', authRouter);
+server.use('/api/', authRouter);
 server.use('/api/users', restricted, usersRouter);
 
 server.get('/', (req, res) => {
