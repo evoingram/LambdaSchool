@@ -74,7 +74,7 @@ describe('cohorts router', function() {
 	});
 
 	describe('PUT /api/cohorts', function() {
-		let testCohort = { cohort: 'test123' };
+		let testCohort = { cohort: 'test123456' };
 		it('should return 200 OK', function() {
 			return request(server)
 				.put('/api/cohorts', testCohort)
