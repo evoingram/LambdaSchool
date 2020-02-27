@@ -4,7 +4,7 @@ const cors = require('cors');
 
 const cohortsRouter = require('../cohorts/router.js');
 const studentsRouter = require('../students/router.js');
-const restricted = require('../foldername/restrictedMW.js');
+// const restricted = require('../foldername/restrictedMW.js');
 
 const server = express();
 
