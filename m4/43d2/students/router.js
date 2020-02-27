@@ -2,20 +2,35 @@ const router = require('express').Router();
 
 const Students = require('./model.js');
 
+/*
 router.get('/', (req, res) => {
 	res.json({ router: 'students' });
 });
 
-/*
 // get list of students
 router.get('/students', (req, res) => {
 	res.status(201).json({ router: 'students' });
 });
 */
 
+// get list of students
+router.get('/', (req, res) => {
+	Students.getStudents()
+		.then(students => {
+			if (students) {
+				res.json(students);
+			} else {
+				res.status(404).json({ message: 'Could not find students.' });
+			}
+		})
+		.catch(err => {
+			res.status(500).json({ message: 'Failed to get students' });
+		});
+});
+
 // get one student
-router.get('/students/:studentid', (req, res) => {
-	const id = req.params.studentid;
+router.get('/:studentid', (req, res) => {
+	const id = req.params.studentsid;
 
 	Students.getStudent(id)
 		.then(student => {
@@ -32,7 +47,7 @@ router.get('/students/:studentid', (req, res) => {
 
 // create student
 
-router.post('/students', (req, res) => {
+router.post('/', (req, res) => {
 	const resourceData = req.body;
 
 	Students.addStudent(resourceData)
@@ -46,7 +61,7 @@ router.post('/students', (req, res) => {
 
 //update student
 
-router.put('/students/:studentsid', (req, res) => {
+router.put('/:studentsid', (req, res) => {
 	const studentsid = req.params.studentsid;
 	const studentName = req.body.name;
 	const cohortsid = req.body.cohortsid;
@@ -66,7 +81,7 @@ router.put('/students/:studentsid', (req, res) => {
 });
 
 // delete student
-router.delete('/students/:studentsid', (req, res) => {
+router.delete('/:studentsid', (req, res) => {
 	const id = req.params.studentid;
 
 	Students.removeStudent(id)

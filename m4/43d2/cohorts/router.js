@@ -17,12 +17,22 @@ router.get('/', (req, res) => {
 */
 
 // get list of cohorts
-router.get('/cohorts', (req, res) => {
-	res.status(201).json({ router: 'cohorts' });
+router.get('/', (req, res) => {
+	Cohorts.getCohorts()
+		.then(cohorts => {
+			if (cohorts) {
+				res.json(cohorts);
+			} else {
+				res.status(404).json({ message: 'Could not find cohorts.' });
+			}
+		})
+		.catch(err => {
+			res.status(500).json({ message: 'Failed to get cohorts' });
+		});
 });
 
 // get one cohort
-router.get('/cohorts/:cohortsid', (req, res) => {
+router.get('/:cohortsid', (req, res) => {
 	const id = req.params.cohortsid;
 
 	Cohorts.getCohort(id)
@@ -39,7 +49,7 @@ router.get('/cohorts/:cohortsid', (req, res) => {
 });
 
 // create cohort
-router.post('/cohorts', (req, res) => {
+router.post('/', (req, res) => {
 	const resourceData = req.body;
 
 	Cohorts.addCohort(resourceData)
@@ -53,10 +63,10 @@ router.post('/cohorts', (req, res) => {
 
 //update cohort
 
-router.put('/cohorts/:cohortsid', (req, res) => {
-	const cohortid = req.params.cohortid;
-	const cohortName = req.body.cohortname;
-	const updatedCohort = { cohortid: cohortid, cohortname: cohortName, cohortdescription: cohortDescription };
+router.put('/:cohortsid', (req, res) => {
+	const cohortsid = req.params.cohortsid;
+	const cohortName = req.body.cohort;
+	const updatedCohort = { cohortsid: cohortsid, cohort: cohortName };
 
 	Cohorts.updateCohort(updatedCohort, cohortid)
 		.then(cohort => {
@@ -72,8 +82,8 @@ router.put('/cohorts/:cohortsid', (req, res) => {
 });
 
 // delete cohort
-router.delete('/cohorts/:cohortid', (req, res) => {
-	const id = req.params.cohortid;
+router.delete('/:cohortsid', (req, res) => {
+	const id = req.params.cohortsid;
 
 	Projects.removeCohort(id)
 		.then(deleted => {

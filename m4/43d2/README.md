@@ -17,10 +17,10 @@ For this project you will use `Test Driven Development` to create a RESTful API 
 - [X] fork and clone this repository.
 - [X] **CD into the folder** where you downloaded the repository.
 - [X] run `npm i` to download all dependencies.
-- [ ] type `npm test` to run the tests.
+- [X] type `npm test` to run the tests.
 
 ## Requirements
 
-- [ ] use `jest` and `supertest` to write the tests.
+- [X] use `jest` and `supertest` to write the tests.
 - [X] Your API must be able to **create** and **delete** a _resource_ of your choosing.
 - [ ] Write a minimum of two tests per route handler.
