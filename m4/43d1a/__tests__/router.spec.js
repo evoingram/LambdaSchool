@@ -38,3 +38,11 @@ describe('cohorts router', function() {
 		expect(res.body.router).toBe('cohorts');
 	});
 });
+
+describe('server', function() {
+	describe('environment', function() {
+		it('should use testing environment', function() {
+			expect(process.env.DB_ENV).toBe('development');
+		});
+	});
+});
