@@ -62,3 +62,9 @@
 - [ ] id
 - [ ] name
 - [ ] cohort
+
+
+## Testing
+
+- [ ] functions:  invoke function with optional arguments => check return/results
+- [ ] endpoints:  make request with optional arguments => check response
