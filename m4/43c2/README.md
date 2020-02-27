@@ -35,7 +35,7 @@ In this project we'll implement a full authentication workflow (register/login/l
 
 ## Stretch Problem
 
-- [ ] add the code necessary so that when a client makes a `GET` request to `/api/users` the server only returns documents with the `same department` as the logged in user. For example if the logged in user belongs to the finance department, then only users with the _finance_ department should be returned; if the logged in user is in _sales_ only users on the sales department should be returned.
+- [X] add the code necessary so that when a client makes a `GET` request to `/api/users` the server only returns documents with the `same department` as the logged in user. For example if the logged in user belongs to the finance department, then only users with the _finance_ department should be returned; if the logged in user is in _sales_ only users on the sales department should be returned.
 - [ ] implement a React client:
   - [ ] use `create-react-app` to generate a application to server as the client for the Web API.
   - [ ] inside the React application add **client-side routes** and components for `signup`, `signin` and showing the `list of users` stored in the database.
