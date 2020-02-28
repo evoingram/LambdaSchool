@@ -25,11 +25,11 @@ function getCohort(cohortsid) {
 }
 
 // adding cohort
-async function addCohort(cohort) {
-	const [id] = await db('cohorts')
+function addCohort(cohort) {
+	return db('cohorts')
 		.insert(cohort, 'id')
 		.then(ids => {
-			return getCohorts();
+			return db('cohorts');
 		});
 }
 
@@ -39,17 +39,15 @@ function updateCohort(newCohort, cohortsid) {
 		.where({ cohortsid: cohortsid })
 		.update(newCohort)
 		.then(ids => {
-			return ids;
+			return getCohort(cohortsid);
 		});
 }
 
 // delete cohort
-function removeCohort(cohortsid) {
+async function removeCohort(cohortsid) {
 	let cohort = getCohort(cohortsid);
-	db('cohorts')
+	await db('cohorts')
 		.delete()
-		.where({ cohortsid: cohortsid })
-		.then(ids => {
-			return cohort;
-		});
+		.where({ cohortsid: cohortsid });
+	return cohort;
 }

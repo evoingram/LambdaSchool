@@ -42,16 +42,16 @@ describe('cohorts router', function() {
 	describe('POST /api/cohorts', function() {
 		// 	Cohorts.addCohort(resourceData);
 		let testCohort = { cohort: 'test123' };
-		it('should return 200 OK', function() {
-			return request(server)
+		it('should return 201 OK', async function() {
+			return await request(server)
 				.post('/api/cohorts', testCohort)
 				.then(res => {
-					expect(res.status).toBe(200);
+					expect(res.status).toBe(201);
 				});
 		});
 
-		it('should return cohorts as the router value', function() {
-			return request(server)
+		it('should return cohorts as the router value', async function() {
+			return await request(server)
 				.post('/api/cohorts', testCohort)
 				.then(res => {
 					expect(Array.isArray(res.body)).toBe(true);
@@ -75,24 +75,24 @@ describe('cohorts router', function() {
 
 	describe('PUT /api/cohorts', function() {
 		let testCohort = { cohort: 'test123456' };
-		it('should return 200 OK', function() {
-			return request(server)
+		it('should return 200 OK', async function() {
+			return await request(server)
 				.put('/api/cohorts', testCohort)
 				.then(res => {
 					expect(res.status).toBe(200);
 				});
 		});
 
-		it('should return cohorts as the router value', function() {
-			return request(server)
+		it('should return cohorts as the router value', async function() {
+			return await request(server)
 				.put('/api/cohorts', testCohort)
 				.then(res => {
 					expect(Array.isArray(res.body)).toBe(true);
 				});
 		});
 
-		it('should return JSON formatted body', function() {
-			return request(server)
+		it('should return JSON formatted body', async function() {
+			return await request(server)
 				.put('/api/cohorts', testCohort)
 				.then(res => {
 					expect(res.type).toMatch(/json/);
@@ -108,24 +108,24 @@ describe('cohorts router', function() {
 
 	describe('DELETE /api/cohorts', function() {
 		let testCohort = { cohortsid: 6 };
-		it('should return 200 OK', function() {
-			return request(server)
-				.delete('/api/cohorts', { cohortsid: 6 })
+		it('should return 200 OK', async function() {
+			return await request(server)
+				.delete('/api/cohorts', testCohort)
 				.then(res => {
 					expect(res.status).toBe(200);
 				});
 		});
 
-		it('should return cohorts as the router value', function() {
-			return request(server)
+		it('should return cohorts as the router value', async function() {
+			return await request(server)
 				.delete('/api/cohorts', { cohortsid: 5 })
 				.then(res => {
 					expect(Array.isArray(res.body)).toBe(true);
 				});
 		});
 
-		it('should return JSON formatted body', function() {
-			return request(server)
+		it('should return JSON formatted body', async function() {
+			return await request(server)
 				.delete('/api/cohorts', { cohortsid: 4 })
 				.then(res => {
 					expect(res.type).toMatch(/json/);

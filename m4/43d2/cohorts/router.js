@@ -68,7 +68,7 @@ router.put('/:cohortsid', (req, res) => {
 	const cohortName = req.body.cohort;
 	const updatedCohort = { cohortsid: cohortsid, cohort: cohortName };
 
-	Cohorts.updateCohort(updatedCohort, cohortid)
+	Cohorts.updateCohort(updatedCohort, cohortsid)
 		.then(cohort => {
 			if (cohort) {
 				res.json(cohort);
@@ -85,7 +85,7 @@ router.put('/:cohortsid', (req, res) => {
 router.delete('/:cohortsid', (req, res) => {
 	const id = req.params.cohortsid;
 
-	Projects.removeCohort(id)
+	Cohorts.removeCohort(id)
 		.then(deleted => {
 			if (deleted) {
 				res.json({ removed: deleted });
