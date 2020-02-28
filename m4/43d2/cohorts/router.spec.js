@@ -108,11 +108,11 @@ describe('cohorts router', function() {
 
 	describe('DELETE /api/cohorts', function() {
 		let testCohort = { cohortsid: 6 };
-		it('should return 200 OK', async function() {
+		it('should return 201 OK', async function() {
 			return await request(server)
 				.delete('/api/cohorts', testCohort)
 				.then(res => {
-					expect(res.status).toBe(200);
+					expect(res.status).toBe(201);
 				});
 		});
 
