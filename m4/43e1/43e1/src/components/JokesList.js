@@ -27,9 +27,6 @@ export default function CharacterList() {
 	return (
 		<section className="character-list">
 			<SearchForm jokes={jokes} />
-			{jokes.map(joke => (
-				<JokeCard key={joke.id} joke={joke} />
-			))}
 		</section>
 	);
 }
