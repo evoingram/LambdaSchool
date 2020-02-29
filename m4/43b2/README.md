@@ -7,6 +7,7 @@
 - Password Hashing.
 - Sessions
 - Cookies
+
 ## Description
 
 - [X] Use `Node.js`, `Express` and `Knex` to build an API that provides **Register** and **Login** functionality using `SQLite` to store _User_ information. 
@@ -28,7 +29,7 @@
 
 ## Part 2, due after completing the second module.
 
-- [ ] Add support for **sessions** and **cookies**, use them to keep a record of logged in users across requests.
+- [X] Add support for **sessions** and **cookies**, use them to keep a record of logged in users across requests.
 
 ## Stretch Problem
 
