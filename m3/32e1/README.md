@@ -40,8 +40,6 @@ Redux Thunk is middleware that provides the ability to handle asynchronous opera
 
 - [X] What is your favorite state management system you've learned and this sprint? Please explain why!
 
-Redux, because I felt it was easier to understand than the context API.
-
 ## Project Set Up
 
 Follow these steps to set up your project:

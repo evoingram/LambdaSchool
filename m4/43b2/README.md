@@ -7,16 +7,14 @@
 - Password Hashing.
 - Sessions
 - Cookies
-
-
-
 ## Description
 
-Use `Node.js`, `Express` and `Knex` to build an API that provides **Register** and **Login** functionality using `SQLite` to store _User_ information. Make sure the password is not stored as plain text.
+- [X] Use `Node.js`, `Express` and `Knex` to build an API that provides **Register** and **Login** functionality using `SQLite` to store _User_ information. 
+- [X] Make sure the password is not stored as plain text.
 
 ## Assignment
 
-This project will be completed over two days.
+- [X] This project will be completed over two days.
 
 ## Part 1, due after completing the first module.
 
@@ -30,9 +28,9 @@ This project will be completed over two days.
 
 ## Part 2, due after completing the second module.
 
-Add support for **sessions** and **cookies**, use them to keep a record of logged in users across requests.
+- [ ] Add support for **sessions** and **cookies**, use them to keep a record of logged in users across requests.
 
 ## Stretch Problem
 
-- Write a piece of **global** middleware that ensures a user is logged in when accessing _any_ route prefixed by `/api/restricted/`. For instance, `/api/restricted/something`, `/api/restricted/other`, and `/api/restricted/a` should all be protected by the middleware; only logged in users should be able to access these routes.
-- Build a React application that implements components to register, login and view a list of users. Gotta keep sharpening your React skills.
+- [X] Write a piece of **global** middleware that ensures a user is logged in when accessing _any_ route prefixed by `/api/restricted/`. For instance, `/api/restricted/something`, `/api/restricted/other`, and `/api/restricted/a` should all be protected by the middleware; only logged in users should be able to access these routes.
+- [ ] Build a React application that implements components to register, login and view a list of users. Gotta keep sharpening your React skills.
