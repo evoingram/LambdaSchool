@@ -1,9 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import App from './App';
+import * as rtl from '@testing-library/react';
+import 'jest-dom/extend-expect';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+afterEach(rtl.cleanup);
+
+it('renders without crashing', () => {
+	// ready to test!
 });
