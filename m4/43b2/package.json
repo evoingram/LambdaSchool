@@ -1,0 +1,25 @@
+{
+	"name": "auth-II-project",
+	"version": "1.0.0",
+	"description": "Node Auth II Project",
+	"main": "index.js",
+	"scripts": {
+		"server": "nodemon index.js",
+		"start": "node index.js"
+	},
+	"keywords": [],
+	"author": "Lambda School",
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"connect-session-knex": "^1.5.0",
+		"cors": "^2.8.5",
+		"express": "^4.17.1",
+		"helmet": "^3.21.2",
+		"knex": "^0.20.10",
+		"sqlite3": "^4.1.1",
+		"express-session": "^1.17.0"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.2"
+	}
+}
