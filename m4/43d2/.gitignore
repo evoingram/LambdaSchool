@@ -1,5 +1,4 @@
-
-# Mac cruft
+# Mac Cruft
 .DS_Store
 
 # Logs
@@ -45,8 +44,8 @@ build/Release
 node_modules/
 jspm_packages/
 
-# TypeScript v1 declaration files
-typings/
+# Snowpack dependency directory (https://snowpack.dev/)
+web_modules/
 
 # TypeScript cache
 *.tsbuildinfo
