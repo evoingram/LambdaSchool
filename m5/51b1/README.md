@@ -13,6 +13,7 @@ interview question. So, let's practice that!
 # Instructions
 
 - [ ] Below, the United Nation’s Declaration of Human Rights is provided as a string. 
+
 The sections have been combined into one string for ease of parsing the string.
 Make sure when you copy the string, no line breaks are copied!
 
