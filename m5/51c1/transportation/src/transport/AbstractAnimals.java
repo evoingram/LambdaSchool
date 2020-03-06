@@ -14,6 +14,10 @@ public abstract class AbstractAnimals {
         this.year = year;
     }
 
+    public abstract String getName();
+
+    public abstract int getYear();
+
     public abstract String move();
 
     public abstract String breathe();

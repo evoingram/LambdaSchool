@@ -21,6 +21,10 @@ public class Fish extends AbstractAnimals {
         this.year = year;
     }
 
+    public int getYear() {
+        return year;
+    }
+
     public String move() {
         return " moves by swimming.";
     };

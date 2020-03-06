@@ -9,17 +9,23 @@ public class Bird extends AbstractAnimals {
         this.year = year;
     }
 
+    public String setName(String name) {
+        this.name = name;
+        return name;
+    }
+
     public String getName() {
         return name;
     };
 
-    public void setName(String name) {
-        this.name = name;
+    public int setYear(int year) {
+        this.year = year;
+        return year;
     }
 
-    public void setYear(int year) {
-        this.year = year;
-    }
+    public int getYear() {
+        return year;
+    };
 
     public String move() {
         return " moves by flying.";
