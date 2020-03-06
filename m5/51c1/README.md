@@ -49,14 +49,14 @@ Hint: think about abstract classes and creating an arraylist using an abstract c
 
 * Using Lambda Expressions
 
-    * [ ] List all the animals in descending order by year named
-    * [ ] List all the animals alphabetically
-    * [ ] List all the animals order by how they move
-    * [ ] List only those animals the breath with lungs
-    * [ ] List only those animals that breath with lungs and were named in 1758
-    * [ ] List only those animals that lay eggs and breath with lungs
-    * [ ] List alphabetically only those animals that were named in 1758
+    * [X] List all the animals in descending order by year named
+    * [X] List all the animals alphabetically
+    * [X] List all the animals order by how they move
+    * [X] List only those animals the breath with lungs
+    * [X] List only those animals that breath with lungs and were named in 1758
+    * [X] List only those animals that lay eggs and breath with lungs
+    * [X] List alphabetically only those animals that were named in 1758
     
 * Stretch Goal
-    * [ ] For the list of animals, list alphabetically those animals that are mammals.
+    * [X] For the list of animals, list alphabetically those animals that are mammals.
 
