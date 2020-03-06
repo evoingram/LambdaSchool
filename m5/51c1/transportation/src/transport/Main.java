@@ -6,12 +6,16 @@ public class Main {
 
     public static ArrayList<AbstractAnimals> filteredList = new ArrayList<AbstractAnimals>();
 
-    /*
-     * public static void printVehicles(ArrayList<AbstractVehicle> vehicles,
-     * CheckVehicle tester) { filteredList.clear(); for (AbstractVehicle v :
-     * vehicles) { if (tester.test(v)) { System.out.println(v.getName() + " " +
-     * v.getFuelLevel()); filteredList.add(v); } } }
-     */
+    public static void testCondition(ArrayList<AbstractAnimals> animals, CheckVehicle tester) {
+        filteredList.clear();
+        for (AbstractAnimals animal : animals) {
+            if (tester.test(animal)) {
+                System.out.println(animal.getName() + ", " + animal.getYear());
+                filteredList.add(animal);
+            }
+        }
+    }
+
     public static void main(String[] args) {
         /*
          * Horse seabiscuit = new Horse("Seabiscuit"); Horse affirmed = new
@@ -114,35 +118,43 @@ public class Main {
         System.out.println(animalList.toString());
 
         System.out.println("\n*** animals in descending order by year named ***\n");
-        animalList.sort((v1, v2) -> v1.getName().compareToIgnoreCase(v2.getName()));
+        animalList.sort((animal1, animal2) -> animal2.getYear() - animal1.getYear());
+        animalList.forEach((animal) -> System.out.println(animal.getName() + " " + animal.getYear()));
         System.out.println();
 
         System.out.println("\n*** animals alphabetically ***\n");
-        animalList.sort((v1, v2) -> v1.getName().compareToIgnoreCase(v2.getName()));
+        animalList.sort((animal1, animal2) -> animal1.getName().compareToIgnoreCase(animal2.getName()));
+        animalList.forEach((animal) -> System.out.println(animal.getName() + " " + animal.getYear()));
         System.out.println();
 
-        System.out.println("\n*** animals order by how they move ***\n");
-        animalList.sort((v1, v2) -> v1.getName().compareToIgnoreCase(v2.getName()));
+        System.out.println("\n*** animals ordered by how they move ***\n");
+        animalList.sort((animal1, animal2) -> animal1.move().compareToIgnoreCase(animal2.move()));
+        animalList.forEach((animal) -> System.out.println(animal.getName() + " " + animal.getYear()));
         System.out.println();
 
-        System.out.println("\n*** animals the breath with lungs ***\n");
-        animalList.sort((v1, v2) -> v1.getName().compareToIgnoreCase(v2.getName()));
+        System.out.println("\n*** animals that breathe with lungs ***\n");
+        animalList.sort((animal1, animal2) -> animal1.getName().compareToIgnoreCase(animal2.getName()));
+        testCondition(animalList, animal -> animal.breathe() == "lungs");
         System.out.println();
 
-        System.out.println("\n*** animals that breath with lungs and were named in 1758 ***\n");
-        animalList.sort((v1, v2) -> v1.getName().compareToIgnoreCase(v2.getName()));
+        System.out.println("\n*** animals that breathe with lungs and were named in 1758 ***\n");
+        animalList.sort((animal1, animal2) -> animal1.getName().compareToIgnoreCase(animal2.getName()));
+        testCondition(animalList, animal -> animal.breathe() == "lungs" && animal.getYear() == 1758);
         System.out.println();
 
-        System.out.println("\n*** animals that lay eggs and breath with lungs ***\n");
-        animalList.sort((v1, v2) -> v1.getName().compareToIgnoreCase(v2.getName()));
+        System.out.println("\n*** animals that lay eggs and breathe with lungs ***\n");
+        animalList.sort((animal1, animal2) -> animal1.getName().compareToIgnoreCase(animal2.getName()));
+        testCondition(animalList, animal -> animal.breathe() == "lungs" && animal.reproduce() == "eggs");
         System.out.println();
 
         System.out.println("\n*** animals that were named in 1758 ***\n");
-        animalList.sort((v1, v2) -> v1.getName().compareToIgnoreCase(v2.getName()));
+        animalList.sort((animal1, animal2) -> animal1.getName().compareToIgnoreCase(animal2.getName()));
+        testCondition(animalList, animal -> animal.getYear() == 1758);
         System.out.println();
 
         System.out.println("\n*** animals that are mammals ***\n");
-        animalList.sort((v1, v2) -> v1.getName().compareToIgnoreCase(v2.getName()));
+        animalList.sort((animal1, animal2) -> animal1.getName().compareToIgnoreCase(animal2.getName()));
+        testCondition(animalList, animal -> animal.getAnimalClass().equalsIgnoreCase("Mammal"));
         System.out.println();
     }
 }

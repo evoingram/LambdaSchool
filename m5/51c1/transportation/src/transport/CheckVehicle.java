@@ -1,5 +1,5 @@
 package transport;
 
 public interface CheckVehicle {
-    boolean test(AbstractVehicle v);
+    boolean test(AbstractAnimals animal);
 }

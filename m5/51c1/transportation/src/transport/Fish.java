@@ -25,16 +25,20 @@ public class Fish extends AbstractAnimals {
         return year;
     }
 
+    public String getAnimalClass() {
+        return "Fish";
+    };
+
     public String move() {
         return " moves by swimming.";
     };
 
     public String breathe() {
-        return " breathes with gills.";
+        return "gills";
     };
 
     public String reproduce() {
-        return " reproduce via eggs.";
+        return "eggs";
     };
 
 }

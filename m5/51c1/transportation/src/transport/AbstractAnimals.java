@@ -18,6 +18,8 @@ public abstract class AbstractAnimals {
 
     public abstract int getYear();
 
+    public abstract String getAnimalClass();
+
     public abstract String move();
 
     public abstract String breathe();

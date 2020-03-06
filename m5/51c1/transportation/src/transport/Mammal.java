@@ -4,6 +4,8 @@ public class Mammal extends AbstractAnimals {
     public String name;
     public int year;
 
+    public String animalClass;
+
     public Mammal(String name, int year) {
         this.name = name;
         this.year = year;
@@ -21,6 +23,10 @@ public class Mammal extends AbstractAnimals {
         this.year = year;
     }
 
+    public String getAnimalClass() {
+        return "Mammal";
+    };
+
     public int getYear() {
         return year;
     }
@@ -30,11 +36,11 @@ public class Mammal extends AbstractAnimals {
     };
 
     public String breathe() {
-        return " breathes with lungs.";
+        return "lungs";
     };
 
     public String reproduce() {
-        return " reproduce via live births.";
+        return "live births";
     };
 
 }

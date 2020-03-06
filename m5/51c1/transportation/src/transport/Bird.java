@@ -27,16 +27,20 @@ public class Bird extends AbstractAnimals {
         return year;
     };
 
+    public String getAnimalClass() {
+        return "Bird";
+    };
+
     public String move() {
         return " moves by flying.";
     };
 
     public String breathe() {
-        return " breathes with lungs.";
+        return "lungs";
     };
 
     public String reproduce() {
-        return " reproduce via eggs.";
+        return "eggs";
     };
 
 }
