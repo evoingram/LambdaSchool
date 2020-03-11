@@ -11,15 +11,12 @@ public class Main {
         filteredList.clear();
         for (AbstractPiggyBank coin : piggyBank) {
             if (tester.test(coin)) {
-                System.out.println(coin.getPbTotal());
                 filteredList.add(coin);
             }
         }
     }
 
     public static void main(String[] args) {
-        String pattern = "###,###.00";
-        DecimalFormat dFormat = new DecimalFormat(pattern);
         ArrayList<AbstractPiggyBank> piggyBank = new ArrayList<AbstractPiggyBank>();
 
         // collection 1
@@ -33,6 +30,6 @@ public class Main {
         piggyBank.add(new Penny(10));
         // System.out.println("The piggy bank holds " +
         // fp.format(piggyBank.getPbTotal()));
-        System.out.println(piggyBank.getPbTotal());
+        System.out.println(Quarter.getPbTotal());
     }
 }

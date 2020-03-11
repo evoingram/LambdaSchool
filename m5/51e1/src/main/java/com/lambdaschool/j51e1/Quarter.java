@@ -1,5 +1,7 @@
 package com.lambdaschool.j51e1;
 
+import java.text.DecimalFormat;
+
 public class Quarter extends AbstractPiggyBank {
     public double amount;
     public int quantity;
@@ -48,5 +50,10 @@ public class Quarter extends AbstractPiggyBank {
             return "1 Quarter";
         } else
             return this.quantity + " Quarters";
+    }
+    @Override
+    public String getPbTotal() {
+        DecimalFormat fp = new DecimalFormat("$###,###.00");
+        return "The piggy bank holds " + fp.format(pbTotal);
     }
 }
