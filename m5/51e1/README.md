@@ -9,11 +9,11 @@ We have a magical "piggy bank" (a piggy bank is the traditional name of a place 
 - [ ] Create a collection (array, arraylist, or hashmap) to represent the piggy bank. 
 - [ ] The collection can hold money.  
 This money can be
-- [ ] A Dollar worth $1.00
-- [ ] A Quarter worth $0.25
-- [ ] A Dime worth $0.10
-- [ ] A Nickel worth $0.05
-- [ ] A Penny worth $0.01  
+- [X] A Dollar worth $1.00
+- [X] A Quarter worth $0.25
+- [X] A Dime worth $0.10
+- [X] A Nickel worth $0.05
+- [X] A Penny worth $0.01  
 
 When creating a coin object, you can optionally give the number of coins being added. If no number is given, the default is 1 coin being added to the piggy bank.  
 
