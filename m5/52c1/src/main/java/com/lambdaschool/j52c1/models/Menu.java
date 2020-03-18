@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 @Entity
 @Table(name="menus")
 public class Menu {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long menuid;
