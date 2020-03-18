@@ -13,14 +13,14 @@ INSERT INTO menus(menuid, dish, price, restaurantid)
            (3, 'Meatloaf', 7.95, 1),
            (4, 'Tacos', 10.49, 1),
            (5, 'Chef Salad', 6.95, 1),
-           (6, 'Mashed Potatoes', 5.95, 1),
-           (7, 'Spaghetti', 11.95, 1),
-           (8, 'Salmon', 8.95, 1),
+           (6, 'Mashed Potatoes', 5.95, 2),
+           (7, 'Spaghetti', 11.95, 2),
+           (8, 'Salmon', 8.95, 2),
            (9, 'Barbacoa', 12.75, 2),
            (10, 'Pizza', 14.95, 3),
-           (11, 'Fish and Chips', 8.95, 1),
-           (12, 'Hamburger and Fries', 9.95, 1),
-           (13, 'Pancakes',8.95, 1),
-           (14, 'Salad', 5.95, 1);
+           (11, 'Fish and Chips', 8.95, 3),
+           (12, 'Hamburger and Fries', 9.95, 3),
+           (13, 'Pancakes',8.95, 3),
+           (14, 'Salad', 5.95, 3);
 
 ALTER sequence hibernate_sequence restart with 20;

@@ -34,12 +34,33 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Override
     public Restaurant findRestaurantByName(String name) {
-        return null;
+        Restaurant restaurant = restrepos.findByName(name);
+
+        if(restaurant == null){
+            throw new EntityNotFoundException("Restaurant not found, name = " + name);
+        }
+        return restaurant;
     }
 
     @Override
-    public void delete(long id) {
+    public Restaurant findRestaurantByTelephone(String telephone) {
+        Restaurant restaurant = restrepos.findByTelephone(telephone);
 
+        if(restaurant == null){
+            throw new EntityNotFoundException("Restaurant not found, telephone = " + telephone);
+        }
+        return restaurant;
+    }
+
+    @Override
+    public Restaurant delete(long id) {
+        if(restrepos.findById(id).isPresent()){
+            restrepos.deleteById(id);
+        }
+        else {
+            throw new EntityNotFoundException("ID = " + id);
+        }
+        return null;
     }
 
     @Transactional
@@ -62,8 +83,35 @@ public class RestaurantServiceImpl implements RestaurantService {
         return restrepos.save(newRestaurant);
     }
 
+    @Transactional
     @Override
     public Restaurant update(Restaurant restaurant, long id) {
-        return null;
+
+        Restaurant currentRestaurant =
+                restrepos.findById(id)
+                         .orElseThrow(()->new EntityNotFoundException(Long.toString(id)));
+
+        if(restaurant.getName() != null){
+            currentRestaurant.setName((restaurant.getName()));
+        }
+        if(restaurant.getAddress() != null){
+            currentRestaurant.setAddress((restaurant.getAddress()));
+        }
+        if(restaurant.getCity() != null){
+            currentRestaurant.setCity((restaurant.getCity()));
+        }
+        if(restaurant.getState() != null){
+            currentRestaurant.setState((restaurant.getState()));
+        }
+        if(restaurant.getTelephone() != null){
+            currentRestaurant.setTelephone((restaurant.getTelephone()));
+        }
+        if(restaurant.getMenus().size() > 0){
+            for(Menu m : restaurant.getMenus()){
+                currentRestaurant.getMenus().add(new Menu(m.getDish(), m.getPrice(), currentRestaurant));
+            }
+
+        }
+        return restrepos.save(currentRestaurant);
     }
 }

@@ -13,7 +13,9 @@ public interface RestaurantService {
 
     Restaurant findRestaurantByName(String name);
 
-    void delete(long id);
+    Restaurant findRestaurantByTelephone(String telephone);
+
+    Restaurant delete(long id);
 
     Restaurant save(Restaurant restaurant);
 
