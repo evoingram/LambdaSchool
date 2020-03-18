@@ -1,5 +1,7 @@
 package com.lambdaschool.j52c1.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +25,7 @@ public class Restaurant {
     @OneToMany(mappedBy = "restaurant",
                cascade = CascadeType.ALL,
                orphanRemoval = true)
+    @JsonIgnoreProperties("restaurant")
     private List<Menu> menus = new ArrayList<>();
 
     public Restaurant() {
