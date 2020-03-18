@@ -1,5 +1,7 @@
 package com.lambdaschool.j52c1.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.sql.PreparedStatement;
 
@@ -20,6 +22,7 @@ public class Menu {
     @ManyToOne
     @JoinColumn(name = "restaurantid",
             nullable = false)
+    @JsonIgnoreProperties("menus")
     private Restaurant restaurant;
 
     public Menu() {
