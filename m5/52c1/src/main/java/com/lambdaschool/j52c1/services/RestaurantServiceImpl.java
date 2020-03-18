@@ -1,13 +1,16 @@
 package com.lambdaschool.j52c1.services;
 
+import com.lambdaschool.j52c1.models.Menu;
 import com.lambdaschool.j52c1.models.Restaurant;
 import com.lambdaschool.j52c1.repos.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Transactional
 @Service(value="restaurantService")
 public class RestaurantServiceImpl implements RestaurantService {
 
@@ -36,9 +39,24 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     }
 
+    @Transactional
     @Override
     public Restaurant save(Restaurant restaurant) {
-        return null;
+        Restaurant newRestaurant = new Restaurant();
+        newRestaurant.setName(restaurant.getName());
+        newRestaurant.setAddress(restaurant.getAddress());
+        newRestaurant.setCity(restaurant.getCity());
+        newRestaurant.setState(restaurant.getState());
+        newRestaurant.setTelephone(restaurant.getTelephone());
+
+        // pointers
+        // pointer gets set, all data goes away, doesn't bring info with it
+        // newRestaurant.setMenus(restaurant.getMenus());
+
+        for(Menu m : restaurant.getMenus()){
+            newRestaurant.getMenus().add(new Menu(m.getDish(), m.getPrice(), newRestaurant));
+        }
+        return restrepos.save(newRestaurant);
     }
 
     @Override
