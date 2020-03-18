@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,9 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Override
     public Restaurant findRestaurantById(long id) {
-        return null;
+
+        return restrepos.findById(id)
+                .orElseThrow(()-> new EntityNotFoundException("ID = " + id));
     }
 
     @Override
