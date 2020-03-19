@@ -1,34 +1,31 @@
-# Jetbrains IntelliJ Idea
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
 .idea
+*.iws
 *.iml
+*.ipr
 
-# Linux
-# backup files
-*~
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
 
-# Windows
-# thumbnails
-Thumbs.db
-
-# Mac OS X
-# metadata
-.DS_Store
-# thumbnails
-._*
-
-# GIT
-.git/
-
-# Java
-*.class
-
-# packages 
-*.jar
-*.war
-*.ear
-
-# Logging
-*.log
-
-# jME (binaries)
-*.so
+### VS Code ###
+.vscode/
