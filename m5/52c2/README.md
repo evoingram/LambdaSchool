@@ -1295,15 +1295,15 @@ Using the provided seed data, a successful application will return the follow da
 ## Instructions
 
 * [X] Please fork and clone this repository. This repository does not have a starter project, so create one inside of the cloned repository folder. Regularly commit and push your code as appropriate.
-* [ ] Create the entities needed to store this data.
+* [X] Create the entities needed to store this data.
 * [X] A data.sql file has been provided with seed data. You can use this class directly or modify it to fit your models. However, the data found in the file is the seed data to use!
 
 Expose the following endpoints
 
+* [ ]  GET /agents/agent/{id} - Returns the agent and their customers with the given agent id
 * [ ]  GET /customers/orders - Returns all customers with their orders
 * [ ]  GET /customers/customer/{id} - Returns the customer and their orders with the given customer id
 * [ ]  GET /customers/namelike/{likename} - Returns all customers and their orders with a customer name containing the given substring
-* [ ]  GET /agents/agent/{id} - Returns the agent and their customers with the given agent id
 * [ ]  GET /orders/order/{id} - Returns the order and its customer with the given order number
 
 ### Stretch Goal

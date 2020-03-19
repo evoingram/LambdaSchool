@@ -14,6 +14,7 @@ import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
+// ORDERS (ordnum, ordamount, advanceamount, custcode, orderdescription)
 @Transactional
 @Service(value="orderService")
 public class OrderServiceImple {

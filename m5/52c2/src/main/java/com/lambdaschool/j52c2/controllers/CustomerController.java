@@ -15,6 +15,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
+// CUSTOMERS (custcode, custname, custcity, workingarea, custcountry, grade, openingamt, receiveamt, paymentamt, outstandingamt, phone, agentcode)
 @RestController
 public class CustomerController {
 
@@ -57,6 +58,11 @@ public class CustomerController {
         Customer r = customerService.findCustomerByTelephone(customerPhone);
         return new ResponseEntity<>(r, HttpStatus.OK);
     }
+
+    // GET /customers/orders - Returns all customers with their orders
+    // GET /customers/customer/{id} - Returns the customer and their orders with the given customer id
+    // GET /customers/namelike/{likename} - Returns all customers and their orders with a customer name containing the given substring
+
     // DELETE one customer
     // http://localhost:2019/customers/customer/{customerid}
     @DeleteMapping(value = "/customer/{customerId}")

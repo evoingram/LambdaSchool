@@ -16,6 +16,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
+// ORDERS (ordnum, ordamount, advanceamount, custcode, orderdescription)
 @RestController
 public class OrderController {
 
@@ -58,6 +59,10 @@ public class OrderController {
         Order r = orderService.findOrderByTelephone(orderPhone);
         return new ResponseEntity<>(r, HttpStatus.OK);
     }
+
+    // GET /orders/order/{id} - Returns the order and its customer with the given order number
+
+    // GET /orders/advanceamount - returns all orders with their customers that have an advanceamount greater than 0.
     // DELETE one order
     // http://localhost:2019/orders/order/{orderid}
     @DeleteMapping(value = "/order/{orderId}")

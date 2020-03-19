@@ -58,6 +58,9 @@ public class AgentController {
         Agent r = agentService.findAgentByTelephone(agentPhone);
         return new ResponseEntity<>(r, HttpStatus.OK);
     }
+
+    // GET /agents/agent/{id} - Returns the agent and their customers with the given agent id
+
     // DELETE one agent
     // http://localhost:2019/agents/agent/{agentid}
     @DeleteMapping(value = "/agent/{agentId}")
