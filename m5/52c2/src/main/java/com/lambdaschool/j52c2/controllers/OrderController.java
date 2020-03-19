@@ -43,6 +43,7 @@ public class OrderController {
         Order r = orderService.findOrderById(ordnum);
         return new ResponseEntity<>(r, HttpStatus.OK);
     }
+    
 
     // GET one order by name
     // http://localhost:2019/orders/order/{orderName}
@@ -64,11 +65,15 @@ public class OrderController {
 
 
     // GET /orders/advanceamount - returns all orders with their customers that have an advanceamount greater than 0.
+    // http://localhost:2019/orders/advanceamount
+    @GetMapping(value = "/orders/advanceamount",
+            produces = {"application/json"})
+    public ResponseEntity<?> getOrderByAdvanceAmount() {
+        Order r = orderService.findOrderByAdvanceAmount();
+        return new ResponseEntity<>(r, HttpStatus.OK);
+    }
 
-
-
-
-    // DELETE one order
+]    // DELETE one order
     // http://localhost:2019/orders/order/{ordnum}
     @DeleteMapping(value = "/order/{ordnum}")
     public ResponseEntity<?> deleteOrderById(@PathVariable Long ordnum) {

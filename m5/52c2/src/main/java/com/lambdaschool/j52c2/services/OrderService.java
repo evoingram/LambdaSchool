@@ -10,7 +10,7 @@ public interface OrderService {
 
     Order findOrderById(long ordnum);
 
-    Order findOrderByAdvanceAmount(double advanceamount);
+    Order findOrderByAdvanceAmount();
 
     Order findOrderByOrderAmount(double ordamount);
 

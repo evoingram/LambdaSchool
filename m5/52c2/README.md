@@ -1308,7 +1308,7 @@ Expose the following endpoints
 
 ### Stretch Goal
 
-* [ ] GET /orders/advanceamount - returns all orders with their customers that have an advanceamount greater than 0.
+* [X] GET /orders/advanceamount - returns all orders with their customers that have an advanceamount greater than 0.
 
 -- go back to AgentServiceImple after customers done and fix very last endpoint
 -- go back to OrderServiceImple after customers done and fix very last endpoint
