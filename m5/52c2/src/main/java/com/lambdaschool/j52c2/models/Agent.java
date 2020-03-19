@@ -12,40 +12,40 @@ import java.util.List;
 public class Agent {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long agentid;
+    private long agentCode;
 
     @Column(unique = true,
             nullable = false)
     private String name;
 
-    private String address;
-    private String city;
-    private String state;
+    private double commission;
+    private String country;
+    private String workingarea;
     private String telephone;
 
     @OneToMany(mappedBy = "agent",
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     @JsonIgnoreProperties("agent")
-    private List<Menu> menus = new ArrayList<>();
+    private List<Customer> customers = new ArrayList<>();
 
     public Agent() {
     }
 
-    public Agent(String name, String address, String city, String state, String telephone) {
+    public Agent(String name, double commission, String country, String workingarea, String telephone) {
         this.name = name;
-        this.address = address;
-        this.city = city;
-        this.state = state;
+        this.commission = commission;
+        this.country = country;
+        this.workingarea = workingarea;
         this.telephone = telephone;
     }
 
-    public long getAgentid() {
-        return agentid;
+    public long getAgentCode() {
+        return agentCode;
     }
 
-    public void setAgentid(long agentid) {
-        this.agentid = agentid;
+    public void setAgentCode(long agentCode) {
+        this.agentCode = agentCode;
     }
 
     public String getName() {
@@ -56,28 +56,28 @@ public class Agent {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
+    public String getCommission() {
+        return commission;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setCommission(String commission) {
+        this.commission = commission;
     }
 
-    public String getCity() {
-        return city;
+    public String getCountry() {
+        return country;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
-    public String getState() {
-        return state;
+    public String getWorkingarea() {
+        return workingarea;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setWorkingarea(String workingarea) {
+        this.workingarea = workingarea;
     }
 
     public String getTelephone() {
@@ -88,11 +88,11 @@ public class Agent {
         this.telephone = telephone;
     }
 
-    public List<Menu> getMenus() {
-        return menus;
+    public List<Customer> getCustomers() {
+        return customers;
     }
 
-    public void setMenus(List<Menu> menus) {
-        this.menus = menus;
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
     }
 }

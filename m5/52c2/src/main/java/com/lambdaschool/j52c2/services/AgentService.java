@@ -9,15 +9,16 @@ import java.util.List;
 public interface AgentService {
     List<Agent> findAll();
 
-    Agent findAgentById(long id);
+    Agent findAgentByCode(long agentCode);
 
+    // GET /agents/agent/{code} - Returns the agent and their customers with the given agent code
     Agent findAgentByName(String name);
 
     Agent findAgentByTelephone(String telephone);
 
-    Agent delete(long id);
+    Agent delete(long agentCode);
 
     Agent save(Agent agent);
 
-    Agent update(Agent agent, long id);
+    Agent update(Agent agent, long agentCode);
 }

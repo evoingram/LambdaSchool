@@ -14,6 +14,7 @@ import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
+// AGENTS (agentcode, agentname, workingarea, commission, phone, country)
 @Transactional
 @Service(value="agentService")
 public class AgentServiceImple {
@@ -27,11 +28,12 @@ public class AgentServiceImple {
         return rtnList;
     }
 
+    // GET /agents/agent/{agentCode} - Returns the agent and their customers with the given agent code
     @Override
-    public Agent findAgentById(long id) {
+    public Agent findAgentByCode(long agentCode) {
 
-        return restrepos.findById(id)
-                .orElseThrow(()-> new EntityNotFoundException("ID = " + id));
+        return restrepos.findByCode(agentCode)
+                .orElseThrow(()-> new EntityNotFoundException("ID = " + agentCode));
     }
 
     @Override
@@ -55,12 +57,12 @@ public class AgentServiceImple {
     }
 
     @Override
-    public Agent delete(long id) {
-        if(restrepos.findById(id).isPresent()){
-            restrepos.deleteById(id);
+    public Agent delete(long agentCode) {
+        if(restrepos.findByCode(agentCode).isPresent()){
+            restrepos.deleteByCode(agentCode);
         }
         else {
-            throw new EntityNotFoundException("ID = " + id);
+            throw new EntityNotFoundException("ID = " + agentCode);
         }
         return null;
     }
@@ -87,11 +89,11 @@ public class AgentServiceImple {
 
     @Transactional
     @Override
-    public Agent update(Agent agent, long id) {
+    public Agent update(Agent agent, long agentCode) {
 
         Agent currentAgent =
-                restrepos.findById(id)
-                        .orElseThrow(()->new EntityNotFoundException(Long.toString(id)));
+                restrepos.findByCode(agentCode)
+                        .orElseThrow(()->new EntityNotFoundException(Long.toString(agentCode)));
 
         if(agent.getName() != null){
             currentAgent.setName((agent.getName()));

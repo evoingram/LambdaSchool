@@ -32,12 +32,13 @@ public class AgentController {
         return new ResponseEntity<>(myAgents, HttpStatus.OK);
     }
 
-    // GET one agent by id
-    // http://localhost:2019/agents/agent/{agentid}
-    @GetMapping(value = "/agent/{agentId}",
+    // GET one agent by agentcode
+    // GET /agents/agent/{code} - Returns the agent and their customers with the given agent code
+    // http://localhost:2019/agents/agent/{agentcode}
+    @GetMapping(value = "/agent/{agentCode}",
             produces = {"application/json"})
-    public ResponseEntity<?> getAgentById(@PathVariable Long agentId) {
-        Agent r = agentService.findAgentById(agentId);
+    public ResponseEntity<?> getAgentByCode(@PathVariable Long agentCode) {
+        Agent r = agentService.findAgentByCode(agentCode);
         return new ResponseEntity<>(r, HttpStatus.OK);
     }
 
@@ -59,24 +60,23 @@ public class AgentController {
         return new ResponseEntity<>(r, HttpStatus.OK);
     }
 
-    // GET /agents/agent/{id} - Returns the agent and their customers with the given agent id
 
     // DELETE one agent
-    // http://localhost:2019/agents/agent/{agentid}
-    @DeleteMapping(value = "/agent/{agentId}")
-    public ResponseEntity<?> deleteAgentById(@PathVariable Long agentId) {
-        agentService.delete(agentId);
+    // http://localhost:2019/agents/agent/{agentcode}
+    @DeleteMapping(value = "/agent/{agentCode}")
+    public ResponseEntity<?> deleteAgentByCode(@PathVariable Long agentCode) {
+        agentService.delete(agentCode);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     // PUT one agent
-    // http://localhost:2019/agents/agent/{agentid}
-    @PutMapping(value = "/agent/{agentId}",
+    // http://localhost:2019/agents/agent/{agentcode}
+    @PutMapping(value = "/agent/{agentCode}",
             produces = {"application/json"},
             consumes = {"application/json"})
     public ResponseEntity<?> updateAgent(@RequestBody Agent updateAgent,
-                                              @PathVariable Long agentId) {
-        agentService.update(updateAgent, agentId);
+                                              @PathVariable Long agentCode) {
+        agentService.update(updateAgent, agentCode);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -90,8 +90,8 @@ public class AgentController {
 
         // set location header for newly created resource
         HttpHeaders responseHeaders = new HttpHeaders();
-        URI newAgentURI = ServletUriComponentsBuilder.fromCurrentRequest().path("/{agentid}")
-                .buildAndExpand(newAgent.getAgentid()).toUri();
+        URI newAgentURI = ServletUriComponentsBuilder.fromCurrentRequest().path("/{agentcode}")
+                .buildAndExpand(newAgent.getAgentCode()).toUri();
         responseHeaders.setLocation(newAgentURI);
 
         return new ResponseEntity<>(null, responseHeaders, HttpStatus.CREATED);
