@@ -56,11 +56,11 @@ public class Agent {
         this.name = name;
     }
 
-    public String getCommission() {
+    public double getCommission() {
         return commission;
     }
 
-    public void setCommission(String commission) {
+    public void setCommission(double commission) {
         this.commission = commission;
     }
 

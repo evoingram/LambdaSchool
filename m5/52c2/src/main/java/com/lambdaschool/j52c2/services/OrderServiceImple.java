@@ -5,7 +5,7 @@ import com.lambdaschool.j52c2.models.Customer;
 import com.lambdaschool.j52c2.models.Order;
 import com.lambdaschool.j52c2.repos.OrderRepository;
 import com.lambdaschool.j52c2.repos.AgentsRepository;
-import com.lambdaschool.j52c2.repos.CustomersRepository;
+import com.lambdaschool.j52c2.repos.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +20,7 @@ import java.util.List;
 public class OrderServiceImple {
     @Autowired
     private OrderRepository restrepos;
+    private CustomerRepository customerrepos;
 
     @Override
     public List<Order> findAll() {
@@ -73,18 +74,18 @@ public class OrderServiceImple {
     @Override
     public Order save(Order order) {
         Order newOrder = new Order();
-        newOrder.setName(order.getName());
-        newOrder.setAddress(order.getAddress());
-        newOrder.setCity(order.getCity());
-        newOrder.setState(order.getState());
-        newOrder.setTelephone(order.getTelephone());
+        newOrder.setOrdamount(order.getOrdamount());
+        newOrder.setAdvanceamount(order.getAdvanceamount());
+        newOrder.setCustomer(order.getCustomer());
+        newOrder.setCustcode(order.getCustcode());
+        newOrder.setOrderDescription(order.getOrderDescription());
 
         // pointers
         // pointer gets set, all data goes away, doesn't bring info with it
         // newOrder.setCustomers(order.getCustomers());
 
         for(Customer m : order.getCustomers()){
-            newOrder.getCustomers().add(new Customer(m.getDish(), m.getPrice(), newOrder));
+            newOrder.getCustomers().add(newCustomer(m.getCustname(), m.getCustcity(), m.getWorkingarea(), m.getCustcountry(), m.getTelephone(), newOrder));
         }
         return restrepos.save(newOrder);
     }
@@ -111,7 +112,7 @@ public class OrderServiceImple {
         }
         if(order.getCustomer().size() > 0){
             for(Customer m : order.getCustomer()){
-                currentOrder.getCustomer().add(new Customer(m.getCustname(), m.getCustcity(), currentOrder));
+                currentOrder.getCustomer().add(new Customer(m.getCustname(), m.getCustcity(), m.getWorkingarea(), m.getCustcountry(), m.getTelephone(), currentOrder));
             }
 
         }

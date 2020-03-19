@@ -1,11 +1,9 @@
 package com.lambdaschool.j52c2.services;
 
-import com.lambdaschool.j52c2.models.Agent;
 import com.lambdaschool.j52c2.models.Customer;
 import com.lambdaschool.j52c2.models.Order;
 import com.lambdaschool.j52c2.repos.OrderRepository;
-import com.lambdaschool.j52c2.repos.AgentsRepository;
-import com.lambdaschool.j52c2.repos.CustomersRepository;
+import com.lambdaschool.j52c2.repos.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +19,7 @@ import java.util.List;
 public class CustomerServiceImple {
     @Autowired
     private CustomerRepository restrepos;
+    private OrderRepository orderrepos;
 
     @Override
     public List<Customer> findAll() {

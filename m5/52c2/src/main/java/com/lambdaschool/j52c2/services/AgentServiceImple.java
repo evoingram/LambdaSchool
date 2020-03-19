@@ -5,7 +5,7 @@ import com.lambdaschool.j52c2.models.Customer;
 import com.lambdaschool.j52c2.models.Order;
 import com.lambdaschool.j52c2.repos.OrderRepository;
 import com.lambdaschool.j52c2.repos.AgentsRepository;
-import com.lambdaschool.j52c2.repos.CustomersRepository;
+import com.lambdaschool.j52c2.repos.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,12 +20,12 @@ import java.util.List;
 public class AgentServiceImple {
 
     @Autowired
-    private AgentRepository restrepos;
+    private AgentsRepository agentrepos;
 
     @Override
     public List<Agent> findAll() {
         List<Agent> rtnList = new ArrayList<>();
-        restrepos.findAll().iterator().forEachRemaining(rtnList::add);
+        agentrepos.findAll().iterator().forEachRemaining(rtnList::add);
         return rtnList;
     }
 
@@ -33,13 +33,13 @@ public class AgentServiceImple {
     @Override
     public Agent findAgentByCode(long agentCode) {
 
-        return restrepos.findByCode(agentCode)
+        return agentrepos.findAgentByCode(agentCode)
                 .orElseThrow(()-> new EntityNotFoundException("ID = " + agentCode));
     }
 
     @Override
     public Agent findAgentByName(String name) {
-        Agent agent = restrepos.findByName(name);
+        Agent agent = agentrepos.findAgentByName(name);
 
         if(agent == null){
             throw new EntityNotFoundException("Agent not found, name = " + name);
@@ -49,7 +49,7 @@ public class AgentServiceImple {
 
     @Override
     public Agent findAgentByTelephone(String telephone) {
-        Agent agent = restrepos.findByTelephone(telephone);
+        Agent agent = agentrepos.findAgentByTelephone(telephone);
 
         if(agent == null){
             throw new EntityNotFoundException("Agent not found, telephone = " + telephone);
@@ -59,8 +59,8 @@ public class AgentServiceImple {
 
     @Override
     public Agent delete(long agentCode) {
-        if(restrepos.findByCode(agentCode).isPresent()){
-            restrepos.deleteByCode(agentCode);
+        if(agentrepos.findAgentByCode(agentCode).isPresent()){
+            agentrepos.deleteAgentByCode(agentCode);
         }
         else {
             throw new EntityNotFoundException("ID = " + agentCode);
@@ -81,11 +81,11 @@ public class AgentServiceImple {
         // pointers
         // pointer gets set, all data goes away, doesn't bring info with it
         // newAgent.setCustomers(agent.getCustomers());
-
+        // (String custname, String custcity, String workingarea, String custcountry, String telephone)
         for(Customer m : agent.getCustomers()){
-            newAgent.getCustomers().add(new Customer(m.getDish(), m.getPrice(), newAgent));
+            newAgent.getCustomers().add(new Customer(m.getCustname(), m.getCustcity(), m.getWorkingarea(), m.getCustcountry(), m.getTelephone(), newAgent));
         }
-        return restrepos.save(newAgent);
+        return agentrepos.save(newAgent);
     }
 
     @Transactional
@@ -93,13 +93,13 @@ public class AgentServiceImple {
     public Agent update(Agent agent, long agentCode) {
 
         Agent currentAgent =
-                restrepos.findByCode(agentCode)
+                agentrepos.findAgentByCode(agentCode)
                         .orElseThrow(()->new EntityNotFoundException(Long.toString(agentCode)));
 
         if(agent.getName() != null){
             currentAgent.setName((agent.getName()));
         }
-        if(agent.getCommission() != null){
+        if(agent.getCommission() != 0){
             currentAgent.setCommission((agent.getCommission()));
         }
         if(agent.getCountry() != null){
@@ -116,10 +116,10 @@ public class AgentServiceImple {
 //            openingamt, receiveamt, paymentamt, outstandingamt, phone, agentcode)
         if(agent.getCustomers().size() > 0){
             for(Customer m : agent.getCustomers()){
-                currentAgent.getCustomers().add(new Customer(m.getCustname(), m.getCustcity(), currentAgent));
+                currentAgent.getCustomers().add(new Customer(m.getCustname(), m.getCustcity(), m.getWorkingarea(), m.getCustcountry(), m.getTelephone(), currentAgent));
             }
 
         }
-        return restrepos.save(currentAgent);
+        return agentrepos.save(currentAgent);
     }
 }

@@ -67,7 +67,7 @@ public class CustomerController {
     // http://localhost:2019/customers/orders
     @GetMapping(value = "/customers/orders",
             produces = {"application/json"})
-    public ResponseEntity<?> listAllCustomers(){
+    public ResponseEntity<?> listAllCustomersAndOrders(){
 
         List<Customer> myCustomers = customerService.findAll();
         return new ResponseEntity<>(myCustomers, HttpStatus.OK);

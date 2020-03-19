@@ -9,7 +9,7 @@ import java.util.List;
 // ORDERS (ordnum, ordamount, advanceamount, custcode, orderdescription)
 
 @Entity
-@Table(ordamount = "orders")
+@Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -75,9 +75,7 @@ public class Order {
         return custcode;
     }
 
-    public long setCustcode(long custcode) {
-        this.custcode = custcode;
-    }
+    public void setCustcode(long custcode) {this.custcode = custcode;}
 
     public List<Customer> getCustomer() {
         return customer;

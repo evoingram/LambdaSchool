@@ -46,23 +46,13 @@ public class OrderController {
 
 
     // GET one order by name
-    // http://localhost:2019/orders/order/{orderName}
-    @GetMapping(value = "/order/name/{orderName}",
+    // http://localhost:2019/orders/order/{ordamount}
+    @GetMapping(value = "/order/name/{ordamount}",
             produces = {"application/json"})
-    public ResponseEntity<?> getOrderByName(@PathVariable String orderName) {
-        Order r = orderService.findOrderByName(orderName);
+    public ResponseEntity<?> getOrderByName(@PathVariable double ordamount) {
+        Order r = orderService.findOrderByOrderAmount(ordamount);
         return new ResponseEntity<>(r, HttpStatus.OK);
     }
-
-    // GET one order by telephone
-    // http://localhost:2019/orders/order/{orderPhone}
-    @GetMapping(value = "/order/phone/{orderPhone}",
-            produces = {"application/json"})
-    public ResponseEntity<?> getOrderByTelephone(@PathVariable String orderPhone) {
-        Order r = orderService.findOrderByTelephone(orderPhone);
-        return new ResponseEntity<>(r, HttpStatus.OK);
-    }
-
 
     // GET /orders/advanceamount - returns all orders with their customers that have an advanceamount greater than 0.
     // http://localhost:2019/orders/advanceamount
@@ -73,7 +63,7 @@ public class OrderController {
         return new ResponseEntity<>(r, HttpStatus.OK);
     }
 
-]    // DELETE one order
+    // DELETE one order
     // http://localhost:2019/orders/order/{ordnum}
     @DeleteMapping(value = "/order/{ordnum}")
     public ResponseEntity<?> deleteOrderById(@PathVariable Long ordnum) {
@@ -103,7 +93,7 @@ public class OrderController {
         // set location header for newly created resource
         HttpHeaders responseHeaders = new HttpHeaders();
         URI newOrderURI = ServletUriComponentsBuilder.fromCurrentRequest().path("/{ordnum}")
-                .buildAndExpand(newOrder.getordnum()).toUri();
+                .buildAndExpand(newOrder.getOrdnum()).toUri();
         responseHeaders.setLocation(newOrderURI);
 
         return new ResponseEntity<>(null, responseHeaders, HttpStatus.CREATED);
