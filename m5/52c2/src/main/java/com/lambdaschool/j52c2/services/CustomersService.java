@@ -1,5 +1,10 @@
 package com.lambdaschool.j52c2.services;
 
+
+import com.lambdaschool.j52c2.models.Customer;
+
+import java.util.List;
+
 public interface CustomersService {
     List<Customer> findAll();
 

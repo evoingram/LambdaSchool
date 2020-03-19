@@ -1,5 +1,11 @@
 package com.lambdaschool.j52c2.services;
 
+// AGENTS (agentcode, agentname, workingarea, commission, phone, country)
+
+import com.lambdaschool.j52c2.models.Agent;
+
+import java.util.List;
+
 public interface AgentService {
     List<Agent> findAll();
 

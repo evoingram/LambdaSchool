@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
+// AGENTS (agentcode, agentname, workingarea, commission, phone, country)
 @Entity
 @Table(name = "agents")
 public class Agent {
