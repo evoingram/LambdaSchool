@@ -10,15 +10,14 @@ import java.util.List;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long customerid;
+    private long custcode;
 
     @Column(unique = true,
             nullable = false)
-    private String name;
-
-    private String address;
-    private String city;
-    private String state;
+    private String custname;
+    private String workingarea;
+    private String custcity;
+    private String custcountry;
     private String telephone;
 
     // CUSTOMERS (custcode, custname, custcity, workingarea, custcountry, grade,
@@ -27,57 +26,58 @@ public class Customer {
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     @JsonIgnoreProperties("customer")
-    private List<Menu> menus = new ArrayList<>();
+
+    private List<Order> orders = new ArrayList<>();
 
     public Customer() {
     }
 
-    public Customer(String name, String address, String city, String state, String telephone) {
-        this.name = name;
-        this.address = address;
-        this.city = city;
-        this.state = state;
+    public Customer(String custname, String custcity, String workingarea, String custcountry, String telephone) {
+        this.custname = custname;
+        this.workingarea = workingarea;
+        this.custcity = custcity;
+        this.custcountry = custcountry;
         this.telephone = telephone;
     }
 
-    public long getCustomerid() {
-        return customerid;
+    public long getCustcode() {
+        return custcode;
     }
 
-    public void setCustomerid(long customerid) {
-        this.customerid = customerid;
+    public void setCustcode(long custcode) {
+        this.custcode = custcode;
     }
 
-    public String getName() {
-        return name;
+    public String getCustname() {
+        return custname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCustname(String custname) {
+        this.custname = custname;
     }
 
-    public String getAddress() {
-        return address;
+    public String getWorkingarea() {
+        return workingarea;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setWorkingarea(String workingarea) {
+        this.workingarea = workingarea;
     }
 
-    public String getCity() {
-        return city;
+    public String getCustcity() {
+        return custcity;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setCustcity(String custcity) {
+        this.custcity = custcity;
     }
 
-    public String getState() {
-        return state;
+    public String getCustcountry() {
+        return custcountry;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setCustcountry(String custcountry) {
+        this.custcountry = custcountry;
     }
 
     public String getTelephone() {
@@ -88,11 +88,11 @@ public class Customer {
         this.telephone = telephone;
     }
 
-    public List<Menu> getMenus() {
-        return menus;
+    public List<Order> getOrders() {
+        return orders;
     }
 
-    public void setMenus(List<Menu> menus) {
-        this.menus = menus;
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }

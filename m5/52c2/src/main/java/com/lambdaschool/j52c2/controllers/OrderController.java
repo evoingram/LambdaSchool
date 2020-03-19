@@ -43,7 +43,7 @@ public class OrderController {
         Order r = orderService.findOrderById(ordnum);
         return new ResponseEntity<>(r, HttpStatus.OK);
     }
-    
+
 
     // GET one order by name
     // http://localhost:2019/orders/order/{orderName}

@@ -10,15 +10,15 @@ import java.util.List;
 public interface CustomerService {
     List<Customer> findAll();
 
-    Customer findCustomerById(long id);
+    Customer findCustomerByCustcode(long custcode);
 
-    Customer findCustomerByName(String name);
+    Customer findCustomerByCustname(String custname);
 
     Customer findCustomerByTelephone(String telephone);
 
-    Customer delete(long id);
+    Customer delete(long custcode);
 
     Customer save(Customer customer);
 
-    Customer update(Customer customer, long id);
+    Customer update(Customer customer, long custcode);
 }

@@ -33,21 +33,22 @@ public class CustomerController {
         return new ResponseEntity<>(myCustomers, HttpStatus.OK);
     }
 
-    // GET one customer by id
-    // http://localhost:2019/customers/customer/{customerid}
-    @GetMapping(value = "/customer/{customerId}",
+    // GET one customer by Custcode
+    // GET /customers/customer/{custcode} - Returns the customer and their orders with the given customer custcode
+    // http://localhost:2019/customers/customer/{custcode}
+    @GetMapping(value = "/customers/customer/{custcode}",
             produces = {"application/json"})
-    public ResponseEntity<?> getCustomerById(@PathVariable Long customerId) {
-        Customer r = customerService.findCustomerById(customerId);
+    public ResponseEntity<?> getCustomerByCustcode(@PathVariable Long custcode) {
+        Customer r = customerService.findCustomerByCustcode(custcode);
         return new ResponseEntity<>(r, HttpStatus.OK);
     }
 
     // GET one customer by name
-    // http://localhost:2019/customers/customer/{customerName}
-    @GetMapping(value = "/customer/name/{customerName}",
+    // http://localhost:2019/customers/customer/name/{custname}
+    @GetMapping(value = "/customer/name/{custname}",
             produces = {"application/json"})
-    public ResponseEntity<?> getCustomerByName(@PathVariable String customerName) {
-        Customer r = customerService.findCustomerByName(customerName);
+    public ResponseEntity<?> getCustomerByCustname(@PathVariable String custname) {
+        Customer r = customerService.findCustomerByCustname(custname);
         return new ResponseEntity<>(r, HttpStatus.OK);
     }
 
@@ -61,25 +62,34 @@ public class CustomerController {
     }
 
     // GET /customers/orders - Returns all customers with their orders
-    // GET /customers/customer/{id} - Returns the customer and their orders with the given customer id
+    // http://localhost:2019/customers/orders
+    @GetMapping(value = "/customers/orders",
+            produces = {"application/json"})
+    public ResponseEntity<?> listAllCustomers(){
+
+        List<Customer> myCustomers = customerService.findAll();
+        return new ResponseEntity<>(myCustomers, HttpStatus.OK);
+    }
+
+
     // GET /customers/namelike/{likename} - Returns all customers and their orders with a customer name containing the given substring
 
     // DELETE one customer
-    // http://localhost:2019/customers/customer/{customerid}
-    @DeleteMapping(value = "/customer/{customerId}")
-    public ResponseEntity<?> deleteCustomerById(@PathVariable Long customerId) {
-        customerService.delete(customerId);
+    // http://localhost:2019/customers/customer/{custcode}
+    @DeleteMapping(value = "/customer/{custcode}")
+    public ResponseEntity<?> deleteCustomerByCustcode(@PathVariable Long custcode) {
+        customerService.delete(custcode);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     // PUT one customer
-    // http://localhost:2019/customers/customer/{customerid}
-    @PutMapping(value = "/customer/{customerId}",
+    // http://localhost:2019/customers/customer/{custcode}
+    @PutMapping(value = "/customer/{custcode}",
             produces = {"application/json"},
             consumes = {"application/json"})
     public ResponseEntity<?> updateCustomer(@RequestBody Customer updateCustomer,
-                                              @PathVariable Long customerId) {
-        customerService.update(updateCustomer, customerId);
+                                              @PathVariable Long custcode) {
+        customerService.update(updateCustomer, custcode);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -93,8 +103,8 @@ public class CustomerController {
 
         // set location header for newly created resource
         HttpHeaders responseHeaders = new HttpHeaders();
-        URI newCustomerURI = ServletUriComponentsBuilder.fromCurrentRequest().path("/{customerid}")
-                .buildAndExpand(newCustomer.getCustomerid()).toUri();
+        URI newCustomerURI = ServletUriComponentsBuilder.fromCurrentRequest().path("/{custcode}")
+                .buildAndExpand(newCustomer.getCustcode()).toUri();
         responseHeaders.setLocation(newCustomerURI);
 
         return new ResponseEntity<>(null, responseHeaders, HttpStatus.CREATED);

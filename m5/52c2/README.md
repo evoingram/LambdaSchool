@@ -1302,8 +1302,8 @@ Expose the following endpoints
 
 * [X]  GET /agents/agent/{id} - Returns the agent and their customers with the given agent id
 * [X]  GET /orders/order/{id} - Returns the order and its customer with the given order number
-* [ ]  GET /customers/orders - Returns all customers with their orders
-* [ ]  GET /customers/customer/{id} - Returns the customer and their orders with the given customer id
+* [X]  GET /customers/orders - Returns all customers with their orders
+* [X]  GET /customers/customer/{id} - Returns the customer and their orders with the given customer id
 * [ ]  GET /customers/namelike/{likename} - Returns all customers and their orders with a customer name containing the given substring
 
 ### Stretch Goal

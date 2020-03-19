@@ -30,18 +30,18 @@ public class CustomerServiceImple {
     }
 
     @Override
-    public Customer findCustomerById(long id) {
+    public Customer findCustomerByCustcode(long custcode) {
 
-        return restrepos.findById(id)
-                .orElseThrow(()-> new EntityNotFoundException("ID = " + id));
+        return restrepos.findByCustcode(custcode)
+                .orElseThrow(()-> new EntityNotFoundException("Custcode = " + custcode));
     }
 
     @Override
-    public Customer findCustomerByName(String name) {
-        Customer customer = restrepos.findByName(name);
+    public Customer findCustomerByCustname(String custname) {
+        Customer customer = restrepos.findByCustname(custname);
 
         if(customer == null){
-            throw new EntityNotFoundException("Customer not found, name = " + name);
+            throw new EntityNotFoundException("Customer not found, custname = " + custname);
         }
         return customer;
     }
@@ -57,12 +57,12 @@ public class CustomerServiceImple {
     }
 
     @Override
-    public Customer delete(long id) {
-        if(restrepos.findById(id).isPresent()){
-            restrepos.deleteById(id);
+    public Customer delete(long custcode) {
+        if(restrepos.findByCustcode(custcode).isPresent()){
+            restrepos.deleteByCustcode(custcode);
         }
         else {
-            throw new EntityNotFoundException("ID = " + id);
+            throw new EntityNotFoundException("Custcode = " + custcode);
         }
         return null;
     }
@@ -71,10 +71,10 @@ public class CustomerServiceImple {
     @Override
     public Customer save(Customer customer) {
         Customer newCustomer = new Customer();
-        newCustomer.setName(customer.getName());
-        newCustomer.setAddress(customer.getAddress());
-        newCustomer.setCity(customer.getCity());
-        newCustomer.setState(customer.getState());
+        newCustomer.setCustname(customer.getCustname());
+        newCustomer.setWorkingarea(customer.getWorkingarea());
+        newCustomer.setCustcity(customer.getCustcity());
+        newCustomer.setCustcountry(customer.getCustcountry());
         newCustomer.setTelephone(customer.getTelephone());
 
         // pointers
@@ -89,27 +89,30 @@ public class CustomerServiceImple {
 
     @Transactional
     @Override
-    public Customer update(Customer customer, long id) {
+    public Customer update(Customer customer, long custcode) {
 
         Customer currentCustomer =
-                restrepos.findById(id)
-                        .orElseThrow(()->new EntityNotFoundException(Long.toString(id)));
+                restrepos.findByCustcode(custcode)
+                        .orElseThrow(()->new EntityNotFoundException(Long.toString(custcode)));
 
-        if(customer.getName() != null){
-            currentCustomer.setName((customer.getName()));
+// CUSTOMERS (custcode, custname, custcity, workingarea, custcountry, grade,
+//            openingamt, receiveamt, paymentamt, outstandingamt, phone, agentcode)
+        if(customer.getCustname() != null){
+            currentCustomer.setCustname((customer.getCustname()));
         }
-        if(customer.getAddress() != null){
-            currentCustomer.setAddress((customer.getAddress()));
+        if(customer.getWorkingarea() != null){
+            currentCustomer.setWorkingarea((customer.getWorkingarea()));
         }
-        if(customer.getCity() != null){
-            currentCustomer.setCity((customer.getCity()));
+        if(customer.getCustcity() != null){
+            currentCustomer.setCustcity((customer.getCustcity()));
         }
-        if(customer.getState() != null){
-            currentCustomer.setState((customer.getState()));
+        if(customer.getCustcountry() != null){
+            currentCustomer.setCustcountry((customer.getCustcountry()));
         }
         if(customer.getTelephone() != null){
             currentCustomer.setTelephone((customer.getTelephone()));
         }
+        // come back
         if(customer.getMenus().size() > 0){
             for(Menu m : customer.getMenus()){
                 currentCustomer.getMenus().add(new Menu(m.getDish(), m.getPrice(), currentCustomer));
