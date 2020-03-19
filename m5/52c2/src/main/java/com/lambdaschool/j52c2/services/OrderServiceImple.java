@@ -38,13 +38,12 @@ public class OrderServiceImple {
 
 
     @Override
-    public Order findOrderByAdvanceAmount(double advanceamount) {
-        Order order = restrepos.findOrderByAdvanceAmount(advanceamount);
-
-        if(order == null){
-            throw new EntityNotFoundException("Order not found, advanceamount = " + advanceamount);
-        }
-        return order;
+    public List<Order> findOrderByAdvanceAmount(double advanceamount) {
+        List<Order> positiveAdvanceList = new ArrayList<>();
+        restrepos.findAll().iterator().forEachRemaining(currentOrder -> {
+            if(currentOrder.advanceamount > 0) positiveAdvanceList.add(currentOrder);
+        });
+        return positiveAdvanceList;
     }
 
     public Order findOrderByOrderAmount(double ordamount) {
@@ -55,6 +54,7 @@ public class OrderServiceImple {
         }
         return order;
     }
+
 
 
     @Override

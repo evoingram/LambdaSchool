@@ -1301,8 +1301,6 @@ Using the provided seed data, a successful application will return the follow da
 Expose the following endpoints
 
 * [X]  GET /agents/agent/{id} - Returns the agent and their customers with the given agent id
--- go back to AgentServiceImple after customers done and fix very last endpoint
--- go back to OrderServiceImple after customers done and fix very last endpoint
 * [X]  GET /orders/order/{id} - Returns the order and its customer with the given order number
 * [ ]  GET /customers/orders - Returns all customers with their orders
 * [ ]  GET /customers/customer/{id} - Returns the customer and their orders with the given customer id
@@ -1311,3 +1309,6 @@ Expose the following endpoints
 ### Stretch Goal
 
 * [ ] GET /orders/advanceamount - returns all orders with their customers that have an advanceamount greater than 0.
+
+-- go back to AgentServiceImple after customers done and fix very last endpoint
+-- go back to OrderServiceImple after customers done and fix very last endpoint
