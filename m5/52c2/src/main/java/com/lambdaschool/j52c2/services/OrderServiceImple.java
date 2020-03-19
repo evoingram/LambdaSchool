@@ -81,10 +81,10 @@ public class OrderServiceImple {
 
         // pointers
         // pointer gets set, all data goes away, doesn't bring info with it
-        // newOrder.setMenus(order.getMenus());
+        // newOrder.setCustomers(order.getCustomers());
 
-        for(Menu m : order.getMenus()){
-            newOrder.getMenus().add(new Menu(m.getDish(), m.getPrice(), newOrder));
+        for(Customer m : order.getCustomers()){
+            newOrder.getCustomers().add(new Customer(m.getDish(), m.getPrice(), newOrder));
         }
         return restrepos.save(newOrder);
     }
@@ -109,10 +109,9 @@ public class OrderServiceImple {
         if(order.getOrderDescription() != null){
             currentOrder.setOrderDescription((order.getOrderDescription()));
         }
-        // come back and add customer fields
         if(order.getCustomer().size() > 0){
-            for(Menu m : order.getCustomer()){
-                currentOrder.getCustomer().add(new Csutomer(m.getDish(), m.getPrice(), currentOrder));
+            for(Customer m : order.getCustomer()){
+                currentOrder.getCustomer().add(new Customer(m.getCustname(), m.getCustcity(), currentOrder));
             }
 
         }

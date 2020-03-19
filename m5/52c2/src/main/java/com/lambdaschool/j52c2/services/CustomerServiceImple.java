@@ -29,6 +29,16 @@ public class CustomerServiceImple {
         return rtnList;
     }
 
+
+    @Override
+    public List<Order> findCustomer(double advanceamount) {
+        List<Order> positiveAdvanceList = new ArrayList<>();
+        restrepos.findAll().iterator().forEachRemaining(currentOrder -> {
+            if(currentOrder.advanceamount > 0) positiveAdvanceList.add(currentOrder);
+        });
+        return positiveAdvanceList;
+    }
+
     @Override
     public Customer findCustomerByCustcode(long custcode) {
 
@@ -40,7 +50,7 @@ public class CustomerServiceImple {
     public Customer findCustomerByCustname(String custname) {
         Customer customer = restrepos.findByCustname(custname);
 
-        if(customer == null){
+        if(customer.containsNone(custname)){
             throw new EntityNotFoundException("Customer not found, custname = " + custname);
         }
         return customer;
@@ -79,10 +89,10 @@ public class CustomerServiceImple {
 
         // pointers
         // pointer gets set, all data goes away, doesn't bring info with it
-        // newCustomer.setMenus(customer.getMenus());
+        // newCustomer.setOrders(customer.getOrders());
 
-        for(Menu m : customer.getMenus()){
-            newCustomer.getMenus().add(new Menu(m.getDish(), m.getPrice(), newCustomer));
+        for(Order m : customer.getOrders()){
+            newCustomer.getOrders().add(new Order(m.getDish(), m.getPrice(), newCustomer));
         }
         return restrepos.save(newCustomer);
     }
@@ -112,10 +122,10 @@ public class CustomerServiceImple {
         if(customer.getTelephone() != null){
             currentCustomer.setTelephone((customer.getTelephone()));
         }
-        // come back
-        if(customer.getMenus().size() > 0){
-            for(Menu m : customer.getMenus()){
-                currentCustomer.getMenus().add(new Menu(m.getDish(), m.getPrice(), currentCustomer));
+
+        if(customer.getOrders().size() > 0){
+            for(Order m : customer.getOrders()){
+                currentCustomer.getOrders().add(new Order(m.getCustcode(), m.getOrdamount(), currentCustomer));
             }
 
         }

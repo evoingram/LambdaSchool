@@ -44,8 +44,10 @@ public class CustomerController {
     }
 
     // GET one customer by name
-    // http://localhost:2019/customers/customer/name/{custname}
-    @GetMapping(value = "/customer/name/{custname}",
+    // GET /customers/namelike/{likename} - Returns all customers and their orders with a customer name containing the given substring
+
+    // http://localhost:2019/customers/customer/namelike/{likename}
+    @GetMapping(value = "/customer/namelike/{likename}",
             produces = {"application/json"})
     public ResponseEntity<?> getCustomerByCustname(@PathVariable String custname) {
         Customer r = customerService.findCustomerByCustname(custname);
@@ -71,8 +73,6 @@ public class CustomerController {
         return new ResponseEntity<>(myCustomers, HttpStatus.OK);
     }
 
-
-    // GET /customers/namelike/{likename} - Returns all customers and their orders with a customer name containing the given substring
 
     // DELETE one customer
     // http://localhost:2019/customers/customer/{custcode}

@@ -116,7 +116,7 @@ public class AgentServiceImple {
 //            openingamt, receiveamt, paymentamt, outstandingamt, phone, agentcode)
         if(agent.getCustomers().size() > 0){
             for(Customer m : agent.getCustomers()){
-                currentAgent.getCustomers().add(new Customer(m.getDish(), m.getPrice(), currentAgent));
+                currentAgent.getCustomers().add(new Customer(m.getCustname(), m.getCustcity(), currentAgent));
             }
 
         }
