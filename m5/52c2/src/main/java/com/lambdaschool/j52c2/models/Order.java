@@ -9,91 +9,81 @@ import java.util.List;
 // ORDERS (ordnum, ordamount, advanceamount, custcode, orderdescription)
 
 @Entity
-@Table(name = "orders")
+@Table(ordamount = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long orderid;
+    private long ordnum;
 
     @Column(unique = true,
             nullable = false)
-    private String name;
+    private double ordamount;
 
-    private String address;
-    private String city;
-    private String state;
-    private String telephone;
+    private double advanceamount;
+    private String orderDescription;
+    private long custcode;
 
     @OneToMany(mappedBy = "order",
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     @JsonIgnoreProperties("order")
-    private List<Menu> menus = new ArrayList<>();
+    private List<Customer> customer = new ArrayList<>();
 
     public Order() {
     }
 
-    public Order(String name, String address, String city, String state, String telephone) {
-        this.name = name;
-        this.address = address;
-        this.city = city;
-        this.state = state;
-        this.telephone = telephone;
+    public Order(double ordamount, double advanceamount, String orderDescription, long custcode) {
+        this.ordamount = ordamount;
+        this.advanceamount = advanceamount;
+        this.orderDescription = orderDescription;
+        this.custcode = custcode;
     }
 
-    public long getOrderid() {
-        return orderid;
+    public long getOrdnum() {
+        return ordnum;
     }
 
-    public void setOrderid(long orderid) {
-        this.orderid = orderid;
+    public void setOrdnum(long ordnum) {
+        this.ordnum = ordnum;
     }
 
-    public String getName() {
-        return name;
+    public double getOrdamount() {
+        return ordamount;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setOrdamount(double ordamount) {
+        this.ordamount = ordamount;
     }
 
-    public String getAddress() {
-        return address;
+    public double getAdvanceamount() {
+        return advanceamount;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAdvanceamount(double advanceamount) {
+        this.advanceamount = advanceamount;
     }
 
-    public String getCity() {
-        return city;
+    public String getOrderDescription() {
+        return orderDescription;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setOrderDescription(String orderDescription) {
+        this.orderDescription = orderDescription;
     }
 
-    public String getState() {
-        return state;
+    public long getCustcode() {
+        return custcode;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public long setCustcode(long custcode) {
+        this.custcode = custcode;
     }
 
-    public String getTelephone() {
-        return telephone;
+    public List<Customer> getCustomer() {
+        return customer;
     }
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    public List<Menu> getMenus() {
-        return menus;
-    }
-
-    public void setMenus(List<Menu> menus) {
-        this.menus = menus;
+    public void setCustomer(List<Customer> customer) {
+        this.customer = customer;
     }
 }

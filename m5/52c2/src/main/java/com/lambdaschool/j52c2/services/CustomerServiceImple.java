@@ -14,10 +14,11 @@ import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-// CUSTOMERS (custcode, custname, custcity, workingarea, custcountry, grade, openingamt, receiveamt, paymentamt, outstandingamt, phone, agentcode)
+// CUSTOMERS (custcode, custname, custcity, workingarea, custcountry, grade,
+//            openingamt, receiveamt, paymentamt, outstandingamt, phone, agentcode)
 @Transactional
 @Service(value="customerService")
-public interface CustomerServiceImple {
+public class CustomerServiceImple {
     @Autowired
     private CustomerRepository restrepos;
 

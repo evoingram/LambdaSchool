@@ -33,12 +33,14 @@ public class OrderController {
         return new ResponseEntity<>(myOrders, HttpStatus.OK);
     }
 
-    // GET one order by id
-    // http://localhost:2019/orders/order/{orderid}
-    @GetMapping(value = "/order/{orderId}",
+    // GET one order by ordnum
+    // GET /orders/order/{ordnum} - Returns the order and its customer with the given order number
+
+    // http://localhost:2019/orders/order/{ordnum}
+    @GetMapping(value = "/orders/order/{ordnum}",
             produces = {"application/json"})
-    public ResponseEntity<?> getOrderById(@PathVariable Long orderId) {
-        Order r = orderService.findOrderById(orderId);
+    public ResponseEntity<?> getOrderById(@PathVariable Long ordnum) {
+        Order r = orderService.findOrderById(ordnum);
         return new ResponseEntity<>(r, HttpStatus.OK);
     }
 
@@ -60,25 +62,28 @@ public class OrderController {
         return new ResponseEntity<>(r, HttpStatus.OK);
     }
 
-    // GET /orders/order/{id} - Returns the order and its customer with the given order number
 
     // GET /orders/advanceamount - returns all orders with their customers that have an advanceamount greater than 0.
+
+
+
+
     // DELETE one order
-    // http://localhost:2019/orders/order/{orderid}
-    @DeleteMapping(value = "/order/{orderId}")
-    public ResponseEntity<?> deleteOrderById(@PathVariable Long orderId) {
-        orderService.delete(orderId);
+    // http://localhost:2019/orders/order/{ordnum}
+    @DeleteMapping(value = "/order/{ordnum}")
+    public ResponseEntity<?> deleteOrderById(@PathVariable Long ordnum) {
+        orderService.delete(ordnum);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     // PUT one order
-    // http://localhost:2019/orders/order/{orderid}
-    @PutMapping(value = "/order/{orderId}",
+    // http://localhost:2019/orders/order/{ordnum}
+    @PutMapping(value = "/order/{ordnum}",
             produces = {"application/json"},
             consumes = {"application/json"})
     public ResponseEntity<?> updateOrder(@RequestBody Order updateOrder,
-                                              @PathVariable Long orderId) {
-        orderService.update(updateOrder, orderId);
+                                              @PathVariable Long ordnum) {
+        orderService.update(updateOrder, ordnum);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -92,8 +97,8 @@ public class OrderController {
 
         // set location header for newly created resource
         HttpHeaders responseHeaders = new HttpHeaders();
-        URI newOrderURI = ServletUriComponentsBuilder.fromCurrentRequest().path("/{orderid}")
-                .buildAndExpand(newOrder.getOrderid()).toUri();
+        URI newOrderURI = ServletUriComponentsBuilder.fromCurrentRequest().path("/{ordnum}")
+                .buildAndExpand(newOrder.getordnum()).toUri();
         responseHeaders.setLocation(newOrderURI);
 
         return new ResponseEntity<>(null, responseHeaders, HttpStatus.CREATED);

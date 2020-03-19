@@ -18,6 +18,7 @@ import java.util.List;
 @Transactional
 @Service(value="agentService")
 public class AgentServiceImple {
+
     @Autowired
     private AgentRepository restrepos;
 
@@ -72,17 +73,17 @@ public class AgentServiceImple {
     public Agent save(Agent agent) {
         Agent newAgent = new Agent();
         newAgent.setName(agent.getName());
-        newAgent.setAddress(agent.getAddress());
-        newAgent.setCity(agent.getCity());
-        newAgent.setState(agent.getState());
+        newAgent.setCommission(agent.getCommission());
+        newAgent.setCountry(agent.getCountry());
+        newAgent.setWorkingarea(agent.getWorkingarea());
         newAgent.setTelephone(agent.getTelephone());
 
         // pointers
         // pointer gets set, all data goes away, doesn't bring info with it
-        // newAgent.setMenus(agent.getMenus());
+        // newAgent.setCustomers(agent.getCustomers());
 
-        for(Menu m : agent.getMenus()){
-            newAgent.getMenus().add(new Menu(m.getDish(), m.getPrice(), newAgent));
+        for(Customer m : agent.getCustomers()){
+            newAgent.getCustomers().add(new Customer(m.getDish(), m.getPrice(), newAgent));
         }
         return restrepos.save(newAgent);
     }
@@ -98,21 +99,24 @@ public class AgentServiceImple {
         if(agent.getName() != null){
             currentAgent.setName((agent.getName()));
         }
-        if(agent.getAddress() != null){
-            currentAgent.setAddress((agent.getAddress()));
+        if(agent.getCommission() != null){
+            currentAgent.setCommission((agent.getCommission()));
         }
-        if(agent.getCity() != null){
-            currentAgent.setCity((agent.getCity()));
+        if(agent.getCountry() != null){
+            currentAgent.setCountry((agent.getCountry()));
         }
-        if(agent.getState() != null){
-            currentAgent.setState((agent.getState()));
+        if(agent.getWorkingarea() != null){
+            currentAgent.setWorkingarea((agent.getWorkingarea()));
         }
         if(agent.getTelephone() != null){
             currentAgent.setTelephone((agent.getTelephone()));
         }
-        if(agent.getMenus().size() > 0){
-            for(Menu m : agent.getMenus()){
-                currentAgent.getMenus().add(new Menu(m.getDish(), m.getPrice(), currentAgent));
+
+// CUSTOMERS (custcode, custname, custcity, workingarea, custcountry, grade,
+//            openingamt, receiveamt, paymentamt, outstandingamt, phone, agentcode)
+        if(agent.getCustomers().size() > 0){
+            for(Customer m : agent.getCustomers()){
+                currentAgent.getCustomers().add(new Customer(m.getDish(), m.getPrice(), currentAgent));
             }
 
         }

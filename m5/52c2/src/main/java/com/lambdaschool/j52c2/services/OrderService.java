@@ -8,15 +8,15 @@ import java.util.List;
 public interface OrderService {
     List<Order> findAll();
 
-    Order findOrderById(long id);
+    Order findOrderById(long ordnum);
 
-    Order findOrderByName(String name);
+    Order findOrderByAdvanceAmount(double advanceamount);
 
-    Order findOrderByTelephone(String telephone);
+    Order findOrderByOrderAmount(double ordamount);
 
-    Order delete(long id);
+    Order delete(long ordnum);
 
     Order save(Order order);
 
-    Order update(Order order, long id);
+    Order update(Order order, long ordnum);
 }

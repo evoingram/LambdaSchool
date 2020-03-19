@@ -15,7 +15,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
-// CUSTOMERS (custcode, custname, custcity, workingarea, custcountry, grade, openingamt, receiveamt, paymentamt, outstandingamt, phone, agentcode)
+// CUSTOMERS (custcode, custname, custcity, workingarea, custcountry, grade,
+//            openingamt, receiveamt, paymentamt, outstandingamt, phone, agentcode)
 @RestController
 public class CustomerController {
 

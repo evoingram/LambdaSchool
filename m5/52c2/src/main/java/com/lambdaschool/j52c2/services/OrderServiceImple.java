@@ -28,40 +28,42 @@ public class OrderServiceImple {
         return rtnList;
     }
 
+    // GET /orders/order/{ordnum} - Returns the order and its customer with the given order number
     @Override
-    public Order findOrderById(long id) {
+    public Order findOrderById(long ordnum) {
 
-        return restrepos.findById(id)
-                .orElseThrow(()-> new EntityNotFoundException("ID = " + id));
+        return restrepos.findById(ordnum)
+                .orElseThrow(()-> new EntityNotFoundException("ID = " + ordnum));
     }
 
+
     @Override
-    public Order findOrderByName(String name) {
-        Order order = restrepos.findByName(name);
+    public Order findOrderByAdvanceAmount(double advanceamount) {
+        Order order = restrepos.findOrderByAdvanceAmount(advanceamount);
 
         if(order == null){
-            throw new EntityNotFoundException("Order not found, name = " + name);
+            throw new EntityNotFoundException("Order not found, advanceamount = " + advanceamount);
         }
         return order;
     }
 
-    @Override
-    public Order findOrderByTelephone(String telephone) {
-        Order order = restrepos.findByTelephone(telephone);
+    public Order findOrderByOrderAmount(double ordamount) {
+        Order order = restrepos.findOrderByOrderAmount(ordamount);
 
         if(order == null){
-            throw new EntityNotFoundException("Order not found, telephone = " + telephone);
+            throw new EntityNotFoundException("Order not found, ordamount = " + ordamount);
         }
         return order;
     }
 
+
     @Override
-    public Order delete(long id) {
-        if(restrepos.findById(id).isPresent()){
-            restrepos.deleteById(id);
+    public Order delete(long ordnum) {
+        if(restrepos.findById(ordnum).isPresent()){
+            restrepos.deleteById(ordnum);
         }
         else {
-            throw new EntityNotFoundException("ID = " + id);
+            throw new EntityNotFoundException("ID = " + ordnum);
         }
         return null;
     }
@@ -88,30 +90,28 @@ public class OrderServiceImple {
 
     @Transactional
     @Override
-    public Order update(Order order, long id) {
-
+    public Order update(Order order, long ordnum) {
+    // ordamount, advanceamount, custcode, orderdescription
         Order currentOrder =
-                restrepos.findById(id)
-                        .orElseThrow(()->new EntityNotFoundException(Long.toString(id)));
+                restrepos.findById(ordnum)
+                        .orElseThrow(()->new EntityNotFoundException(Long.toString(ordnum)));
 
-        if(order.getName() != null){
-            currentOrder.setName((order.getName()));
+        if(order.getOrdamount() != null){
+            currentOrder.setOrdamount((order.getOrdamount()));
         }
-        if(order.getAddress() != null){
-            currentOrder.setAddress((order.getAddress()));
+        if(order.getAdvanceamount() != null){
+            currentOrder.setAdvanceamount((order.getAdvanceamount()));
         }
-        if(order.getCity() != null){
-            currentOrder.setCity((order.getCity()));
+        if(order.getCustcode() != null){
+            currentOrder.setCustcode((order.getCustcode()));
         }
-        if(order.getState() != null){
-            currentOrder.setState((order.getState()));
+        if(order.getOrderDescription() != null){
+            currentOrder.setOrderDescription((order.getOrderDescription()));
         }
-        if(order.getTelephone() != null){
-            currentOrder.setTelephone((order.getTelephone()));
-        }
-        if(order.getMenus().size() > 0){
-            for(Menu m : order.getMenus()){
-                currentOrder.getMenus().add(new Menu(m.getDish(), m.getPrice(), currentOrder));
+        // come back and add customer fields
+        if(order.getCustomer().size() > 0){
+            for(Menu m : order.getCustomer()){
+                currentOrder.getCustomer().add(new Csutomer(m.getDish(), m.getPrice(), currentOrder));
             }
 
         }

@@ -21,7 +21,8 @@ public class Customer {
     private String state;
     private String telephone;
 
-    // CUSTOMERS (custcode, custname, custcity, workingarea, custcountry, grade, openingamt, receiveamt, paymentamt, outstandingamt, phone, agentcode)
+    // CUSTOMERS (custcode, custname, custcity, workingarea, custcountry, grade,
+//            openingamt, receiveamt, paymentamt, outstandingamt, phone, agentcode)
     @OneToMany(mappedBy = "customer",
             cascade = CascadeType.ALL,
             orphanRemoval = true)

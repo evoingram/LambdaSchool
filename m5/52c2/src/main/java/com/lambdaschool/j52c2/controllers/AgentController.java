@@ -35,7 +35,7 @@ public class AgentController {
     // GET one agent by agentcode
     // GET /agents/agent/{code} - Returns the agent and their customers with the given agent code
     // http://localhost:2019/agents/agent/{agentcode}
-    @GetMapping(value = "/agent/{agentCode}",
+    @GetMapping(value = "/agents/agent/{agentCode}",
             produces = {"application/json"})
     public ResponseEntity<?> getAgentByCode(@PathVariable Long agentCode) {
         Agent r = agentService.findAgentByCode(agentCode);
