@@ -17,6 +17,7 @@ m3/**/.env
 node_modules/
 .env
 m1/SC-ACSS
+Administration/careers/
 Administration/grades.png
 Administration/lambda-notebook.png
 node_modules
