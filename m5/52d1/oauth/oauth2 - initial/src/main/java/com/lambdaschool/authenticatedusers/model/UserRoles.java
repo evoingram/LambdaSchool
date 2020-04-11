@@ -1,7 +1,6 @@
 package com.lambdaschool.authenticatedusers.model;
 
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -9,26 +8,28 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "userroles")
+@Table(name = "userroles",
+        uniqueConstraints = {@UniqueConstraint(columnNames = {"userid", "roleid"})})
 public class UserRoles extends Auditable implements Serializable
 {
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties({"userRoles", "hibernateLazyInitializer"})
+    @ManyToOne
     @JoinColumn(name = "userid")
+    @JsonIgnoreProperties("userroles")
     private User user;
 
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "roleid")
-    @JsonIgnoreProperties({"userRoles", "hibernateLazyInitializer"})
+    @JsonIgnoreProperties("userroles")
     private Role role;
 
     public UserRoles()
     {
     }
 
-    public UserRoles(User user, Role role)
+    public UserRoles(User user,
+                     Role role)
     {
         this.user = user;
         this.role = role;
@@ -72,6 +73,13 @@ public class UserRoles extends Auditable implements Serializable
     @Override
     public int hashCode()
     {
-        return Objects.hash(getUser(), getRole());
+        return Objects.hash(getUser(),
+                getRole());
+    }
+
+    @Override
+    public String toString()
+    {
+        return "UserRoles{" + "user=" + user.getUserid() + ", role=" + role.getRoleid() + '}';
     }
 }

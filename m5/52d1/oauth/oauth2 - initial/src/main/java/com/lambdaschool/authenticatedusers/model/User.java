@@ -2,8 +2,11 @@ package com.lambdaschool.authenticatedusers.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,14 +27,26 @@ public class User extends Auditable
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
+
+    @Column(nullable = false,
+            unique = true)
+    @Email
+    private String primaryemail;
+
     @OneToMany(mappedBy = "user",
-               cascade = CascadeType.ALL)
+            cascade = CascadeType.ALL)
     @JsonIgnoreProperties("user")
     private List<UserRoles> userRoles = new ArrayList<>();
 
     @OneToMany(mappedBy = "user",
-               cascade = CascadeType.ALL,
-               orphanRemoval = true)
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    @JsonIgnoreProperties("user")
+    private List<Useremail> useremails = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
     @JsonIgnoreProperties("user")
     private List<Quote> quotes = new ArrayList<>();
 
@@ -39,10 +54,14 @@ public class User extends Auditable
     {
     }
 
-    public User(String username, String password, List<UserRoles> userRoles)
+    public User(String username,
+                String password,
+                String primaryemail,
+                List<UserRoles> userRoles)
     {
         setUsername(username);
         setPassword(password);
+        this.primaryemail = primaryemail;
         for (UserRoles ur : userRoles)
         {
             ur.setUser(this);
@@ -70,12 +89,29 @@ public class User extends Auditable
         this.username = username;
     }
 
+
+    public String getPrimaryemail()
+    {
+        return primaryemail;
+    }
+
+    public void setPrimaryemail(String primaryemail)
+    {
+        this.primaryemail = primaryemail;
+    }
+
     public String getPassword()
     {
         return password;
     }
 
     public void setPassword(String password)
+    {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        this.password = passwordEncoder.encode(password);
+    }
+
+    public void setPasswordNoEncrypt(String password)
     {
         this.password = password;
     }
@@ -90,6 +126,16 @@ public class User extends Auditable
         this.userRoles = userRoles;
     }
 
+    public List<Useremail> getUseremails()
+    {
+        return useremails;
+    }
+
+    public void setUseremails(List<Useremail> useremails)
+    {
+        this.useremails = useremails;
+    }
+
     public List<Quote> getQuotes()
     {
         return quotes;
@@ -98,5 +144,17 @@ public class User extends Auditable
     public void setQuotes(List<Quote> quotes)
     {
         this.quotes = quotes;
+    }
+
+    public List<SimpleGrantedAuthority> getAuthority()
+    {
+        List<SimpleGrantedAuthority> rtnList = new ArrayList<>();
+
+        for (UserRoles r : this.userRoles)
+        {
+            String myRole = "ROLE_" + r.getRole().getName().toUpperCase();
+            rtnList.add(new SimpleGrantedAuthority(myRole));
+        }
+        return rtnList;
     }
 }

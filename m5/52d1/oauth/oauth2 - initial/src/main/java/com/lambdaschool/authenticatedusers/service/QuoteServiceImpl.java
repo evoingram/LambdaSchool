@@ -2,7 +2,10 @@ package com.lambdaschool.authenticatedusers.service;
 
 import com.lambdaschool.authenticatedusers.model.Quote;
 import com.lambdaschool.authenticatedusers.repository.QuoteRepository;
+import com.lambdaschool.authenticatedusers.view.CountQuotes;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +18,12 @@ public class QuoteServiceImpl implements QuoteService
 {
     @Autowired
     private QuoteRepository quoterepos;
+
+    @Override
+    public ArrayList<CountQuotes> getCountQuotes()
+    {
+        return quoterepos.getCountQuotes();
+    }
 
     @Override
     public List<Quote> findAll()
@@ -35,7 +44,14 @@ public class QuoteServiceImpl implements QuoteService
     {
         if (quoterepos.findById(id).isPresent())
         {
-            quoterepos.deleteById(id);
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            if (quoterepos.findById(id).get().getUser().getUsername().equalsIgnoreCase(authentication.getName()))
+            {
+                quoterepos.deleteById(id);
+            } else
+            {
+                throw new EntityNotFoundException(Long.toString(id) + " " + authentication.getName());
+            }
         } else
         {
             throw new EntityNotFoundException(Long.toString(id));
@@ -62,7 +78,8 @@ public class QuoteServiceImpl implements QuoteService
     @Override
     public Quote update(Quote quote, long id)
     {
-        Quote newQuote = quoterepos.findById(id).orElseThrow(() -> new EntityNotFoundException(Long.toString(id)));
+        Quote newQuote = quoterepos.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(Long.toString(id)));
 
         if (quote.getQuote() != null)
         {

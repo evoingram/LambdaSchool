@@ -2,6 +2,7 @@ package com.lambdaschool.authenticatedusers.controller;
 
 import com.lambdaschool.authenticatedusers.model.Quote;
 import com.lambdaschool.authenticatedusers.service.QuoteService;
+import com.lambdaschool.authenticatedusers.view.CountQuotes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -22,7 +24,7 @@ public class QuotesController
     QuoteService quoteService;
 
     @GetMapping(value = "/quotes",
-                produces = {"application/json"})
+            produces = {"application/json"})
     public ResponseEntity<?> listAllQuotes()
     {
         List<Quote> allQuotes = quoteService.findAll();
@@ -31,7 +33,7 @@ public class QuotesController
 
 
     @GetMapping(value = "/quote/{quoteId}",
-                produces = {"application/json"})
+            produces = {"application/json"})
     public ResponseEntity<?> getQuote(
             @PathVariable
                     Long quoteId)
@@ -42,13 +44,23 @@ public class QuotesController
 
 
     @GetMapping(value = "/username/{userName}",
-                produces = {"application/json"})
+            produces = {"application/json"})
     public ResponseEntity<?> findQuoteByUserName(
             @PathVariable
                     String userName)
     {
         List<Quote> theQuotes = quoteService.findByUserName(userName);
         return new ResponseEntity<>(theQuotes, HttpStatus.OK);
+    }
+
+
+    @GetMapping(value = "/quotescount",
+            produces = {"application/json"})
+    public ResponseEntity<?> getQuotesCount()
+    {
+        ArrayList<CountQuotes> myList = quoteService.getCountQuotes();
+        myList.sort((q1, q2) -> q1.getUsername().compareToIgnoreCase(q2.getUsername()));
+        return new ResponseEntity<>(myList, HttpStatus.OK);
     }
 
 

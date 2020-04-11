@@ -31,4 +31,5 @@ abstract class Auditable
     @LastModifiedDate
     @Temporal(TIMESTAMP)
     protected Date lastModifiedDate;
+
 }
