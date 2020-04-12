@@ -130,7 +130,7 @@ public class RestaurantServiceImpl implements RestaurantService
 
             for (RestaurantPayments rp : restaurant.getRestaurantPayments())
             {
-                payrepos.insertIntoRestaurantPayments(currentRestaurant.getRestaurantid(), rp.getPayment().getPaymentid());
+                payrepos.insertIntoRestaurantPayments(currentRestaurant.getRestaurantid(), rp.getPayment().getPaymentid(), "SYSTEM");
             }
         }
 

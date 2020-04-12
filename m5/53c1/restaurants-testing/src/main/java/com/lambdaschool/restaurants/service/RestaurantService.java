@@ -17,4 +17,5 @@ public interface RestaurantService
     Restaurant save(Restaurant restaurant);
 
     Restaurant update(Restaurant restaurant, long id);
+
 }

@@ -222,7 +222,6 @@ public class RestaurantControllerUnitTest
         mockMvc.perform(rb).andExpect(status().isCreated()).andDo(MockMvcResultHandlers.print());
     }
 
-
     @Test
     public void updateRestaurant() throws Exception
     {
