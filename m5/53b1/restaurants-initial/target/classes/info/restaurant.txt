@@ -1,8 +1,4 @@
 Explain
-> Following TDD/BDD
-> Testing existing code first
-> Then doing TDD to test new code
-
 See restaurant.png for database layout
 See restaurant.pdf for initial end points documentations
 
@@ -65,5 +61,7 @@ http://localhost:2019/restaurants/restaurant/10
         }
     ]
 }
+
+
 
 
