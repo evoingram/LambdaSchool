@@ -9,8 +9,8 @@ import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.spring.web.plugins.ApiSelectorBuilder;
+import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
@@ -18,17 +18,17 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class Swagger2Config
 {
     @Bean
-    public Docket api()
+    public ApiSelectorBuilder api()
     {
         return new Docket(DocumentationType.SWAGGER_2)
+                .useDefaultResponseMessages(false) // Allows only my exception responses
+                .ignoredParameterTypes(Pageable.class) // allows only my paging parameter list
+                .apiInfo(apiEndPointsInfo())
                 .select()
                 .apis(RequestHandlerSelectors
                         .basePackage("com.lambdaschool.restaurants"))
-                //.paths(PathSelectors.any())
-                .paths(PathSelectors.regex("/**"))
-                // .useDefaultResponseMessages(false) // Allows only my exception responses
-                // .ignoredParameterTypes(Pageable.class) // allows only my paging parameter list
-                .build().apiInfo(apiEndPointsInfo());
+                .paths(PathSelectors.any());
+                // .paths(PathSelectors.regex("/**"))
     }
 
     private ApiInfo apiEndPointsInfo()
