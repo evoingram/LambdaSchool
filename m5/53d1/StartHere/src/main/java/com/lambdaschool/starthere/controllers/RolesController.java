@@ -21,17 +21,15 @@ import java.util.List;
 @Loggable
 @RestController
 @RequestMapping("/roles")
-public class RolesController
-{
+public class RolesController {
     private static final Logger logger = LoggerFactory.getLogger(RolesController.class);
     @Autowired
     RoleService roleService;
 
     // http://localhost:2019/roles/roles
     @GetMapping(value = "/roles",
-                produces = {"application/json"})
-    public ResponseEntity<?> listRoles(HttpServletRequest request)
-    {
+            produces = {"application/json"})
+    public ResponseEntity<?> listRoles(HttpServletRequest request) {
         logger.trace(request.getMethod()
                             .toUpperCase() + " " + request.getRequestURI() + " accessed");
 
@@ -42,11 +40,10 @@ public class RolesController
 
     // http://localhost:2019/roles/role/3
     @GetMapping(value = "/role/{roleId}",
-                produces = {"application/json"})
+            produces = {"application/json"})
     public ResponseEntity<?> getRoleById(HttpServletRequest request,
                                          @PathVariable
-                                                 Long roleId)
-    {
+                                                 Long roleId) {
         logger.trace(request.getMethod()
                             .toUpperCase() + " " + request.getRequestURI() + " accessed");
 
@@ -57,11 +54,10 @@ public class RolesController
 
     // http://localhost:2019/roles/role/name/data
     @GetMapping(value = "/role/name/{roleName}",
-                produces = {"application/json"})
+            produces = {"application/json"})
     public ResponseEntity<?> getRoleByName(HttpServletRequest request,
                                            @PathVariable
-                                                   String roleName)
-    {
+                                                   String roleName) {
         logger.trace(request.getMethod()
                             .toUpperCase() + " " + request.getRequestURI() + " accessed");
 
@@ -78,8 +74,8 @@ public class RolesController
     public ResponseEntity<?> addNewRole(HttpServletRequest request,
                                         @Valid
                                         @RequestBody
-                                                Role newRole) throws URISyntaxException
-    {
+                                                Role newRole) throws
+            URISyntaxException {
         logger.trace(request.getMethod()
                             .toUpperCase() + " " + request.getRequestURI() + " accessed");
 
@@ -105,15 +101,17 @@ public class RolesController
     //    }
     @PutMapping(value = "/role/{roleid}")
     public ResponseEntity<?> addNewRole(HttpServletRequest request,
-                                        @PathVariable long roleid,
+                                        @PathVariable
+                                                long roleid,
                                         @Valid
                                         @RequestBody
-                                                Role newRole) throws URISyntaxException
-    {
+                                                Role newRole) throws
+            URISyntaxException {
         logger.trace(request.getMethod()
                             .toUpperCase() + " " + request.getRequestURI() + " accessed");
 
-        newRole = roleService.update(roleid, newRole);
+        newRole = roleService.update(roleid,
+                                     newRole);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
@@ -122,8 +120,7 @@ public class RolesController
     @DeleteMapping("/role/{id}")
     public ResponseEntity<?> deleteRoleById(HttpServletRequest request,
                                             @PathVariable
-                                                    long id)
-    {
+                                                    long id) {
         logger.trace(request.getMethod()
                             .toUpperCase() + " " + request.getRequestURI() + " accessed");
 

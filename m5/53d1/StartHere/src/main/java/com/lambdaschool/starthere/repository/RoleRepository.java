@@ -7,10 +7,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
-public interface RoleRepository extends CrudRepository<Role, Long>
-{
+public interface RoleRepository
+        extends CrudRepository<Role, Long> {
     @Query(value = "SELECT COUNT(*) as count FROM userroles WHERE userid = :userid AND roleid = :roleid",
-           nativeQuery = true)
+            nativeQuery = true)
     JustTheCount checkUserRolesCombo(long userid,
                                      long roleid);
 
@@ -23,7 +23,7 @@ public interface RoleRepository extends CrudRepository<Role, Long>
     @Transactional
     @Modifying
     @Query(value = "INSERT INTO UserRoles(userid, roleid) VALUES (:userid, :roleid)",
-           nativeQuery = true)
+            nativeQuery = true)
     void insertUserRoles(long userid,
                          long roleid);
 

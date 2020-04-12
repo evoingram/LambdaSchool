@@ -10,9 +10,11 @@ import java.util.Objects;
 @Loggable
 @Entity
 @Table(name = "userroles",
-       uniqueConstraints = {@UniqueConstraint(columnNames = {"userid", "roleid"})})
-public class UserRoles extends Auditable implements Serializable
-{
+        uniqueConstraints = {@UniqueConstraint(columnNames = {"userid",
+                "roleid"})})
+public class UserRoles
+        extends Auditable
+        implements Serializable {
     @Id
     @ManyToOne
     @JoinColumn(name = "userid")
@@ -25,46 +27,37 @@ public class UserRoles extends Auditable implements Serializable
     @JsonIgnoreProperties("userroles")
     private Role role;
 
-    public UserRoles()
-    {
+    public UserRoles() {
     }
 
     public UserRoles(User user,
-                     Role role)
-    {
+                     Role role) {
         this.user = user;
         this.role = role;
     }
 
-    public User getUser()
-    {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(User user)
-    {
+    public void setUser(User user) {
         this.user = user;
     }
 
-    public Role getRole()
-    {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(Role role)
-    {
+    public void setRole(Role role) {
         this.role = role;
     }
 
     @Override
-    public boolean equals(Object o)
-    {
-        if (this == o)
-        {
+    public boolean equals(Object o) {
+        if (this == o) {
             return true;
         }
-        if (!(o instanceof UserRoles))
-        {
+        if (!(o instanceof UserRoles)) {
             return false;
         }
         UserRoles userRoles = (UserRoles) o;
@@ -72,15 +65,13 @@ public class UserRoles extends Auditable implements Serializable
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         return Objects.hash(getUser(),
                             getRole());
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "UserRoles{" + "user=" + user.getUserid() + ", role=" + role.getRoleid() + '}';
     }
 }

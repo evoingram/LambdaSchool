@@ -17,8 +17,8 @@ import java.util.List;
 @Loggable
 @Entity
 @Table(name = "users")
-public class User extends Auditable
-{
+public class User
+        extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long userid;
@@ -37,120 +37,100 @@ public class User extends Auditable
     private String primaryemail;
 
     @OneToMany(mappedBy = "user",
-               cascade = CascadeType.ALL)
+            cascade = CascadeType.ALL)
     @JsonIgnoreProperties("user")
     private List<UserRoles> userroles = new ArrayList<>();
 
     @OneToMany(mappedBy = "user",
-               cascade = CascadeType.ALL,
-               orphanRemoval = true)
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
     @JsonIgnoreProperties("user")
     private List<Useremail> useremails = new ArrayList<>();
 
-    public User()
-    {
+    public User() {
     }
 
     public User(String username,
                 String password,
                 String primaryemail,
-                List<UserRoles> userRoles)
-    {
+                List<UserRoles> userRoles) {
         setUsername(username);
         setPassword(password);
         this.primaryemail = primaryemail;
-        for (UserRoles ur : userRoles)
-        {
+        for (UserRoles ur : userRoles) {
             ur.setUser(this);
         }
         this.userroles = userRoles;
     }
 
-    public long getUserid()
-    {
+    public long getUserid() {
         return userid;
     }
 
-    public void setUserid(long userid)
-    {
+    public void setUserid(long userid) {
         this.userid = userid;
     }
 
-    public String getUsername()
-    {
+    public String getUsername() {
         if (username == null) // this is possible when updating a user
         {
             return null;
-        } else
-        {
+        } else {
             return username.toLowerCase();
         }
     }
 
-    public void setUsername(String username)
-    {
+    public void setUsername(String username) {
         this.username = username.toLowerCase();
     }
 
-    public String getPrimaryemail()
-    {
+    public String getPrimaryemail() {
         if (primaryemail == null) // this is possible when updating a user
         {
             return null;
-        } else
-        {
+        } else {
             return primaryemail.toLowerCase();
         }
     }
 
-    public void setPrimaryemail(String primaryemail)
-    {
+    public void setPrimaryemail(String primaryemail) {
         this.primaryemail = primaryemail.toLowerCase();
     }
 
-    public String getPassword()
-    {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password)
-    {
+    public void setPassword(String password) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         this.password = passwordEncoder.encode(password);
     }
 
-    public void setPasswordNoEncrypt(String password)
-    {
+    public void setPasswordNoEncrypt(String password) {
         this.password = password;
     }
 
-    public List<UserRoles> getUserroles()
-    {
+    public List<UserRoles> getUserroles() {
         return userroles;
     }
 
-    public void setUserroles(List<UserRoles> userroles)
-    {
+    public void setUserroles(List<UserRoles> userroles) {
         this.userroles = userroles;
     }
 
-    public List<Useremail> getUseremails()
-    {
+    public List<Useremail> getUseremails() {
         return useremails;
     }
 
-    public void setUseremails(List<Useremail> useremails)
-    {
+    public void setUseremails(List<Useremail> useremails) {
         this.useremails = useremails;
     }
 
     @JsonIgnore
-    public List<SimpleGrantedAuthority> getAuthority()
-    {
+    public List<SimpleGrantedAuthority> getAuthority() {
         List<SimpleGrantedAuthority> rtnList = new ArrayList<>();
 
-        for (UserRoles r : this.userroles)
-        {
+        for (UserRoles r : this.userroles) {
             String myRole = "ROLE_" + r.getRole()
                                        .getName()
                                        .toUpperCase();
@@ -161,8 +141,7 @@ public class User extends Auditable
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "User{" + "userid=" + userid + ", username='" + username + '\'' + ", password='" + password + '\'' + ", primaryemail='" + primaryemail + '\'' + '}';
     }
 }

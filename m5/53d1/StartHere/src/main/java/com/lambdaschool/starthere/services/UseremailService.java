@@ -4,8 +4,7 @@ import com.lambdaschool.starthere.models.Useremail;
 
 import java.util.List;
 
-public interface UseremailService
-{
+public interface UseremailService {
     List<Useremail> findAll();
 
     Useremail findUseremailById(long id);

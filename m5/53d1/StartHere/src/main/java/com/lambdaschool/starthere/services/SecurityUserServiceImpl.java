@@ -12,22 +12,22 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Loggable
 @Service(value = "securityUserService")
-public class SecurityUserServiceImpl implements UserDetailsService
-{
+public class SecurityUserServiceImpl
+        implements UserDetailsService {
 
     @Autowired
     private UserRepository userrepos;
 
     @Transactional
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
-    {
+    public UserDetails loadUserByUsername(String username) throws
+            UsernameNotFoundException {
         User user = userrepos.findByUsername(username.toLowerCase());
-        if (user == null)
-        {
+        if (user == null) {
             throw new UsernameNotFoundException("Invalid username or password.");
         }
-        return new org.springframework.security.core.userdetails.User(user.getUsername().toLowerCase(),
+        return new org.springframework.security.core.userdetails.User(user.getUsername()
+                                                                          .toLowerCase(),
                                                                       user.getPassword(),
                                                                       user.getAuthority());
     }

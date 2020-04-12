@@ -38,19 +38,19 @@ import java.util.List;
 // bean shared across controller classes
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @ControllerAdvice
-public class RestExceptionHandler extends ResponseEntityExceptionHandler
-{
+public class RestExceptionHandler
+        extends ResponseEntityExceptionHandler {
 
-    public RestExceptionHandler()
-    {
+    public RestExceptionHandler() {
         super();
     }
 
 
-    @ExceptionHandler({ResourceNotFoundException.class, EntityNotFoundException.class, UsernameNotFoundException.class})
+    @ExceptionHandler({ResourceNotFoundException.class,
+            EntityNotFoundException.class,
+            UsernameNotFoundException.class})
     public ResponseEntity<?> handleResourceNotFoundException(ResourceNotFoundException rnfe,
-                                                             HttpServletRequest request)
-    {
+                                                             HttpServletRequest request) {
         ErrorDetail errorDetail = new ErrorDetail();
         errorDetail.setTimestamp(new Date().getTime());
         errorDetail.setStatus(HttpStatus.NOT_FOUND.value());
@@ -67,8 +67,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler
 
     @ExceptionHandler({ResourceFoundException.class})
     public ResponseEntity<?> handleResourceFoundException(ResourceFoundException rfe,
-                                                          HttpServletRequest request)
-    {
+                                                          HttpServletRequest request) {
         ErrorDetail errorDetail = new ErrorDetail();
         errorDetail.setTimestamp(new Date().getTime());
         errorDetail.setStatus(HttpStatus.BAD_REQUEST.value());
@@ -87,8 +86,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler
     protected ResponseEntity<Object> handleTypeMismatch(TypeMismatchException ex,
                                                         HttpHeaders headers,
                                                         HttpStatus status,
-                                                        WebRequest request)
-    {
+                                                        WebRequest request) {
         ErrorDetail errorDetail = new ErrorDetail();
         errorDetail.setTimestamp(new Date().getTime());
         errorDetail.setStatus(HttpStatus.BAD_REQUEST.value());
@@ -106,8 +104,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler
     protected ResponseEntity<Object> handleNoHandlerFoundException(NoHandlerFoundException ex,
                                                                    HttpHeaders headers,
                                                                    HttpStatus status,
-                                                                   WebRequest request)
-    {
+                                                                   WebRequest request) {
         ErrorDetail errorDetail = new ErrorDetail();
         errorDetail.setTimestamp(new Date().getTime());
         errorDetail.setStatus(HttpStatus.NOT_FOUND.value());
@@ -125,8 +122,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler
     protected ResponseEntity<Object> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException ex,
                                                                          HttpHeaders headers,
                                                                          HttpStatus status,
-                                                                         WebRequest request)
-    {
+                                                                         WebRequest request) {
         ErrorDetail errorDetail = new ErrorDetail();
         errorDetail.setTimestamp(new Date().getTime());
         errorDetail.setStatus(HttpStatus.NOT_FOUND.value());
@@ -143,8 +139,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
                                                                   HttpHeaders headers,
                                                                   HttpStatus status,
-                                                                  WebRequest request)
-    {
+                                                                  WebRequest request) {
         ErrorDetail errorDetail = new ErrorDetail();
         errorDetail.setTimestamp(new Date().getTime());
         errorDetail.setStatus(HttpStatus.BAD_REQUEST.value());
@@ -155,12 +150,10 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler
 
         List<FieldError> fieldErrors = ex.getBindingResult()
                                          .getFieldErrors();
-        for (FieldError fe : fieldErrors)
-        {
+        for (FieldError fe : fieldErrors) {
             List<ValidationError> validationErrorList = errorDetail.getErrors()
                                                                    .get(fe.getField());
-            if (validationErrorList == null)
-            {
+            if (validationErrorList == null) {
                 validationErrorList = new ArrayList<>();
                 errorDetail.getErrors()
                            .put(fe.getField(),
@@ -182,8 +175,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler
     protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex,
                                                                   HttpHeaders headers,
                                                                   HttpStatus status,
-                                                                  WebRequest request)
-    {
+                                                                  WebRequest request) {
         ErrorDetail errorDetail = new ErrorDetail();
         errorDetail.setTimestamp(new Date().getTime());
         errorDetail.setStatus(status.value());
@@ -202,8 +194,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler
     protected ResponseEntity<Object> handleHttpMediaTypeNotSupported(HttpMediaTypeNotSupportedException ex,
                                                                      HttpHeaders headers,
                                                                      HttpStatus status,
-                                                                     WebRequest request)
-    {
+                                                                     WebRequest request) {
         ErrorDetail errorDetail = new ErrorDetail();
         StringBuilder builder = new StringBuilder();
         builder.append(ex.getContentType());
@@ -228,8 +219,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler
     protected ResponseEntity<Object> handleMissingPathVariable(MissingPathVariableException ex,
                                                                HttpHeaders headers,
                                                                HttpStatus status,
-                                                               WebRequest request)
-    {
+                                                               WebRequest request) {
         ErrorDetail errorDetail = new ErrorDetail();
         errorDetail.setTimestamp(new Date().getTime());
         errorDetail.setStatus(HttpStatus.BAD_REQUEST.value());
@@ -249,8 +239,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler
                                                              Object body,
                                                              HttpHeaders headers,
                                                              HttpStatus status,
-                                                             WebRequest request)
-    {
+                                                             WebRequest request) {
         ErrorDetail errorDetail = new ErrorDetail();
         errorDetail.setTimestamp(new Date().getTime());
         errorDetail.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
@@ -267,8 +256,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler
 
     @ExceptionHandler({Exception.class})
     protected ResponseEntity<?> handleAllOtherExceptions(Exception ex,
-                                                         HttpServletRequest request)
-    {
+                                                         HttpServletRequest request) {
         ErrorDetail errorDetail = new ErrorDetail();
         errorDetail.setTimestamp(new Date().getTime());
         errorDetail.setStatus(HttpStatus.BAD_REQUEST.value());
@@ -277,16 +265,13 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler
         errorDetail.setDeveloperMessage(ex.getClass()
                                           .getName());
 
-        try
-        {
+        try {
             Throwable cause = ((TransactionSystemException) ex).getRootCause();
-            if (cause instanceof ConstraintViolationException)
-            {
+            if (cause instanceof ConstraintViolationException) {
                 ArrayList<ValidationError> myErrorList = new ArrayList<>();
                 Iterator<ConstraintViolation<?>> itr = ((ConstraintViolationException) cause).getConstraintViolations()
                                                                                              .iterator();
-                while (itr.hasNext())
-                {
+                while (itr.hasNext()) {
                     ConstraintViolation itrnext = itr.next();
                     ValidationError myValidationError = new ValidationError();
                     myValidationError.setCode(itrnext.getInvalidValue()
@@ -299,9 +284,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler
                            .put("Error",
                                 myErrorList);
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             // just ignore
         }
 

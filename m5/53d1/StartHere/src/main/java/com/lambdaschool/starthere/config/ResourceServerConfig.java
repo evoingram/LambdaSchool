@@ -9,21 +9,20 @@ import org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHand
 
 @Configuration
 @EnableResourceServer
-public class ResourceServerConfig extends ResourceServerConfigurerAdapter
-{
+public class ResourceServerConfig
+        extends ResourceServerConfigurerAdapter {
 
     private static final String RESOURCE_ID = "resource_id";
 
     @Override
-    public void configure(ResourceServerSecurityConfigurer resources)
-    {
+    public void configure(ResourceServerSecurityConfigurer resources) {
         resources.resourceId(RESOURCE_ID)
                  .stateless(false);
     }
 
     @Override
-    public void configure(HttpSecurity http) throws Exception
-    {
+    public void configure(HttpSecurity http) throws
+            Exception {
         // http.anonymous().disable(); // since we allow anonymous users to access Swagger
         // and create a user account
         http.authorizeRequests()

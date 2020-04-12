@@ -24,24 +24,21 @@ import java.util.Set;
 
 @Component
 @Order(SwaggerPluginSupport.SWAGGER_PLUGIN_ORDER)
-public class SwaggerManualApiPlugin implements ApiListingScannerPlugin
-{
+public class SwaggerManualApiPlugin
+        implements ApiListingScannerPlugin {
     private final CachingOperationNameGenerator operationNames;
 
-    public SwaggerManualApiPlugin(CachingOperationNameGenerator operationNames)
-    {
+    public SwaggerManualApiPlugin(CachingOperationNameGenerator operationNames) {
         this.operationNames = operationNames;
     }
 
     @Override
-    public boolean supports(DocumentationType documentationType)
-    {
+    public boolean supports(DocumentationType documentationType) {
         return DocumentationType.SWAGGER_2.equals(documentationType);
     }
 
     @Override
-    public List<ApiDescription> apply(DocumentationContext documentationContext)
-    {
+    public List<ApiDescription> apply(DocumentationContext documentationContext) {
         return new ArrayList<>(Arrays.asList(new ApiDescription(null,
                                                                 "/login",
                                                                 "login",
@@ -64,8 +61,7 @@ public class SwaggerManualApiPlugin implements ApiListingScannerPlugin
 
     }
 
-    private Set<ResponseMessage> responseMessages()
-    {
+    private Set<ResponseMessage> responseMessages() {
         return Set.of(new ResponseMessageBuilder().code(200)
                                                   .message("OK")
                                                   .responseModel(new ModelRef("TokenModel"))

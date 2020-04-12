@@ -16,11 +16,10 @@ import java.lang.reflect.Method;
 
 @Component
 @Aspect
-public class LoggingAspect
-{
+public class LoggingAspect {
     @Around(value = "@within(com.lambdaschool.starthere.logging.Loggable) || @annotation(com.lambdaschool.starthere.logging.Loggable)")
-    public Object around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable
-    {
+    public Object around(ProceedingJoinPoint proceedingJoinPoint) throws
+            Throwable {
 
 
         MethodSignature signature = (MethodSignature) proceedingJoinPoint.getSignature();
@@ -32,7 +31,9 @@ public class LoggingAspect
                                                     .getAnnotation(Loggable.class);
 
         //get current log level
-        LogLevel logLevel = loggableMethod != null ? loggableMethod.value() : loggableClass.value();
+        LogLevel logLevel = loggableMethod != null ?
+                loggableMethod.value() :
+                loggableClass.value();
 
         String star = "**********";
         //before
@@ -44,18 +45,16 @@ public class LoggingAspect
 
 
         //show params
-        boolean showParams = loggableMethod != null ? loggableMethod.params() : loggableClass.params();
-        if (showParams)
-        {
+        boolean showParams = loggableMethod != null ?
+                loggableMethod.params() :
+                loggableClass.params();
+        if (showParams) {
 
-            if (proceedingJoinPoint.getArgs() != null && proceedingJoinPoint.getArgs().length > 0)
-            {
+            if (proceedingJoinPoint.getArgs() != null && proceedingJoinPoint.getArgs().length > 0) {
                 StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < proceedingJoinPoint.getArgs().length; i++)
-                {
+                for (int i = 0; i < proceedingJoinPoint.getArgs().length; i++) {
                     sb.append(method.getParameterTypes()[i].getName() + ":" + proceedingJoinPoint.getArgs()[i]);
-                    if (i < proceedingJoinPoint.getArgs().length - 1)
-                    {
+                    if (i < proceedingJoinPoint.getArgs().length - 1) {
                         sb.append(", ");
                     }
                 }
@@ -76,11 +75,11 @@ public class LoggingAspect
         long endTime = System.currentTimeMillis();
 
         //show results
-        if (result != null)
-        {
-            boolean showResults = loggableMethod != null ? loggableMethod.result() : loggableClass.result();
-            if (showResults)
-            {
+        if (result != null) {
+            boolean showResults = loggableMethod != null ?
+                    loggableMethod.result() :
+                    loggableClass.result();
+            if (showResults) {
                 LogWriter.write(proceedingJoinPoint.getTarget()
                                                    .getClass(),
                                 logLevel,

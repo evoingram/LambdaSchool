@@ -9,14 +9,13 @@ import org.springframework.boot.logging.LogLevel;
  * http://www.tothenew.com/blog/logging-with-spring-aop-and-custom-annotations-in-java-application/
  */
 
-public class LogWriter
-{
+public class LogWriter {
     private static final Logger logger = LoggerFactory.getLogger(LogWriter.class);
 
-    public static void write(Class clazz, LogLevel logLevel, String message)
-    {
-        switch (logLevel)
-        {
+    public static void write(Class clazz,
+                             LogLevel logLevel,
+                             String message) {
+        switch (logLevel) {
             case TRACE:
                 logger.trace(message);
                 break;

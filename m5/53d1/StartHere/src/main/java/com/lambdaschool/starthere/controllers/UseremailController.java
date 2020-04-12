@@ -17,8 +17,7 @@ import java.util.List;
 @Loggable
 @RestController
 @RequestMapping("/useremails")
-public class UseremailController
-{
+public class UseremailController {
     private static final Logger logger = LoggerFactory.getLogger(UseremailController.class);
 
     @Autowired
@@ -27,9 +26,8 @@ public class UseremailController
     // http://localhost:2019/useremails/useremails
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping(value = "/useremails",
-                produces = {"application/json"})
-    public ResponseEntity<?> listAllUseremails(HttpServletRequest request)
-    {
+            produces = {"application/json"})
+    public ResponseEntity<?> listAllUseremails(HttpServletRequest request) {
         logger.trace(request.getMethod()
                             .toUpperCase() + " " + request.getRequestURI() + " accessed");
 
@@ -41,11 +39,10 @@ public class UseremailController
     // http://localhost:2019/useremails/useremail/8
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping(value = "/useremail/{useremailId}",
-                produces = {"application/json"})
+            produces = {"application/json"})
     public ResponseEntity<?> getUserEmailById(HttpServletRequest request,
                                               @PathVariable
-                                                      Long useremailId)
-    {
+                                                      Long useremailId) {
         logger.trace(request.getMethod()
                             .toUpperCase() + " " + request.getRequestURI() + " accessed");
 
@@ -57,11 +54,10 @@ public class UseremailController
 
     // http://localhost:2019/useremails/username/cinnamon
     @GetMapping(value = "/username/{userName}",
-                produces = {"application/json"})
+            produces = {"application/json"})
     public ResponseEntity<?> findUseremailByUserName(HttpServletRequest request,
                                                      @PathVariable
-                                                             String userName)
-    {
+                                                             String userName) {
         logger.trace(request.getMethod()
                             .toUpperCase() + " " + request.getRequestURI() + " accessed");
 
@@ -75,8 +71,7 @@ public class UseremailController
     @DeleteMapping("/useremail/{useremailid}")
     public ResponseEntity<?> deleteUserEmailById(HttpServletRequest request,
                                                  @PathVariable
-                                                         long useremailid)
-    {
+                                                         long useremailid) {
         logger.trace(request.getMethod()
                             .toUpperCase() + " " + request.getRequestURI() + " accessed");
 
@@ -91,8 +86,7 @@ public class UseremailController
                                              @PathVariable
                                                      long useremailid,
                                              @PathVariable
-                                                     String emailaddress)
-    {
+                                                     String emailaddress) {
         useremailService.update(useremailid,
                                 emailaddress,
                                 request.isUserInRole("ADMIN"));

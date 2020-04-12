@@ -19,8 +19,8 @@ import java.util.Locale;
 
 @Transactional
 @Component
-public class SeedData implements CommandLineRunner
-{
+public class SeedData
+        implements CommandLineRunner {
     @Autowired
     RoleService roleService;
 
@@ -29,8 +29,8 @@ public class SeedData implements CommandLineRunner
 
 
     @Override
-    public void run(String[] args) throws Exception
-    {
+    public void run(String[] args) throws
+            Exception {
         Role r1 = new Role("admin");
         Role r2 = new Role("user");
         Role r3 = new Role("data");
@@ -120,8 +120,7 @@ public class SeedData implements CommandLineRunner
                                                                     new RandomService());
         Faker nameFaker = new Faker(new Locale("en-US"));
 
-        for (int i = 0; i < 100; i++)
-        {
+        for (int i = 0; i < 100; i++) {
             new User();
             User fakeUser;
 

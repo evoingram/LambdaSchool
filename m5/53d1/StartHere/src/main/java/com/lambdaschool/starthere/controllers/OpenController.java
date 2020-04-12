@@ -26,8 +26,7 @@ import java.util.List;
 
 @Loggable
 @RestController
-public class OpenController
-{
+public class OpenController {
     private static final Logger logger = LoggerFactory.getLogger(OpenController.class);
 
     @Autowired
@@ -48,15 +47,15 @@ public class OpenController
     // }
 
     @PostMapping(value = "/createnewuser",
-                 consumes = {"application/json"},
-                 produces = {"application/json"})
+            consumes = {"application/json"},
+            produces = {"application/json"})
     public ResponseEntity<?> addNewUser(HttpServletRequest httpServletRequest,
                                         @RequestParam(defaultValue = "true")
                                                 boolean getaccess,
                                         @Valid
                                         @RequestBody
-                                                UserMinimum newminuser) throws URISyntaxException
-    {
+                                                UserMinimum newminuser) throws
+            URISyntaxException {
         logger.trace(httpServletRequest.getMethod()
                                        .toUpperCase() + " " + httpServletRequest.getRequestURI() + " accessed");
 
@@ -76,17 +75,18 @@ public class OpenController
 
         // set the location header for the newly created resource - to another controller!
         HttpHeaders responseHeaders = new HttpHeaders();
-        URI newUserURI = ServletUriComponentsBuilder.fromUriString(httpServletRequest.getServerName() + ":" + httpServletRequest.getLocalPort() + "/users/user/{userId}")
-                                                    .buildAndExpand(newuser.getUserid())
-                                                    .toUri();
+        URI newUserURI =
+                ServletUriComponentsBuilder.fromUriString(httpServletRequest.getServerName() + ":" + httpServletRequest.getLocalPort() + "/users/user/{userId}")
+                                           .buildAndExpand(newuser.getUserid())
+                                           .toUri();
         responseHeaders.setLocation(newUserURI);
 
         String theToken = "";
-        if (getaccess)
-        {
+        if (getaccess) {
             // return the access token
             RestTemplate restTemplate = new RestTemplate();
-            String requestURI = "http://" + httpServletRequest.getServerName() + ":" + httpServletRequest.getLocalPort() + "/login";
+            String requestURI =
+                    "http://" + httpServletRequest.getServerName() + ":" + httpServletRequest.getLocalPort() + "/login";
 
             List<MediaType> acceptableMediaTypes = new ArrayList<>();
             acceptableMediaTypes.add(MediaType.APPLICATION_JSON);
@@ -113,8 +113,7 @@ public class OpenController
             theToken = restTemplate.postForObject(requestURI,
                                                   request,
                                                   String.class);
-        } else
-        {
+        } else {
             // nothing;
         }
         return new ResponseEntity<>(theToken,
@@ -124,8 +123,7 @@ public class OpenController
 
     @ApiIgnore
     @GetMapping("favicon.ico")
-    void returnNoFavicon()
-    {
+    void returnNoFavicon() {
         logger.trace("favicon.ico endpoint accessed!");
     }
 }

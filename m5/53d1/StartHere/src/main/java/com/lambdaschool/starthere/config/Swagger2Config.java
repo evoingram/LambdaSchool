@@ -24,14 +24,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 @Import(BeanValidatorPluginsConfiguration.class)
-public class Swagger2Config
-{
+public class Swagger2Config {
     @Autowired
     private TypeResolver resolver;
 
     @Bean
-    public Docket api()
-    {
+    public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2).select()
                                                       //                .apis(RequestHandlerSelectors.any())
                                                       .apis(RequestHandlerSelectors.basePackage("com.lambdaschool"))
@@ -47,8 +45,7 @@ public class Swagger2Config
                                                       .ignoredParameterTypes(SimpleGrantedAuthority.class);
     }
 
-    private ApiInfo apiEndPointsInfo()
-    {
+    private ApiInfo apiEndPointsInfo() {
         return new ApiInfoBuilder().title("Java Spring Back End Starting Project")
                                    .description("A starting application for developing Java Spring Back End Projects")
                                    .contact(new Contact("John Mitchell",

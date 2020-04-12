@@ -19,35 +19,33 @@ import javax.annotation.Resource;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class SecurityConfig extends WebSecurityConfigurerAdapter
-{
+public class SecurityConfig
+        extends WebSecurityConfigurerAdapter {
 
     @Resource(name = "securityUserService")
     private UserDetailsService userDetailsService;
 
     @Override
     @Bean
-    public AuthenticationManager authenticationManagerBean() throws Exception
-    {
+    public AuthenticationManager authenticationManagerBean() throws
+            Exception {
         return super.authenticationManagerBean();
     }
 
     @Autowired
-    public void globalUserDetails(AuthenticationManagerBuilder auth) throws Exception
-    {
+    public void globalUserDetails(AuthenticationManagerBuilder auth) throws
+            Exception {
         auth.userDetailsService(userDetailsService)
             .passwordEncoder(encoder());
     }
 
     @Bean
-    public TokenStore tokenStore()
-    {
+    public TokenStore tokenStore() {
         return new InMemoryTokenStore();
     }
 
     @Bean
-    public PasswordEncoder encoder()
-    {
+    public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
     }
 }

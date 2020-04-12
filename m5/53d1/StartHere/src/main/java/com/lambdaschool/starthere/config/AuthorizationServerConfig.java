@@ -12,9 +12,9 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 
 @Configuration
 @EnableAuthorizationServer
-public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter
-{
-//    static final String CLIENT_ID = System.getenv("OAUTHCLIENTID"); // read from environment variable
+public class AuthorizationServerConfig
+        extends AuthorizationServerConfigurerAdapter {
+    //    static final String CLIENT_ID = System.getenv("OAUTHCLIENTID"); // read from environment variable
 //    static final String CLIENT_SECRET = System.getenv("OAUTHCLIENTSECRET"); // read from environment variable
     static final String CLIENT_ID = "lambda-client";
     static final String CLIENT_SECRET = "lambda-secret";
@@ -37,8 +37,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     private PasswordEncoder encoder;
 
     @Override
-    public void configure(ClientDetailsServiceConfigurer configurer) throws Exception
-    {
+    public void configure(ClientDetailsServiceConfigurer configurer) throws
+            Exception {
         configurer.inMemory()
                   .withClient(CLIENT_ID)
                   .secret(encoder.encode(CLIENT_SECRET))
@@ -52,8 +52,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     }
 
     @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception
-    {
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws
+            Exception {
         endpoints.tokenStore(tokenStore)
                  .authenticationManager(authenticationManager);
         endpoints.pathMapping("/oauth/token",

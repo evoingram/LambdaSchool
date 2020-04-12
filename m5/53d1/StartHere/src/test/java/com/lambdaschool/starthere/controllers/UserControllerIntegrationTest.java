@@ -18,8 +18,8 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import static org.junit.Assert.assertTrue;
 import static org.hamcrest.Matchers.containsString;
+import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -32,16 +32,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-public class UserControllerIntegrationTest
-{
+public class UserControllerIntegrationTest {
     @Autowired
     private WebApplicationContext webApplicationContext;
 
     private MockMvc mockMvc;
 
     @Before
-    public void setUp() throws Exception
-    {
+    public void setUp() throws
+            Exception {
         RestAssuredMockMvc.webAppContextSetup(webApplicationContext);
 
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
@@ -50,25 +49,27 @@ public class UserControllerIntegrationTest
     }
 
     @After
-    public void tearDown() throws Exception
-    {
+    public void tearDown() throws
+            Exception {
     }
 
     @WithUserDetails("testbarn")
     @Test
-    public void whenMeasuredResponseTime() throws Exception
-    {
+    public void whenMeasuredResponseTime() throws
+            Exception {
         long time = System.currentTimeMillis();
-        this.mockMvc.perform(get("/users/users")).andDo(print());
+        this.mockMvc.perform(get("/users/users"))
+                    .andDo(print());
         long responseTime = (System.currentTimeMillis() - time);
 
-        assertTrue("timestamp", (responseTime < 5000L));
+        assertTrue("timestamp",
+                   (responseTime < 5000L));
     }
 
     @WithUserDetails("testbarn")
     @Test
-    public void getAllUsers() throws Exception
-    {
+    public void getAllUsers() throws
+            Exception {
         this.mockMvc.perform(get("/users/users"))
                     .andDo(print())
                     .andExpect(status().isOk())
@@ -78,8 +79,8 @@ public class UserControllerIntegrationTest
 
     @WithUserDetails("testbarn")
     @Test
-    public void getReallyAllUsers() throws Exception
-    {
+    public void getReallyAllUsers() throws
+            Exception {
         this.mockMvc.perform(get("/users/users/all"))
                     .andDo(print())
                     .andExpect(status().isOk())
@@ -88,8 +89,8 @@ public class UserControllerIntegrationTest
 
     @WithUserDetails("testbarn")
     @Test
-    public void getUserName() throws Exception
-    {
+    public void getUserName() throws
+            Exception {
         this.mockMvc.perform(get("/users/getusername"))
                     .andDo(print())
                     .andExpect(status().isOk())
@@ -98,8 +99,8 @@ public class UserControllerIntegrationTest
 
     @WithUserDetails("testbarn")
     @Test
-    public void getUserInfo() throws Exception
-    {
+    public void getUserInfo() throws
+            Exception {
         this.mockMvc.perform(get("/users/getuserinfo"))
                     .andDo(print())
                     .andExpect(status().isOk())
@@ -108,9 +109,10 @@ public class UserControllerIntegrationTest
 
     @WithUserDetails("testbarn")
     @Test
-    public void getUserLikeName() throws Exception
-    {
-        this.mockMvc.perform(get("/users/user/name/like/{userName}", "test"))
+    public void getUserLikeName() throws
+            Exception {
+        this.mockMvc.perform(get("/users/user/name/like/{userName}",
+                                 "test"))
                     .andDo(print())
                     .andExpect(status().isOk())
                     .andExpect(content().string(containsString("testbarn")));
@@ -118,8 +120,8 @@ public class UserControllerIntegrationTest
 
     @WithUserDetails("testbarn")
     @Test
-    public void getUserById() throws Exception
-    {
+    public void getUserById() throws
+            Exception {
         this.mockMvc.perform(get("/users/user/{userid}",
                                  14))
                     .andDo(print())
@@ -129,8 +131,8 @@ public class UserControllerIntegrationTest
 
     @WithUserDetails("testbarn")
     @Test
-    public void getUserByIdNotFound() throws Exception
-    {
+    public void getUserByIdNotFound() throws
+            Exception {
         this.mockMvc.perform(get("/users/user/{userid}",
                                  100))
                     .andDo(print())
@@ -140,8 +142,8 @@ public class UserControllerIntegrationTest
 
     @WithUserDetails("testbarn")
     @Test
-    public void getUserByName() throws Exception
-    {
+    public void getUserByName() throws
+            Exception {
         this.mockMvc.perform(get("/users/user/name/{userName}",
                                  "testcat"))
                     .andDo(print())
@@ -151,8 +153,8 @@ public class UserControllerIntegrationTest
 
     @WithUserDetails("testbarn")
     @Test
-    public void getUserByNameNotFound() throws Exception
-    {
+    public void getUserByNameNotFound() throws
+            Exception {
         this.mockMvc.perform(get("/users/user/name/{userName}",
                                  "rabbit"))
                     .andDo(print())
@@ -162,8 +164,8 @@ public class UserControllerIntegrationTest
 
     @WithUserDetails("testdog")
     @Test
-    public void getCurrentUserName() throws Exception
-    {
+    public void getCurrentUserName() throws
+            Exception {
         this.mockMvc.perform(get("/users/getusername"))
                     .andDo(print())
                     .andExpect(status().isOk())
@@ -172,8 +174,8 @@ public class UserControllerIntegrationTest
 
     @WithUserDetails("testbarn")
     @Test
-    public void givenPostAUser() throws Exception
-    {
+    public void givenPostAUser() throws
+            Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/users/user")
                                               .content("{\"username\": \"Ginger\", \"password\": \"EATEATEAT\", \"primaryemail\" : \"ginger@home.local\"}")
                                               .contentType(MediaType.APPLICATION_JSON)
@@ -186,8 +188,8 @@ public class UserControllerIntegrationTest
 
     @WithUserDetails("admin")
     @Test
-    public void deleteUserById() throws Exception
-    {
+    public void deleteUserById() throws
+            Exception {
         mockMvc.perform(MockMvcRequestBuilders.delete("/users/user/{id}",
                                                       13))
                .andDo(print())
@@ -196,8 +198,8 @@ public class UserControllerIntegrationTest
 
     @WithUserDetails("admin")
     @Test
-    public void deleteUserByIdNotFound() throws Exception
-    {
+    public void deleteUserByIdNotFound() throws
+            Exception {
         mockMvc.perform(MockMvcRequestBuilders.delete("/users/user/{id}",
                                                       100))
                .andDo(print())
@@ -206,8 +208,8 @@ public class UserControllerIntegrationTest
 
     @WithUserDetails("admin")
     @Test
-    public void UpdateUser() throws Exception
-    {
+    public void UpdateUser() throws
+            Exception {
         mockMvc.perform(MockMvcRequestBuilders.put("/users/user/{userid}",
                                                    7)
                                               .content("{\"password\": \"EATEATEAT\"}")
@@ -219,8 +221,8 @@ public class UserControllerIntegrationTest
 
     @WithUserDetails("admin")
     @Test
-    public void deleteUserRoleByIds() throws Exception
-    {
+    public void deleteUserRoleByIds() throws
+            Exception {
         mockMvc.perform(MockMvcRequestBuilders.delete("/users/user/{userid}/role/{roleid}",
                                                       7,
                                                       2))
@@ -230,8 +232,8 @@ public class UserControllerIntegrationTest
 
     @WithUserDetails("admin")
     @Test
-    public void postUserRoleByIds() throws Exception
-    {
+    public void postUserRoleByIds() throws
+            Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/users/user/{userid}/role/{roleid}",
                                                     7,
                                                     1))
