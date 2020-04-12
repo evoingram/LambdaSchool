@@ -4,6 +4,8 @@ import SearchForm from './components/SearchForm.js';
 import UserCard from './components/UserCard.js';
 import axios from 'axios';
 import GitHubCalendar from 'github-calendar';
+import { GithubContributions } from "react-github-graph"
+
 
   
 class App extends React.Component {
@@ -160,6 +162,8 @@ async githubContributions(username) {
           githubContributions={this.githubContributions}
           githubProfile={this.state.githubProfile}
           githubFollowers={this.state.githubFollowers} />
+        <GithubContributions username={this.state.username}></GithubContributions>
+        
         <SearchForm
           searchTerm={this.state.searchTerm}
           username={this.state.username}
