@@ -1,3 +1,7 @@
+CREATE TABLE menus(menuid int, dish varchar(255), price varchar(255), restaurantid varchar(255));
+
+CREATE TABLE restaurants(restaurantid int, name varchar(255), address varchar(255), city varchar(255), state varchar(255), telephone varchar(255));
+
 DELETE FROM menus;
 
 DELETE FROM restaurants;
