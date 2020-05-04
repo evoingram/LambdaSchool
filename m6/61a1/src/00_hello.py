@@ -1,1 +1,2 @@
-# Print "Hello, world!" to your terminal
+sHelloWorld = "Hello, World!"
+print(sHelloWorld)
