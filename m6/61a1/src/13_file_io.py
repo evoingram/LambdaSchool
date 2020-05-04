@@ -20,10 +20,13 @@ def fileIORead():
 # sure that it contains what you expect it to contain
 
 def fileIOWrite():
-    string1 = "arbitrary 1"
-    string2 = "content 2"
+    string1 = "arbitrary 1\n"
+    string2 = "content 2\n"
     string3 = "to the file 3"
     f = open("bar.txt", "w+")
     f.write(string1)
     f.write(string2)
     f.write(string3)
+
+fileIORead()
+fileIOWrite()
