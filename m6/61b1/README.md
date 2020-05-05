@@ -24,9 +24,9 @@ Up to this point, you've gotten your feet wet by working on a bunch of small Pyt
 
 ### Day 2 MVP
 
-* [ ] Make rooms able to hold multiple items
-* [ ] Make the player able to carry multiple items
-* [ ] Add items to the game that the user can carry around
+* [X] Make rooms able to hold multiple items
+* [X] Make the player able to carry multiple items
+* [X] Add items to the game that the user can carry around
 * [ ] Add `get [ITEM_NAME]` and `drop [ITEM_NAME]` commands to the parser
 
 ## Specification
@@ -50,42 +50,42 @@ The `/src` directory contains the files `adv.py`, which is where the main logic 
   * [X] Players should have a `name` and `current_room` attributes
 
 
-* [ ] Create a file called `item.py` and add an `Item` class in there.
+* [X] Create a file called `item.py` and add an `Item` class in there.
 
-  * [ ] The item should have `name` and `description` attributes.
+  * [X] The item should have `name` and `description` attributes.
 
-     * [ ] Hint: the name should be one word for ease in parsing later.
+     * [X] Hint: the name should be one word for ease in parsing later.
 
   * [ ] This will be the _base class_ for specialized item types to be declared
     later.
 
-* [ ] Add the ability to add items to rooms.
+* [X] Add the ability to add items to rooms.
 
-  * [ ] The `Room` class should be extended with a `list` that holds the `Item`s
+  * [X] The `Room` class should be extended with a `list` that holds the `Item`s
     that are currently in that room.
 
-  * [ ] Add functionality to the main loop that prints out all the items that are
+  * [X] Add functionality to the main loop that prints out all the items that are
     visible to the player when they are in that room.
 
-* [ ] Add capability to add `Item`s to the player's inventory. The inventory can
+* [X] Add capability to add `Item`s to the player's inventory. The inventory can
   also be a `list` of items "in" the player, similar to how `Item`s can be in a
   `Room`.
 
-* [ ] Add a new type of sentence the parser can understand: two words.
+* [X] Add a new type of sentence the parser can understand: two words.
 
-  * [ ] Until now, the parser could just understand one sentence form:
+  * [X] Until now, the parser could just understand one sentence form:
 
      `verb`
 
     such as "n" or "q".
 
-  * [ ] But now we want to add the form:
+  * [X] But now we want to add the form:
 
     `verb` `object`
 
     such as "take coins" or "drop sword".
 
-  * [ ] Split the entered command and see if it has 1 or 2 words in it to determine
+  * [X] Split the entered command and see if it has 1 or 2 words in it to determine
     if it's the first or second form.
 
 * [ ] Implement support for the verb `get` followed by an `Item` name. This will be
@@ -112,7 +112,7 @@ The `/src` directory contains the files `adv.py`, which is where the main logic 
 * [ ] Implement support for the verb `drop` followed by an `Item` name. This is the
   opposite of `get`/`take`.
 
-* [ ] Add the `i` and `inventory` commands that both show a list of items currently
+* [X] Add the `i` and `inventory` commands that both show a list of items currently
   carried by the player.
 
 

@@ -1,6 +1,9 @@
 from room import Room
 from player import Player
+from item import Item
+
 import sys
+import os
 
 # Declare all the rooms
 room = {
@@ -38,211 +41,140 @@ room['dungeon'].e_to = room['narrow']
 room['hall'].s_to = room['overlook']
 room['hall'].e_to = room['foyer']
 
-#
-# Main
-#
+item = {
+    'weapon': Item('sword', 'Sharp blade used to slash horrifying creatures.'),
+    'light': Item('lantern', 'illuminates whatever room the traveler is in.'),
+}
+
+room['overlook'].AddItem(item['weapon'])
+room['foyer'].AddItem(item['light'])
+room['dungeon'].AddItem(item['weapon'])
+room['narrow'].AddItem(item['light'])
+room['hall'].AddItem(item['weapon'])
+
 
 # Make a new player object that is currently in the 'outside' room.
 player_name = input("What's your name, explorer?")
 player = Player(player_name, room['outside'])
-current_room_name = player.CurrentRoomName()
-current_room_description = player.CurrentRoomDescription()
-# * Prints the current room name
-print(
-    f"You may hit q any time to quit.  Explorer {player_name}, you find yourself in the {current_room_name} room.  {current_room_description}.")
 
-# * Waits for user input and decides what to do.
+# os.chdir('E:\\projects\\LambdaSchool\\m6\\61b1\\src')
 
 # Write a loop that:
 while True:
     # * Prints the current description (the textwrap module might be useful here).
+    current_room_name = player.CurrentRoomName()
+    current_room_description = player.CurrentRoomDescription()
+    for key, value in room.items():
+        if current_room_name == value.room_name:
+            current_room_key = key
+            print(f"found key:  {current_room_key}")
+
+    # * Prints the current room name
+    print(
+        f"You may hit q any time to quit.  Explorer {player_name}, you now find yourself in the {current_room_name} room.  {current_room_description}.")
+    # * Waits for user input and decides what to do.
     direction = input(
-        f"Which direction do you want to go, Traveler {player_name}?  Enter n for north, s for south, w for west, e for east, or q to quit.")
+        f"Which direction do you want to go, Traveler {player_name}?  Enter: \nn for north\ns for south\nw for west\ne for east\ni or inventory to list your inventory\nsearch to look for items in {current_room_name}\nq to quit.")
     print('----------------------------------')
-    # If the user enters "q", quit the game.
-    if direction == 'q':
-        print('You ran away from the cave, terrified.')
-        sys.exit()
-    else: 
-        if current_room_name == 'Outside Cave Entrance':
-            if direction == 'n':
-                # If the user enters a cardinal direction, attempt to move to the room there.
-                player.MoveToRoom(room['outside'].n_to)
-                current_room_name = player.CurrentRoomName()
-                current_room_description = player.CurrentRoomDescription()
-                print(
-                    f"Explorer {player_name}, you now find yourself in the {current_room_name} room.  {current_room_description}.")
-            else:
-                # Print an error message if the movement isn't allowed.
-                print(f"You cannot move that direction.  Select another direction to travel in.")
-                pass
 
-        elif current_room_name == 'Foyer':
-            if direction == 'n':
-                # If the user enters a cardinal direction, attempt to move to the room there.
-                player.MoveToRoom(room['foyer'].n_to)
-                current_room_name = player.CurrentRoomName()
-                current_room_description = player.CurrentRoomDescription()
-                print(
-                    f"Explorer {player_name}, you now find yourself in the {current_room_name} room.  {current_room_description}.")
-            if direction == 's':
-                # If the user enters a cardinal direction, attempt to move to the room there.
-                player.MoveToRoom(room['foyer'].s_to)
-                current_room_name = player.CurrentRoomName()
-                current_room_description = player.CurrentRoomDescription()
-                print(
-                    f"Explorer {player_name}, you now find yourself in the {current_room_name} room.  {current_room_description}.")
-            if direction == 'e':
-                # If the user enters a cardinal direction, attempt to move to the room there.
-                player.MoveToRoom(room['foyer'].e_to)
-                current_room_name = player.CurrentRoomName()
-                current_room_description = player.CurrentRoomDescription()
-                print(
-                    f"Explorer {player_name}, you now find yourself in the {current_room_name} room.  {current_room_description}.")
-            if direction == 'w':
-                # If the user enters a cardinal direction, attempt to move to the room there.
-                player.MoveToRoom(room['foyer'].w_to)
-                current_room_name = player.CurrentRoomName()
-                current_room_description = player.CurrentRoomDescription()
-                print(
-                    f"Explorer {player_name}, you now find yourself in the {current_room_name} room.  {current_room_description}.")
-
-
-            else:
-                # Print an error message if the movement isn't allowed.
-                print(
-                    f"You cannot move that direction.  Select another direction to travel in.")
-                pass
-
-        elif current_room_name == 'Grand Overlook':
-            if direction == 's':
-                for key in room:
+    user_input = direction.split(' ')
+    print(user_input)
+    if(len(user_input) == 1):
+        # If the user enters "q", quit the game.
+        if direction == 'q':
+            print('You ran away from the cave, terrified.')
+            sys.exit()
+        if direction == 'i':
+            player.ListInventory()
+        if direction == 'inventory':
+            player.ListInventory()
+        if direction == 'search':
+            print(f"key:  {current_room_key}")
+            room[current_room_key].ListItems()
+        else: 
+            if current_room_name == 'Outside Cave Entrance':
+                if direction == 'n':
                     # If the user enters a cardinal direction, attempt to move to the room there.
+                    player.MoveToRoom(room['outside'].n_to)
+                else:
+                    # Print an error message if the movement isn't allowed.
+                    print(f"You cannot move that direction.  Select another direction to travel in.")
+                    pass
+
+            elif current_room_name == 'Foyer':
+                if direction == 'n':
+                    player.MoveToRoom(room['foyer'].n_to)
+                if direction == 's':
+                    player.MoveToRoom(room['foyer'].s_to)
+                if direction == 'e':
+                    player.MoveToRoom(room['foyer'].e_to)
+                if direction == 'w':
+                    player.MoveToRoom(room['foyer'].w_to)
+                else:
+                    # Print an error message if the movement isn't allowed.
+                    print(
+                        f"You cannot move that direction.  Select another direction to travel in.")
+                    pass
+
+            elif current_room_name == 'Grand Overlook':
+                if direction == 's':
                     player.MoveToRoom(room['overlook'].s_to)
-                current_room_name = player.CurrentRoomName()
-                current_room_description = player.CurrentRoomDescription()
-                print(
-                    f"Explorer {player_name}, you now find yourself in the {current_room_name} room.  {current_room_description}.")
-            if direction == 'n':
-                for key in room:
-                    # If the user enters a cardinal direction, attempt to move to the room there.
+                if direction == 'n':
                     player.MoveToRoom(room['overlook'].n_to)
-                current_room_name = player.CurrentRoomName()
-                current_room_description = player.CurrentRoomDescription()
-                print(
-                    f"Explorer {player_name}, you now find yourself in the {current_room_name} room.  {current_room_description}.")
+                else:
+                    # Print an error message if the movement isn't allowed.
+                    print(
+                        f"You cannot move that direction.  Select another direction to travel in.")
+                    pass
 
-            else:
-                # Print an error message if the movement isn't allowed.
-                print(
-                    f"You cannot move that direction.  Select another direction to travel in.")
-                pass
-
-        elif current_room_name == 'Narrow Passage':
-            if direction == 'n':
-                for key in room:
-                    # If the user enters a cardinal direction, attempt to move to the room there.
+            elif current_room_name == 'Narrow Passage':
+                if direction == 'n':
                     player.MoveToRoom(room['narrow'].n_to)
-                current_room_name = player.CurrentRoomName()
-                current_room_description = player.CurrentRoomDescription()
-                print(
-                    f"Explorer {player_name}, you now find yourself in the {current_room_name} room.  {current_room_description}.")
-            if direction == 'w':
-                for key in room:
-                    # If the user enters a cardinal direction, attempt to move to the room there.
+                if direction == 'w':
                     player.MoveToRoom(room['narrow'].w_to)
-                current_room_name = player.CurrentRoomName()
-                current_room_description = player.CurrentRoomDescription()
-                print(
-                    f"Explorer {player_name}, you now find yourself in the {current_room_name} room.  {current_room_description}.")
-            if direction == 's':
-                for key in room:
-                    # If the user enters a cardinal direction, attempt to move to the room there.
+                if direction == 's':
                     player.MoveToRoom(room['narrow'].s_to)
-                current_room_name = player.CurrentRoomName()
-                current_room_description = player.CurrentRoomDescription()
-                print(
-                    f"Explorer {player_name}, you now find yourself in the {current_room_name} room.  {current_room_description}.")
-            if direction == 'e':
-                for key in room:
-                    # If the user enters a cardinal direction, attempt to move to the room there.
+                if direction == 'e':
                     player.MoveToRoom(room['narrow'].e_to)
-                current_room_name = player.CurrentRoomName()
-                current_room_description = player.CurrentRoomDescription()
-                print(
-                    f"Explorer {player_name}, you now find yourself in the {current_room_name} room.  {current_room_description}.")
 
-            else:
-                # Print an error message if the movement isn't allowed.
-                print(
-                    f"You cannot move that direction.  Select another direction to travel in.")
-                pass
+                else:
+                    # Print an error message if the movement isn't allowed.
+                    print(
+                        f"You cannot move that direction.  Select another direction to travel in.")
+                    pass
 
-        elif current_room_name == 'Treasure Chamber':
-            if direction == 's':
-                for key in room:
-                    # If the user enters a cardinal direction, attempt to move to the room there.
+            elif current_room_name == 'Treasure Chamber':
+                if direction == 's':
                     player.MoveToRoom(room['treasure'].s_to)
-                current_room_name = player.CurrentRoomName()
-                current_room_description = player.CurrentRoomDescription()
-                print(
-                    f"Explorer {player_name}, you now find yourself in the {current_room_name} room.  {current_room_description}.")
-            if direction == 'n':
-                for key in room:
-                    # If the user enters a cardinal direction, attempt to move to the room there.
+                if direction == 'n':
                     player.MoveToRoom(room['treasure'].n_to)
-                current_room_name = player.CurrentRoomName()
-                current_room_description = player.CurrentRoomDescription()
-                print(
-                    f"Explorer {player_name}, you now find yourself in the {current_room_name} room.  {current_room_description}.")
+                else:
+                    # Print an error message if the movement isn't allowed.
+                    print(
+                        f"You cannot move that direction.  Select another direction to travel in.")
+                    pass
 
-
-            else:
-                # Print an error message if the movement isn't allowed.
-                print(
-                    f"You cannot move that direction.  Select another direction to travel in.")
-                pass
-
-        elif current_room_name == 'Unlocked Creepy Dungeon':
-            if direction == 'e':
-                for key in room:
-                    # If the user enters a cardinal direction, attempt to move to the room there.
+            elif current_room_name == 'Unlocked Creepy Dungeon':
+                if direction == 'e':
                     player.MoveToRoom(room['dungeon'].e_to)
-                current_room_name = player.CurrentRoomName()
-                current_room_description = player.CurrentRoomDescription()
-                print(
-                    f"Explorer {player_name}, you now find yourself in the {current_room_name} room.  {current_room_description}.")
-
-            else:
-                # Print an error message if the movement isn't allowed.
-                print(
-                    f"You cannot move that direction.  Select another direction to travel in.")
-                pass
-        elif current_room_name == 'Decrepit Royal Hall':
-            if direction == 's':
-                for key in room:
-                    # If the user enters a cardinal direction, attempt to move to the room there.
+                else:
+                    # Print an error message if the movement isn't allowed.
+                    print(
+                        f"You cannot move that direction.  Select another direction to travel in.")
+                    pass
+            elif current_room_name == 'Decrepit Royal Hall':
+                if direction == 's':
                     player.MoveToRoom(room['hall'].s_to)
-                current_room_name = player.CurrentRoomName()
-                current_room_description = player.CurrentRoomDescription()
-                print(
-                    f"Explorer {player_name}, you now find yourself in the {current_room_name} room.  {current_room_description}.")
-            if direction == 'e':
-                for key in room:
-                    # If the user enters a cardinal direction, attempt to move to the room there.
+                if direction == 'e':
                     player.MoveToRoom(room['hall'].e_to)
-                current_room_name = player.CurrentRoomName()
-                current_room_description = player.CurrentRoomDescription()
-                print(
-                    f"Explorer {player_name}, you now find yourself in the {current_room_name} room.  {current_room_description}.")
 
-            else:
-                # Print an error message if the movement isn't allowed.
-                print(
-                    f"You cannot move that direction.  Select another direction to travel in.")
-                pass
-
-
-
-
-
+                else:
+                    # Print an error message if the movement isn't allowed.
+                    print(
+                        f"You cannot move that direction.  Select another direction to travel in.")
+                    pass
+    elif (len(user_input) == 2):
+        # item stuff here
+        if direction == 'search':
+            print(f"key:  {current_room_key}")
+            room[current_room_key].ListItems()
