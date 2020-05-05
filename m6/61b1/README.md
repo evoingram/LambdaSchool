@@ -34,20 +34,20 @@ Up to this point, you've gotten your feet wet by working on a bunch of small Pyt
 The `/src` directory contains the files `adv.py`, which is where the main logic for the game should live, `room.py`, which will contain the definition of the Room class, and `player.py`, which will contain the definition of the Player class.
 
 
-* [ ] Add a REPL parser to `adv.py` that accepts directional commands to move the player
-  * [ ] After each move, the REPL should print the name and description of the player's current room
-  * [ ] Valid commands are `n`, `s`, `e` and `w` which move the player North, South, East or West
-  * [ ] The parser should print an error if the player tries to move where there is no room.
+* [X] Add a REPL parser to `adv.py` that accepts directional commands to move the player
+  * [X] After each move, the REPL should print the name and description of the player's current room
+  * [X] Valid commands are `n`, `s`, `e` and `w` which move the player North, South, East or West
+  * [X] The parser should print an error if the player tries to move where there is no room.
 
-* [ ] Put the Room class in `room.py` based on what you see in `adv.py`.
+* [X] Put the Room class in `room.py` based on what you see in `adv.py`.
 
-  * [ ] The room should have `name` and `description` attributes.
+  * [X] The room should have `name` and `description` attributes.
 
-  * [ ] The room should also have `n_to`, `s_to`, `e_to`, and `w_to` attributes
+  * [X] The room should also have `n_to`, `s_to`, `e_to`, and `w_to` attributes
     which point to the room in that respective direction.
 
-* [ ] Put the Player class in `player.py`.
-  * [ ] Players should have a `name` and `current_room` attributes
+* [X] Put the Player class in `player.py`.
+  * [X] Players should have a `name` and `current_room` attributes
 
 
 * [ ] Create a file called `item.py` and add an `Item` class in there.
