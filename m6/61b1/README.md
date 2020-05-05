@@ -120,7 +120,7 @@ The `/src` directory contains the files `adv.py`, which is where the main logic 
 
 In arbitrary order:
 
-* [ ] Add more rooms
+* [X] Add more rooms
 
 * [ ] Add scoring
 
