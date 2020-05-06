@@ -67,18 +67,16 @@ while True:
     for key, value in room.items():
         if current_room_name == value.room_name:
             current_room_key = key
-            print(f"found key:  {current_room_key}")
 
     # * Prints the current room name
     print(
-        f"You may hit q any time to quit.  Explorer {player_name}, you now find yourself in the {current_room_name} room.  {current_room_description}.")
+        f"Explorer {player_name}, you now find yourself in the {current_room_name} room.  {current_room_description}.")
     # * Waits for user input and decides what to do.
     direction = input(
-        f"Which direction do you want to go, Traveler {player_name}?  Enter: \nn for north\ns for south\nw for west\ne for east\ni or inventory to list your inventory\nsearch to look for items in {current_room_name}\nq to quit.")
+        f"Which direction do you want to go, Traveler {player_name}?  Enter: \nn for north\ns for south\nw for west\ne for east\ni or inventory to list your inventory\nsearch to look for items in {current_room_name}\nq to quit\n")
     print('----------------------------------')
 
     user_input = direction.split(' ')
-    print(user_input)
     if(len(user_input) == 1):
         # If the user enters "q", quit the game.
         if direction == 'q':
@@ -89,7 +87,6 @@ while True:
         if direction == 'inventory':
             player.ListInventory()
         if direction == 'search':
-            print(f"key:  {current_room_key}")
             room[current_room_key].ListItems()
         else: 
             if current_room_name == 'Outside Cave Entrance':
@@ -176,5 +173,24 @@ while True:
     elif (len(user_input) == 2):
         # item stuff here
         if direction == 'search':
-            print(f"key:  {current_room_key}")
             room[current_room_key].ListItems()
+        # save item name in variable
+        current_item = user_input[1]
+        current_command = user_input[0]
+        # check if item in room items dictionary
+        for item in room[current_room_key].items():
+            # if no, say 'that item is not found in this room'
+            if item != current_item:
+                room[current_room_key].ItemNotFound()
+            else:
+                # if yes, use 'get' or take' to add to inventory
+                if (current_command == 'get') or (current_command == 'take'):
+                    player.AddInventoryItem(current_item)
+                    # notify user you have picked up or dropped off an item
+                    player.ItemFound(current_item)
+            # when dropping an item remove from inventory and add to room items
+            if current_command == 'drop':
+                player.DropInventoryItem(current_item)
+                # notify user you have picked up or dropped off an item
+                player.ItemDropped(current_item)
+                

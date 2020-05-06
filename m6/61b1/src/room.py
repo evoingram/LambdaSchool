@@ -28,4 +28,6 @@ class Room:
     def GetRoomKey(self, rooms, room_name):
         return list(rooms.keys())[list(rooms.values()).index(room_name)]
 
-            
+    def ItemNotFound(self, item):
+        print(f'{item} was not found in this room.  Try picking up another item or searching for items again.')
+

@@ -94,22 +94,22 @@ The `/src` directory contains the files `adv.py`, which is where the main logic 
   * [ ] If the user enters `get` or `take` followed by an `Item` name, look at the
     contents of the current `Room` to see if the item is there.
 
-     * [ ] If it is there, remove it from the `Room` contents, and add it to the
+     * [X] If it is there, remove it from the `Room` contents, and add it to the
        `Player` contents.
 
-     * [ ] If it's not there, print an error message telling the user so.
+     * [X] If it's not there, print an error message telling the user so.
 
-     * [ ] Add an `on_take` method to `Item`.
+     * [X] Add an `on_take` method to `Item`.
 
-        * [ ] Call this method when the `Item` is picked up by the player.
+        * [X] Call this method when the `Item` is picked up by the player.
 
-        * [ ] `on_take` should print out "You have picked up [NAME]" when you pick up an item.
+        * [X] `on_take` should print out "You have picked up [NAME]" when you pick up an item.
 
-        * [ ] The `Item` can use this to run additional code when it is picked up.
+        * [X] The `Item` can use this to run additional code when it is picked up.
 
-     * [ ] Add an `on_drop` method to `Item`. Implement it similar to `on_take`.
+     * [X] Add an `on_drop` method to `Item`. Implement it similar to `on_take`.
 
-* [ ] Implement support for the verb `drop` followed by an `Item` name. This is the
+* [X] Implement support for the verb `drop` followed by an `Item` name. This is the
   opposite of `get`/`take`.
 
 * [X] Add the `i` and `inventory` commands that both show a list of items currently
@@ -157,11 +157,11 @@ In arbitrary order:
 
 * [ ] Add light and darkness to the game
 
-* [ ] Add more items to the game.
+* [X] Add more items to the game.
 
 * [ ] Add a way to win.
 
-* [ ] Add more to the parser.
+* [X] Add more to the parser.
 
   * [ ] Remember the last `Item` mentioned and substitute that if the user types
     "it" later, e.g.

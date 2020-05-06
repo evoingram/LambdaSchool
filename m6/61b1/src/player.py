@@ -30,3 +30,9 @@ class Player:
 
     def DropInventoryItem(self, item):
         self.inventory = [x for x in inventory if x != item]
+
+    def ItemDropped(self, item):
+        print(f'You have dropped {item}.  It is no longer in your inventory.')
+
+    def ItemFound(self, item):
+        print(f'You have picked up {item}.')
