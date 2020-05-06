@@ -44,13 +44,17 @@ room['hall'].e_to = room['foyer']
 item = {
     'weapon': Item('sword', 'Sharp blade used to slash horrifying creatures.'),
     'light': Item('lantern', 'illuminates whatever room the traveler is in.'),
+    'potion': Item('potion', 'life-giving serum of undetermined age in an old glass bottle.'),
 }
 
 room['overlook'].AddItem(item['weapon'])
+room['overlook'].AddItem(item['potion'])
 room['foyer'].AddItem(item['light'])
+room['foyer'].AddItem(item['potion'])
 room['dungeon'].AddItem(item['weapon'])
 room['narrow'].AddItem(item['light'])
 room['hall'].AddItem(item['weapon'])
+room['hall'].AddItem(item['potion'])
 
 
 # Make a new player object that is currently in the 'outside' room.
