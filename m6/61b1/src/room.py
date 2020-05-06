@@ -16,6 +16,8 @@ class Room:
         return self.items
 
     def ListItems(self):
+        if self.items == []:
+            print(f'There are no more items to be found in the {self.room_name}')
         for item in self.items:
             print(f'{self.room_name} contains an item, {item.item_name}')
 
@@ -23,7 +25,7 @@ class Room:
         self.items.append(item)
 
     def ItemPickedUp(self, item):
-        self.items = [x for x in items if x != item]
+        self.items = [x for x in self.items if x.item_name != item.item_name]
 
     def GetRoomKey(self, rooms, room_name):
         return list(rooms.keys())[list(rooms.values()).index(room_name)]

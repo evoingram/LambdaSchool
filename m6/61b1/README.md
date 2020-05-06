@@ -88,10 +88,10 @@ The `/src` directory contains the files `adv.py`, which is where the main logic 
   * [X] Split the entered command and see if it has 1 or 2 words in it to determine
     if it's the first or second form.
 
-* [ ] Implement support for the verb `get` followed by an `Item` name. This will be
+* [X] Implement support for the verb `get` followed by an `Item` name. This will be
   used to pick up `Item`s.
 
-  * [ ] If the user enters `get` or `take` followed by an `Item` name, look at the
+  * [X] If the user enters `get` or `take` followed by an `Item` name, look at the
     contents of the current `Room` to see if the item is there.
 
      * [X] If it is there, remove it from the `Room` contents, and add it to the
@@ -153,7 +153,7 @@ In arbitrary order:
   * [ ] Modify the `get`/`take` code to print "Good luck finding that in the dark!" if
   the user tries to pick up an `Item` in the dark.
 
-* [ ] Add methods to notify items when they are picked up or dropped
+* [X] Add methods to notify items when they are picked up or dropped
 
 * [ ] Add light and darkness to the game
 

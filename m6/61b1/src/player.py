@@ -22,14 +22,14 @@ class Player:
             print(
                 f"{self.player_name} has the following items in their inventory:")
             for item in self.inventory:
-                print(f"{item.name}")
+                print(f"{item.item_name}")
 
     def AddInventoryItem(self, item):
-        self.items.append(item)
-        print(f"Added {item.name} to {self.player_name}'s inventory.")
+        self.inventory.append(item)
+        print(f"Added {item.item_name} to {self.player_name}'s inventory.")
 
     def DropInventoryItem(self, item):
-        self.inventory = [x for x in inventory if x != item]
+        self.inventory = [x for x in self.inventory if x != item]
 
     def ItemDropped(self, item):
         print(f'You have dropped {item}.  It is no longer in your inventory.')

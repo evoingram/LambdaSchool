@@ -57,7 +57,11 @@ room['hall'].AddItem(item['weapon'])
 player_name = input("What's your name, explorer?")
 player = Player(player_name, room['outside'])
 
-# os.chdir('E:\\projects\\LambdaSchool\\m6\\61b1\\src')
+'''
+import os
+os.chdir('E:\\projects\\LambdaSchool\\m6\\61b1\\src')
+exec(open('adv.py').read())
+'''
 
 # Write a loop that:
 while True:
@@ -70,10 +74,10 @@ while True:
 
     # * Prints the current room name
     print(
-        f"Explorer {player_name}, you now find yourself in the {current_room_name} room.  {current_room_description}.")
+        f"Explorer {player_name}, you now find yourself in the {current_room_name} room.  {current_room_description}.\n")
     # * Waits for user input and decides what to do.
     direction = input(
-        f"Which direction do you want to go, Traveler {player_name}?  Enter: \nn for north\ns for south\nw for west\ne for east\ni or inventory to list your inventory\nsearch to look for items in {current_room_name}\nq to quit\n")
+        f"Which direction do you want to go, Traveler {player_name}?  \n\nMenu: \nn for north\ns for south\nw for west\ne for east\ni or inventory to list your inventory\nsearch to look for items in {current_room_name}\nq to quit\n\nCommand:")
     print('----------------------------------')
 
     user_input = direction.split(' ')
@@ -93,7 +97,7 @@ while True:
                 if direction == 'n':
                     # If the user enters a cardinal direction, attempt to move to the room there.
                     player.MoveToRoom(room['outside'].n_to)
-                else:
+                if direction != 'n':
                     # Print an error message if the movement isn't allowed.
                     print(f"You cannot move that direction.  Select another direction to travel in.")
                     pass
@@ -107,7 +111,7 @@ while True:
                     player.MoveToRoom(room['foyer'].e_to)
                 if direction == 'w':
                     player.MoveToRoom(room['foyer'].w_to)
-                else:
+                if direction != 'n' or direction != 's' or direction != 'w' or direction != 'e':
                     # Print an error message if the movement isn't allowed.
                     print(
                         f"You cannot move that direction.  Select another direction to travel in.")
@@ -118,7 +122,7 @@ while True:
                     player.MoveToRoom(room['overlook'].s_to)
                 if direction == 'n':
                     player.MoveToRoom(room['overlook'].n_to)
-                else:
+                if direction != 's' or direction != 'n':
                     # Print an error message if the movement isn't allowed.
                     print(
                         f"You cannot move that direction.  Select another direction to travel in.")
@@ -133,8 +137,7 @@ while True:
                     player.MoveToRoom(room['narrow'].s_to)
                 if direction == 'e':
                     player.MoveToRoom(room['narrow'].e_to)
-
-                else:
+                if direction != 'n' or direction != 's' or direction != 'w' or direction != 'e':
                     # Print an error message if the movement isn't allowed.
                     print(
                         f"You cannot move that direction.  Select another direction to travel in.")
@@ -145,7 +148,7 @@ while True:
                     player.MoveToRoom(room['treasure'].s_to)
                 if direction == 'n':
                     player.MoveToRoom(room['treasure'].n_to)
-                else:
+                if direction != 'n' or direction != 's':
                     # Print an error message if the movement isn't allowed.
                     print(
                         f"You cannot move that direction.  Select another direction to travel in.")
@@ -154,7 +157,7 @@ while True:
             elif current_room_name == 'Unlocked Creepy Dungeon':
                 if direction == 'e':
                     player.MoveToRoom(room['dungeon'].e_to)
-                else:
+                if direction != 'e':
                     # Print an error message if the movement isn't allowed.
                     print(
                         f"You cannot move that direction.  Select another direction to travel in.")
@@ -165,7 +168,7 @@ while True:
                 if direction == 'e':
                     player.MoveToRoom(room['hall'].e_to)
 
-                else:
+                if direction != 's' or direction != 'e':
                     # Print an error message if the movement isn't allowed.
                     print(
                         f"You cannot move that direction.  Select another direction to travel in.")
@@ -177,20 +180,34 @@ while True:
         # save item name in variable
         current_item = user_input[1]
         current_command = user_input[0]
-        # check if item in room items dictionary
-        for item in room[current_room_key].items():
-            # if no, say 'that item is not found in this room'
-            if item != current_item:
-                room[current_room_key].ItemNotFound()
-            else:
-                # if yes, use 'get' or take' to add to inventory
-                if (current_command == 'get') or (current_command == 'take'):
-                    player.AddInventoryItem(current_item)
+        rooms_items = room[current_room_key].items
+        print()
+        # when dropping an item remove from inventory and add to room items
+        if current_command == 'drop':
+            print(f'You try to drop a {current_item}.')
+            inventory_items = player.inventory
+            for item in inventory_items:
+                if item.item_name == current_item:
+                    player.DropInventoryItem(item)
+                    room[current_room_key].AddItem(item)
                     # notify user you have picked up or dropped off an item
-                    player.ItemFound(current_item)
-            # when dropping an item remove from inventory and add to room items
-            if current_command == 'drop':
-                player.DropInventoryItem(current_item)
-                # notify user you have picked up or dropped off an item
-                player.ItemDropped(current_item)
-                
+                    player.ItemDropped(current_item)
+        if (current_command == 'get') or (current_command == 'take'):
+            print(f'You try to pick up a {current_item}.')
+            # check if item in room items dictionary
+            for item in rooms_items:
+                # if no, say 'that item is not found in this room'
+                if item.item_name == current_item:
+                    found_item = item.item_name
+                    # if yes, use 'get' or take' to add to inventory
+                    if (current_command == 'get') or (current_command == 'take'):
+                        player.AddInventoryItem(item)
+                        # notify user you have picked up or dropped off an item
+                        player.ItemFound(found_item)
+                        room[current_room_key].ItemPickedUp(item)
+                else:
+                    found_item = 'not found'
+            if found_item == 'not found':
+                room[current_room_key].ItemNotFound(current_item)
+    print()
+
