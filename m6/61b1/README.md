@@ -18,101 +18,101 @@ Up to this point, you've gotten your feet wet by working on a bunch of small Pyt
 
 ### Day 1 MVP
 
-* Create the REPL command parser in `adv.py` which allows the player to move to rooms
+* [X] Create the REPL command parser in `adv.py` which allows the player to move to rooms
   in the four cardinal directions.
-* Fill out Player and Room classes in `player.py` and `room.py`
+* [X] Fill out Player and Room classes in `player.py` and `room.py`
 
 ### Day 2 MVP
 
-* Make rooms able to hold multiple items
-* Make the player able to carry multiple items
-* Add items to the game that the user can carry around
-* Add `get [ITEM_NAME]` and `drop [ITEM_NAME]` commands to the parser
+* [X] Make rooms able to hold multiple items
+* [X] Make the player able to carry multiple items
+* [X] Add items to the game that the user can carry around
+* [X] Add `get [ITEM_NAME]` and `drop [ITEM_NAME]` commands to the parser
 
 ## Specification
 
 The `/src` directory contains the files `adv.py`, which is where the main logic for the game should live, `room.py`, which will contain the definition of the Room class, and `player.py`, which will contain the definition of the Player class.
 
 
-* Add a REPL parser to `adv.py` that accepts directional commands to move the player
-  * After each move, the REPL should print the name and description of the player's current room
-  * Valid commands are `n`, `s`, `e` and `w` which move the player North, South, East or West
-  * The parser should print an error if the player tries to move where there is no room.
+* [X] Add a REPL parser to `adv.py` that accepts directional commands to move the player
+  * [X] After each move, the REPL should print the name and description of the player's current room
+  * [X] Valid commands are `n`, `s`, `e` and `w` which move the player North, South, East or West
+  * [X] The parser should print an error if the player tries to move where there is no room.
 
-* Put the Room class in `room.py` based on what you see in `adv.py`.
+* [X] Put the Room class in `room.py` based on what you see in `adv.py`.
 
-  * The room should have `name` and `description` attributes.
+  * [X] The room should have `name` and `description` attributes.
 
-  * The room should also have `n_to`, `s_to`, `e_to`, and `w_to` attributes
+  * [X] The room should also have `n_to`, `s_to`, `e_to`, and `w_to` attributes
     which point to the room in that respective direction.
 
-* Put the Player class in `player.py`.
-  * Players should have a `name` and `current_room` attributes
+* [X] Put the Player class in `player.py`.
+  * [X] Players should have a `name` and `current_room` attributes
 
 
-* Create a file called `item.py` and add an `Item` class in there.
+* [X] Create a file called `item.py` and add an `Item` class in there.
 
-  * The item should have `name` and `description` attributes.
+  * [X] The item should have `name` and `description` attributes.
 
-     * Hint: the name should be one word for ease in parsing later.
+     * [X] Hint: the name should be one word for ease in parsing later.
 
-  * This will be the _base class_ for specialized item types to be declared
+  * [ ] This will be the _base class_ for specialized item types to be declared
     later.
 
-* Add the ability to add items to rooms.
+* [X] Add the ability to add items to rooms.
 
-  * The `Room` class should be extended with a `list` that holds the `Item`s
+  * [X] The `Room` class should be extended with a `list` that holds the `Item`s
     that are currently in that room.
 
-  * Add functionality to the main loop that prints out all the items that are
+  * [X] Add functionality to the main loop that prints out all the items that are
     visible to the player when they are in that room.
 
-* Add capability to add `Item`s to the player's inventory. The inventory can
+* [X] Add capability to add `Item`s to the player's inventory. The inventory can
   also be a `list` of items "in" the player, similar to how `Item`s can be in a
   `Room`.
 
-* Add a new type of sentence the parser can understand: two words.
+* [X] Add a new type of sentence the parser can understand: two words.
 
-  * Until now, the parser could just understand one sentence form:
+  * [X] Until now, the parser could just understand one sentence form:
 
      `verb`
 
     such as "n" or "q".
 
-  * But now we want to add the form:
+  * [X] But now we want to add the form:
 
     `verb` `object`
 
     such as "take coins" or "drop sword".
 
-  * Split the entered command and see if it has 1 or 2 words in it to determine
+  * [X] Split the entered command and see if it has 1 or 2 words in it to determine
     if it's the first or second form.
 
-* Implement support for the verb `get` followed by an `Item` name. This will be
+* [X] Implement support for the verb `get` followed by an `Item` name. This will be
   used to pick up `Item`s.
 
-  * If the user enters `get` or `take` followed by an `Item` name, look at the
+  * [X] If the user enters `get` or `take` followed by an `Item` name, look at the
     contents of the current `Room` to see if the item is there.
 
-     * If it is there, remove it from the `Room` contents, and add it to the
+     * [X] If it is there, remove it from the `Room` contents, and add it to the
        `Player` contents.
 
-     * If it's not there, print an error message telling the user so.
+     * [X] If it's not there, print an error message telling the user so.
 
-     * Add an `on_take` method to `Item`.
+     * [X] Add an `on_take` method to `Item`.
 
-        * Call this method when the `Item` is picked up by the player.
+        * [X] Call this method when the `Item` is picked up by the player.
 
-        * `on_take` should print out "You have picked up [NAME]" when you pick up an item.
+        * [X] `on_take` should print out "You have picked up [NAME]" when you pick up an item.
 
-        * The `Item` can use this to run additional code when it is picked up.
+        * [X] The `Item` can use this to run additional code when it is picked up.
 
-     * Add an `on_drop` method to `Item`. Implement it similar to `on_take`.
+     * [X] Add an `on_drop` method to `Item`. Implement it similar to `on_take`.
 
-* Implement support for the verb `drop` followed by an `Item` name. This is the
+* [X] Implement support for the verb `drop` followed by an `Item` name. This is the
   opposite of `get`/`take`.
 
-* Add the `i` and `inventory` commands that both show a list of items currently
+* [X] Add the `i` and `inventory` commands that both show a list of items currently
   carried by the player.
 
 
@@ -120,50 +120,50 @@ The `/src` directory contains the files `adv.py`, which is where the main logic 
 
 In arbitrary order:
 
-* Add more rooms
+* [X] Add more rooms
 
-* Add scoring
+* [ ] Add scoring
 
-* Subclass items into treasures
+* [ ] Subclass items into treasures
 
-* Add a subclass to `Item` called `LightSource`.
+* [ ] Add a subclass to `Item` called `LightSource`.
 
-  * During world creation, add a `lamp` `LightSource` to a convenient `Room`.
+  * [ ] During world creation, add a `lamp` `LightSource` to a convenient `Room`.
 
-  * Override `on_drop` in `LightSource` that tells the player "It's not wise to
+  * [ ] Override `on_drop` in `LightSource` that tells the player "It's not wise to
   drop your source of light!" if the player drops it. (But still lets them drop
   it.)
 
-  * Add an attribute to `Room` called `is_light` that is `True` if the `Room` is
+  * [ ] Add an attribute to `Room` called `is_light` that is `True` if the `Room` is
   naturally illuminated, or `False` if a `LightSource` is required to see what
   is in the room.
 
-  * Modify the main loop to test if there is light in the `Room` (i.e. if
+  * [ ] Modify the main loop to test if there is light in the `Room` (i.e. if
     `is_light` is `True` **or** there is a `LightSource` item in the `Room`'s
     contents **or** if there is a `LightSource` item in the `Player`'s contents).
 
-  * If there is light in the room, display name, description, and contents as
+  * [ ] If there is light in the room, display name, description, and contents as
     normal.
 
-  * If there isn't, print out "It's pitch black!" instead.
+  * [ ] If there isn't, print out "It's pitch black!" instead.
 
   * Hint: `isinstance` might help you figure out if there's a `LightSource`
     among all the nearby `Item`s.
 
-  * Modify the `get`/`take` code to print "Good luck finding that in the dark!" if
+  * [ ] Modify the `get`/`take` code to print "Good luck finding that in the dark!" if
   the user tries to pick up an `Item` in the dark.
 
-* Add methods to notify items when they are picked up or dropped
+* [X] Add methods to notify items when they are picked up or dropped
 
-* Add light and darkness to the game
+* [ ] Add light and darkness to the game
 
-* Add more items to the game.
+* [X] Add more items to the game.
 
-* Add a way to win.
+* [ ] Add a way to win.
 
-* Add more to the parser.
+* [X] Add more to the parser.
 
-  * Remember the last `Item` mentioned and substitute that if the user types
+  * [ ] Remember the last `Item` mentioned and substitute that if the user types
     "it" later, e.g.
 
     ```
@@ -180,20 +180,20 @@ In arbitrary order:
         sword, and they type "take sword", the parser should say, "I don't know
         which you mean: rusty sword or silver sword."
 
-* Modify the code that calls `on_take` to check the return value. If `on_take`
+* [ ] Modify the code that calls `on_take` to check the return value. If `on_take`
   returns `False`, then don't continue picking up the object. (I.e. prevent the
   user from picking it up.)
 
-  * This enables you to add logic to `on_take` to code things like "don't allow
+  * [ ] This enables you to add logic to `on_take` to code things like "don't allow
     the user to pick up the dirt unless they're holding the shovel.
 
-* Add monsters.
+* [ ] Add monsters.
 
-* Add the `attack` verb that allows you to specify a monster to attack.
+* [ ] Add the `attack` verb that allows you to specify a monster to attack.
 
-* Add an `on_attack` method to the monster class.
+* [ ] Add an `on_attack` method to the monster class.
 
-* Similar to the `on_take` return value modification, above, have `on_attack`
+* [ ] Similar to the `on_take` return value modification, above, have `on_attack`
   prevent the attack from succeeding unless the user possesses a `sword` item.
 
 * Come up with more stretch goals! The sky's the limit!
