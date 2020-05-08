@@ -19,11 +19,11 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 
 Complete the programs in the `src/` directory in any order.
 
-* [ ] `oop/`
-    * [ ] `oop1.py`: class hierarchies
-    * [ ] `oop2.py`: subclassing and method overriding
-* [ ] `comp/`
-    * [ ] `comp.py`: list comprehensions
+* [X] `oop/`
+    * [X] `oop1.py`: class hierarchies (2 pts)
+    * [X] `oop2.py`: subclassing and method overriding (2 pts)
+* [X] `comp/`
+    * [X] `comp.py`: list comprehensions (8 pts)
 * [ ] `cityreader/`
     * [ ] `cityreader.py`: modules and CSV file reading
 
@@ -34,6 +34,13 @@ Each file has its own associated test file. To test your code, run `python [name
 The `cityreader` stretch goal has its own test file, `test_stretch.py`, if you want to take a stab at implementing the stretch problem.
 
 **_It's never a bad idea to take a look at the test files in order to see what each test is expecting._**
+
+'''
+import os
+os.chdir('E:\\projects\\LambdaSchool\\m6\\61c1\\src\comp')
+exec(open('comp.py').read())
+python3
+'''
 
 ## Minimum Viable Product
 
