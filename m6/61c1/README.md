@@ -37,8 +37,8 @@ The `cityreader` stretch goal has its own test file, `test_stretch.py`, if you w
 
 '''
 import os
-os.chdir('E:\\projects\\LambdaSchool\\m6\\61c1\\src\comp')
-exec(open('comp.py').read())
+os.chdir('E:\\projects\\LambdaSchool\\m6\\61c1\\src\cityreader')
+exec(open('cityreader.py').read())
 python3
 '''
 
@@ -57,7 +57,7 @@ There's a separate test file `test_stretch.py` for the stretch problem that you 
 ## Rubric
 | OBJECTIVE | TASK | 1 - DOES NOT MEET Expectations | 2 - MEETS Expectations | 3 - EXCEEDS Expectations | SCORE |
 | ---------- | ----- | ------- | ------- | ------- | -- |
-| _Student can demonstrate applied knowledge of Python basics by producing list comprehensions in `comp.py`_ | List Comprehensions: (1 point per problem, 8 max) | 0-5 points | 6-7 points | 8 points |  |
-| _Student can demonstrate applied knowledge of Object-Oriented Programming by completing `oop1.py` and `oop2.py`_ | OOP: (2 points per file, 4 max) | 0 points | 2 points | 4 points |  |
+| _Student can demonstrate applied knowledge of Python basics by producing list comprehensions in `comp.py`_ | List Comprehensions: (1 point per problem, 8 max) | 0-5 points | 6-7 points | 8 points | 8 |
+| _Student can demonstrate applied knowledge of Object-Oriented Programming by completing `oop1.py` and `oop2.py`_ | OOP: (2 points per file, 4 max) | 0 points | 2 points | 4 points | 4 |
 | _Student can demonstrate applied research and language learning by completing `cityreader.py`_ | CSV: 6 points for `cityreader()`, 1 point for `cityreader_stretch()` | 0 points | 6 points | 7 points |  |
 | **FINAL SCORE** | | **0-13** | **14-18** | **19** |  |

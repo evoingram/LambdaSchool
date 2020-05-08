@@ -1,6 +1,15 @@
 # Create a class to hold a city location. Call the class "City". It should have
 # fields for name, lat and lon (representing latitude and longitude).
 
+class City:
+    def __init__(self, name, lat, lon):
+        self.name = name
+        self.lat = lat
+        self.lon = lon
+
+    def __str__(self):
+        return '%s, %s, %s' % (self.name, self.lat, self.lon)
+
 
 # We have a collection of US cities with population over 750,000 stored in the
 # file "cities.csv". (CSV stands for "comma-separated values".)
@@ -15,15 +24,31 @@
 # Note that the first line of the CSV is header that describes the fields--this
 # should not be loaded into a City object.
 cities = []
+import csv
+from csv import DictReader
 
 def cityreader(cities=[]):
   # TODO Implement the functionality to read from the 'cities.csv' file
   # For each city record, create a new City instance and add it to the 
   # `cities` list
-    
+  with open('E:/projects/lambdaschool/m6/61c1/src/cityreader/cities.csv', newline='') as csvfile:
+    # citiescsvreader = csv.reader(csvfile, delimiter=',')
+    citiescsvreader = DictReader(csvfile)
+    # header = next(citiescsvreader)
+    # Check file as empty
+    # if header != None:
+    for row in citiescsvreader:
+          city = City(row['city'], float(row['lat']), float(row['lng']))
+          cities.append(city)    
     return cities
 
 cityreader(cities)
+
+'''
+citiescsvreader = DictReader(read_obj)
+for row in csvfile:
+        print(row['Id'], row['Name'])
+'''
 
 # Print the list of cities (name, lat, lon), 1 record per line.
 for c in cities:
