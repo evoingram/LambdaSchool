@@ -12,8 +12,7 @@ def sieve(x):
 
     possiblePrimes[0] = False
     possiblePrimes[1] = False
-    print('Following are the prime numbers smaller')
-    print("than or equal to", x)
+    print('Following are the prime numbers smaller than or equal to', x)
     for y in range(x + 1):
         if possiblePrimes[y]:
             print(y,)
