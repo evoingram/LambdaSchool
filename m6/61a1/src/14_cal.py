@@ -14,6 +14,7 @@ and does the following:
  - If the user specifies two arguments, assume they passed in
    both the month and the year. Render the calendar for that
    month and year.
+
  - Otherwise, print a usage statement to the terminal indicating
    the format that your program expects arguments to be given.
    Then exit the program.
@@ -30,3 +31,15 @@ it should use today’s date to get the month and year.
 import sys
 import calendar
 from datetime import datetime
+from datetime import date
+
+def generateCalendar(month=date.today().strftime("%m"), year=date.today().strftime("%y")):
+    try: 
+        c = calendar.TextCalendar(calendar.SUNDAY)
+        str = c.formatmonth(int(year), int(month))
+        print(str)
+    except:
+        print(
+            "Entering no inputs will retrieve the current month's calendar.  Enter one argument for the month or two arguments for month and year:  `14_cal.py [month] [year]`.")
+
+generateCalendar()
