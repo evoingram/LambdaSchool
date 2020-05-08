@@ -24,8 +24,8 @@ Complete the programs in the `src/` directory in any order.
     * [X] `oop2.py`: subclassing and method overriding (2 pts)
 * [X] `comp/`
     * [X] `comp.py`: list comprehensions (8 pts)
-* [ ] `cityreader/`
-    * [ ] `cityreader.py`: modules and CSV file reading
+* [X] `cityreader/`
+    * [X] `cityreader.py`: modules and CSV file reading (6 pts)
 
 ## Testing
 
@@ -59,5 +59,5 @@ There's a separate test file `test_stretch.py` for the stretch problem that you 
 | ---------- | ----- | ------- | ------- | ------- | -- |
 | _Student can demonstrate applied knowledge of Python basics by producing list comprehensions in `comp.py`_ | List Comprehensions: (1 point per problem, 8 max) | 0-5 points | 6-7 points | 8 points | 8 |
 | _Student can demonstrate applied knowledge of Object-Oriented Programming by completing `oop1.py` and `oop2.py`_ | OOP: (2 points per file, 4 max) | 0 points | 2 points | 4 points | 4 |
-| _Student can demonstrate applied research and language learning by completing `cityreader.py`_ | CSV: 6 points for `cityreader()`, 1 point for `cityreader_stretch()` | 0 points | 6 points | 7 points |  |
+| _Student can demonstrate applied research and language learning by completing `cityreader.py`_ | CSV: 6 points for `cityreader()`, 1 point for `cityreader_stretch()` | 0 points | 6 points | 7 points | 7 |
 | **FINAL SCORE** | | **0-13** | **14-18** | **19** |  |
