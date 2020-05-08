@@ -19,13 +19,13 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 
 Complete the programs in the `src/` directory in any order.
 
-* `oop/`
-    * `oop1.py`: class hierarchies
-    * `oop2.py`: subclassing and method overriding
-* `comp/`
-    * `comp.py`: list comprehensions
-* `cityreader/`
-    * `cityreader.py`: modules and CSV file reading
+* [X] `oop/`
+    * [X] `oop1.py`: class hierarchies (2 pts)
+    * [X] `oop2.py`: subclassing and method overriding (2 pts)
+* [X] `comp/`
+    * [X] `comp.py`: list comprehensions (8 pts)
+* [X] `cityreader/`
+    * [X] `cityreader.py`: modules and CSV file reading (6 pts)
 
 ## Testing
 
@@ -34,6 +34,13 @@ Each file has its own associated test file. To test your code, run `python [name
 The `cityreader` stretch goal has its own test file, `test_stretch.py`, if you want to take a stab at implementing the stretch problem.
 
 **_It's never a bad idea to take a look at the test files in order to see what each test is expecting._**
+
+'''
+import os
+os.chdir('E:\\projects\\LambdaSchool\\m6\\61c1\\src\cityreader')
+exec(open('cityreader.py').read())
+python3
+'''
 
 ## Minimum Viable Product
 
@@ -50,7 +57,7 @@ There's a separate test file `test_stretch.py` for the stretch problem that you 
 ## Rubric
 | OBJECTIVE | TASK | 1 - DOES NOT MEET Expectations | 2 - MEETS Expectations | 3 - EXCEEDS Expectations | SCORE |
 | ---------- | ----- | ------- | ------- | ------- | -- |
-| _Student can demonstrate applied knowledge of Python basics by producing list comprehensions in `comp.py`_ | List Comprehensions: (1 point per problem, 8 max) | 0-5 points | 6-7 points | 8 points |  |
-| _Student can demonstrate applied knowledge of Object-Oriented Programming by completing `oop1.py` and `oop2.py`_ | OOP: (2 points per file, 4 max) | 0 points | 2 points | 4 points |  |
-| _Student can demonstrate applied research and language learning by completing `cityreader.py`_ | CSV: 6 points for `cityreader()`, 1 point for `cityreader_stretch()` | 0 points | 6 points | 7 points |  |
+| _Student can demonstrate applied knowledge of Python basics by producing list comprehensions in `comp.py`_ | List Comprehensions: (1 point per problem, 8 max) | 0-5 points | 6-7 points | 8 points | 8 |
+| _Student can demonstrate applied knowledge of Object-Oriented Programming by completing `oop1.py` and `oop2.py`_ | OOP: (2 points per file, 4 max) | 0 points | 2 points | 4 points | 4 |
+| _Student can demonstrate applied research and language learning by completing `cityreader.py`_ | CSV: 6 points for `cityreader()`, 1 point for `cityreader_stretch()` | 0 points | 6 points | 7 points | 7 |
 | **FINAL SCORE** | | **0-13** | **14-18** | **19** |  |
