@@ -2,20 +2,17 @@ import sys
 sys.path.append('../doubly_linked_list')
 from doubly_linked_list import DoublyLinkedList
 
-# FIFO
 class Stack:
     def __init__(self):
         self.size = 0
-        self.storage = []
+        # Why is our DLL a good choice to store our elements?
+        # self.storage = ?
 
     def push(self, value):
-        return self.storage.insert(0, value)
+        pass
 
     def pop(self):
-        if len(self.storage) == 0:
-            return None
-        item = self.storage.pop(0)
-        return item
+        pass
 
     def len(self):
-        return len(self.storage)
+        pass
