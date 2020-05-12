@@ -183,3 +183,13 @@ class DoublyLinkedList:
             current_head = current_head.next
 
         return head_value
+
+    def find(self, value):
+        current_node = self.head
+        if current_node.value == value:
+            return current_node
+        while self.tail is not current_node:
+            current_node = current_node.next
+            if current_node.value == value:
+                return current_node
+        return None

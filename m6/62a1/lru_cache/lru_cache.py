@@ -10,17 +10,26 @@ class LRUCache:
         self.storage = dict()
 
     def get(self, key):
-        # Returns None if the key-value pair doesn't exist in the cache.
         if not key in self.storage:
             return None
         list_value = self.storage[key]
-        # needs to move the key-value pair to the end of the order such that the pair is considered most-recently used
         if list_value is not None:
             lruc_node = self.node_list.find(key)
             self.node_list.move_to_front(lruc_node)
-        # Retrieves the value associated with the given key
-        # Returns the value associated with the key
         return list_value
+
+        # needs to move the key-value pair to the end of the order such that the pair is considered most-recently used
+        if key in self.keys:
+            # Retrieves the value associated with the given key
+            index = self.keys.index(key)
+            self.keys.pop(index)
+            self.keys.append(key)
+            # Returns the value associated with the key
+            return self.storage[key]
+
+        # Returns None if the key-value pair doesn't exist in the cache.
+        else:
+           return None
 
     def set(self, key, value):
         # Adds the given key-value pair to the cache. The newly- added pair should be considered the most-recently used entry in the cache.
