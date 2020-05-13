@@ -101,10 +101,10 @@ class BinarySearchTree:
         # add node to current queue
         current_queue.enqueue(node)
         # if current queue is not empty
-        while current_queue:
+        while current_queue.len() > 0:
             # set current as next queue
             next_queue = Queue()
-            while current_queue:
+            while current_queue.len() > 0:
                 # dequeue current node and save it 
                 current_node = current_queue.dequeue()
                 # if left tree exists on current node, add to left 
@@ -127,7 +127,7 @@ class BinarySearchTree:
         # add node to current stack 
         current_stack.push(node)
         # while current stack is NOT empty
-        while current_stack:
+        while current_stack.len() > 0:
             # remove entry from stack and save in current_node
             current_node = current_stack.pop()
             # print value of current_node
