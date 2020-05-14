@@ -15,6 +15,9 @@ import time
 # Try it out and compare your solution to the original runtime.
 # (If this solution is less efficient than your original solution, include both and label the strech solution with a comment)
 
+# Rubric:
+# 2:  Student does not identify the runtime of the starter code in name.py, but optimizes it to run in under 6 seconds, with a solution of O(n log n) or better
+# 3:  Student does BOTH correctly identify the runtime of the starter code in name.py and optimizes it to run in under 6 seconds, with a solution of 0(n log n) or better
 
 start_time = time.time()
 

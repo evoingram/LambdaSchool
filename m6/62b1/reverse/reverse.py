@@ -4,6 +4,10 @@
 # Without making it a Doubly Linked List (adding a tail attribute), complete the `reverse_list()` function within `reverse/reverse.py`.
 # Reverse the contents of the list using recursion, *not a loop.*
 
+# Rubric:
+# 2:  Student's solution in reverse.py is able to correctly print out the contents of the Linked List in reverse order, passing all tests, BUT, the runtime of their solution is not optimal (requires looping through the list more than once)
+# 3:  Student's solution in reverse.py is able to correctly print out the contents of the Linked List in reverse order, passing all tests AND it has a runtime of O(n) or better
+
 class Node:
     def __init__(self, value=None, next_node=None):
         self.value = value
