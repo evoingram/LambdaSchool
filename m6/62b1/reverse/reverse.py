@@ -1,3 +1,9 @@
+
+# MVP:
+# Inside of the `reverse` directory, you'll find a basic implementation of a Singly Linked List.
+# Without making it a Doubly Linked List (adding a tail attribute), complete the `reverse_list()` function within `reverse/reverse.py`.
+# Reverse the contents of the list using recursion, *not a loop.*
+
 class Node:
     def __init__(self, value=None, next_node=None):
         self.value = value
