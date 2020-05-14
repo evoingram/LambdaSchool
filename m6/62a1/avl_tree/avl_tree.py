@@ -97,10 +97,10 @@ class AVLTree:
     """
     def left_rotate(self):
         # making the right child of this node the parent
-        node_child = self.node.right
+        child_right = self.node.right
         self.node.right = None
         # making the old parent the left child of the new parent
-        node_child.node.left = self
+        child_right.node.left = self
 
 
     """
@@ -182,3 +182,8 @@ class AVLTree:
         # check for rebalancing if absolute value of balance > 1:
         if abs(self.balance) > 1:
             self.rebalance()
+    
+    def checkHeight(self, root_node):
+        if not root_node:
+            return 0
+        return root_node.height
