@@ -42,15 +42,17 @@ class Heap:
 
     # shift node up as appropriate 
     def _bubble_up(self, index):
+        
          # if node is first (0), return none 
         if index == 0:
             return None
+
         # if node is second+ (1+), do the following
         while index:
             # save parent 
-            p = parent(index)
-            current_index_value = self.storage[index]
-            current_parent_value = self.storage[p]
+            p = parent(index)         
+            current_index_value, current_parent_value = self.storage[index], self.storage[p]
+
             # if current value is greater than parent, swap
             if self.comparator(current_index_value, current_parent_value):
                 # assign current value to new parent and parent value to current index

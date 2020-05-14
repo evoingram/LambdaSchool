@@ -40,10 +40,8 @@ class AVLTree:
     in the tree
     """
     def update_height(self):
-        node_left = self.node.left
-        node_right = self.node.right
-        height_left = 0
-        height_right = 0
+        node_left, node_right = self.node.left, self.node.right
+        height_left, height_right = 0, 0
 
         # recursive run if left node exists
         if node_left:
@@ -70,10 +68,8 @@ class AVLTree:
     """
     def update_balance(self):
         if self.node is not None:
-            node_left = self.node.left
-            node_right = self.node.right
-            height_left = 0
-            height_right = 0
+            node_left, node_right = self.node.left, self.node.right
+            height_left, height_right = 0, 0
 
             # recursive run if left node exists
             if node_left:
