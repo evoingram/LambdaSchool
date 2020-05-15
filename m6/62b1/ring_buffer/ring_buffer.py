@@ -26,7 +26,7 @@ class RingBuffer:
         # set next node value as current node value 
         self.current_node = self.current_node % self.capacity
         # if buffer length less than buffer capacity, add one to length 
-        if self.buffer_length < self.capacity:
+        if self.capacity > self.buffer_length:
             self.buffer_length += 1
 
 
