@@ -59,11 +59,13 @@ would become...
 
 #### Stretch
 
-* [ ] Say your code from `names.py` is to run on an embedded computer with very limited RAM.
-* [ ] Because of this, memory is extremely constrained and you are only allowed to store names in arrays (i.e. Python lists).
-* [ ] How would you go about optimizing the code under these conditions?
-* [ ] Try it out and compare your solution to the original runtime.
-* [ ] (If this solution is less efficient than your original solution, include both and label the strech solution with a comment)
+* [X] Say your code from `names.py` is to run on an embedded computer with very limited RAM.  Because of this, memory is extremely constrained and you are only allowed to store names in arrays (i.e. Python lists).  How would you go about optimizing the code under these conditions?
+* [X] Try it out and compare your solution to the original runtime.
+* [X] If this solution is less efficient than your original solution, include both and label the strech solution with a comment
+```
+runtime: 0.00399327278137207 seconds
+complexity:  O(n) (linear)
+```
 
 ### Rubric
 

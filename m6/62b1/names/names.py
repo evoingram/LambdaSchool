@@ -41,6 +41,10 @@ for name_1 in names_1:
             duplicates.append(name_1)
 '''
 
+'''
+# MVP Solution:
+# runtime: 0.002018451690673828 seconds
+# complexity:  O(n) (linear)
 
 class BSTNames:
     def __init__(self, value=None):
@@ -53,11 +57,8 @@ class BSTNames:
 
     def contains(self, target):
         BinarySearchTree.contains(self, target)
+'''
 
-
-end_time = time.time()
-print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
-print (f"runtime: {end_time - start_time} seconds")
 
 # ---------- Stretch Goal -----------
 # Python has built-in tools that allow for a very efficient approach to this problem
@@ -66,3 +67,18 @@ print (f"runtime: {end_time - start_time} seconds")
 
 # os.chdir("E:\\projects\\LambdaSchool\\m6\\62b1\\names")
 # exec(open("names.py").read())
+
+# Stretch Solution:
+# runtime: 0.00399327278137207 seconds
+# complexity:  O(n) (linear)
+alt_list = dict()
+for x_name in names_1:
+    alt_list[x_name] = True
+for y_name in names_2:
+    if y_name in alt_list:
+        duplicates.append(y_name)
+
+
+end_time = time.time()
+print(f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
+print(f"runtime: {end_time - start_time} seconds")
