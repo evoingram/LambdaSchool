@@ -13,14 +13,23 @@ Stretch Goals:
  * AVL Trees
 
 ## Tasks
-* Day 1 In Class:  `doubly_linked_list`
-* Day 1 Homework:  `queue_and_stack`
-* Day 2 In Class:  No Starter.  Interview problems described below.
-* Day 2 Homework:  `lru_cache`
-* Day 3 In Class:  No Starter. Research and planning exercise below.
-* Day 3 Homework:  `binary_search_tree` part 1
-* Day 4 In Class:  No Starter. White-boarding exercise below.
-* Day 4 Homework: `binary_search_tree` part 2
+* [X] Day 1 In Class:  `doubly_linked_list`
+* [X] Day 1 Homework:  `queue_and_stack`
+* [X] Day 2 In Class:  No Starter.  Interview problems described below.
+* [X] Day 2 Homework:  `lru_cache`
+* [X] Day 3 In Class:  No Starter. Research and planning exercise below.
+* [ ] Day 3 Homework:  `binary_search_tree` part 1
+* [X] Day 4 In Class:  No Starter. White-boarding exercise below.
+* [ ] Day 4 Homework: `binary_search_tree` part 2
+* [ ] stretch:  generic heap
+* [ ] stretch:  avl tree
+
+* [X] Day 1: Implement Stacks and Queues
+* [X] Day 2: Implement a Doubly Linked List
+* [ ] Day 3: Implement a Binary Search Tree
+* [ ] Day 4: Implement additional traversal methods on the Binary Search Tree
+* [ ] stretch:  generic heap
+* [ ] stretch:  avl tree
 
  > NOTE: The quickest and easiest way to reliably import a file in Python is to just copy and paste the file you want to import into the same directory as the file that wants to import. This obviously isn't considered best practice, but it is the most reliable way to do it across all platforms.  If the import isn't working, feel free to try this method.
 
