@@ -1,41 +1,55 @@
 def linear_search(arr, target):
-    # Your code here
-    '''
-    procedure linear_search (list, value)
-for each item in the list
-      if match item == value
-         return the item's location
-      end if
-   end for
-end procedure
-    '''
-
-    return -1   # not found
-
+   '''
+      procedure linear_search (arr, target)
+         for each item in arr:
+            if match item == target:
+               return the item's location
+      end procedure
+   '''
+   for item in range(len(arr)):
+      if arr[item] == target:
+         return item
+   return -1   # not found
 
 # Write an iterative implementation of Binary Search
 def binary_search(arr, target):
+      # arr ← sorted array
+      # arrLength ← size of array
+      # target ← value to be searched
+      arrLength = len(arr)
+      lowerBound = 1
+      upperBound = arrLength
+      while True:
+         if upperBound < lowerBound:
+            return -1
+         midPoint = int(lowerBound + (upperBound - lowerBound) / 2)
+         if arr[midPoint] < target:
+            lowerBound = midPoint + 1
+         if arr[midPoint] > target:
+            upperBound = midPoint - 1
+         if arr[midPoint] == target:
+            return midPoint
 
-    # Your code here
-    '''
-    Procedure binary_search
-   A ← sorted array
-   n ← size of array
-   x ← value to be searched
-Set lowerBound = 1
-   Set upperBound = n
-while x not found
-      if upperBound < lowerBound 
-         EXIT: x does not exists.
-      set midPoint = lowerBound + ( upperBound - lowerBound ) / 2      
-      if A[midPoint] < x
-         set lowerBound = midPoint + 1         
-      if A[midPoint] > x
-         set upperBound = midPoint - 1
-if A[midPoint] = x 
-         EXIT: x found at location midPoint
-   end while   
-end procedure
-    '''
+      '''
+      Procedure binary_search
+         # arr ← sorted array
+         # arrLength ← size of array
+         # target ← value to be searched
 
-    return -1  # not found
+         Set lowerBound = 1
+         Set upperBound = arrLength
+
+         while True:
+            if upperBound < lowerBound: 
+               return -1
+            set midPoint = lowerBound + ( upperBound - lowerBound ) / 2      
+            if arr[midPoint] < target:
+               set lowerBound = midPoint + 1         
+            if arr[midPoint] > target:
+               set upperBound = midPoint - 1
+            if arr[midPoint] = target:
+               return arr
+      end procedure
+      '''
+
+      return -1  # not found
