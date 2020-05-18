@@ -1,49 +1,89 @@
-# TO-DO: Complete the selection_sort() function below
-def selection_sort(arr):
-    # loop through n-1 elements
-    for i in range(0, len(arr) - 1):
-        cur_index = i
-        smallest_index = cur_index
-        # TO-DO: find next smallest element
-        # (hint, can do in 3 loc)
-        # Your code here
+# TODO: Complete the selection_sort() function below
 
-        
-        # TO-DO: swap
-        # Your code here
-    return arr
+# os.chdir("E:\\projects\\LambdaSchool\\m6\\63a1\\src\\iterative_sorting\")
+# exec(open("iterative_sorting.py").read())
+
+
+def selection_sort(arr):
     '''
         procedure selection sort 
-            list  : array of items
-            n     : size of list
+            arr         : array of items
+            arraylength : size of arr
 
-            for i = 1 to n - 1
-
+            for i = 1 to arraylength - 1:
                 /* set current element as minimum*/
-                min = i 
-
+                smallest_index = i    
+            
                 /* check the element to be minimum */
-                for j = i+1 to n 
-                    if list[j] < list[min] then
-                        min = j;
-                    end if
-                end for
+
+                for j = i+1 to arraylength:
+                    if arr[j] < arr[smallest_index]:
+                        smallest_index = j;
 
                 /* swap the minimum element with the current element*/
-                if indexMin != i  then
-                    swap list[min] and list[i]
-                end if
-
-            end for        
+                if smallest_index != i:
+                    swap arr[smallest_index] and arr[i]
 
         end procedure
     '''
+    # loop through n-1 elements
+    for i in range(0, len(arr) - 1):
+        cur_index = i
+        # set current element as minimum
+        smallest_index = cur_index
 
+        # check the element to be minimum
+        for j in range(i+1, len(arr)):
+            if arr[j] < arr[smallest_index]:
+                smallest_index = j;
+
+        # swap the minimum element with the current element
+        if smallest_index != i:
+            # swap arr[smallest_index] and arr[i]
+            si_value = arr[smallest_index]
+            i_value = arr[i]
+            arr[smallest_index] = i_value
+            arr[i] = si_value
+            
+    return arr
 
 # TO-DO:  implement the Bubble Sort function below
 def bubble_sort(arr):
-    # Your code here
+    '''
+        procedure bubbleSort( arr : array of items )
+        length = arr.count;
+        for i = 0 to length-1 do:
+            swapped = false
+            for j = 0 to length-1 do:
+                /* compare the adjacent elements */
+                if arr[j] > arr[j+1] then
+                    /* swap them */
+                    swap( arr[j], arr[j+1] )
+                    swapped = true
+            # if no number was swapped that means array is sorted now, break the loop.*/
+            if(not swapped):
+                break
+        return arr
+        end procedure 
+    '''
+    length = arr.count
+    for i in range(0, len(arr) - 1):
+        swapped = False
+        for j in range(0, len(arr)-1):
+            # compare the adjacent elements
+            if arr[j] > arr[j+1]:
+                # swap them
+                # swap(arr[j], arr[j+1])
+                j_value = arr[j]
+                j1_value = arr[j+1]
+                arr[j] = j1_value
+                arr[j+1] = j_value
+                swapped = True
+        # if no number was swapped that means array is sorted now, break the loop.*/
+        if swapped is False:
+            break
     return arr
+    
     '''
         procedure bubbleSort( list : array of items )
         loop = list.count;

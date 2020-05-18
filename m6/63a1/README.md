@@ -30,6 +30,8 @@ As you begin interviewing for jobs, you will often be expected to be able to imp
 ## Stretch goals
 
 - [ ] Implement the `count_sort` algorithm in the [iterative_sorting](src/iterative_sorting) directory.
+- [ ] linear search
+- [ ] binary search
 
 ## Tests
 
