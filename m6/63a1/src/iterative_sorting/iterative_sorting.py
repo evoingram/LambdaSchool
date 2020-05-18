@@ -83,7 +83,7 @@ def bubble_sort(arr):
         if swapped is False:
             break
     return arr
-    
+
     '''
         procedure bubbleSort( list : array of items )
         loop = list.count;
@@ -109,33 +109,83 @@ def bubble_sort(arr):
 
 # STRETCH: implement the Count Sort function below
 def count_sort(arr, maximum=-1):
-    # Your code here
+    if arr == []:
+        return arr 
+    # get maximum element from array
+    maxElement = maximum
+    for i in range(0, len(arr)-1):
+        if arr[i] > maxElement:
+            maxElement = arr[i]
+        if arr[i] < 0:
+            return "Error, negative numbers not allowed in Count Sort"
+
+    arrOutput = [0] * (maxElement+1)
+    # max = getMax(array, maximum)
+    count = [0] * (maxElement+1) # create count array (max+1 number of elements)
+
+    for i in range(0, (maxElement-1)):
+        # initialize count array to all zero
+        count[i] = 0
+
+    for i in range(1, maximum):
+        # increase number count in count array.
+        count[arr[i]] += 1
+        
+    for i in range(1, maxElement - 1):
+        # find cumulative frequency
+        count[i] += count[i - 1]
+        
+    for i in range(len(arr)-1, -1, -1):
+        if i >= 0:
+            x = arr[i]
+            y = count[x]
+            arrOutput[x] = arr[i]
+            if count[x] >= 1:
+                # decrease count for same numbers
+                count[x] -= 1
+
+    arrDifference = int(len(arrOutput) - len(arr))
+
+    for i in range((len(arrOutput) - 1), -1, -1):
+        
+        if int(arrOutput[i]) == int(0):
+            del arrOutput[i]
+
+    if int(len(arrOutput)) < int(len(arr)):
+        arrOutput.insert(0, 0)
+
+    return arrOutput
+
+
+
+
+
+
+
     '''
-        CountingSort(A)
+    Begin
+        max = get maximum element from array.
+        define count array of size [max+1]
 
-            //A[]-- Initial Array to Sort
-            //Complexity: O(k)
-            for i = 0 to k do
-            c[i] = 0
+        for i := 0 to max:
+            count[i] = 0 # set all elements in the count array to 0
+        done
 
-            //Storing Count of each element
-            //Complexity: O(n)
-            for j = 0 to n do
-            c[A[j]] = c[A[j]] + 1
+        for i := 1 to size:
+            increase count of each number which have found in the array
+        done
 
-            // Change C[i] such that it contains actual
-            //position of these elements in output array
-            ////Complexity: O(k)
-            for i = 1 to k do
-            c[i] = c[i] + c[i-1]
+        for i := 1 to max:
+            count[i] = count[i] + count[i+1] # find cumulative frequency
+        done
 
-            //Build Output array from C[i]
-            //Complexity: O(n)
-            for j = n-1 downto 0 do
-            B[ c[A[j]]-1 ] = A[j]
-            c[A[j]] = c[A[j]] - 1
+        for i := size to 1 decrease by 1 do
+            store the number in the output array
+            decrease count[i]
+        done
 
-        end func
+        return the output array
+    End
     '''
 
     return arr
