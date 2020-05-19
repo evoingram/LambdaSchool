@@ -1,18 +1,78 @@
 # TO-DO: complete the helper function below to merge 2 sorted arrays
 def merge(arrA, arrB):
+    '''
+    procedure merge( var arrA as array, var arrB as array )
+        var merged_arr as array
+        while ( arrA and arrB have elements )
+            if ( arrA[0] > arrB[0] )
+                add arrB[0] to the end of merged_arr
+                remove arrB[0] from arrB
+            else
+                add arrA[0] to the end of merged_arr
+                remove arrA[0] from arrA
+    end while
+
+    while ( arrA has elements )
+            add arrA[0] to the end of merged_arr
+            remove arrA[0] from arrA
+    end while  
+
+    while ( arrB has elements )
+            add arrB[0] to the end of merged_arr
+            remove arrB[0] from arrB
+    end while   
+
+    return merged_arr
+
+    end procedure
+    '''
     elements = len(arrA) + len(arrB)
     merged_arr = [0] * elements
 
-    # Your code here
+    while len(arrA) > 0 and len(arrB) > 0:
+        if arrA[0] > arrB[0]:
+            # add arrB[0] to the end of merged_arr
+            merged_arr.append(arrB[0])
+            # remove arrB[0] from arrB
+            del arrB[0]
+        else:
+            # add arrA[0] to the end of merged_arr
+            merged_arr.append(arrA[0])
+            # remove arrA[0] from arrA
+            del arrA[0]
 
+    while len(arrA) > 0:
+        # add arrA[0] to the end of merged_arr
+        merged_arr.append(arrA[0])
+        # remove arrA[0] from arrA
+        del arrA[0]
+
+    while len(arrB) > 0:
+        # add arrB[0] to the end of merged_arr
+        merged_arr.append(arrB[0])
+        # remove arrB[0] from arrB
+        del arrB[0]
 
     return merged_arr
 
 
 # TO-DO: implement the Merge Sort function below USING RECURSION
 def merge_sort(arr):
-    # Your code here
 
+    # Your code here
+    '''
+    procedure mergesort( var a as array )
+        if ( n == 1 ) return a
+        var l1 as array = a[0] ... a[n/2]
+        var l2 as array = a[n/2+1] ... a[n]
+        l1 = mergesort( l1 )
+        l2 = mergesort( l2 )
+        return merge( l1, l2 )
+    end procedure
+    '''
+    if len(arr) == 1:
+        return arr
+    
 
     return arr
 
