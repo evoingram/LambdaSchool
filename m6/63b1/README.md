@@ -20,9 +20,9 @@ When you begin interviewing for jobs, you will often encounter problems that hav
 ## Instructions and/or completion requirements
 
 - [X] Read through the descriptions of the `merge_sort` algorithm in [Training Kit](https://learn.lambdaschool.com/cs/module/reccRh9h6ccXghfA4/).
-- [ ] Implement `merge_sort` in [recursive_sorting.py](src/recursive_sorting/recursive_sorting.py)
-- [ ] Implement an in-place version of `merge_sort` that does not allocate any additional memory. In other words, the space complexity for this function should be O(1).
-- [ ] Test your implementation by running `test_recursive.py`
+- [X] Implement `merge_sort` in [recursive_sorting.py](src/recursive_sorting/recursive_sorting.py)
+- [X] Implement an in-place version of `merge_sort` that does not allocate any additional memory. In other words, the space complexity for this function should be O(1).
+- [X] Test your implementation by running `test_recursive.py`
 
 ## Stretch goals
 
@@ -39,7 +39,7 @@ Make sure you test your implementations by running `test_recursive.py`.
 Generally speaking, at work and in interviews, people are more interested in
 time complexity. That said, _space complexity_, or how much additional space is
 required to process _n_ elements of data, is also very important.
-
+BB
 Space complexity does _not_ include the space required to hold the data you are
 going to process. It only includes the _additional_ space requirements of your
 algorithm.

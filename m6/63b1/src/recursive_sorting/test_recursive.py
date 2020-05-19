@@ -4,6 +4,7 @@ from recursive_sorting import *
 
 
 class RecursiveSortingTests(unittest.TestCase):
+
     def test_merge_sort(self):
         arr1 = [1, 5, 8, 4, 2, 9, 6, 0, 3, 7]
         arr2 = []
@@ -32,7 +33,6 @@ class RecursiveSortingTests(unittest.TestCase):
             arr4, 0, len(arr4)-1), [0, 1, 2, 3, 4, 5])
         self.assertEqual(merge_sort_in_place(
             arr5, 0, len(arr5)-1), sorted(arr5))
-
 
 if __name__ == '__main__':
     unittest.main()
