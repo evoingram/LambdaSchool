@@ -4,7 +4,7 @@ Each directory contains a separate problem that you'll be tasked with solving.  
 
 There isn't an official prescribed order for tackling the problems, though a subjective ranking of the given problems from easiest to hardest might go something like this:
 
-- [ ] `single_number`
+- [X] `single_number`
 - [ ] `moving_zeroes`
 - [ ] `product_of_array_except_self`
 - [ ] `sliding_window_max`
