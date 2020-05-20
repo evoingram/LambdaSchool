@@ -1,19 +1,19 @@
 # Algorithms
 
-Each directory contains a separate problem that you'll be tasked with solving.
-Inside each directory, you'll find instructions for that problem, along with a
-test file as well as an empty skeleton file. 
+Each directory contains a separate problem that you'll be tasked with solving.  Inside each directory, you'll find instructions for that problem, along with a test file as well as an empty skeleton file. 
 
-There isn't an official prescribed order for tackling the problems, though a
-subjective ranking of the given problems from easiest to hardest might go
-something like this:
+There isn't an official prescribed order for tackling the problems, though a subjective ranking of the given problems from easiest to hardest might go something like this:
 
- 1. [X] `stock_prices`
- 2. [X] `recipe_batches`
- 3. [X] `eating_cookies`
- 4. [X] `rock_paper_scissors`
- 5. [X] `making_change`
- 6. [ ] [Stretch Problem] `knapsack`
+- [ ] `single_number`
+- [ ] `moving_zeroes`
+- [ ] `product_of_array_except_self`
+- [ ] `sliding_window_max`
+- [X] `stock_prices`
+- [X] `recipe_batches`
+- [X] `eating_cookies`
+- [X] `rock_paper_scissors`
+- [X] `making_change`
+- [ ] [Stretch Problem] `knapsack`
 
 
 
