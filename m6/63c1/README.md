@@ -11,7 +11,7 @@ something like this:
  1. [X] `stock_prices`
  2. [X] `recipe_batches`
  3. [X] `eating_cookies`
- 4. [ ] `rock_paper_scissors`
+ 4. [X] `rock_paper_scissors`
  5. [ ] `making_change`
  6. [ ] [Stretch Problem] `knapsack`
 
