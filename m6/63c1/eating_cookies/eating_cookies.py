@@ -10,17 +10,14 @@ import sys
 # If he were given a jar of cookies with `n` cookies inside of it, how many ways could he eat all `n` cookies in the cookie jar?
 # Implement a function `eating_cookies` that counts the number of possible ways Cookie Monster can eat all of the cookies in the jar.
 
-def eating_cookies(n, cache=None):
-  # FIRST:  initialize cache 
-  if cache == None:
-    cache = dict()
-  # SECOND:  if n exists in cache already get that 
+def eating_cookies(n, cache=dict()):
+  # FIRST:  if found in cache return that 
   if n in cache:
-    return cache[n]
-  # THIRD:  if n = 0 or neg, return 1 as eat_count
+    return cache[n]  
+  # SECOND:  if n = 0 or neg, return 1 as eat_count
   if n <= 0:
     return 1
-  # FOURTH:  calculate ways to eat cookies 
+  # THIRD:  calculate ways to eat cookies 
   # set way counter to zero 
   eat_count = 0
   # Cookie Monster can eat either 0, 1, 2, or 3 cookies at a time.
@@ -33,8 +30,7 @@ def eating_cookies(n, cache=None):
     # if current divisor equals n, add 1 to eat_count
     elif current_divisor == n:
       eat_count += 1
-  # store result in cache 
-  cache[n] = eat_count
+  cache[n] = eat_count   
   # return eat_count
   return eat_count
 
