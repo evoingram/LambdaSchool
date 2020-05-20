@@ -3,7 +3,12 @@
 import math
 
 def recipe_batches(recipe, ingredients):
-  pass 
+  pass
+  # compare each object1 key's value to each object2 key's value
+  # if object2 key's value < object1 key's value, return 0
+  # else divide object2 key's value by object1 key's value
+  # store result in new array
+  # return minimum number from new array 
 
 
 if __name__ == '__main__':
