@@ -2,10 +2,36 @@
 Input: a List of integers as well as an integer `k` representing the size of the sliding window
 Returns: a List of integers
 '''
-def sliding_window_max(nums, k):
-    # Your code here
 
-    pass
+# Given an array of integers, there is a sliding window of size `k` which is moving from the left side of the array to the right, one element at a time.
+# You can only interact with the `k` numbers in the window.
+# Return an array consisting of the maximum value of each window of elements.
+
+def sliding_window_max(arr, k):
+    window_arr = []
+    max_arr = []
+    # for each item in array
+    print('-------------------------------------')
+    print('arr = ' + str(arr))
+    print('k = ' + str(k))
+
+    for x in range(0, len(arr)-k+1):
+        max_value_current_array = arr[x]
+        for y in range(x, x+k):
+            # arr[index of item] to arr[(k-1)] = new array
+            window_arr.append(arr[y])
+        print('current window = ' + str(window_arr))
+        for z in range(0, len(window_arr)):
+            # get max value of new array
+            if window_arr[z] > max_value_current_array:
+                max_value_current_array = window_arr[z]
+        # add that max value to second new array
+        max_arr.append(max_value_current_array)
+        window_arr.clear()
+        max_value_current_array = None
+    print('-------------------------------------')
+    print('FINAL max arr = ' + str(max_arr))
+    return max_arr
 
 
 if __name__ == '__main__':

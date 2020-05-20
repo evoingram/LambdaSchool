@@ -25,4 +25,4 @@ Run the test file by executing  `python test_sliding_window_max.py`.
 
 There is also a larger test file that you can test your code against by running `python test_sliding_window_max_large_input.py`.
 
-> Note: The text files in the `data/` directory are used by the large input tests. 
+> Note: The text files in the `data/` directory are used by the large input tests.

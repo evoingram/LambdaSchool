@@ -6,13 +6,13 @@ There isn't an official prescribed order for tackling the problems, though a sub
 
 - [X] `single_number`
 - [X] `moving_zeroes`
-- [ ] `product_of_array_except_self`
-- [ ] `sliding_window_max`
+- [X] `product_of_array_except_self`
+- [X] `sliding_window_max`
 - [X] `stock_prices`
 - [X] `recipe_batches`
 - [X] `eating_cookies`
-- [X] `rock_paper_scissors`
-- [X] `making_change`
+- [X] [Stretch Problem] `rock_paper_scissors`
+- [X] [Stretch Problem] `making_change`
 - [ ] [Stretch Problem] `knapsack`
 
 
