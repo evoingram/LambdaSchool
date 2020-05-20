@@ -1,11 +1,31 @@
+from functools import reduce
+
 '''
 Input: a List of integers
 Returns: a List of integers
 '''
-def product_of_all_other_numbers(arr):
-    # Your code here
 
-    pass
+
+def prod(iterable):
+    product = 1
+    for x in iterable:
+        product *= x
+    return product
+
+def product_of_all_other_numbers(arr):
+    # for each item in the array
+    # multiply rest of items together
+    # store in new array
+    arr_product = []
+    if len(arr) == 2:
+        arr.sort(reverse=True)
+        return arr
+    for x in range(0, len(arr)):
+        arr_to_multiply = arr.copy()
+        del arr_to_multiply[x]
+        arr_product.append(prod(arr_to_multiply))
+        arr_to_multiply.clear()
+    return arr_product
 
 
 if __name__ == '__main__':
