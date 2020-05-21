@@ -2,24 +2,26 @@
 Input: a List of integers
 Returns: a List of integers
 '''
-def loop_zeroes(arr):
-    for x in range(0, len(arr)):
-        item = arr[x]
-        if item == 0:
-            del arr[x]
-            arr.append(item)
-        else:
-            pass
-
 # Write a function that:
 def moving_zeroes(arr):
     # takes an array of integers
     arr.sort(reverse=True)
     try:
         # moves each non-zero integer to the left side of the array
-        loop_zeroes(arr)
-        loop_zeroes(arr)
-        print(arr)
+        for x in range(0, len(arr)):
+            item = arr[x]
+            if item == 0:
+                del arr[x]
+                arr.append(item)
+            else:
+                pass
+        for x in range(0, len(arr)):
+            item = arr[x]
+            if item == 0:
+                del arr[x]
+                arr.append(item)
+            else:
+                pass
         # returns the altered array.
         return arr
     except ValueError: return arr

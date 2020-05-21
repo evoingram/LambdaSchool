@@ -8,19 +8,31 @@ Returns: a List of integers
 # Return an array consisting of the maximum value of each window of elements.
 
 def sliding_window_max(arr, k):
+    max_arr = []
+    # for each item in array
+    for x in range(0, len(arr)-k+1):
+        max_value_current_array = arr[x]
+        for z in range(x, x+k):
+            # get max value of new array
+            if arr[z] > max_value_current_array:
+                max_value_current_array = arr[z]
+        # add that max value to second new array
+        max_arr.append(max_value_current_array)
+        max_value_current_array = None
+    return max_arr
+
+'''
+
+def sliding_window_max(arr, k):
     window_arr = []
     max_arr = []
     # for each item in array
-    print('-------------------------------------')
-    print('arr = ' + str(arr))
-    print('k = ' + str(k))
 
     for x in range(0, len(arr)-k+1):
         max_value_current_array = arr[x]
         for y in range(x, x+k):
             # arr[index of item] to arr[(k-1)] = new array
             window_arr.append(arr[y])
-        print('current window = ' + str(window_arr))
         for z in range(0, len(window_arr)):
             # get max value of new array
             if window_arr[z] > max_value_current_array:
@@ -29,10 +41,9 @@ def sliding_window_max(arr, k):
         max_arr.append(max_value_current_array)
         window_arr.clear()
         max_value_current_array = None
-    print('-------------------------------------')
-    print('FINAL max arr = ' + str(max_arr))
     return max_arr
 
+'''
 
 if __name__ == '__main__':
     # Use the main function here to test out your implementation 
