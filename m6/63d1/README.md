@@ -30,17 +30,18 @@ For this portion of the Sprint Challenge, you'll be answering questions posed in
 
 #### 1. Analyzing runtime _(3 points)_
 
-- [ ] Given 3 blocks of code, identify the runtime of each. Justify your answer.
+- [X] Given 3 blocks of code, identify the runtime of each. Justify your answer.
 
 #### 2. Find the highest floor _(3 points)_
 
-- [ ] Suppose that you have an n-story building and plenty of eggs. Suppose also that an egg gets broken if it is thrown off floor f or higher, and doesn't get broken if dropped off a floor less than floor f. Devise a strategy to determine the value of f such that the number of dropped + broken eggs is minimized.
+- [X] Suppose that you have an n-story building and plenty of eggs. Suppose also that an egg gets broken if it is thrown off floor f or higher, and doesn't get broken if dropped off a floor less than floor f. Devise a strategy to determine the value of f such that the number of dropped + broken eggs is minimized.
 
-- [ ] Write out your proposed algorithm in plain English or pseudocode AND give the runtime complexity of your solution.
+- [X] Write out your proposed algorithm in plain English or pseudocode AND give the runtime complexity of your solution.
 
 ### Code Challenges
 
 #### 3. Use recursion to complete the `count_th()` function _(3 points)_
+
 Inside the `recursive_count_th` directory you'll find the `count_th.py` file. In this file, please add your recursive implementation to the `count_th()` method following these rules:
 
 - [ ] Your function should take in a signle parameter (a string `word`)
@@ -49,7 +50,6 @@ Inside the `recursive_count_th` directory you'll find the `count_th.py` file. In
 - [ ] It cannot contain any loops.
 
 Run `python test_count_th.py` to run the tests for your `count_th()` function to ensure that your implementation is correct.
-
 
 #### 4. Understand, plan, & implement the Robot Sort algorithm _(6 points)_
 
@@ -102,8 +102,8 @@ Uncomment the `test_stretch_times()` test in `test_robot.py`. Can you optimize y
 ## Rubric
 | OBJECTIVE | TASK | 1 - DOES NOT MEET Expectations | 2 - MEETS Expectations | 3 - EXCEEDS Expectations | SCORE |
 | ---------- | ----- | ------- | ------- | ------- | -- |
-| _Student should be able to define what runtime complexity is, differentiate between various classifications and categorize the performance of an algorithm using Big O notation_ | 1. Complete Analysis of Algorithms - Exercise I | Student correctly identifies 0-1/3 runtimes | Student correctly identifies 2/3 runtimes | Student correctly identifies 3/3 runtimes |  |
-| _Student should be able to describe the differences between Linear and Binary Searching algorithms_ | 2. Complete Analysis of Algorithms - Exercise II | Student does NOT clearly identify a strategy that would allow us to search for and find floor `f`.<br/><br/>It is either incorrect **OR** requires the TL to make assumptions about how the strategy works. | Student's answer describes a searching strategy **BUT** either i) does NOT correctly identify the runtime **OR** ii) recommends an approach that will work but is not ideal in terms of efficiency |  Student's answer describes a strategy that functions (like Binary Search) and is easy to understand (if their description is in English, all details are provided, if in psuedocode, variables names make sense, code is clean and easy to follow) **AND** performs better than (O(n)) **AND** identifies the runtime correctly. |  |
+| _Student should be able to define what runtime complexity is, differentiate between various classifications and categorize the performance of an algorithm using Big O notation_ | 1. Complete Analysis of Algorithms - Exercise I | Student correctly identifies 0-1/3 runtimes | Student correctly identifies 2/3 runtimes | Student correctly identifies 3/3 runtimes | 3 |
+| _Student should be able to describe the differences between Linear and Binary Searching algorithms_ | 2. Complete Analysis of Algorithms - Exercise II | Student does NOT clearly identify a strategy that would allow us to search for and find floor `f`.<br/><br/>It is either incorrect **OR** requires the TL to make assumptions about how the strategy works. | Student's answer describes a searching strategy **BUT** either i) does NOT correctly identify the runtime **OR** ii) recommends an approach that will work but is not ideal in terms of efficiency |  Student's answer describes a strategy that functions (like Binary Search) and is easy to understand (if their description is in English, all details are provided, if in psuedocode, variables names make sense, code is clean and easy to follow) **AND** performs better than (O(n)) **AND** identifies the runtime correctly. | 3 |
 | _Student should be able to identify when a problem is amenable to a recursive solution and utilize recursion in order to solve it_ | 3. Utilize recursion to complete `count_th()` | Student's function does not compile & run **OR** <br/><br/>runs but does NOT pass a minimum of **4/5** of test cases. | Student's function passes **4/5** of test cases | Student's function passes **ALL** test cases |  |
 | _Student should be able to demonstrate an understanding of the implementation of various iterative & recursive sorting algorithms_ | 4. Understand and plan an approach to implement the `robot_sort()` function | Student's comments, psuedocode, or solution will not sort a collection of elements because it is incomplete or contains 4 or more errors preventing it from executing as intended.  | Student's comments, psuedocode, or solution has **MOST** of the elements needed for a robot to sort a given collection of items. May contain up to 3 minor errors. <br/><br/> Robot Sort rules violations will not be held against students in this row. | Student's comments, psuedocode, or solution has **ALL** of the elements needed for a robot to sort a given collection of items. Contains no errors or missing logic. Clear & easy to follow algorithm. <br/><br/> Robot Sort rules violations will not be held against students in this row. |  |
 |  _Student should be able to approach a novel problem and come up with a workable first-pass solution._ | 5. Implement the `robot_sort()` function | Student's function does not compile & run **OR** <br/><br/>runs but fails to pass a minimum of **4/5** of test cases. | Student's function follows **ALL** [rules](https://github.com/LambdaSchool/Sprint-Challenge--Algorithms#rules) **BUT** only passes **4/5** of test cases, takes longer than 1 second to run OR the student cannot clearly explain what some segments of the code are doing to the TL. | Student's function follows **ALL** [rules](https://github.com/LambdaSchool/Sprint-Challenge--Algorithms#rules), runs in less than 1 second **AND** passes **ALL** test cases. Code is well-formatted, includes appropriate comments, and student can walk-through their solution and explain their process clearly to the TL. |  | 
