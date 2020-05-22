@@ -55,11 +55,11 @@ Run `python test_count_th.py` to run the tests for your `count_th()` function to
 
 You have been given a robot with very basic capabilities:
 
-- [ ] It can move left or right.
-- [ ] It can pick up an item
-- [ ] If it tries to pick up an item while already holding one, it will swap the items instead.
-- [ ] It can compare the item it's holding to the item in front of it.
-- [ ] It can switch a light on its head on or off.
+- [X] It can move left or right.
+- [X] It can pick up an item
+- [X] If it tries to pick up an item while already holding one, it will swap the items instead.
+- [X] It can compare the item it's holding to the item in front of it.
+- [X] It can switch a light on its head on or off.
 
 Your task is to program this robot to sort lists using ONLY these abilities.
 
@@ -67,31 +67,31 @@ Your task is to program this robot to sort lists using ONLY these abilities.
 
 Inside the `robot_sort` directory you'll find the `robot_sort.py` file. Open it up and read through each of the robot's abilities. Once you've understood those, start filling out the `sort()` method following these rules:
 
-- [ ] You may use any pre-defined robot methods.
-- [ ] You may NOT modify any pre-defined robot methods.
-- [ ] You may use logical operators. (`if`, `and`, `or`, `not`, etc.)
-- [ ] You may use comparison operators. (`>`, `>=`, `<`, `<=`, `==`, `is`, etc.)
-- [ ] You may use iterators. (`while`, `for`, `break`, `continue`)
-- [ ] You may NOT store any variables. (`=`)
-- [ ] You may NOT access any instance variables directly. (`self._anything`)
-- [ ] You may NOT use any Python libraries or class methods. (`sorted()`, etc.)
-- [ ] You may define robot helper methods, as long as they follow all the rules.
+- [X] You may use any pre-defined robot methods.
+- [X] You may NOT modify any pre-defined robot methods.
+- [X] You may use logical operators. (`if`, `and`, `or`, `not`, etc.)
+- [X] You may use comparison operators. (`>`, `>=`, `<`, `<=`, `==`, `is`, etc.)
+- [X] You may use iterators. (`while`, `for`, `break`, `continue`)
+- [X] You may NOT store any variables. (`=`)
+- [X] You may NOT access any instance variables directly. (`self._anything`)
+- [X] You may NOT use any Python libraries or class methods. (`sorted()`, etc.)
+- [X] You may define robot helper methods, as long as they follow all the rules.
 
 ##### Hints
 
-- [ ] Make sure you understand the problem and all of the rules! A solution that breaks the rules will not receive full credit.
-- [ ] If you're unsure if an operator or method is allowed, ask.
-- [ ] Lay out some numbered cards in a line and try sorting them as if you were the robot.
-- [ ] Come up with a plan and write out your algorithm before coding. If your plan is sound but you don't reach a working implementation in three hours, you may receive partial credit.
-- [ ] There is no efficiency requirement but you may lose points for an unreasonably slow solution. Tests should run in far less than 1 second.
-- [ ] We discussed a sorting method this week that might be useful. Which one?
-- [ ] The robot has exactly one bit of memory: its light. Why is this important?
+- [X] Make sure you understand the problem and all of the rules! A solution that breaks the rules will not receive full credit.
+- [X] If you're unsure if an operator or method is allowed, ask.
+- [X] Lay out some numbered cards in a line and try sorting them as if you were the robot.
+- [X] Come up with a plan and write out your algorithm before coding. If your plan is sound but you don't reach a working implementation in three hours, you may receive partial credit.
+- [X] There is no efficiency requirement but you may lose points for an unreasonably slow solution. Tests should run in far less than 1 second.
+- [X] We discussed a sorting method this week that might be useful. Which one?
+- [X] The robot has exactly one bit of memory: its light. Why is this important?
 
 Run `python test_robot.py` to run the tests for your `robot_sort()` function to ensure that your implementation is correct.
 
 ### Stretch 
 
-- [ ] Uncomment the `test_stretch_times()` test in `test_robot.py`. Can you optimize your robot sort to perform better than the given times?
+- [X] Uncomment the `test_stretch_times()` test in `test_robot.py`. Can you optimize your robot sort to perform better than the given times?
 
 ## Rubric
 | OBJECTIVE | TASK | 1 - DOES NOT MEET Expectations | 2 - MEETS Expectations | 3 - EXCEEDS Expectations | SCORE |
