@@ -1,3 +1,6 @@
+
+
+
 class SortingRobot:
     def __init__(self, l):
         """
@@ -81,11 +84,13 @@ class SortingRobot:
         Turn on the robot's light
         """
         self._light = "ON"
+
     def set_light_off(self):
         """
         Turn off the robot's light
         """
         self._light = "OFF"
+
     def light_is_on(self):
         """
         Returns True if the robot's light is on and False otherwise.
@@ -96,9 +101,42 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
-
+        # Set to true 
+        self.set_light_on()
+        # Swap held item with next item 
+        # hold first item
+        self.swap_item()
+        # While true:
+            # while you can go to next item, go to next item and, if held item > next item, swap
+            # If held or next item don't exist, swap and set true to false (done)
+            # Else: (done going to next item; both held & next items exist)
+                # while robot can go to previous item:
+                    # If you can go to previous item, do it; else remain
+                    # If held or next item don't exist, swap, try to go to next item, swap again, break (done)
+        while self.light_is_on():
+            # While you can go to next item, try to; else remain
+            # If held item > next item, swap them
+            while self.can_move_right():
+                self.move_right()
+                if self.compare_item() == 1:
+                    self.swap_item()
+            # If held or next item don't exist, swap and set true to false 
+            if self.compare_item() is None:
+                self.swap_item()
+                self.set_light_off()
+            # If held and next items exist, while robot can go to previous item:
+                # If you can go to previous item, do it; else remain
+                # If held or next item don't exist, swap, try go to next item, swap again
+            else:
+                # While previous item exists, try to go there and, if either item is none, swap, move right, swap again:
+                while self.can_move_left():
+                    self.move_left()
+                    # If held OR next item is none, swap, go to next item, swap again:
+                    if self.compare_item() is None:
+                        self.swap_item()
+                        self.move_right()
+                        self.swap_item()
+                        break
 
 if __name__ == "__main__":
     # Test our your implementation from the command line

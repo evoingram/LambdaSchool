@@ -80,24 +80,18 @@ Inside the `robot_sort` directory you'll find the `robot_sort.py` file. Open it 
 ##### Hints
 
 - [ ] Make sure you understand the problem and all of the rules! A solution that breaks the rules will not receive full credit.
-
 - [ ] If you're unsure if an operator or method is allowed, ask.
-
 - [ ] Lay out some numbered cards in a line and try sorting them as if you were the robot.
-
 - [ ] Come up with a plan and write out your algorithm before coding. If your plan is sound but you don't reach a working implementation in three hours, you may receive partial credit.
-
 - [ ] There is no efficiency requirement but you may lose points for an unreasonably slow solution. Tests should run in far less than 1 second.
-
 - [ ] We discussed a sorting method this week that might be useful. Which one?
-
 - [ ] The robot has exactly one bit of memory: its light. Why is this important?
 
 Run `python test_robot.py` to run the tests for your `robot_sort()` function to ensure that your implementation is correct.
 
 ### Stretch 
 
-Uncomment the `test_stretch_times()` test in `test_robot.py`. Can you optimize your robot sort to perform better than the given times?
+- [ ] Uncomment the `test_stretch_times()` test in `test_robot.py`. Can you optimize your robot sort to perform better than the given times?
 
 ## Rubric
 | OBJECTIVE | TASK | 1 - DOES NOT MEET Expectations | 2 - MEETS Expectations | 3 - EXCEEDS Expectations | SCORE |
