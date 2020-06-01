@@ -68,7 +68,7 @@ For these, you can use either the built-in `dict` type, or the hashtable
 you built. (Some of these are easier with `dict` since it's more
 full-featured.)
 
-5. [ ] [Lookup Table](applications/lookup_table/)
+5. [X] [Lookup Table](applications/lookup_table/)
 6. [ ] [Expensive Sequence](applications/expensive_seq/)
 7. [ ] [Word Count](applications/word_count/)
 8. [ ] [No Duplicates](applications/no_dups/)
