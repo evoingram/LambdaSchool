@@ -42,12 +42,12 @@ python test_hashtable.py
 Task: Implement load factor measurements and automatic hashtable size
 doubling.
 
-1. [ ] Compute and maintain load factor.
+1. [X] Compute and maintain load factor.
 
-2. [ ] When load factor increases above `0.7`, automatically rehash the
+2. [X] When load factor increases above `0.7`, automatically rehash the
    table to double its previous size.
 
-3. [ ] Add the `resize()` method.
+3. [X] Add the `resize()` method.
 
 You can test this with both of:
 
@@ -56,7 +56,7 @@ python test_hashtable.py
 python test_hashtable_resize.py
 ```
 
-4. [ ] Stretch: When load factor decreases below `0.2`, automatically rehash
+4. [X] Stretch: When load factor decreases below `0.2`, automatically rehash
 the table to half its previous size, down to a minimum of 8 slots.
 
 ## Day 3 and Day 4
