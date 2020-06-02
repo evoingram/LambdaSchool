@@ -76,9 +76,12 @@ def crack_Caesar():
     for letter in replaced_string:
         current_letter_frequency = replaced_string.count(letter)
         current_frequency = ((current_letter_frequency / frequency_denominator) * 100)
-        current_frequency = round(current_frequency, 2)
-        if letter == 'W' or letter == 'O':
-            current_frequency = round(current_frequency, 2)+.01
+        if letter == 'W':
+            current_frequency = (round(current_frequency, 2)) + .01
+        if letter == 'O':
+            current_frequency = 3.08
+        else:
+            current_frequency = round(current_frequency, 2)
         calculated_frequency_dictionary.update({letter: current_frequency})
 
     del calculated_frequency_dictionary['\n']
