@@ -25,6 +25,7 @@ def expensive_seq(x, y, z):
         seq1out = expensive_seq(prevX1, nextY1, z)
         seq2out = expensive_seq(prevX2, nextY2, nextZ2)
         seq3out = expensive_seq(prevX3, nextY3, nextZ3)
+        
         total_seq = seq1out + seq2out + seq3out
         print(f"seq1out = {seq1out}   |   seq2out = {seq2out}   |   seq3out = {seq3out}")
         print(f"total_seq = {total_seq}")
