@@ -9,7 +9,7 @@ class TestWordCount(unittest.TestCase):
         x = word_count("")
         self.assertTrue(x == {})
 
-        x = word_count("Hello    hello")
+        x = word_count("Hello    hello.")
         self.assertTrue(x == {"hello": 2})
 
         x = word_count('Hello, my cat.  And my cat doesn\'t say "hello" back.')
@@ -21,7 +21,7 @@ class TestWordCount(unittest.TestCase):
         x = word_count('":;,.-+=/\\|[]{}()*^&')
         self.assertTrue(x == {})
 
-        x = word_count('a a\ra\na\ta \t\r\n')
+        x = word_count('''a a\ra\na\ta \t\r\n''')
         self.assertTrue(x == {"a": 5})
 
 if __name__ == '__main__':
