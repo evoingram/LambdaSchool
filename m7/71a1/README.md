@@ -69,7 +69,7 @@ you built. (Some of these are easier with `dict` since it's more
 full-featured.)
 
 5. [X] [Lookup Table](applications/lookup_table/)
-6. [ ] [Expensive Sequence](applications/expensive_seq/)
+6. [X] [Expensive Sequence](applications/expensive_seq/)
 7. [X] [Word Count](applications/word_count/)
 8. [X] [No Duplicates](applications/no_dups/)
 9. [X] [Markov Chains](applications/markov/)
