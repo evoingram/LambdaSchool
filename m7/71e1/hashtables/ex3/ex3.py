@@ -2,19 +2,20 @@ intersection_array = []
 cache = {}
 
 def arrays_length_two(arrays, intersection_array):
-    arrays[0].sort()
-    arrays[1].sort()
     for x in arrays[0]:
         for y in arrays[1]:
             if x == y and x not in intersection_array:
                 intersection_array.append(x)
+    print(intersection_array)
     return arrays, intersection_array
 
 def arrays_length_three(arrays, x, intersection_array):
     if len(intersection_array) > 0:
         intersection_list = list(intersection_array)
+        intersection_list.sort()
         last_array_item = max(intersection_list)
     if x != None:
+        x.sort()
         for y in x:
             if y <= last_array_item:
                 if y not in x:
