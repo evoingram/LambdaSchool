@@ -1,8 +1,11 @@
 
 # In Python, a dict key can be any immutable type, including a tuple.
 
-current_cache = {}
+cache = {}
 
+
+def check_cache(string):
+    cache.get(string)
 
 def expensive_seq(x, y, z):
     if x <= 0:
@@ -10,7 +13,7 @@ def expensive_seq(x, y, z):
         return y + z
 
     if x > 0:
-
+        # calc prev/nexts
         prevX1 = x - 1
         prevX2 = x - 2
         prevX3 = x - 3
@@ -22,24 +25,27 @@ def expensive_seq(x, y, z):
         nextZ2 = z * 2
         nextZ3 = z * 3
 
-        seq1out = expensive_seq(prevX1, nextY1, z)
-        seq2out = expensive_seq(prevX2, nextY2, nextZ2)
-        seq3out = expensive_seq(prevX3, nextY3, nextZ3)
-        
+        if str((prevX1, nextY1, z)) in cache:
+            seq1out = cache.get(str((prevX1, nextY1, z)))
+        else:
+            seq1out = expensive_seq(prevX1, nextY1, z)
+            cache.update({str((prevX1, nextY1, z)): seq1out})
+
+        if str((prevX2, nextY2, nextZ2)) in cache:
+            seq2out = cache.get(str((prevX2, nextY2, nextZ2)))
+        else:
+            seq2out = expensive_seq(prevX2, nextY2, nextZ2)
+            cache.update({str((prevX2, nextY2, nextZ2)): seq2out})
+
+        if str((prevX3, nextY3, nextZ3)) in cache:
+            seq3out = cache.get(str((prevX3, nextY3, nextZ3)))
+        else:
+            seq3out = expensive_seq(prevX3, nextY3, nextZ3)
+            cache.update({str((prevX3, nextY3, nextZ3)): seq3out})
+            
         total_seq = seq1out + seq2out + seq3out
-        print(f"seq1out = {seq1out}   |   seq2out = {seq2out}   |   seq3out = {seq3out}")
-        print(f"total_seq = {total_seq}")
-        
-        w = x / 2
-        
-        # if it doesn't exist, add to cache
-        if w not in current_cache:
-            current_cache[w] = total_seq
 
-        
-        print(f"current cache[w] = {current_cache[w]}")
-
-        return current_cache[w]
+    return total_seq
 
 
 
