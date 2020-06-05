@@ -5,14 +5,14 @@ from ex3 import intersection
 
 class TestEx2(unittest.TestCase):
     def test_small(self):
-        '''
+        
         result = intersection([
             [1,2,3],
             [1,4,5],
             [1,6,7]
         ])
         self.assertTrue(result == [1])
-        '''
+        
         result = intersection([
             [1],
             [1],
