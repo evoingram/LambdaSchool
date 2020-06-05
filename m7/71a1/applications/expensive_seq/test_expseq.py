@@ -9,7 +9,7 @@ class TestHashTable(unittest.TestCase):
         first10 = [0, 73, 712, 5233, 36592, 246773, 1623280, 10496585, 66941152, 421957189]
 
         for i in range(10):
-            x = expensive_seq(i*2, i*3, i*4)
+            x = expensive_seq(i * 2, i * 3, i * 4)
             self.assertTrue(x == first10[i])
 
         x = expensive_seq(150, 400, 800)
