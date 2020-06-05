@@ -12,10 +12,19 @@ def finder(files, queries):
             result.append(cache(y))
         else:
             for x in files:
-                if y == x[-len(y):]:
-                    search_files(x, y, result)
-                    break
+                current_comparison = x[-len(y):]
+                if y == current_comparison:
+                    search_files(x, y, result)       
+
     return result
+    '''
+    file3490
+    if query contains digits 
+        get digits from query 
+        get rid of word file & leave number
+    
+
+    '''
 
 if __name__ == "__main__":
     files = [
