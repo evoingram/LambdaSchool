@@ -94,15 +94,33 @@ class Graph:
                     # get value of next_vertex as current_vertex
                     current_vertex = next_vertex
 
-    def dft_recursive(self, starting_vertex):
-        """
-        Print each vertex in depth-first order
-        beginning from starting_vertex.
-
-        This should be done using recursion.
-        """
+    def dft_recursive(self, starting_vertex, visited=[]):
         # Write a function within your Graph class that takes takes a starting node as an argument, then performs DFT using recursion. Your function should print the resulting nodes in the order they were visited. Note that there are multiple valid paths that may be printed.
-        pass  # TODO
+
+        # Write a function within your Graph class that takes takes a starting node as an argument, then performs DFT. Your function should print the resulting nodes in the order they were visited. Note that there are multiple valid paths that may be printed.
+        # {1: 2, 2: 3, 3: 5, 4: 6, 5: 3, 6: 3, 7: 6}
+        # start with starting_vertex = current_vertex
+        array_check = []
+        current_vertex = starting_vertex
+        visited.append(current_vertex)
+        for vertex in self.vertices:
+            if vertex == current_vertex:
+                if current_vertex in self.vertices.keys():
+                    print(current_vertex)
+                    visited.append(current_vertex)
+                # get value of current_vertex as next_vertex
+                next_vertex = self.vertices.get(current_vertex)
+                # get value of next_vertex as current_vertex
+                current_vertex = next_vertex
+        # first one NOT visited, add as current_vertex
+        for vertex in self.vertices:
+            if vertex not in visited:
+                current_vertex = vertex
+                self.dft_recursive(current_vertex, visited)
+            else:
+                array_check.append(vertex)
+        if array_check == visited:
+            return
 
     def bfs(self, starting_vertex, destination_vertex):
         """
