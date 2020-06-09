@@ -32,10 +32,6 @@ class Graph:
             return "This vertex has no neighbors."
 
     def bft(self, starting_vertex):
-        """
-        Print each vertex in breadth-first order
-        beginning from starting_vertex.
-        """
         # Write a function within your Graph class that takes a starting node as an argument, then performs BFT. Your function should print the resulting nodes in the order they were visited. Note that there are multiple valid paths that may be printed.
         visited = ""
         if starting_vertex in self.vertices.keys():
@@ -50,12 +46,53 @@ class Graph:
         return visited
 
     def dft(self, starting_vertex):
-        """
-        Print each vertex in depth-first order
-        beginning from starting_vertex.
-        """
         # Write a function within your Graph class that takes takes a starting node as an argument, then performs DFT. Your function should print the resulting nodes in the order they were visited. Note that there are multiple valid paths that may be printed.
-        pass  # TODO
+        # {1: 2, 2: 3, 3: 5, 4: 6, 5: 3, 6: 3, 7: 6}
+        # start with starting_vertex = current_vertex
+        visited = []
+        current_vertex = starting_vertex
+        visited.append(current_vertex)
+        for vertex in self.vertices:
+            if vertex == current_vertex:
+                if current_vertex in self.vertices.keys():
+                    print(current_vertex)
+                    visited.append(current_vertex)
+                # get value of current_vertex as next_vertex
+                next_vertex = self.vertices.get(current_vertex)
+                # get value of next_vertex as current_vertex
+                current_vertex = next_vertex
+        # first one NOT visited, add as current_vertex
+        for vertex in self.vertices:
+            if vertex not in visited:
+                current_vertex = vertex
+                break
+        # repeat previous loop starting with new current_vertex
+        for vertex in self.vertices:
+            if vertex not in visited:
+                if vertex == current_vertex:
+                    if current_vertex in self.vertices.keys():
+                        print(current_vertex)
+                    # get value of current_vertex as next_vertex
+                    next_vertex = self.vertices.get(current_vertex)
+                    visited.append(current_vertex)
+                    # get value of next_vertex as current_vertex
+                    current_vertex = next_vertex
+        # first one NOT visited, add as current_vertex
+        for vertex in self.vertices:
+            if vertex not in visited:
+                current_vertex = vertex
+                break
+        # repeat previous loop starting with new current_vertex
+        for vertex in self.vertices:
+            if vertex not in visited:
+                if vertex == current_vertex:
+                    if current_vertex in self.vertices.keys():
+                        print(current_vertex)
+                    # get value of current_vertex as next_vertex
+                    next_vertex = self.vertices.get(current_vertex)
+                    visited.append(current_vertex)
+                    # get value of next_vertex as current_vertex
+                    current_vertex = next_vertex
 
     def dft_recursive(self, starting_vertex):
         """
