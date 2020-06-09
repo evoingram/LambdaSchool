@@ -22,3 +22,9 @@
 
 ### Day 4
 * [ ] [Adventure Map Traversal](projects/adventure)
+ 
+
+## How to solve graph problems
+
+1. Translate problem into graph terminology
+2. 
