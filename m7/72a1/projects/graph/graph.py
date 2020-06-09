@@ -18,11 +18,11 @@ class Graph:
 
     def add_edge(self, v1, v2):
         # Add a directed edge to the graph.
-        for vertice in vertices.keys():
+        for vertice in self.vertices.keys():
             if vertice == v1:
                 self.vertices[v1] = v2
                 return self.vertices
-        return f"There is no vertex {v1}.  Try again!"
+        print(f"There is no vertex {v1}.  Try again!")
 
     def get_neighbors(self, vertex_id):
         # Get all neighbors (edges) of a vertex.
@@ -101,6 +101,7 @@ if __name__ == '__main__':
     graph.add_edge(3, 5)
     graph.add_edge(2, 3)
     graph.add_edge(4, 6)
+    graph.add_edge(0, 4)
 
     '''
     Should print:
