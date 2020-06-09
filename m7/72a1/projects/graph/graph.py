@@ -10,22 +10,27 @@ class Graph:
         self.vertices = {}
 
     def add_vertex(self, vertex_id):
-        """
-        Add a vertex to the graph.
-        """
-        pass  # TODO
+        # add a key/vertice:
+        # '2': set(),
+        # '3': {'0'}
+        self.vertices[vertex_id] = set()
+        return self.vertices
 
     def add_edge(self, v1, v2):
-        """
-        Add a directed edge to the graph.
-        """
-        pass  # TODO
+        # Add a directed edge to the graph.
+        for vertice in vertices.keys():
+            if vertice == v1:
+                self.vertices[v1] = v2
+                return self.vertices
+        return f"There is no vertex {v1}.  Try again!"
 
     def get_neighbors(self, vertex_id):
-        """
-        Get all neighbors (edges) of a vertex.
-        """
-        pass  # TODO
+        # Get all neighbors (edges) of a vertex.
+        edges = self.vertices(vertex_id)
+        if edges:
+            return edges
+        else:
+            return "This vertex has no neighbors."
 
     def bft(self, starting_vertex):
         """
