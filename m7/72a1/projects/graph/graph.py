@@ -26,9 +26,8 @@ class Graph:
 
     def get_neighbors(self, vertex_id):
         # Get all neighbors (edges) of a vertex.
-        edges = self.vertices(vertex_id)
-        if edges:
-            return edges
+        if self.vertices.get(vertex_id):
+            return self.vertices.get(vertex_id)
         else:
             return "This vertex has no neighbors."
 
@@ -37,13 +36,25 @@ class Graph:
         Print each vertex in breadth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+        # Write a function within your Graph class that takes a starting node as an argument, then performs BFT. Your function should print the resulting nodes in the order they were visited. Note that there are multiple valid paths that may be printed.
+        visited = ""
+        if starting_vertex in self.vertices.keys():
+            # print(starting_vertex)
+            visited = visited + str(starting_vertex)
+        for vertex in self.vertices:
+            if vertex != starting_vertex and (vertex - starting_vertex == 1):
+                #  print(str(vertex))
+                visited = visited + ", " + str(vertex)
+                starting_vertex += 1
+        print(visited)
+        return visited
 
     def dft(self, starting_vertex):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
         """
+        # Write a function within your Graph class that takes takes a starting node as an argument, then performs DFT. Your function should print the resulting nodes in the order they were visited. Note that there are multiple valid paths that may be printed.
         pass  # TODO
 
     def dft_recursive(self, starting_vertex):
@@ -53,6 +64,7 @@ class Graph:
 
         This should be done using recursion.
         """
+        # Write a function within your Graph class that takes takes a starting node as an argument, then performs DFT using recursion. Your function should print the resulting nodes in the order they were visited. Note that there are multiple valid paths that may be printed.
         pass  # TODO
 
     def bfs(self, starting_vertex, destination_vertex):
@@ -61,6 +73,7 @@ class Graph:
         starting_vertex to destination_vertex in
         breath-first order.
         """
+        # Write a function within your Graph class that takes takes a starting node and a destination node as an argument, then performs BFS. Your function should return the shortest path from the start node to the destination node. Note that there are multiple valid paths.
         pass  # TODO
 
     def dfs(self, starting_vertex, destination_vertex):
@@ -69,6 +82,7 @@ class Graph:
         starting_vertex to destination_vertex in
         depth-first order.
         """
+        # Write a function within your Graph class that takes takes a starting node and a destination node as an argument, then performs DFS. Your function should return a valid path (not necessarily the shortest) from the start node to the destination node. Note that there are multiple valid paths.
         pass  # TODO
 
     def dfs_recursive(self, starting_vertex, destination_vertex):
@@ -79,6 +93,7 @@ class Graph:
 
         This should be done using recursion.
         """
+        # Write a function within your Graph class that takes takes a starting node and a destination node as an argument, then performs DFS using recursion. Your function should return a valid path (not necessarily the shortest) from the start node to the destination node. Note that there are multiple valid paths.
         pass  # TODO
 
 if __name__ == '__main__':
