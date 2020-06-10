@@ -1,5 +1,5 @@
 from util import Queue, Stack
-# TODO: Standardize variables
+
 class Graph:
 
     """Represent a graph as a dictionary of vertices mapping labels to edges."""
