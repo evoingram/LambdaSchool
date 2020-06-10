@@ -25,6 +25,3 @@
  
 
 ## How to solve graph problems
-
-1. Translate problem into graph terminology
-2. 
