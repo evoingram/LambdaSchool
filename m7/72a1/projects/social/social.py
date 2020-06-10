@@ -110,9 +110,11 @@ class SocialGraph:
 
             # if user unvisited:
             if new_user not in visited:
-
+                
+                # add user to visited 
                 visited[new_user] = traversing_path
 
+                # add that user's unvisited friends to new path & friendships map/queue
                 for friend in self.friendships[new_user]:
                     if friend not in visited:
                         new_path = list(traversing_path)
