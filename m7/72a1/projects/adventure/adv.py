@@ -35,10 +35,11 @@ player = Player(world.starting_room)
 # room number: [(x, y coordinates), {direction: rooms it leads to}]
 # commands:  player.current_room.id, player.current_room.get_exits() and player.travel(direction)
 
+# save total number of rooms in world
+player.number_rooms_in_world = len(world.rooms)
+
 # lowest moves set to just high enough to consistently find a path that meets the condition
 while player.lowest_moves > 970:
-    # save total number of rooms in world
-    player.number_rooms_in_world = len(world.rooms)
     # reset current room to starting room
     player.current_room = world.starting_room
     # reset current path to nothing 
