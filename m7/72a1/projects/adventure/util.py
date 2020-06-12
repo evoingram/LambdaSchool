@@ -33,7 +33,13 @@ class Stack():
 
 class Graph:
     def __init__(self):
-        self.vertices = {}
+        self.map = {}
+        self.visited = set()
+        self.prev_room = 0
+        self.prev_direction = ''
+        self.current_room = 0
+        self.traversalPath = []
+        self.moves = 0
 
     def add_vertex(self, vertex_id):
         # add a key/vertice:

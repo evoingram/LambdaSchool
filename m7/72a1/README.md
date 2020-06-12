@@ -11,7 +11,7 @@
 
 ## Projects
 
-<!-- ### Day 1 -->
+### Day 1
 * [X] [Graph Traversal and Search](projects/graph)
 
 ### Day 2
@@ -21,7 +21,7 @@
 * [X] [Random Social Network](projects/social)
 
 ### Day 4
-* [ ] [Adventure Map Traversal](projects/adventure)
+* [X] [Adventure Map Traversal](projects/adventure)
  
 
 ## How to solve graph problems
