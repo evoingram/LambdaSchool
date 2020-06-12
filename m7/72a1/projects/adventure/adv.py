@@ -1,7 +1,6 @@
 from room import Room
 from player import Player
 from world import World
-from util import Stack, Queue, Graph
 
 import random
 from ast import literal_eval
@@ -38,12 +37,14 @@ player = Player(world.starting_room)
 
 # lowest moves set to just high enough to consistently find a path that meets the condition
 while player.lowest_moves > 970:
+    # save total number of rooms in world
+    player.number_rooms_in_world = len(world.rooms)
     # reset current room to starting room
     player.current_room = world.starting_room
     # reset current path to nothing 
     player.current_path = []
     # create current traversal path
-    player.new_traversal_path(world)
+    player.new_traversal_path()
     # if you found a new record lower than mvp at 2000:
     if player.lowest_moves > len(player.current_path):
         # set path of new record as shortest path

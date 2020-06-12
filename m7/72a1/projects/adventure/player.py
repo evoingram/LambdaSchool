@@ -2,7 +2,7 @@ from util import Stack, Queue, Graph
 import random
 
 class Player:
-    def __init__(self, current_room, shortest_path=[], lowest_moves=2000, current_path=[], possible_rooms_current_path=None, current_traversal=None, last_direction=None, last_room=None, unvisited_rooms=None):
+    def __init__(self, current_room, shortest_path=[], lowest_moves=2000, current_path=[], possible_rooms_current_path=None, current_traversal=None, last_direction=None, last_room=None, unvisited_rooms=None, number_rooms_in_world=None):
         self.current_room = current_room
         self.shortest_path = shortest_path
         self.lowest_moves = lowest_moves
@@ -12,6 +12,7 @@ class Player:
         self.last_direction = last_direction
         self.last_room = last_room
         self.unvisited_rooms = unvisited_rooms
+        self.number_rooms_in_world = number_rooms_in_world
 
     def travel(self, direction, show_rooms=False):
         next_room = self.current_room.get_room_in_direction(direction)
@@ -130,7 +131,7 @@ class Player:
         self.possible_rooms_current_path[self.last_room][self.last_direction] = self.current_room.id
 
     # create potential traversal path
-    def new_traversal_path(self, world):
+    def new_traversal_path(self):
 
         # reset current traversal path, possible rooms, and last room
         self.current_traversal = Stack()
@@ -138,7 +139,7 @@ class Player:
         self.last_room = None
 
         # loop while number of possible rooms is less than number of rooms
-        while len(self.possible_rooms_current_path) < len(world.rooms):
+        while len(self.possible_rooms_current_path) < self.number_rooms_in_world:
 
             # if current room not in possible rooms, set current adjacents as unvisited and add to possible rooms
             if self.current_room.id not in self.possible_rooms_current_path:
