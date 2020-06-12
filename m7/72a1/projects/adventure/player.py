@@ -107,10 +107,8 @@ class Player:
         if current_shortest_path is not None:
             # get the new direction & path to travel
             # for each direction in path, append to current_traversal (current path) and travel in that direction
-            direction_path = self.get_direction_path(
-                current_shortest_path)
-            self.travel_direction_path(
-                self.current_path, direction_path)
+            direction_path = self.get_direction_path(current_shortest_path)
+            self.travel_direction_path(self.current_path, direction_path)
             # set last room as second to last path of shortest path to unexplored room
             self.last_room = current_shortest_path[-2]
             # set last direction as last direction of get_direction_path results
@@ -130,3 +128,39 @@ class Player:
             self.last_direction)] = self.last_room
         # find its last direction in possible rooms and set that to current room
         self.possible_rooms_current_path[self.last_room][self.last_direction] = self.current_room.id
+
+    # create potential traversal path
+    def new_traversal_path(self, world):
+
+        # reset current traversal path, possible rooms, and last room
+        self.current_traversal = Stack()
+        self.possible_rooms_current_path = dict()
+        self.last_room = None
+
+        # loop while number of possible rooms is less than number of rooms
+        while len(self.possible_rooms_current_path) < len(world.rooms):
+
+            # if current room not in possible rooms, set current adjacents as unvisited and add to possible rooms
+            if self.current_room.id not in self.possible_rooms_current_path:
+                self.process_current_room_not_in_possible()
+
+            # if last room exists (none the first time):
+            if self.last_room:
+                self.last_room_exists()
+
+            # set last room to current room
+            self.last_room = self.current_room.id
+            # create blank unvisited rooms list
+            self.unvisited_rooms = list()
+
+            # for each direction of current room in possible rooms, if unexplored, append to unvisited
+            for direction, room in self.possible_rooms_current_path[self.current_room.id].items():
+                if room == "?":
+                    self.unvisited_rooms.append(direction)
+
+            # if there are unvisited rooms:
+            if len(self.unvisited_rooms) > 0:
+                self.process_unvisited_rooms()
+            # if there are no unvisited rooms:
+            else:
+                self.process_no_unvisited()

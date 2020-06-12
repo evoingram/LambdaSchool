@@ -36,41 +36,6 @@ player = Player(world.starting_room)
 # room number: [(x, y coordinates), {direction: rooms it leads to}]
 # commands:  player.current_room.id, player.current_room.get_exits() and player.travel(direction)
 
-# create potential traversal path
-def new_traversal_path():
-    # reset current traversal path, possible rooms, and last room
-    player.current_traversal = Stack()
-    player.possible_rooms_current_path = dict()
-    player.last_room = None
-
-    # loop while number of possible rooms is less than number of rooms 
-    while len(player.possible_rooms_current_path) < len(world.rooms):
-
-        # if current room not in possible rooms, set current adjacents as unvisited and add to possible rooms
-        if player.current_room.id not in player.possible_rooms_current_path:
-            player.process_current_room_not_in_possible()
-
-        # if last room exists (none the first time):
-        if player.last_room:
-            player.last_room_exists()
-
-        # set last room to current room
-        player.last_room = player.current_room.id
-        # create blank unvisited rooms list 
-        player.unvisited_rooms = list()
-
-        # for each direction of current room in possible rooms, if unexplored, append to unvisited 
-        for direction, room in player.possible_rooms_current_path[player.current_room.id].items():
-            if room == "?":
-                player.unvisited_rooms.append(direction)
-
-        # if there are unvisited rooms:
-        if len(player.unvisited_rooms) > 0:
-            player.process_unvisited_rooms()
-        # if there are no unvisited rooms:
-        else:
-            player.process_no_unvisited()
-
 # lowest moves set to just high enough to consistently find a path that meets the condition
 while player.lowest_moves > 970:
     # reset current room to starting room
@@ -78,7 +43,7 @@ while player.lowest_moves > 970:
     # reset current path to nothing 
     player.current_path = []
     # create current traversal path
-    new_traversal_path()
+    player.new_traversal_path(world)
     # if you found a new record lower than mvp at 2000:
     if player.lowest_moves > len(player.current_path):
         # set path of new record as shortest path
