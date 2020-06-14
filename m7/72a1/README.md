@@ -12,13 +12,16 @@
 ## Projects
 
 ### Day 1
-* [Graph Traversal and Search](projects/graph)
+* [X] [Graph Traversal and Search](projects/graph)
 
 ### Day 2
-* [Earliest Ancestor](projects/ancestor)
+* [X] [Earliest Ancestor](projects/ancestor)
 
 ### Day 3
-* [Random Social Network](projects/social)
+* [X] [Random Social Network](projects/social)
 
 ### Day 4
-* [Adventure Map Traversal](projects/adventure)
+* [X] [Adventure Map Traversal](projects/adventure)
+ 
+
+## How to solve graph problems

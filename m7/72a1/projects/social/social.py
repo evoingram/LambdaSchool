@@ -1,3 +1,6 @@
+from util import Queue
+import random
+
 class User:
     def __init__(self, name):
         self.name = name
@@ -37,16 +40,43 @@ class SocialGraph:
         between those users.
 
         The number of users must be greater than the average number of friendships.
+
         """
+
         # Reset graph
         self.last_id = 0
         self.users = {}
         self.friendships = {}
-        # !!!! IMPLEMENT ME
 
-        # Add users
+        # Add_users:  Create a new user with a sequential integer ID
+        # Create_friendships:  Creates a bi-directional friendship
 
-        # Create friendships
+        # add # of users
+        for x in range(0, num_users):
+            self.add_user(f"User ID No. {x}")
+
+        # create empty friendships container 
+        friendships = []
+
+        # get users & most recent available user id
+        users = self.users
+        most_recent_available_id = self.last_id + 1
+        
+        # loop through users and friends to add friendships
+        for user in users:
+            for friend in range(user + 1, most_recent_available_id):
+                friendships.append((user, friend))
+
+        # randomize friendships
+        random.shuffle(friendships)
+
+        # friendships are bidirectional; only need to add half
+        friendships_added = (num_users * avg_friendships) // 2
+
+        # loop through number of friendships "needed" and add friendship
+        for x in range(friendships_added):
+            self.add_friendship(friendships[x][0], friendships[x][1])
+            
 
     def get_all_social_paths(self, user_id):
         """
@@ -57,8 +87,40 @@ class SocialGraph:
 
         The key is the friend's ID and the value is the path.
         """
+
+        # Add_users:  Create a new user with a sequential integer ID
+        # Create_friendships:  Creates a bi-directional friendship
+
         visited = {}  # Note that this is a dictionary, not a set
-        # !!!! IMPLEMENT ME
+        
+        # create empty friendships map/queue
+        friendships_map = Queue()
+
+        # add specified user to map/queue
+        friendships_map.enqueue([user_id])
+
+        # while map is not empty:
+        while friendships_map.size() > 0:
+
+            # get first user to traverse from
+            traversing_path = friendships_map.dequeue()
+
+            # get user to traverse to
+            new_user = traversing_path[-1]
+
+            # if user unvisited:
+            if new_user not in visited:
+                
+                # add user to visited 
+                visited[new_user] = traversing_path
+
+                # add that user's unvisited friends to new path & friendships map/queue
+                for friend in self.friendships[new_user]:
+                    if friend not in visited:
+                        new_path = list(traversing_path)
+                        new_path.append(friend)
+                        friendships_map.enqueue(new_path)
+
         return visited
 
 

@@ -1,7 +1,4 @@
-"""
-Simple graph implementation
-"""
-from util import Stack, Queue  # These may come in handy
+from util import Queue, Stack
 
 class Graph:
 
@@ -10,71 +7,192 @@ class Graph:
         self.vertices = {}
 
     def add_vertex(self, vertex_id):
-        """
-        Add a vertex to the graph.
-        """
-        pass  # TODO
+        # add a key/vertice:
+        # '2': set(),
+        # '3': {'0'}
+        self.vertices[vertex_id] = set()
+        return self.vertices
 
     def add_edge(self, v1, v2):
-        """
-        Add a directed edge to the graph.
-        """
-        pass  # TODO
+        # Add a directed edge to the graph.
+        if v1 in self.vertices and v2 in self.vertices:
+            self.vertices[v1].add(v2)
+        elif v1 not in self.vertices:
+            print(f"There is no vertex {v1}.  Try again!")
 
     def get_neighbors(self, vertex_id):
-        """
-        Get all neighbors (edges) of a vertex.
-        """
-        pass  # TODO
+        # Get all neighbors (edges) of a vertex.
+        if vertex_id in self.vertices:
+            return self.vertices.get(vertex_id)
+        else:
+            return "This vertex has no neighbors."
 
-    def bft(self, starting_vertex):
-        """
-        Print each vertex in breadth-first order
-        beginning from starting_vertex.
-        """
-        pass  # TODO
+    def bft(self, current_vertex):
+        # Write a function within your Graph class that takes a starting node as an argument, then performs BFT. Your function should print the resulting nodes in the order they were visited. Note that there are multiple valid paths that may be printed.
 
-    def dft(self, starting_vertex):
-        """
-        Print each vertex in depth-first order
-        beginning from starting_vertex.
-        """
-        pass  # TODO
+        # create string of visited vertices
+        visited_vertices = ""
+        # if current vertex is in possible vertices, print and add to visited string
+        if current_vertex in self.vertices.keys():
+            print(current_vertex)
+            visited_vertices = visited_vertices + str(current_vertex)
+        # loop through each vertex in vertices
+        for vertex in self.vertices:
+            # if it's not current and it's one of current's children:
+                # print and add to visited string
+            if vertex != current_vertex and (vertex - current_vertex == 1):
+                print(str(vertex))
+                visited_vertices = visited_vertices + ", " + str(vertex)
+                current_vertex += 1
+        # return visited string 
+        return visited_vertices
 
-    def dft_recursive(self, starting_vertex):
-        """
-        Print each vertex in depth-first order
-        beginning from starting_vertex.
+    def dft(self, current_vertex):
+        # Write a function within your Graph class that takes takes a starting node as an argument, then performs DFT. Your function should print the resulting nodes in the order they were visited. Note that there are multiple valid paths that may be printed.
+        # {1: 2, 2: 3, 3: 5, 4: 6, 5: 3, 6: 3, 7: 6}
 
-        This should be done using recursion.
-        """
-        pass  # TODO
+        # empty traversing path
+        traversing_path = Stack()
+        # put starting vertex first on traversing path
+        traversing_path.push(current_vertex)
+        # set up visited set
+        visited_vertices = set()
 
-    def bfs(self, starting_vertex, destination_vertex):
-        """
-        Return a list containing the shortest path from
-        starting_vertex to destination_vertex in
-        breath-first order.
-        """
-        pass  # TODO
+        # loop while traversing path not empty
+        while traversing_path.size() > 0:
+            # remove from traversing path since it's visited
+            current_vertex = traversing_path.pop()
+            # if current is unvisited:
+            if current_vertex not in visited_vertices:
+                # print, add to visited, and add neighbors to traversing path by looping
+                print(current_vertex)
+                visited_vertices.add(current_vertex)
+                neighbors = self.get_neighbors(current_vertex)
+                for next_vertex in neighbors:
+                    traversing_path.push(next_vertex)
 
-    def dfs(self, starting_vertex, destination_vertex):
-        """
-        Return a list containing a path from
-        starting_vertex to destination_vertex in
-        depth-first order.
-        """
-        pass  # TODO
+    def dft_recursive(self, current_vertex, visited_vertices=set()):
+        # Write a function within your Graph class that takes takes a starting node as an argument, then performs DFT using recursion. Your function should print the resulting nodes in the order they were visited. Note that there are multiple valid paths that may be printed.
 
-    def dfs_recursive(self, starting_vertex, destination_vertex):
-        """
-        Return a list containing a path from
-        starting_vertex to destination_vertex in
-        depth-first order.
+        # Write a function within your Graph class that takes takes a starting node as an argument, then performs DFT. Your function should print the resulting nodes in the order they were visited. Note that there are multiple valid paths that may be printed.
+        # {1: 2, 2: 3, 3: 5, 4: 6, 5: 3, 6: 3, 7: 6}
+        
+        if current_vertex not in visited_vertices:
+            # print starting/current vertex
+            print(current_vertex)
+            # add starting/current vertex to visited
+            visited_vertices.add(current_vertex)
+            # loop through its neighbors and recursively run
+            neighbors = self.get_neighbors(current_vertex)
+            for next_vertex in neighbors:
+                self.dft_recursive(next_vertex, visited_vertices)
 
-        This should be done using recursion.
-        """
-        pass  # TODO
+    def bfs(self, current_vertex, destination_vertex):
+        # Write a function within your Graph class that takes takes a starting node and a destination node as an argument, then performs BFS. Your function should return the shortest path from the start node to the destination node. Note that there are multiple valid paths.
+
+        # create visited, current, and traversing path lists
+        traversing_path = Queue()
+        visited_vertices = []
+        traversed_path = []
+
+        # add starting vertex to the queue
+        traversing_path.enqueue(current_vertex)
+        # adds current vertex to traversed path and visited path
+        traversed_path.append(current_vertex)
+        visited_vertices.append(current_vertex)
+        # loop while traversing path not empty 
+        while traversing_path.size():
+            edges = self.get_neighbors(current_vertex)
+            # removes current item from queue
+            traversing_path.dequeue()
+            # get value (edges) of current vertex
+            for edge in edges:
+                visited_vertices.append(edge)
+                traversed_path.append(edge)
+                # if any edges are destination, add it to path and return path
+                if edge == destination_vertex:
+                    return traversed_path
+                # if edge is not destination:
+                else:
+                    # get neighbors of the edge
+                    subedges = self.get_neighbors(edge)
+                    # loop through neighbors
+                    for subsubedge in subedges:
+                        # add each neighbor to visited
+                        visited_vertices.append(subsubedge)
+                        # get neighbors of each neighbor
+                        subsubsubedges = self.get_neighbors(subsubedge)
+                        # if neighbor is destination, add to path and return path
+                        if subsubedge == destination_vertex:
+                            traversed_path.append(subsubedge)
+                            return traversed_path
+                        # if destination is in neighbor's neighbors:
+                            # add both neighbor and neighbor's neighbor to path and return path
+                        if destination_vertex in subsubsubedges:
+                            traversed_path.append(subsubedge)
+                            traversed_path.append(destination_vertex)
+                            return traversed_path
+        # return path
+        return traversed_path
+            
+    def dfs(self, current_vertex, destination_vertex):
+        # Write a function within your Graph class that takes takes a starting node and a destination node as an argument, then performs DFS. Your function should return a valid path (not necessarily the shortest) from the start node to the destination node. Note that there are multiple valid paths.
+
+        # new traversing path
+        traversing_path = Stack()
+        # adds current vertex to path
+        traversing_path.push([current_vertex])
+        # new visited list of vertices
+        visited_vertices = set()
+        # loop while traversing path not empty
+        while traversing_path.size() > 0:
+            # get current path list
+            traversed_path = traversing_path.pop()
+            # get current vertex in current list 
+            vertex = traversed_path[-1]
+            # if current vertex unvisited, do the following
+            if vertex not in visited_vertices:
+                # if it matches destination, return path
+                if vertex == destination_vertex:
+                    return traversed_path
+                # else, add to visited and repeat going down tree
+                visited_vertices.add(vertex)
+                for next_vertex in self.vertices[vertex]:
+                    # get current path list
+                    new_path = list(traversed_path)
+                    # add each vertex to the current and traversing path lists
+                    new_path.append(next_vertex)
+                    traversing_path.push(new_path)
+        # return path
+        return traversed_path
+
+    def dfs_recursive(self, current_vertex, destination_vertex, visited_vertices=None, traversed_path=None):
+        # Write a function within your Graph class that takes takes a starting node and a destination node as an argument, then performs DFS using recursion.  Your function should return a valid path (not necessarily the shortest) from the start node to the destination node.  Note that there are multiple valid paths.
+
+        # recursive, so need to only assign visited/path if non-existent
+        # else remain as they are (also are parameters)
+        if visited_vertices is None:
+            visited_vertices = set()
+        if traversed_path is None:
+            traversed_path = []
+        # adds current vertex to path
+        traversed_path = traversed_path + [current_vertex]
+        visited_vertices.add(current_vertex)
+        # if we've arrived at destination_vertex return path
+        if current_vertex == destination_vertex:
+            return traversed_path
+        # else get neighbors and loop through them
+        neighbors = self.get_neighbors(current_vertex)
+        for neighbor in neighbors:
+            # if neighbor is unvisited, recursively run
+            if neighbor not in visited_vertices:
+                recursive_path = self.dfs_recursive(
+                    neighbor, destination_vertex, visited_vertices, traversed_path)
+                # when it exists, return the recursive path
+                if recursive_path:
+                    return recursive_path
+
+
 
 if __name__ == '__main__':
     graph = Graph()  # Instantiate your graph
@@ -96,6 +214,7 @@ if __name__ == '__main__':
     graph.add_edge(3, 5)
     graph.add_edge(2, 3)
     graph.add_edge(4, 6)
+    graph.add_edge(0, 4)
 
     '''
     Should print:
@@ -127,8 +246,10 @@ if __name__ == '__main__':
         1, 2, 4, 7, 6, 3, 5
         1, 2, 4, 6, 3, 5, 7
     '''
+
     graph.dft(1)
     graph.dft_recursive(1)
+
 
     '''
     Valid BFS path:
