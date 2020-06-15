@@ -73,4 +73,5 @@ class CPU:
 
     def ram_write(self, address, value):
         # should accept a value to write, and the address to write it to.
-        pass
+        self.ram[address] = value
+        return self.ram[address]
