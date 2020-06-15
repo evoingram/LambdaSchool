@@ -8,8 +8,8 @@
 
 ### [ ] Day 1: Get `print8.ls8` running
 
-- [ ] Inventory what is here
-- [ ] Implement the `CPU` constructor
+- [X] Inventory what is here
+- [X] Implement the `CPU` constructor
 - [ ] Add RAM functions `ram_read()` and `ram_write()`
 - [ ] Implement the core of `run()`
 - [ ] Implement the `HLT` instruction handler
@@ -37,3 +37,18 @@
 - [ ] Add the timer interrupt to the LS-8 emulator
 - [ ] Add the keyboard interrupt to the LS-8 emulator
 - [ ] Write an LS-8 assembly program to draw a curved histogram on the screen
+
+
+Inventory:
+
+Make a list of files here:
+- ls8.py:  LS-8 emulator
+- cpu.py:  cpu functionality
+- print8.ls8:  print the number 8 on the screen
+-:  
+-:  
+-:  
+-:  
+Write a short 3-10-word description of what each file does.
+Note what has been implemented, and what hasn't.
+Skim the spec.
