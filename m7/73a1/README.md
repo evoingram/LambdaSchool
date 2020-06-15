@@ -6,7 +6,7 @@
 
 ## Task List: add this to the first comment of your Pull Request
 
-### Day 1: Get `print8.ls8` running
+### [ ] Day 1: Get `print8.ls8` running
 
 - [ ] Inventory what is here
 - [ ] Implement the `CPU` constructor
@@ -16,23 +16,23 @@
 - [ ] Add the `LDI` instruction
 - [ ] Add the `PRN` instruction
 
-### Day 2: Add the ability to load files dynamically, get `mult.ls8` running
+### [ ] Day 2: Add the ability to load files dynamically, get `mult.ls8` running
 
 - [ ] Un-hardcode the machine code
 - [ ] Implement the `load()` function to load an `.ls8` file given the filename
       passed in as an argument
 - [ ] Implement a Multiply instruction (run `mult.ls8`)
 
-### Day 3: Stack
+### [ ] Day 3: Stack
 
 - [ ] Implement the System Stack and be able to run the `stack.ls8` program
 
-### Day 4: Get `call.ls8` running
+### [ ] Day 4: Get `call.ls8` running
 
 - [ ] Implement the CALL and RET instructions
 - [ ] Implement Subroutine Calls and be able to run the `call.ls8` program
 
-### Stretch
+### [ ] Stretch
 
 - [ ] Add the timer interrupt to the LS-8 emulator
 - [ ] Add the keyboard interrupt to the LS-8 emulator
