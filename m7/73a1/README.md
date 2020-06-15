@@ -6,15 +6,15 @@
 
 ## Task List: add this to the first comment of your Pull Request
 
-### [ ] Day 1: Get `print8.ls8` running
+### [X] Day 1: Get `print8.ls8` running
 
 - [X] Inventory what is here
 - [X] Implement the `CPU` constructor
 - [X] Add RAM functions `ram_read()` and `ram_write()`
-- [ ] Implement the core of `run()`
-- [ ] Implement the `HLT` instruction handler
-- [ ] Add the `LDI` instruction
-- [ ] Add the `PRN` instruction
+- [X] Implement the core of `run()`
+- [X] Implement the `HLT` instruction handler
+- [X] Add the `LDI` instruction
+- [X] Add the `PRN` instruction
 
 ### [ ] Day 2: Add the ability to load files dynamically, get `mult.ls8` running
 
