@@ -155,9 +155,13 @@ class CPU:
             operand_a = self.ram_read(instruction_register + 1)
             operand_b = self.ram_read(instruction_register + 2)
 
+
+            # still need to add and fix "program_code_to_run" to program codes
+            
             HLT = int(0b00000001)
             LDI = 0b10000010
             PRN = 0b01000111
+
             program_code_to_run = self.ram[instruction_register]
 
             # Then, depending on the value of the opcode, perform the actions needed for the instruction per the LS-8 spec.
