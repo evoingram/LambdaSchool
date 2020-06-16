@@ -11,27 +11,34 @@ class CPU:
         self.register = [0] * 8
         self.ram = [0] * 256
         self.bt = {}
-        self.register_binary = ""
+        self.bt[int(0b10100000)] = self.cpu_add
+        self.bt[int(0b10100011)] = self.cpu_subtract
+        self.bt[int(0b10100010)] = self.cpu_multiply
+        self.bt[int(0b10100011)] = self.cpu_divide
+        self.bt[int(0b01000111)] = self.cpu_prn
+        self.bt[int(0b10000010)] = self.cpu_ldi
+
 
     def set_bt_register(self, register_code):
+        register_binary = 0
         if register_code == "ADD":
-            self.register_binary == int('0b' + "10100000")
-            self.bt[self.register_binary] = self.cpu_add
+            register_binary == int(0b10100000)
+            self.bt[register_binary] = self.cpu_add
         elif register_code == "SUB":
-            self.register_binary == int('0b' + "10100011")
-            self.bt[self.register_binary] = self.cpu_subtract
+            register_binary == int(0b10100011)
+            self.bt[register_binary] = self.cpu_subtract
         elif register_code == "MUL":
-            self.register_binary == int('0b' + "10100010")
-            self.bt[self.register_binary] = self.cpu_multiply
+            register_binary == int(0b10100010)
+            self.bt[register_binary] = self.cpu_multiply
         elif register_code == "DIV":
-            self.register_binary == int('0b' + "10100011")
-            self.bt[self.register_binary] = self.cpu_divide
+            register_binary == int(0b10100011)
+            self.bt[register_binary] = self.cpu_divide
         elif register_code == "PRN":
-            self.register_binary == int('0b' + "01000111")
-            self.bt[self.register_binary] = self.cpu_prn
+            register_binary == int(0b01000111)
+            self.bt[register_binary] = self.cpu_prn
         elif register_code == "LDI":
-            self.register_binary == int('0b' + "10000010")
-            self.bt[self.register_binary] = self.cpu_ldi
+            register_binary == int(0b10000010)
+            self.bt[register_binary] = self.cpu_ldi
         else:
             pass
         
@@ -60,7 +67,8 @@ class CPU:
         self.register[operand_a] = operand_b
         self.pc += 3
 
-    def dispatcher(self, instruction_register, operand_a, operand_b):
+    def dispatcher(self, program_code_to_run, instruction_register, operand_a, operand_b):
+        self.set_bt_register(program_code_to_run)
         self.bt[instruction_register](operand_a, operand_b)
 
     def load(self):
@@ -91,22 +99,6 @@ class CPU:
             print(f"{sys.argv[0]}   |   {sys.argv[1]}:  file not found")
             sys.exit(2)
 
-
-        # For now, we've just hardcoded a program:
-
-        # program = [
-        #     # From print8.ls8
-        #     0b10000010, # LDI R0,8
-        #     0b00000000,
-        #     0b00001000,
-        #     0b01000111, # PRN R0
-        #     0b00000000,
-        #     0b00000001, # HLT
-        # ]
-
-        # for instruction in program_name:
-        #     self.ram[address] = instruction
-        #     address += 1
 
     def alu(self, op, reg_a, reg_b):
         """ALU operations."""
@@ -149,7 +141,8 @@ class CPU:
 
             # It needs to read the memory address that's stored in register PC, and store that result in IR, the Instruction Register.
                 # This can just be a local variable in run().
-            instruction_register = self.ram_read(self.pc)
+            # instruction_register = self.ram_read(self.pc)
+            instruction_register = self.pc
 
             # Using ram_read(), read the bytes at PC+1 and PC+2 from RAM into variables operand_a and operand_b in case the instruction needs them.
             operand_a = self.ram_read(instruction_register + 1)
@@ -168,7 +161,7 @@ class CPU:
 
             # Then, depending on the value of the opcode, perform the actions needed for the instruction per the LS-8 spec.
                 # Maybe an if-elif cascade...? There are other options, too.
-                
+            '''
             if self.ram[instruction_register] == ADD:
                 program_code_to_run = "ADD"
             elif self.ram[instruction_register] == SUB:
@@ -185,7 +178,33 @@ class CPU:
                 program_code_to_run = "LDI"
             else:
                 program_code_to_run = "HLT"
+            
             self.set_bt_register(program_code_to_run)
+            i_register = self.ram[instruction_register]
+            print(i_register)
+            self.dispatcher(i_register, operand_a, operand_b)
+            '''
+            if self.ram[instruction_register] == HLT:
+                print("HALT")
+                running = False
+            else:
+                if self.ram[instruction_register] == ADD:
+                    program_code_to_run = "ADD"
+                elif self.ram[instruction_register] == SUB:
+                    program_code_to_run = "SUB"
+                elif self.ram[instruction_register] == MUL:
+                    program_code_to_run = "MUL"
+                elif self.ram[instruction_register] == DIV:
+                    program_code_to_run = "DIV"
+                elif self.ram[instruction_register] == HLT:
+                    program_code_to_run = "HLT"
+                elif self.ram[instruction_register] == PRN:
+                    program_code_to_run = "PRN"
+                elif self.ram[instruction_register] == LDI:
+                    program_code_to_run = "LDI"
+                else:
+                    program_code_to_run = "HLT"                
+                self.dispatcher(program_code_to_run, self.ram[instruction_register], operand_a, operand_b)
 
             # halt code 
             # if program_code_to_run == HLT:
@@ -214,7 +233,5 @@ class CPU:
     def ram_write(self, address, value):
         # should accept a value to write and the address to write it to.
         self.ram[address] = value
+        pass
 
-
-cpu = CPU()
-cpu.load()
