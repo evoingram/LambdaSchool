@@ -34,7 +34,7 @@ class CPU:
             self.bt[self.register_binary] = self.cpu_ldi
         else:
             pass
-
+        
     def cpu_add(self, operand_a, operand_b):
         self.alu("ADD", operand_a, operand_b)
         self.pc +=3
@@ -156,23 +156,41 @@ class CPU:
             operand_b = self.ram_read(instruction_register + 2)
 
 
-            # still need to add and fix "program_code_to_run" to program codes
-            
             HLT = int(0b00000001)
-            LDI = 0b10000010
-            PRN = 0b01000111
-
-            program_code_to_run = self.ram[instruction_register]
+            LDI = int(0b10000010)
+            PRN = int(0b01000111)
+            ADD = int(0b10100000)
+            SUB = int(0b10100011)
+            MUL = int(0b10100010)
+            DIV = int(0b10100011)
+            
+            # program_code_to_run = self.ram[instruction_register]
 
             # Then, depending on the value of the opcode, perform the actions needed for the instruction per the LS-8 spec.
                 # Maybe an if-elif cascade...? There are other options, too.
+                
+            if self.ram[instruction_register] == ADD:
+                program_code_to_run = "ADD"
+            elif self.ram[instruction_register] == SUB:
+                program_code_to_run = "SUB"
+            elif self.ram[instruction_register] == MUL:
+                program_code_to_run = "MUL"
+            elif self.ram[instruction_register] == DIV:
+                program_code_to_run = "DIV"
+            elif self.ram[instruction_register] == HLT:
+                program_code_to_run = "HLT"
+            elif self.ram[instruction_register] == PRN:
+                program_code_to_run = "PRN"
+            elif self.ram[instruction_register] == LDI:
+                program_code_to_run = "LDI"
+            self.set_bt_register(program_code_to_run)
 
             # halt code 
-            if program_code_to_run == HLT:
-                print("Halting!")
-                running = False
-            else:
-                self.set_bt_register(program_code_to_run)
+            # if program_code_to_run == HLT:
+            #     print("Halting!")
+            #     running = False
+                
+
             # Some instructions requires up to the next two bytes of data after the PC in memory to perform operations on.
             # Sometimes the byte value is a register number, other times it's a constant value (in the case of LDI).
 
