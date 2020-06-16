@@ -16,12 +16,12 @@
 - [X] Add the `LDI` instruction
 - [X] Add the `PRN` instruction
 
-### [ ] Day 2: Add the ability to load files dynamically, get `mult.ls8` running
+### [X] Day 2: Add the ability to load files dynamically, get `mult.ls8` running
 
-- [ ] Un-hardcode the machine code
-- [ ] Implement the `load()` function to load an `.ls8` file given the filename
+- [X] Un-hardcode the machine code
+- [X] Implement the `load()` function to load an `.ls8` file given the filename
       passed in as an argument
-- [ ] Implement a Multiply instruction (run `mult.ls8`)
+- [X] Implement a Multiply instruction (run `mult.ls8`)
 
 ### [ ] Day 3: Stack
 
@@ -38,17 +38,3 @@
 - [ ] Add the keyboard interrupt to the LS-8 emulator
 - [ ] Write an LS-8 assembly program to draw a curved histogram on the screen
 
-
-Inventory:
-
-Make a list of files here:
-- ls8.py:  LS-8 emulator
-- cpu.py:  cpu functionality
-- print8.ls8:  print the number 8 on the screen
--:  
--:  
--:  
--:  
-Write a short 3-10-word description of what each file does.
-Note what has been implemented, and what hasn't.
-Skim the spec.
