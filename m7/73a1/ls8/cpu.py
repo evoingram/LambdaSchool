@@ -183,7 +183,9 @@ class CPU:
                 program_code_to_run = "PRN"
             elif self.ram[instruction_register] == LDI:
                 program_code_to_run = "LDI"
-            return self.set_bt_register(program_code_to_run)
+            else:
+                program_code_to_run = "HLT"
+            self.set_bt_register(program_code_to_run)
 
             # halt code 
             # if program_code_to_run == HLT:
