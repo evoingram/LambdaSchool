@@ -10,7 +10,7 @@ class CPU:
         self.pc = 0
         self.register = [0] * 8
         self.ram = [0] * 256
-        self.register[7] = len(self.ram)-1
+        self.register[7] = len(self.ram) - 1
         self.bt = {}
         self.bt[int(0b10100000)] = self.cpu_add
         self.bt[int(0b10100011)] = self.cpu_subtract
@@ -18,8 +18,8 @@ class CPU:
         self.bt[int(0b10100011)] = self.cpu_divide
         self.bt[int(0b01000111)] = self.cpu_prn
         self.bt[int(0b10000010)] = self.cpu_ldi
-        self.bt[int(0b01000110)] = self.cpu_pop
         self.bt[int(0b01000101)] = self.cpu_push
+        self.bt[int(0b01000110)] = self.cpu_pop
 
     def set_bt_register(self, register_code):
         register_binary = 0
@@ -41,6 +41,12 @@ class CPU:
         elif register_code == "LDI":
             register_binary == int(0b10000010)
             self.bt[register_binary] = self.cpu_ldi
+        elif register_code == "PUSH":
+            register_binary == int(0b01000110)
+            self.bt[register_binary] = self.cpu_push
+        elif register_code == "POP":
+            register_binary == int(0b01000101)
+            self.bt[register_binary] = self.cpu_pop
         else:
             pass
     
