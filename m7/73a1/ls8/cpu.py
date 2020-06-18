@@ -20,12 +20,14 @@ class CPU:
         self.bt[int(0b10000010)] = self.cpu_ldi
         self.bt[int(0b01000101)] = self.cpu_push
         self.bt[int(0b01000110)] = self.cpu_pop
+        self.bt[int(0b01010000)] = self.cpu_call
+        self.bt[int(0b00010001)] = self.cpu_ret
 
-    def set_bt_register(self, register_code):
+    def set_bt_register(self, register_code, operand_a, operand_b):
         register_binary = 0
         if register_code == "ADD":
             register_binary == int(0b10100000)
-            self.bt[register_binary] = self.cpu_add
+            self.bt[register_binary] = self.cpu_add(operand_a, operand_b)
         elif register_code == "SUB":
             register_binary == int(0b10100011)
             self.bt[register_binary] = self.cpu_subtract
@@ -47,9 +49,26 @@ class CPU:
         elif register_code == "POP":
             register_binary == int(0b01000101)
             self.bt[register_binary] = self.cpu_pop
+        elif register_code == "CALL":
+            register_binary == int(0b01010000)
+            self.bt[register_binary] = self.cpu_call
+        elif register_code == "RET":
+            register_binary == int(0b00010001)
+            self.bt[register_binary] = self.cpu_ret
         else:
             pass
     
+    def cpu_call(self, operand_a, operand_b):
+        ram_index = self.register[7]
+        self.ram[ram_index] = self.pc+2
+        self.register[7] -= 1
+        self.pc = self.ram[operand_a]
+
+    def cpu_ret(self, operand_a, operand_b):
+        self.register[7] += 1
+        ram_index = self.register[7]
+        self.pc = self.ram[ram_index]
+
     def cpu_push(self, operand_a, operand_b):
         ram_index = self.register[7]
         self.ram[ram_index] = self.register[operand_a]
@@ -87,7 +106,8 @@ class CPU:
         self.pc += 3
 
     def dispatcher(self, program_code_to_run, instruction_register, operand_a, operand_b):
-        self.set_bt_register(program_code_to_run)
+        self.set_bt_register(program_code_to_run, operand_a, operand_b)
+        self.trace()
         self.bt[instruction_register](operand_a, operand_b)
 
     def load(self):
@@ -111,7 +131,6 @@ class CPU:
                     self.ram[address] = int(x, 2)
                     address += 1
                     
-            
             print(self.ram)
 
         except FileNotFoundError:
@@ -175,6 +194,8 @@ class CPU:
             SUB = int(0b10100011)
             MUL = int(0b10100010)
             DIV = int(0b10100011)
+            CALL = int(0b01010000)
+            RET = int(0b00010001)
 
             # Then, depending on the value of the opcode, perform the actions needed for the instruction per the LS-8 spec.
             # Maybe an if-elif cascade...? There are other options, too.
@@ -196,12 +217,14 @@ class CPU:
                     program_code_to_run = "MUL"
                 elif self.ram[instruction_register] == DIV:
                     program_code_to_run = "DIV"
-                elif self.ram[instruction_register] == HLT:
-                    program_code_to_run = "HLT"
                 elif self.ram[instruction_register] == PRN:
                     program_code_to_run = "PRN"
                 elif self.ram[instruction_register] == LDI:
                     program_code_to_run = "LDI"
+                elif self.ram[instruction_register] == CALL:
+                    program_code_to_run = "CALL"
+                elif self.ram[instruction_register] == RET:
+                    program_code_to_run = "RET"
                 else:
                     program_code_to_run = "HLT"                
                 self.dispatcher(program_code_to_run, self.ram[instruction_register], operand_a, operand_b)
