@@ -194,7 +194,7 @@ so you can look in `sys.argv[1]` for the name of the file to load.
 > expect, and print an error and exit if they didn't.
 
 In `load()`, you will now want to use those command line arguments to open a
-file, read in its contents line by line, and save appropriate data into RAM. 
+file, read in its contents line by line, and save appropriate data into RAM.
 
 As you process lines from the file, you should be on the lookout for blank lines
 (ignore them), and you should ignore everything after a `#`, since that's a
