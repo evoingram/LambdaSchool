@@ -3,6 +3,7 @@
 from collections import OrderedDict
 
 class Solution(object):
+
     def containsDuplicate(self, nums):
         """
         :type nums: List[int]
@@ -14,6 +15,7 @@ class Solution(object):
         print(str(unique_list) + "  |  " + str(nums))
         # if set = nums, return false
         # it should return false if every element is distinct.
+        # can also use length (typical)
         if unique_list == nums:
             return False
         # else return true
@@ -31,12 +33,13 @@ class Solution(object):
 #         self.next = next
 class Solution(object):
 
-    def length(self, list):
+    def length(self, head: ListNode):
         length = 0
-        current_head = list.val
-        while(current_head):
+        current_head = head
+        while current_head is not None:
             length += 1
             current_head = current_head.next
+
         return length
 
     def addTwoNumbers(self, l1, l2):
@@ -73,4 +76,5 @@ class Solution(object):
         # convert sum to list
         total_list = map(int, str(total))
 
+        # TODO:  also wants it reversed
         return total_list
