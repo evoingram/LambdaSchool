@@ -32,7 +32,6 @@ class Solution(object):
 
 # Problem 2:  Decode String
 
-
 def decodeString(s):
     """
     :type s: str
@@ -55,35 +54,27 @@ def decodeString(s):
         # get number before [
         # repeat-add to beginning of decoded the string in between [] as many times as number
     decoded = ""
-    close_brackets = [position for position, letter in enumerate(s) if letter == str("]")]
-    open_brackets = [position for position, letter in enumerate(s) if letter == str("[")]
+    close_brackets = [index for index, letter in enumerate(s) if letter == str("]")]
+    open_brackets = [index for index, letter in enumerate(s) if letter == str("[")]
     for letter in reversed(s):
         if letter.isalpha():
             decoded = letter + decoded
         elif letter == str("]"):
             last_close_bracket = close_brackets[-1]
-            print("last close bracket = " + str(last_close_bracket))
             del close_brackets[-1]
-            print("close brackets = " + str(close_brackets))
             # find [
             last_open_bracket = open_brackets[-1]
-            print("last open bracket = " + str(last_open_bracket))
             del open_brackets[-1]
-            print("open brackets = " + str(open_brackets))
             # save string in between []
             end_sub = last_close_bracket
             start_sub = last_open_bracket + 1
-            print("start:end = " + str(start_sub) + " : " + str(end_sub))
             substring = s[start_sub:end_sub]
-            print("substring = " + substring)
             # get number before [
             repeat_times = int(s[last_open_bracket-1])
-            print("repeat number of times:  " + str(repeat_times))
             # repeat-add to beginning of decoded the string in between [] as many times as number
             for x in range(0, repeat_times-1):
                 decoded = substring + decoded
     print(decoded)
-    print('-------------------------------')
     return decoded
 
 
