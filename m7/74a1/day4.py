@@ -15,22 +15,33 @@ def findDuplicate(nums):
         else:
             sorted_nums = sorted(nums)
             for x in range(0, len(sorted_nums)):
-                print(x)
                 if x <= len(sorted_nums)-2:
                     if sorted_nums[x] == sorted_nums[x + 1]:
-                        print(sorted_nums[x])
                         return sorted_nums[x]
 
 findDuplicate([3, 1, 3, 4, 2])
 
 # Problem 2:  Search in Rotated Sorted Array
 
-'''
-Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
-(i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).
-You are given a target value to search. If found in the array return its index, otherwise return -1.
-You may assume no duplicate exists in the array.
-Your algorithm's runtime complexity must be in the order of O(log n).
-'''
+def search(nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: int
+        """
 
+        '''
+        Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+        (i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).
+        You are given a target value to search. If found in the array return its index, otherwise return -1.
+        You may assume no duplicate exists in the array.
+        runtime complexity must be in the order of O(log n).
+        '''
+        if target not in nums:
+            return -1
+        else:
+            return nums.index(target)
+            
 
+search([4, 5, 6, 7, 0, 1, 2], 3)
+search([4, 5, 6, 7, 0, 1, 2], 0)
