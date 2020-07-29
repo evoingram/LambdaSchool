@@ -1,7 +1,6 @@
 intersection_array = []
 cache = {}
 
-
 def arrays_length_two(arrays, intersection_array):
     if len(arrays[1]) <= 5 and len(arrays[0]) <= 5:
         for y in arrays[1]:

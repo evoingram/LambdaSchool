@@ -16,10 +16,6 @@ class HashTable:
     """
     A hash table that with `capacity` buckets
     that accepts string keys.
-    Implement this.
-    
-
-    return hash
     """
 
     def __init__(self, capacity):
@@ -27,31 +23,19 @@ class HashTable:
         self.storage = [None] * capacity
         self.head = None
 
-
+    # return number of slots in hash table 
     def get_num_slots(self):
-        """
-        Return the length of the list you're using to hold the hash
-        table data. (Not the number of items stored in the hash table,
-        but the number of slots in the main list.)
-
-        One of the tests relies on this.
-        Implement this.
-        """
 
         self.length = len(self.storage)
         return self.length
 
-
+    # return the load factor for this hash table.
     def get_load_factor(self):
-        """
-        Return the load factor for this hash table.
-        Implement this.
-        """
-
         self.get_num_slots()
         load_factor = self.length / self.capacity
         return load_factor
 
+    # adjust this hash table's load factor
     def adjust_load_factor(self):
 
         load_factor = self.get_load_factor()
@@ -63,19 +47,16 @@ class HashTable:
             # automatically rehash the table to half its previous size, down to a minimum of 8 slots.
             self.resize(self, self.capacity/2)
 
+    # hash data FNV-1 Hash, 64-bit
     def fnv1(self, key):
         """
         FNV-1 Hash, 64-bit
-        Implement this, and/or DJB2.   
 
         algorithm fnv-1 is
-
         hash := 14695981039346656037 do
-
         for each byte_of_data to be hashed
             hash := hash × 1099511628211 
             hash := hash XOR byte_of_data
-
         return hash
         
         """
@@ -92,12 +73,10 @@ class HashTable:
 
         return hash 
 
-
+    # hash data DJB2 hash, 32-bit
     def djb2(self, key):
         """
         DJB2 hash, 32-bit
-
-        Implement this, and/or FNV-1.
         """
 
         hash = 5381
@@ -108,19 +87,16 @@ class HashTable:
 
         return hash
 
+    # return hash table index for submitted key 
     def hash_index(self, key):
-        """
-        Take an arbitrary key and return a valid integer index
-        between within the storage capacity of the hash table.
-        """
         # return self.fnv1(key) % self.capacity
         return self.djb2(key) % self.capacity
 
+    # add value w/ key to hash table
     def put(self, key, value):
         """
         Store the value with the given key.
         Hash collisions should be handled with Linked List Chaining.
-        Implement this.
         """
 
         # get index number & current node
@@ -137,13 +113,11 @@ class HashTable:
 
         return new_node
 
-
-
+    # delete value w/ key from hash table
     def delete(self, key):
         """
         Remove the value stored with the given key.
         Print a warning if the key is not found.
-        Implement this.
         """
         # get tree head
         current_node = self.head
@@ -165,14 +139,12 @@ class HashTable:
             print('No keys found for that value.')
 
         return None
-            
 
-
+    # get value w/ key to hash table
     def get(self, key):
         """
         Retrieve the value stored with the given key.
         Returns None if the key is not found.
-        Implement this.
         """
 
         # get tree head 
@@ -194,15 +166,8 @@ class HashTable:
 
         return None
 
-
-
+    # resize hash table 
     def resize(self, new_capacity):
-        """
-        Changes the capacity of the hash table and
-        rehashes all key/value pairs.
-        Implement this.
-        """
-
         # set next storage capacity 
         next_storage = [None] * new_capacity
 
