@@ -21,9 +21,7 @@ def finder(files, queries):
     file3490
     if query contains digits 
         get digits from query 
-        get rid of word file & leave number
-    
-
+        get rid of word file & leave number   
     '''
 
 if __name__ == "__main__":

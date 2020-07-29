@@ -23,7 +23,7 @@ world.load_graph(room_graph)
 world.print_rooms()
 
 player = Player(world.starting_room)
-    
+
 # Instead of searching for a target vertex, searching for an exit with a `'?'` as the value.
 # If an exit has been explored, you can put it in your BFS queue like normal.
 

@@ -101,6 +101,7 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
+        # selection sort 
         # Set to true 
         self.set_light_on()
         # Swap held item with next item 
