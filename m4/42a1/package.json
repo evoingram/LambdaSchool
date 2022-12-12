@@ -8,7 +8,7 @@
   "repository": "https://github.com/LambdaSchool/webdb-i-guided",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "knex": "^0.20.10",
     "sqlite3": "^4.1.1"
   },
